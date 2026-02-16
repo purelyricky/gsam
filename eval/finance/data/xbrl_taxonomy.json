@@ -1,0 +1,1095 @@
+{
+  "taxonomy_name": "US-GAAP-FiNER-139",
+  "version": "2024",
+  "standard": "US-GAAP",
+  "total_entities": 139,
+  "categories": {
+    "RevenueAndIncome": {
+      "description": "Elements related to revenue recognition, income from operations, and related performance obligation disclosures under ASC 606 and other revenue standards.",
+      "children": {
+        "RevenueRecognition": {
+          "description": "Revenue amounts recognized from contracts with customers and other sources, including assessed and excluded tax treatments.",
+          "entities": [
+            "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "RevenueFromContractWithCustomerIncludingAssessedTax",
+            "Revenues",
+            "RevenueFromRelatedParties"
+          ]
+        },
+        "PerformanceObligations": {
+          "description": "Remaining performance obligations and contract liability disclosures under ASC 606.",
+          "entities": [
+            "RevenueRemainingPerformanceObligation",
+            "ContractWithCustomerLiabilityRevenueRecognized"
+          ]
+        },
+        "EquityMethodIncome": {
+          "description": "Income or loss recognized from equity method investments.",
+          "entities": [
+            "IncomeLossFromEquityMethodInvestments"
+          ]
+        },
+        "GainsAndLosses": {
+          "description": "Gains and losses from extinguishment of debt and similar non-operating items.",
+          "entities": [
+            "GainsLossesOnExtinguishmentOfDebt"
+          ]
+        }
+      }
+    },
+    "ExpensesAndCosts": {
+      "description": "Elements related to operating expenses, cost recognition, depreciation, amortization, impairment, and restructuring charges.",
+      "children": {
+        "DepreciationAndAmortization": {
+          "description": "Depreciation of tangible assets and amortization of intangible assets and financing costs.",
+          "entities": [
+            "Depreciation",
+            "AmortizationOfIntangibleAssets",
+            "AmortizationOfFinancingCosts",
+            "CapitalizedContractCostAmortization"
+          ]
+        },
+        "InterestExpense": {
+          "description": "Interest expense on debt and other borrowings.",
+          "entities": [
+            "InterestExpense",
+            "InterestExpenseDebt"
+          ]
+        },
+        "ImpairmentCharges": {
+          "description": "Asset impairment charges including goodwill impairment losses.",
+          "entities": [
+            "AssetImpairmentCharges",
+            "GoodwillImpairmentLoss"
+          ]
+        },
+        "RestructuringCosts": {
+          "description": "Restructuring charges and expected costs associated with restructuring activities.",
+          "entities": [
+            "RestructuringCharges",
+            "RestructuringAndRelatedCostExpectedCost1"
+          ]
+        },
+        "LeaseAndRentalExpense": {
+          "description": "Legacy lease and rental expense disclosures under ASC 840.",
+          "entities": [
+            "LeaseAndRentalExpense",
+            "OperatingLeasesRentExpenseNet"
+          ]
+        },
+        "DefinedContributionPlanCosts": {
+          "description": "Costs recognized for defined contribution retirement plans.",
+          "entities": [
+            "DefinedContributionPlanCostRecognized"
+          ]
+        },
+        "InsuranceUnderwriting": {
+          "description": "Prior year claims and claims adjustment expenses for property-casualty insurance underwriters.",
+          "entities": [
+            "SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense"
+          ]
+        }
+      }
+    },
+    "Assets": {
+      "description": "Elements related to tangible and intangible assets, goodwill, real estate properties, equity method investments, and fair value disclosures.",
+      "children": {
+        "Goodwill": {
+          "description": "Goodwill recognized in the balance sheet from business combinations.",
+          "entities": [
+            "Goodwill"
+          ]
+        },
+        "IntangibleAssets": {
+          "description": "Finite-lived intangible assets and their useful life characteristics.",
+          "entities": [
+            "AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife",
+            "FiniteLivedIntangibleAssetUsefulLife"
+          ]
+        },
+        "PropertyPlantAndEquipment": {
+          "description": "Tangible long-lived asset useful life and real estate property disclosures.",
+          "entities": [
+            "PropertyPlantAndEquipmentUsefulLife",
+            "AreaOfRealEstateProperty",
+            "NumberOfRealEstateProperties"
+          ]
+        },
+        "EquityMethodInvestments": {
+          "description": "Investments accounted for under the equity method and ownership percentages.",
+          "entities": [
+            "EquityMethodInvestments",
+            "EquityMethodInvestmentOwnershipPercentage"
+          ]
+        },
+        "CashAndFairValue": {
+          "description": "Cash and cash equivalents fair value measurement disclosures.",
+          "entities": [
+            "CashAndCashEquivalentsFairValueDisclosure"
+          ]
+        },
+        "OperatingLossCarryforwards": {
+          "description": "Tax-related operating loss carryforwards recognized as deferred tax assets.",
+          "entities": [
+            "OperatingLossCarryforwards"
+          ]
+        }
+      }
+    },
+    "Liabilities": {
+      "description": "Elements related to contract liabilities, contingent consideration, guarantee obligations, and environmental accruals.",
+      "children": {
+        "ContractLiabilities": {
+          "description": "Liabilities from contracts with customers representing deferred revenue and advance payments.",
+          "entities": [
+            "ContractWithCustomerLiability"
+          ]
+        },
+        "EnvironmentalLiabilities": {
+          "description": "Accruals for environmental loss contingencies and remediation obligations.",
+          "entities": [
+            "AccrualForEnvironmentalLossContingencies"
+          ]
+        },
+        "GuaranteeObligations": {
+          "description": "Maximum exposure under guarantee obligations and similar commitments.",
+          "entities": [
+            "GuaranteeObligationsMaximumExposure"
+          ]
+        }
+      }
+    },
+    "StockholdersEquity": {
+      "description": "Elements related to common stock, preferred stock, share characteristics, dividends, and non-controlling interests.",
+      "children": {
+        "CommonStock": {
+          "description": "Common stock attributes including par value, authorized shares, and outstanding shares.",
+          "entities": [
+            "CommonStockParOrStatedValuePerShare",
+            "CommonStockSharesAuthorized",
+            "CommonStockSharesOutstanding",
+            "CommonStockCapitalSharesReservedForFutureIssuance"
+          ]
+        },
+        "PreferredStock": {
+          "description": "Preferred stock attributes including authorized shares and dividend rate.",
+          "entities": [
+            "PreferredStockSharesAuthorized",
+            "PreferredStockDividendRatePercentage"
+          ]
+        },
+        "Dividends": {
+          "description": "Dividends declared per share for common stock.",
+          "entities": [
+            "CommonStockDividendsPerShareDeclared"
+          ]
+        },
+        "NoncontrollingInterests": {
+          "description": "Ownership percentages held by non-controlling owners and parent entities.",
+          "entities": [
+            "MinorityInterestOwnershipPercentageByNoncontrollingOwners",
+            "MinorityInterestOwnershipPercentageByParent"
+          ]
+        },
+        "AccountingPrincipleAdoption": {
+          "description": "Cumulative effect adjustments from adoption of new accounting principles.",
+          "entities": [
+            "CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption"
+          ]
+        }
+      }
+    },
+    "DebtInstruments": {
+      "description": "Elements related to debt instruments, lines of credit, financing costs, and debt measurements including face amount, carrying amount, interest rates, and maturity.",
+      "children": {
+        "DebtMeasurement": {
+          "description": "Carrying amount, face amount, and fair value measurements of debt instruments.",
+          "entities": [
+            "DebtInstrumentCarryingAmount",
+            "DebtInstrumentFaceAmount",
+            "DebtInstrumentFairValue",
+            "LongTermDebt",
+            "LongTermDebtFairValue"
+          ]
+        },
+        "DebtInterestRates": {
+          "description": "Stated, effective, variable basis spread, and weighted average interest rates on debt.",
+          "entities": [
+            "DebtInstrumentInterestRateStatedPercentage",
+            "DebtInstrumentInterestRateEffectivePercentage",
+            "DebtInstrumentBasisSpreadOnVariableRate1",
+            "DebtWeightedAverageInterestRate"
+          ]
+        },
+        "DebtTermsAndRedemption": {
+          "description": "Maturity dates, terms, redemption prices, and convertible conversion prices of debt instruments.",
+          "entities": [
+            "DebtInstrumentMaturityDate",
+            "DebtInstrumentTerm",
+            "DebtInstrumentRedemptionPricePercentage",
+            "DebtInstrumentConvertibleConversionPrice1"
+          ]
+        },
+        "DebtDiscountsAndCosts": {
+          "description": "Unamortized discounts and deferred financing costs associated with debt issuance.",
+          "entities": [
+            "DebtInstrumentUnamortizedDiscount",
+            "DeferredFinanceCostsGross",
+            "DeferredFinanceCostsNet"
+          ]
+        },
+        "LineOfCredit": {
+          "description": "Line of credit facilities including maximum capacity, current borrowing capacity, remaining capacity, interest rates, and commitment fees.",
+          "entities": [
+            "LineOfCredit",
+            "LineOfCreditFacilityMaximumBorrowingCapacity",
+            "LineOfCreditFacilityCurrentBorrowingCapacity",
+            "LineOfCreditFacilityRemainingBorrowingCapacity",
+            "LineOfCreditFacilityInterestRateAtPeriodEnd",
+            "LineOfCreditFacilityCommitmentFeePercentage",
+            "LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage",
+            "LettersOfCreditOutstandingAmount"
+          ]
+        },
+        "DebtRepayments": {
+          "description": "Repayments and extinguishment of debt obligations.",
+          "entities": [
+            "RepaymentsOfDebt"
+          ]
+        }
+      }
+    },
+    "BusinessCombinations": {
+      "description": "Elements related to business acquisitions, consideration transferred, contingent consideration, and recognized assets and liabilities under ASC 805.",
+      "children": {
+        "AcquisitionConsideration": {
+          "description": "Total consideration transferred, contingent consideration liabilities, and acquisition-related costs.",
+          "entities": [
+            "BusinessCombinationConsiderationTransferred1",
+            "BusinessCombinationContingentConsiderationLiability",
+            "BusinessCombinationAcquisitionRelatedCosts",
+            "PaymentsToAcquireBusinessesGross",
+            "PaymentsToAcquireBusinessesNetOfCashAcquired"
+          ]
+        },
+        "AcquisitionDetails": {
+          "description": "Voting interests acquired and equity interests issued in business acquisitions.",
+          "entities": [
+            "BusinessAcquisitionPercentageOfVotingInterestsAcquired",
+            "BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued"
+          ]
+        },
+        "RecognizedAssetsAndLiabilities": {
+          "description": "Identifiable intangible assets and other assets recognized in business combinations.",
+          "entities": [
+            "BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill",
+            "BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles"
+          ]
+        },
+        "DisposalGroups": {
+          "description": "Consideration associated with disposal groups including discontinued operations.",
+          "entities": [
+            "DisposalGroupIncludingDiscontinuedOperationConsideration"
+          ]
+        }
+      }
+    },
+    "ShareBasedCompensation": {
+      "description": "Elements related to share-based payment arrangements, stock options, restricted stock units, vesting, and associated compensation costs under ASC 718.",
+      "children": {
+        "CompensationExpense": {
+          "description": "Share-based compensation expense recognized and associated tax benefits.",
+          "entities": [
+            "AllocatedShareBasedCompensationExpense",
+            "ShareBasedCompensation",
+            "EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense"
+          ]
+        },
+        "UnrecognizedCompensationCost": {
+          "description": "Total unrecognized compensation cost for non-vested awards and the remaining recognition period.",
+          "entities": [
+            "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized",
+            "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1",
+            "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions"
+          ]
+        },
+        "StockOptions": {
+          "description": "Stock option grants, exercise intrinsic value, and grant date fair value.",
+          "entities": [
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue"
+          ]
+        },
+        "RestrictedStockAndOtherAwards": {
+          "description": "Restricted stock units and other equity instruments granted, vested, and outstanding.",
+          "entities": [
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue"
+          ]
+        },
+        "PlanDetails": {
+          "description": "Share-based payment plan attributes including authorized shares, available shares, vesting terms, and expiration periods.",
+          "entities": [
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant",
+            "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+            "SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage",
+            "SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod"
+          ]
+        }
+      }
+    },
+    "Leases": {
+      "description": "Elements related to operating and finance lease disclosures including right-of-use assets, lease liabilities, lease costs, and weighted average terms under ASC 842.",
+      "children": {
+        "OperatingLeaseBalanceSheet": {
+          "description": "Operating lease right-of-use assets and lease liabilities recognized on the balance sheet.",
+          "entities": [
+            "OperatingLeaseRightOfUseAsset",
+            "OperatingLeaseLiability"
+          ]
+        },
+        "OperatingLeaseCosts": {
+          "description": "Operating lease cost and expense amounts recognized in the income statement.",
+          "entities": [
+            "OperatingLeaseCost",
+            "OperatingLeaseExpense"
+          ]
+        },
+        "OperatingLeaseTermsAndRates": {
+          "description": "Weighted average remaining lease term and discount rate for operating leases.",
+          "entities": [
+            "OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+            "OperatingLeaseWeightedAverageDiscountRatePercent"
+          ]
+        },
+        "OperatingLeasePayments": {
+          "description": "Cash payments for operating leases.",
+          "entities": [
+            "OperatingLeasePayments"
+          ]
+        },
+        "LeaseContractTerms": {
+          "description": "Contractual terms and renewal options for lessee operating leases.",
+          "entities": [
+            "LesseeOperatingLeaseTermOfContract",
+            "LesseeOperatingLeaseRenewalTerm"
+          ]
+        }
+      }
+    },
+    "IncomeTaxes": {
+      "description": "Elements related to income tax expense, effective tax rates, unrecognized tax benefits, and tax rate reconciliations under ASC 740.",
+      "children": {
+        "IncomeTaxExpense": {
+          "description": "Total income tax expense or benefit recognized in the income statement.",
+          "entities": [
+            "IncomeTaxExpenseBenefit"
+          ]
+        },
+        "EffectiveTaxRate": {
+          "description": "Effective income tax rate and statutory federal rate used in rate reconciliations.",
+          "entities": [
+            "EffectiveIncomeTaxRateContinuingOperations",
+            "EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate"
+          ]
+        },
+        "UnrecognizedTaxBenefits": {
+          "description": "Unrecognized tax benefits and the portion that would impact the effective tax rate if recognized.",
+          "entities": [
+            "UnrecognizedTaxBenefits",
+            "UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate"
+          ]
+        }
+      }
+    },
+    "LossContingencies": {
+      "description": "Elements related to loss contingencies, pending litigation claims, estimated losses, and accrued liabilities under ASC 450.",
+      "children": {
+        "ContingencyMeasurement": {
+          "description": "Accrued carrying values and estimates of possible loss for contingencies.",
+          "entities": [
+            "LossContingencyAccrualAtCarryingValue",
+            "LossContingencyEstimateOfPossibleLoss"
+          ]
+        },
+        "LitigationAndClaims": {
+          "description": "Number of pending claims and damages sought in loss contingency matters.",
+          "entities": [
+            "LossContingencyPendingClaimsNumber",
+            "LossContingencyDamagesSoughtValue"
+          ]
+        }
+      }
+    },
+    "FinancialInstrumentsAndDerivatives": {
+      "description": "Elements related to derivative instruments, hedging activities, fair value measurements, and warrant disclosures under ASC 815 and ASC 820.",
+      "children": {
+        "Derivatives": {
+          "description": "Derivative notional amounts and fixed interest rates for hedging instruments.",
+          "entities": [
+            "DerivativeNotionalAmount",
+            "DerivativeFixedInterestRate"
+          ]
+        },
+        "WarrantsAndRights": {
+          "description": "Exercise prices and attributes of warrants or rights issued.",
+          "entities": [
+            "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1"
+          ]
+        },
+        "ConcentrationRisk": {
+          "description": "Concentration of risk percentages for significant customers, suppliers, or geographic regions.",
+          "entities": [
+            "ConcentrationRiskPercentage1"
+          ]
+        }
+      }
+    },
+    "RelatedPartyTransactions": {
+      "description": "Elements related to transactions with related parties including amounts and expenses under ASC 850.",
+      "children": {
+        "TransactionAmounts": {
+          "description": "Amounts and expenses from transactions with related parties.",
+          "entities": [
+            "RelatedPartyTransactionAmountsOfTransaction",
+            "RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty"
+          ]
+        }
+      }
+    },
+    "SegmentInformation": {
+      "description": "Elements related to operating and reportable segment disclosures under ASC 280.",
+      "children": {
+        "SegmentCounts": {
+          "description": "Number of operating segments and reportable segments.",
+          "entities": [
+            "NumberOfOperatingSegments",
+            "NumberOfReportableSegments"
+          ]
+        }
+      }
+    },
+    "StockTransactions": {
+      "description": "Elements related to stock issuance, stock repurchase programs, treasury stock, and share price disclosures.",
+      "children": {
+        "StockIssuance": {
+          "description": "Proceeds from and details of common stock issuances and sales.",
+          "entities": [
+            "ProceedsFromIssuanceOfCommonStock",
+            "StockIssuedDuringPeriodSharesNewIssues",
+            "SaleOfStockNumberOfSharesIssuedInTransaction",
+            "SaleOfStockPricePerShare"
+          ]
+        },
+        "StockRepurchasePrograms": {
+          "description": "Authorized repurchase amounts, remaining authorization, and shares repurchased under stock repurchase programs.",
+          "entities": [
+            "StockRepurchaseProgramAuthorizedAmount1",
+            "StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1",
+            "StockRepurchasedAndRetiredDuringPeriodShares",
+            "StockRepurchasedDuringPeriodShares"
+          ]
+        },
+        "TreasuryStock": {
+          "description": "Treasury stock shares acquired, average cost per share, and total value under the cost method.",
+          "entities": [
+            "TreasuryStockSharesAcquired",
+            "TreasuryStockAcquiredAverageCostPerShare",
+            "TreasuryStockValueAcquiredCostMethod"
+          ]
+        },
+        "SharePrice": {
+          "description": "Market price per share of the entity's stock.",
+          "entities": [
+            "SharePrice"
+          ]
+        },
+        "AntidilutiveSecurities": {
+          "description": "Securities excluded from diluted earnings per share computation due to antidilutive effect.",
+          "entities": [
+            "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount"
+          ]
+        }
+      }
+    },
+    "Other": {
+      "description": "Elements that span multiple categories or relate to specialized industry-specific disclosures not covered by the primary categories above.",
+      "children": {
+        "DefinedBenefitPlans": {
+          "description": "Employer contributions to defined benefit pension and postretirement plans.",
+          "entities": [
+            "DefinedBenefitPlanContributionsByEmployer"
+          ]
+        },
+        "RegulatoryMatters": {
+          "description": "Public utility rate increase or decrease requests and regulatory proceedings.",
+          "entities": [
+            "PublicUtilitiesRequestedRateIncreaseDecreaseAmount"
+          ]
+        }
+      }
+    }
+  },
+  "entity_definitions": {
+    "AccrualForEnvironmentalLossContingencies": {
+      "description": "Accrued liability for environmental loss contingencies including remediation and cleanup obligations.",
+      "category_path": "Liabilities > EnvironmentalLiabilities"
+    },
+    "AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife": {
+      "description": "Weighted average useful life of finite-lived intangible assets acquired in a business combination or asset acquisition.",
+      "category_path": "Assets > IntangibleAssets"
+    },
+    "AllocatedShareBasedCompensationExpense": {
+      "description": "Share-based compensation expense allocated to a specific reporting unit or segment.",
+      "category_path": "ShareBasedCompensation > CompensationExpense"
+    },
+    "AmortizationOfFinancingCosts": {
+      "description": "Amortization of deferred financing costs (debt issuance costs) recognized as interest expense over the life of the debt.",
+      "category_path": "ExpensesAndCosts > DepreciationAndAmortization"
+    },
+    "AmortizationOfIntangibleAssets": {
+      "description": "Amortization expense of finite-lived intangible assets recognized during the reporting period.",
+      "category_path": "ExpensesAndCosts > DepreciationAndAmortization"
+    },
+    "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount": {
+      "description": "Number of antidilutive securities excluded from the computation of diluted earnings per share.",
+      "category_path": "StockTransactions > AntidilutiveSecurities"
+    },
+    "AreaOfRealEstateProperty": {
+      "description": "Area (in square feet or other unit of measure) of real estate property owned or leased by the entity.",
+      "category_path": "Assets > PropertyPlantAndEquipment"
+    },
+    "AssetImpairmentCharges": {
+      "description": "Impairment charges recognized for long-lived assets when carrying value exceeds fair value.",
+      "category_path": "ExpensesAndCosts > ImpairmentCharges"
+    },
+    "BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued": {
+      "description": "Number of equity interest shares issued or issuable as part of a business acquisition.",
+      "category_path": "BusinessCombinations > AcquisitionDetails"
+    },
+    "BusinessAcquisitionPercentageOfVotingInterestsAcquired": {
+      "description": "Percentage of voting equity interests acquired in a business combination.",
+      "category_path": "BusinessCombinations > AcquisitionDetails"
+    },
+    "BusinessCombinationAcquisitionRelatedCosts": {
+      "description": "Acquisition-related costs incurred in a business combination, expensed as incurred under ASC 805.",
+      "category_path": "BusinessCombinations > AcquisitionConsideration"
+    },
+    "BusinessCombinationConsiderationTransferred1": {
+      "description": "Total fair value of consideration transferred in a business combination including cash, equity, and other forms.",
+      "category_path": "BusinessCombinations > AcquisitionConsideration"
+    },
+    "BusinessCombinationContingentConsiderationLiability": {
+      "description": "Fair value of contingent consideration liability recognized in a business combination, payable upon meeting specified conditions.",
+      "category_path": "BusinessCombinations > AcquisitionConsideration"
+    },
+    "BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill": {
+      "description": "Fair value of identifiable intangible assets other than goodwill acquired in a business combination.",
+      "category_path": "BusinessCombinations > RecognizedAssetsAndLiabilities"
+    },
+    "BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles": {
+      "description": "Fair value of all identifiable intangible assets (including goodwill-related) acquired in a business combination.",
+      "category_path": "BusinessCombinations > RecognizedAssetsAndLiabilities"
+    },
+    "CapitalizedContractCostAmortization": {
+      "description": "Amortization of capitalized costs to obtain or fulfill contracts with customers under ASC 340-40.",
+      "category_path": "ExpensesAndCosts > DepreciationAndAmortization"
+    },
+    "CashAndCashEquivalentsFairValueDisclosure": {
+      "description": "Fair value of cash and cash equivalents disclosed under fair value measurement requirements.",
+      "category_path": "Assets > CashAndFairValue"
+    },
+    "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1": {
+      "description": "Exercise price per share of warrants or rights outstanding.",
+      "category_path": "FinancialInstrumentsAndDerivatives > WarrantsAndRights"
+    },
+    "CommonStockCapitalSharesReservedForFutureIssuance": {
+      "description": "Number of common shares reserved for future issuance under equity compensation plans, warrants, and convertible instruments.",
+      "category_path": "StockholdersEquity > CommonStock"
+    },
+    "CommonStockDividendsPerShareDeclared": {
+      "description": "Aggregate dividends declared per common share during the reporting period.",
+      "category_path": "StockholdersEquity > Dividends"
+    },
+    "CommonStockParOrStatedValuePerShare": {
+      "description": "Par or stated value per share of common stock as specified in the corporate charter.",
+      "category_path": "StockholdersEquity > CommonStock"
+    },
+    "CommonStockSharesAuthorized": {
+      "description": "Maximum number of common shares authorized for issuance under the corporate charter.",
+      "category_path": "StockholdersEquity > CommonStock"
+    },
+    "CommonStockSharesOutstanding": {
+      "description": "Number of common shares outstanding as of the balance sheet date, excluding treasury shares.",
+      "category_path": "StockholdersEquity > CommonStock"
+    },
+    "ConcentrationRiskPercentage1": {
+      "description": "Percentage of concentration risk from a particular customer, supplier, geographic area, or other risk factor.",
+      "category_path": "FinancialInstrumentsAndDerivatives > ConcentrationRisk"
+    },
+    "ContractWithCustomerLiability": {
+      "description": "Obligation to transfer goods or services for which consideration has been received or is due (deferred revenue) under ASC 606.",
+      "category_path": "Liabilities > ContractLiabilities"
+    },
+    "ContractWithCustomerLiabilityRevenueRecognized": {
+      "description": "Revenue recognized during the period that was included in the contract liability balance at the beginning of the period.",
+      "category_path": "RevenueAndIncome > PerformanceObligations"
+    },
+    "CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption": {
+      "description": "Cumulative effect adjustment to retained earnings from the adoption of a new accounting standard.",
+      "category_path": "StockholdersEquity > AccountingPrincipleAdoption"
+    },
+    "DebtInstrumentBasisSpreadOnVariableRate1": {
+      "description": "Basis spread (margin) added to a variable reference rate (e.g., LIBOR, SOFR) to determine the interest rate on a debt instrument.",
+      "category_path": "DebtInstruments > DebtInterestRates"
+    },
+    "DebtInstrumentCarryingAmount": {
+      "description": "Net carrying amount of a debt instrument on the balance sheet, including unamortized premium or discount.",
+      "category_path": "DebtInstruments > DebtMeasurement"
+    },
+    "DebtInstrumentConvertibleConversionPrice1": {
+      "description": "Conversion price per share at which a convertible debt instrument can be converted into equity.",
+      "category_path": "DebtInstruments > DebtTermsAndRedemption"
+    },
+    "DebtInstrumentFaceAmount": {
+      "description": "Face (par) amount of the debt instrument as stated in the agreement.",
+      "category_path": "DebtInstruments > DebtMeasurement"
+    },
+    "DebtInstrumentFairValue": {
+      "description": "Estimated fair value of the debt instrument, typically disclosed for financial instruments carried at amortized cost.",
+      "category_path": "DebtInstruments > DebtMeasurement"
+    },
+    "DebtInstrumentInterestRateEffectivePercentage": {
+      "description": "Effective interest rate on the debt instrument, reflecting the yield including discounts, premiums, and issuance costs.",
+      "category_path": "DebtInstruments > DebtInterestRates"
+    },
+    "DebtInstrumentInterestRateStatedPercentage": {
+      "description": "Contractual stated (coupon) interest rate on the debt instrument.",
+      "category_path": "DebtInstruments > DebtInterestRates"
+    },
+    "DebtInstrumentMaturityDate": {
+      "description": "Date when the debt instrument matures and the principal amount is due.",
+      "category_path": "DebtInstruments > DebtTermsAndRedemption"
+    },
+    "DebtInstrumentRedemptionPricePercentage": {
+      "description": "Percentage of the principal amount at which the debt instrument may be redeemed.",
+      "category_path": "DebtInstruments > DebtTermsAndRedemption"
+    },
+    "DebtInstrumentTerm": {
+      "description": "Term or duration of the debt instrument from issuance to maturity.",
+      "category_path": "DebtInstruments > DebtTermsAndRedemption"
+    },
+    "DebtInstrumentUnamortizedDiscount": {
+      "description": "Unamortized discount on the debt instrument, representing the difference between face amount and initial carrying amount.",
+      "category_path": "DebtInstruments > DebtDiscountsAndCosts"
+    },
+    "DebtWeightedAverageInterestRate": {
+      "description": "Weighted average interest rate across all outstanding debt instruments.",
+      "category_path": "DebtInstruments > DebtInterestRates"
+    },
+    "DeferredFinanceCostsGross": {
+      "description": "Gross amount of deferred financing costs (debt issuance costs) before accumulated amortization.",
+      "category_path": "DebtInstruments > DebtDiscountsAndCosts"
+    },
+    "DeferredFinanceCostsNet": {
+      "description": "Net amount of deferred financing costs after accumulated amortization, presented as a reduction of debt carrying amount.",
+      "category_path": "DebtInstruments > DebtDiscountsAndCosts"
+    },
+    "DefinedBenefitPlanContributionsByEmployer": {
+      "description": "Amount of employer contributions made to defined benefit pension and other postretirement plans during the period.",
+      "category_path": "Other > DefinedBenefitPlans"
+    },
+    "DefinedContributionPlanCostRecognized": {
+      "description": "Cost recognized for employer contributions to defined contribution retirement plans (e.g., 401(k)).",
+      "category_path": "ExpensesAndCosts > DefinedContributionPlanCosts"
+    },
+    "Depreciation": {
+      "description": "Depreciation expense recognized for tangible property, plant, and equipment during the reporting period.",
+      "category_path": "ExpensesAndCosts > DepreciationAndAmortization"
+    },
+    "DerivativeFixedInterestRate": {
+      "description": "Fixed interest rate specified in a derivative contract, such as an interest rate swap.",
+      "category_path": "FinancialInstrumentsAndDerivatives > Derivatives"
+    },
+    "DerivativeNotionalAmount": {
+      "description": "Notional (face) amount of a derivative instrument used to calculate payments under the contract.",
+      "category_path": "FinancialInstrumentsAndDerivatives > Derivatives"
+    },
+    "DisposalGroupIncludingDiscontinuedOperationConsideration": {
+      "description": "Consideration received or expected to be received for a disposal group, including discontinued operations.",
+      "category_path": "BusinessCombinations > DisposalGroups"
+    },
+    "EffectiveIncomeTaxRateContinuingOperations": {
+      "description": "Effective income tax rate for continuing operations, calculated as income tax expense divided by pre-tax income.",
+      "category_path": "IncomeTaxes > EffectiveTaxRate"
+    },
+    "EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate": {
+      "description": "Federal statutory income tax rate used as the starting point in the effective tax rate reconciliation.",
+      "category_path": "IncomeTaxes > EffectiveTaxRate"
+    },
+    "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized": {
+      "description": "Total unrecognized compensation cost for all non-vested share-based payment awards.",
+      "category_path": "ShareBasedCompensation > UnrecognizedCompensationCost"
+    },
+    "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1": {
+      "description": "Weighted average period over which the unrecognized compensation cost for non-vested awards is expected to be recognized.",
+      "category_path": "ShareBasedCompensation > UnrecognizedCompensationCost"
+    },
+    "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions": {
+      "description": "Total unrecognized compensation cost for non-vested share-based awards other than stock options (e.g., RSUs, restricted stock).",
+      "category_path": "ShareBasedCompensation > UnrecognizedCompensationCost"
+    },
+    "EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense": {
+      "description": "Income tax benefit recognized related to share-based compensation expense during the period.",
+      "category_path": "ShareBasedCompensation > CompensationExpense"
+    },
+    "EquityMethodInvestmentOwnershipPercentage": {
+      "description": "Percentage of ownership interest in an investee accounted for under the equity method.",
+      "category_path": "Assets > EquityMethodInvestments"
+    },
+    "EquityMethodInvestments": {
+      "description": "Carrying amount of investments accounted for under the equity method on the balance sheet.",
+      "category_path": "Assets > EquityMethodInvestments"
+    },
+    "FiniteLivedIntangibleAssetUsefulLife": {
+      "description": "Estimated useful life of a finite-lived intangible asset used for amortization purposes.",
+      "category_path": "Assets > IntangibleAssets"
+    },
+    "GainsLossesOnExtinguishmentOfDebt": {
+      "description": "Net gains or losses recognized on the early extinguishment or modification of debt instruments.",
+      "category_path": "RevenueAndIncome > GainsAndLosses"
+    },
+    "Goodwill": {
+      "description": "Carrying amount of goodwill recognized on the balance sheet, representing the excess of acquisition cost over identifiable net assets.",
+      "category_path": "Assets > Goodwill"
+    },
+    "GoodwillImpairmentLoss": {
+      "description": "Impairment loss recognized when the carrying amount of a reporting unit's goodwill exceeds its implied fair value.",
+      "category_path": "ExpensesAndCosts > ImpairmentCharges"
+    },
+    "GuaranteeObligationsMaximumExposure": {
+      "description": "Maximum potential undiscounted future payments under guarantee obligations.",
+      "category_path": "Liabilities > GuaranteeObligations"
+    },
+    "IncomeLossFromEquityMethodInvestments": {
+      "description": "Income or loss recognized from equity method investments, representing the investor's proportionate share of investee earnings.",
+      "category_path": "RevenueAndIncome > EquityMethodIncome"
+    },
+    "IncomeTaxExpenseBenefit": {
+      "description": "Total income tax expense or benefit recognized in the income statement for the reporting period.",
+      "category_path": "IncomeTaxes > IncomeTaxExpense"
+    },
+    "InterestExpense": {
+      "description": "Total interest expense recognized during the period from all borrowings and financial obligations.",
+      "category_path": "ExpensesAndCosts > InterestExpense"
+    },
+    "InterestExpenseDebt": {
+      "description": "Interest expense specifically attributable to debt instruments and borrowings.",
+      "category_path": "ExpensesAndCosts > InterestExpense"
+    },
+    "LeaseAndRentalExpense": {
+      "description": "Total lease and rental expense recognized for operating leases under legacy ASC 840 guidance.",
+      "category_path": "ExpensesAndCosts > LeaseAndRentalExpense"
+    },
+    "LesseeOperatingLeaseRenewalTerm": {
+      "description": "Term of the lessee's option to renew an operating lease, if reasonably certain to be exercised.",
+      "category_path": "Leases > LeaseContractTerms"
+    },
+    "LesseeOperatingLeaseTermOfContract": {
+      "description": "Term of the lessee's operating lease contract, including periods covered by options reasonably certain to be exercised.",
+      "category_path": "Leases > LeaseContractTerms"
+    },
+    "LettersOfCreditOutstandingAmount": {
+      "description": "Outstanding amount of letters of credit issued under a credit facility, reducing available borrowing capacity.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCredit": {
+      "description": "Carrying amount of outstanding borrowings under a line of credit or revolving credit facility.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCreditFacilityCommitmentFeePercentage": {
+      "description": "Commitment fee percentage charged on the total committed amount of a line of credit facility.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCreditFacilityCurrentBorrowingCapacity": {
+      "description": "Current borrowing capacity available under the line of credit facility, which may differ from the maximum.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCreditFacilityInterestRateAtPeriodEnd": {
+      "description": "Interest rate on the line of credit facility as of the end of the reporting period.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCreditFacilityMaximumBorrowingCapacity": {
+      "description": "Maximum borrowing capacity under the line of credit facility as defined in the credit agreement.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCreditFacilityRemainingBorrowingCapacity": {
+      "description": "Remaining borrowing capacity available under the line of credit facility after outstanding borrowings and letters of credit.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage": {
+      "description": "Commitment fee percentage charged on the unused portion of the line of credit facility.",
+      "category_path": "DebtInstruments > LineOfCredit"
+    },
+    "LongTermDebt": {
+      "description": "Total carrying amount of long-term debt obligations on the balance sheet.",
+      "category_path": "DebtInstruments > DebtMeasurement"
+    },
+    "LongTermDebtFairValue": {
+      "description": "Estimated fair value of long-term debt, typically disclosed under ASC 825 fair value of financial instruments.",
+      "category_path": "DebtInstruments > DebtMeasurement"
+    },
+    "LossContingencyAccrualAtCarryingValue": {
+      "description": "Carrying amount of the accrued liability for a loss contingency when the loss is probable and estimable.",
+      "category_path": "LossContingencies > ContingencyMeasurement"
+    },
+    "LossContingencyDamagesSoughtValue": {
+      "description": "Amount of damages sought by the plaintiff in a loss contingency litigation matter.",
+      "category_path": "LossContingencies > LitigationAndClaims"
+    },
+    "LossContingencyEstimateOfPossibleLoss": {
+      "description": "Estimated amount of possible loss from a loss contingency, disclosed when the loss is reasonably possible.",
+      "category_path": "LossContingencies > ContingencyMeasurement"
+    },
+    "LossContingencyPendingClaimsNumber": {
+      "description": "Number of pending claims or lawsuits related to a loss contingency matter.",
+      "category_path": "LossContingencies > LitigationAndClaims"
+    },
+    "MinorityInterestOwnershipPercentageByNoncontrollingOwners": {
+      "description": "Percentage of ownership interest held by non-controlling (minority) owners in a consolidated subsidiary.",
+      "category_path": "StockholdersEquity > NoncontrollingInterests"
+    },
+    "MinorityInterestOwnershipPercentageByParent": {
+      "description": "Percentage of ownership interest held by the parent company in a consolidated subsidiary.",
+      "category_path": "StockholdersEquity > NoncontrollingInterests"
+    },
+    "NumberOfOperatingSegments": {
+      "description": "Number of operating segments identified by the entity under ASC 280.",
+      "category_path": "SegmentInformation > SegmentCounts"
+    },
+    "NumberOfRealEstateProperties": {
+      "description": "Number of real estate properties owned, leased, or managed by the entity.",
+      "category_path": "Assets > PropertyPlantAndEquipment"
+    },
+    "NumberOfReportableSegments": {
+      "description": "Number of reportable segments disclosed by the entity under ASC 280.",
+      "category_path": "SegmentInformation > SegmentCounts"
+    },
+    "OperatingLeaseCost": {
+      "description": "Single lease cost for operating leases recognized on a straight-line basis under ASC 842.",
+      "category_path": "Leases > OperatingLeaseCosts"
+    },
+    "OperatingLeaseExpense": {
+      "description": "Total operating lease expense recognized during the reporting period.",
+      "category_path": "Leases > OperatingLeaseCosts"
+    },
+    "OperatingLeaseLiability": {
+      "description": "Present value of operating lease payments recognized as a liability on the balance sheet under ASC 842.",
+      "category_path": "Leases > OperatingLeaseBalanceSheet"
+    },
+    "OperatingLeasePayments": {
+      "description": "Cash payments made for operating leases during the reporting period.",
+      "category_path": "Leases > OperatingLeasePayments"
+    },
+    "OperatingLeaseRightOfUseAsset": {
+      "description": "Right-of-use asset recognized for operating leases on the balance sheet under ASC 842.",
+      "category_path": "Leases > OperatingLeaseBalanceSheet"
+    },
+    "OperatingLeaseWeightedAverageDiscountRatePercent": {
+      "description": "Weighted average discount rate used to calculate the present value of operating lease payments.",
+      "category_path": "Leases > OperatingLeaseTermsAndRates"
+    },
+    "OperatingLeaseWeightedAverageRemainingLeaseTerm1": {
+      "description": "Weighted average remaining lease term for operating leases.",
+      "category_path": "Leases > OperatingLeaseTermsAndRates"
+    },
+    "OperatingLeasesRentExpenseNet": {
+      "description": "Net rental expense for operating leases recognized under legacy ASC 840 guidance, net of sublease income.",
+      "category_path": "ExpensesAndCosts > LeaseAndRentalExpense"
+    },
+    "OperatingLossCarryforwards": {
+      "description": "Amount of operating loss carryforwards available to offset future taxable income.",
+      "category_path": "Assets > OperatingLossCarryforwards"
+    },
+    "PaymentsToAcquireBusinessesGross": {
+      "description": "Gross cash paid to acquire businesses before adjustments for cash acquired.",
+      "category_path": "BusinessCombinations > AcquisitionConsideration"
+    },
+    "PaymentsToAcquireBusinessesNetOfCashAcquired": {
+      "description": "Net cash paid to acquire businesses after deducting cash and cash equivalents acquired.",
+      "category_path": "BusinessCombinations > AcquisitionConsideration"
+    },
+    "PreferredStockDividendRatePercentage": {
+      "description": "Stated dividend rate percentage on preferred stock as specified in the corporate charter.",
+      "category_path": "StockholdersEquity > PreferredStock"
+    },
+    "PreferredStockSharesAuthorized": {
+      "description": "Maximum number of preferred shares authorized for issuance under the corporate charter.",
+      "category_path": "StockholdersEquity > PreferredStock"
+    },
+    "ProceedsFromIssuanceOfCommonStock": {
+      "description": "Cash proceeds received from the issuance of common stock in public or private offerings.",
+      "category_path": "StockTransactions > StockIssuance"
+    },
+    "PropertyPlantAndEquipmentUsefulLife": {
+      "description": "Estimated useful life of property, plant, and equipment used for depreciation purposes.",
+      "category_path": "Assets > PropertyPlantAndEquipment"
+    },
+    "PublicUtilitiesRequestedRateIncreaseDecreaseAmount": {
+      "description": "Amount of rate increase or decrease requested by a public utility from its regulatory authority.",
+      "category_path": "Other > RegulatoryMatters"
+    },
+    "RelatedPartyTransactionAmountsOfTransaction": {
+      "description": "Monetary amount of transactions with related parties during the reporting period.",
+      "category_path": "RelatedPartyTransactions > TransactionAmounts"
+    },
+    "RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty": {
+      "description": "Expenses recognized from transactions with related parties during the reporting period.",
+      "category_path": "RelatedPartyTransactions > TransactionAmounts"
+    },
+    "RepaymentsOfDebt": {
+      "description": "Cash outflow for repayment of principal on outstanding debt obligations.",
+      "category_path": "DebtInstruments > DebtRepayments"
+    },
+    "RestructuringAndRelatedCostExpectedCost1": {
+      "description": "Total expected cost of a restructuring plan, including severance, facility exit costs, and other charges.",
+      "category_path": "ExpensesAndCosts > RestructuringCosts"
+    },
+    "RestructuringCharges": {
+      "description": "Restructuring charges recognized during the period for employee termination benefits, facility closures, and contract terminations.",
+      "category_path": "ExpensesAndCosts > RestructuringCosts"
+    },
+    "RevenueFromContractWithCustomerExcludingAssessedTax": {
+      "description": "Revenue from contracts with customers excluding amounts collected on behalf of third parties (e.g., sales tax).",
+      "category_path": "RevenueAndIncome > RevenueRecognition"
+    },
+    "RevenueFromContractWithCustomerIncludingAssessedTax": {
+      "description": "Revenue from contracts with customers including taxes assessed by governmental authorities collected from customers.",
+      "category_path": "RevenueAndIncome > RevenueRecognition"
+    },
+    "RevenueFromRelatedParties": {
+      "description": "Revenue recognized from transactions with related parties.",
+      "category_path": "RevenueAndIncome > RevenueRecognition"
+    },
+    "RevenueRemainingPerformanceObligation": {
+      "description": "Transaction price allocated to remaining performance obligations that are unsatisfied or partially unsatisfied.",
+      "category_path": "RevenueAndIncome > PerformanceObligations"
+    },
+    "Revenues": {
+      "description": "Total revenue recognized during the reporting period from all sources.",
+      "category_path": "RevenueAndIncome > RevenueRecognition"
+    },
+    "SaleOfStockNumberOfSharesIssuedInTransaction": {
+      "description": "Number of shares issued in a stock sale transaction.",
+      "category_path": "StockTransactions > StockIssuance"
+    },
+    "SaleOfStockPricePerShare": {
+      "description": "Price per share at which stock was sold in a transaction.",
+      "category_path": "StockTransactions > StockIssuance"
+    },
+    "ShareBasedCompensation": {
+      "description": "Total share-based compensation expense recognized during the reporting period across all arrangements.",
+      "category_path": "ShareBasedCompensation > CompensationExpense"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1": {
+      "description": "Vesting period for share-based payment awards, typically expressed in years.",
+      "category_path": "ShareBasedCompensation > PlanDetails"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod": {
+      "description": "Number of equity instruments other than options (e.g., RSUs) granted during the period.",
+      "category_path": "ShareBasedCompensation > RestrictedStockAndOtherAwards"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue": {
+      "description": "Weighted average grant date fair value of equity instruments other than options granted during the period.",
+      "category_path": "ShareBasedCompensation > RestrictedStockAndOtherAwards"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber": {
+      "description": "Number of non-vested equity instruments other than options outstanding as of the balance sheet date.",
+      "category_path": "ShareBasedCompensation > RestrictedStockAndOtherAwards"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue": {
+      "description": "Total fair value of equity instruments other than options that vested during the period.",
+      "category_path": "ShareBasedCompensation > RestrictedStockAndOtherAwards"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized": {
+      "description": "Total number of shares authorized for issuance under a share-based compensation plan.",
+      "category_path": "ShareBasedCompensation > PlanDetails"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant": {
+      "description": "Number of shares remaining available for future grants under a share-based compensation plan.",
+      "category_path": "ShareBasedCompensation > PlanDetails"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue": {
+      "description": "Total intrinsic value of stock options exercised during the period (market price less exercise price times shares exercised).",
+      "category_path": "ShareBasedCompensation > StockOptions"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross": {
+      "description": "Gross number of stock options granted during the period under share-based compensation plans.",
+      "category_path": "ShareBasedCompensation > StockOptions"
+    },
+    "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue": {
+      "description": "Weighted average grant date fair value of stock options granted during the period.",
+      "category_path": "ShareBasedCompensation > StockOptions"
+    },
+    "SharePrice": {
+      "description": "Market price per share of the entity's common stock.",
+      "category_path": "StockTransactions > SharePrice"
+    },
+    "SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage": {
+      "description": "Percentage of share-based awards that vest based on service, performance, or market conditions.",
+      "category_path": "ShareBasedCompensation > PlanDetails"
+    },
+    "SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod": {
+      "description": "Period from the grant date after which share-based payment awards expire if not exercised.",
+      "category_path": "ShareBasedCompensation > PlanDetails"
+    },
+    "StockIssuedDuringPeriodSharesNewIssues": {
+      "description": "Number of new shares issued during the period, excluding shares issued in business combinations or compensation plans.",
+      "category_path": "StockTransactions > StockIssuance"
+    },
+    "StockRepurchaseProgramAuthorizedAmount1": {
+      "description": "Total dollar amount authorized for stock repurchases under an approved repurchase program.",
+      "category_path": "StockTransactions > StockRepurchasePrograms"
+    },
+    "StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1": {
+      "description": "Remaining dollar amount available for future stock repurchases under the authorized program.",
+      "category_path": "StockTransactions > StockRepurchasePrograms"
+    },
+    "StockRepurchasedAndRetiredDuringPeriodShares": {
+      "description": "Number of shares repurchased and immediately retired during the period.",
+      "category_path": "StockTransactions > StockRepurchasePrograms"
+    },
+    "StockRepurchasedDuringPeriodShares": {
+      "description": "Number of shares repurchased during the period, which may be held as treasury stock.",
+      "category_path": "StockTransactions > StockRepurchasePrograms"
+    },
+    "SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense": {
+      "description": "Prior year claims and claims adjustment expense development for property-casualty insurance underwriters.",
+      "category_path": "ExpensesAndCosts > InsuranceUnderwriting"
+    },
+    "TreasuryStockAcquiredAverageCostPerShare": {
+      "description": "Average cost per share of treasury stock acquired during the period.",
+      "category_path": "StockTransactions > TreasuryStock"
+    },
+    "TreasuryStockSharesAcquired": {
+      "description": "Number of treasury shares acquired during the period.",
+      "category_path": "StockTransactions > TreasuryStock"
+    },
+    "TreasuryStockValueAcquiredCostMethod": {
+      "description": "Total cost of treasury stock acquired during the period under the cost method.",
+      "category_path": "StockTransactions > TreasuryStock"
+    },
+    "UnrecognizedTaxBenefits": {
+      "description": "Total amount of unrecognized tax benefits that, if recognized, would affect the financial statements.",
+      "category_path": "IncomeTaxes > UnrecognizedTaxBenefits"
+    },
+    "UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate": {
+      "description": "Portion of unrecognized tax benefits that would impact the effective income tax rate if recognized.",
+      "category_path": "IncomeTaxes > UnrecognizedTaxBenefits"
+    }
+  }
+}

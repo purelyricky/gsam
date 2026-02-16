@@ -4,3 +4,5 @@ tiktoken
 sentence-transformers>=2.2.0
 faiss-cpu>=1.7.4
 scikit-learn>=1.0.0
+networkx>=3.0
+numpy>=1.24.0
