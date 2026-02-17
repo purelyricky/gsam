@@ -9,19 +9,33 @@ memory with ontology grounding improves cross-concept transfer.
 Construction:
 1. Group 139 FiNER entity types by XBRL taxonomy position
 2. Identify sibling concept pairs (share a direct parent)
-3. For each pair, create source/target splits
+3. For each pair, create **non-overlapping** source/target splits
 4. Measure transfer: adapt on source, evaluate on target
+
+Key design decisions vs. the naive approach:
+- Each FiNER sample is a "batch" of 4 questions with 4 comma-separated
+  target tags. A sample is assigned to concept C only if C appears in
+  its target AND the sibling concept does NOT appear in the same sample.
+  This eliminates data contamination (31.5% of raw examples).
+- Transfer accuracy is computed per-tag-position: only the positions
+  in the target that correspond to the tested concept count.
+- Each transfer pair gets a fresh system to prevent cross-pair leakage.
 """
 
 import os
 import json
+import copy
 import random
 import argparse
-from typing import Dict, List, Tuple, Any, Optional
+from typing import Dict, List, Tuple, Any, Optional, Callable
 from collections import defaultdict
 
 from .data_processor import DataProcessor
 
+
+# ------------------------------------------------------------------ #
+# Taxonomy & Pair Construction
+# ------------------------------------------------------------------ #
 
 def load_taxonomy(taxonomy_path: str) -> Dict:
     """Load the XBRL taxonomy."""
@@ -36,13 +50,10 @@ def build_concept_pairs(taxonomy: Dict) -> List[Dict]:
     Sibling concepts share a direct parent (subcategory) in the taxonomy.
     These pairs are used for near-transfer experiments.
 
+    Also generates distant pairs (cross-category) as negative controls.
+
     Returns:
-        List of pair dicts with:
-            - concept_a: entity name
-            - concept_b: entity name
-            - parent: subcategory name
-            - category: top-level category name
-            - pair_type: "sibling" or "distant"
+        List of pair dicts.
     """
     pairs = []
     categories = taxonomy.get("categories", {})
@@ -78,7 +89,6 @@ def build_concept_pairs(taxonomy: Dict) -> List[Dict]:
         for e in entities:
             entity_to_cat[e] = cat
 
-    # Sample distant pairs
     random.seed(42)
     distant_pairs = []
     attempts = 0
@@ -98,17 +108,28 @@ def build_concept_pairs(taxonomy: Dict) -> List[Dict]:
     return pairs + distant_pairs
 
 
+# ------------------------------------------------------------------ #
+# Data Split Construction — contamination-free
+# ------------------------------------------------------------------ #
+
+def _get_tags(example: Dict) -> List[str]:
+    """Extract the list of tags from a target string."""
+    return [t.strip() for t in example.get("target", "").split(",") if t.strip()]
+
+
 def build_transfer_splits(
     finer_data: List[Dict],
     concept_pairs: List[Dict],
     min_examples_per_concept: int = 3,
 ) -> List[Dict]:
     """
-    Build source/target splits for each concept pair.
+    Build source/target splits for each concept pair,
+    **excluding contaminated examples**.
 
-    For each pair (A, B):
-    - source_set: Examples involving concept A
-    - target_set: Examples involving concept B
+    An example is contaminated for pair (A, B) if its target contains
+    BOTH A and B. Such examples would leak target-concept knowledge
+    into the source adaptation phase, invalidating the transfer
+    measurement.
 
     Args:
         finer_data: Processed FiNER data.
@@ -121,57 +142,124 @@ def build_transfer_splits(
     # Index examples by concept
     concept_to_examples = defaultdict(list)
     for example in finer_data:
-        target = example.get("target", "")
-        for tag in target.split(","):
-            tag = tag.strip()
-            if tag:
-                concept_to_examples[tag].append(example)
+        for tag in _get_tags(example):
+            concept_to_examples[tag].append(example)
 
-    # Build transfer experiments
+    # Build transfer experiments with contamination filtering
     experiments = []
+    skipped_contamination = 0
+    skipped_insufficient = 0
+
     for pair in concept_pairs:
-        a_examples = concept_to_examples.get(pair["concept_a"], [])
-        b_examples = concept_to_examples.get(pair["concept_b"], [])
+        concept_a = pair["concept_a"]
+        concept_b = pair["concept_b"]
 
-        if (len(a_examples) >= min_examples_per_concept
-                and len(b_examples) >= min_examples_per_concept):
-            experiments.append({
-                "pair": pair,
-                "source_concept": pair["concept_a"],
-                "target_concept": pair["concept_b"],
-                "source_examples": a_examples,
-                "target_examples": b_examples,
-                "source_count": len(a_examples),
-                "target_count": len(b_examples),
-            })
+        # Filter: source examples must mention A but NOT B
+        source_clean = [
+            ex for ex in concept_to_examples.get(concept_a, [])
+            if concept_b not in _get_tags(ex)
+        ]
+        # Filter: target examples must mention B but NOT A
+        target_clean = [
+            ex for ex in concept_to_examples.get(concept_b, [])
+            if concept_a not in _get_tags(ex)
+        ]
 
+        raw_a = len(concept_to_examples.get(concept_a, []))
+        raw_b = len(concept_to_examples.get(concept_b, []))
+
+        if (len(source_clean) < min_examples_per_concept
+                or len(target_clean) < min_examples_per_concept):
+            if raw_a >= min_examples_per_concept and raw_b >= min_examples_per_concept:
+                skipped_contamination += 1
+            else:
+                skipped_insufficient += 1
+            continue
+
+        experiments.append({
+            "pair": pair,
+            "source_concept": concept_a,
+            "target_concept": concept_b,
+            "source_examples": source_clean,
+            "target_examples": target_clean,
+            "source_count": len(source_clean),
+            "target_count": len(target_clean),
+            "source_raw_count": raw_a,
+            "target_raw_count": raw_b,
+        })
+
+    sibling_count = sum(1 for e in experiments if e["pair"]["pair_type"] == "sibling")
+    distant_count = sum(1 for e in experiments if e["pair"]["pair_type"] == "distant")
     print(f"Built {len(experiments)} transfer experiments "
-          f"({sum(1 for e in experiments if e['pair']['pair_type'] == 'sibling')} sibling, "
-          f"{sum(1 for e in experiments if e['pair']['pair_type'] == 'distant')} distant)")
+          f"({sibling_count} sibling, {distant_count} distant)")
+    if skipped_contamination:
+        print(f"  Skipped {skipped_contamination} pairs due to cross-contamination")
+    if skipped_insufficient:
+        print(f"  Skipped {skipped_insufficient} pairs due to insufficient data")
 
     return experiments
 
 
+# ------------------------------------------------------------------ #
+# Concept-Specific Accuracy
+# ------------------------------------------------------------------ #
+
+def concept_specific_accuracy(
+    answer: str,
+    target: str,
+    concept: str,
+) -> Tuple[int, int]:
+    """
+    Compute accuracy only on the tag positions relevant to *concept*.
+
+    FiNER targets are comma-separated (e.g. "A,B,A,C"). If we are
+    testing transfer to concept A, only positions where the ground truth
+    is A should count.
+
+    Returns:
+        (correct_positions, total_positions)
+    """
+    pred_tags = [t.strip() for t in answer.split(",")]
+    true_tags = [t.strip() for t in target.split(",")]
+
+    correct = 0
+    total = 0
+    for i, true_tag in enumerate(true_tags):
+        if true_tag == concept:
+            total += 1
+            if i < len(pred_tags) and pred_tags[i] == true_tag:
+                correct += 1
+
+    return correct, total
+
+
+# ------------------------------------------------------------------ #
+# Transfer Evaluation
+# ------------------------------------------------------------------ #
+
 def evaluate_transfer(
     method_name: str,
     experiment: Dict,
-    system,
+    system_factory: Callable,
     data_processor: DataProcessor,
     config: Dict,
     save_path: str,
 ) -> Dict[str, Any]:
     """
-    Run a single transfer experiment.
+    Run a single transfer experiment with a **fresh system**.
 
     Protocol:
-    1. Baseline: Evaluate on target without any adaptation
-    2. Adapt: Train on source examples
-    3. Transfer: Evaluate on target with adapted knowledge
+    1. Baseline: Evaluate on target with a fresh (unadapted) system
+    2. Adapt: Train the same fresh system on source examples
+    3. Transfer: Evaluate on target with adapted system
+
+    Using a fresh system per pair prevents knowledge leakage from
+    previous experiments.
 
     Args:
         method_name: "ace" or "gsam"
         experiment: Transfer experiment config.
-        system: ACE or GSAM system instance.
+        system_factory: Callable that returns a fresh system instance.
         data_processor: DataProcessor instance.
         config: Run configuration.
         save_path: Path to save results.
@@ -185,42 +273,42 @@ def evaluate_transfer(
     target_concept = experiment["target_concept"]
 
     print(f"\nTransfer: {source_concept} -> {target_concept}")
-    print(f"  Source examples: {len(source_examples)}")
-    print(f"  Target examples: {len(target_examples)}")
+    print(f"  Source examples (clean): {len(source_examples)}")
+    print(f"  Target examples (clean): {len(target_examples)}")
 
-    # Step 1: Baseline evaluation on target (no adaptation)
-    # This requires a fresh system or resetting the system
+    # Create a fresh system for this experiment
+    system = system_factory()
+
+    from utils import extract_answer
+
+    # ---- Step 1: Baseline on target (no adaptation) ----
     baseline_correct = 0
+    baseline_total = 0
     for example in target_examples:
         target = example.get("target", "")
-        # Simple generation without adaptation
-        from utils import extract_answer
-        if hasattr(system, 'generator'):
+        question = example.get("question", example.get("context", ""))
+        context = example.get("context", "")
+
+        try:
             if hasattr(system, 'knowledge_graph'):
-                # GSAM
-                ctx, _ = system.graph_retriever.retrieve(
-                    example.get("question", ""),
-                    example.get("context", ""),
-                )
+                ctx, _ = system.graph_retriever.retrieve(question, context)
                 resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
-                    graph_context=ctx,
-                    context=example.get("context", ""),
-                )
+                    question=question, graph_context=ctx, context=context)
             else:
-                # ACE
                 resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
+                    question=question,
                     playbook=getattr(system, 'playbook', ''),
-                    context=example.get("context", ""),
-                )
+                    context=context)
             answer = extract_answer(resp)
-            if data_processor.answer_is_correct(answer, target):
-                baseline_correct += 1
+            c, t = concept_specific_accuracy(answer, target, target_concept)
+            baseline_correct += c
+            baseline_total += t
+        except Exception as e:
+            print(f"  Warning: baseline eval failed: {e}")
 
-    baseline_accuracy = baseline_correct / len(target_examples) if target_examples else 0
+    baseline_accuracy = baseline_correct / baseline_total if baseline_total > 0 else 0
 
-    # Step 2: Adapt on source examples
+    # ---- Step 2: Adapt on source examples ----
     config_params = {
         'max_num_rounds': config.get('max_num_rounds', 3),
         'curator_frequency': config.get('curator_frequency', 1),
@@ -229,51 +317,51 @@ def evaluate_transfer(
         'no_ground_truth': config.get('no_ground_truth', False),
     }
 
+    log_dir = os.path.join(save_path, "logs")
+    os.makedirs(log_dir, exist_ok=True)
+
     for i, example in enumerate(source_examples):
         print(f"  Adapting on source {i+1}/{len(source_examples)}")
         try:
             if hasattr(system, '_train_single_sample'):
-                os.makedirs(os.path.join(save_path, "logs"), exist_ok=True)
                 system._train_single_sample(
                     task_dict=example,
                     data_processor=data_processor,
                     step_id=f"transfer_{source_concept}_s_{i}",
                     step=i + 1,
-                    log_dir=os.path.join(save_path, "logs"),
+                    log_dir=log_dir,
                     config_params=config_params,
                     total_samples=len(source_examples),
                 )
         except Exception as e:
             print(f"  Warning: Adaptation failed on source example {i}: {e}")
 
-    # Step 3: Evaluate on target after adaptation
+    # ---- Step 3: Evaluate on target after adaptation ----
     transfer_correct = 0
+    transfer_total = 0
     for example in target_examples:
         target = example.get("target", "")
+        question = example.get("question", example.get("context", ""))
+        context = example.get("context", "")
+
         try:
             if hasattr(system, 'knowledge_graph'):
-                ctx, _ = system.graph_retriever.retrieve(
-                    example.get("question", ""),
-                    example.get("context", ""),
-                )
+                ctx, _ = system.graph_retriever.retrieve(question, context)
                 resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
-                    graph_context=ctx,
-                    context=example.get("context", ""),
-                )
+                    question=question, graph_context=ctx, context=context)
             else:
                 resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
+                    question=question,
                     playbook=getattr(system, 'playbook', ''),
-                    context=example.get("context", ""),
-                )
+                    context=context)
             answer = extract_answer(resp)
-            if data_processor.answer_is_correct(answer, target):
-                transfer_correct += 1
+            c, t = concept_specific_accuracy(answer, target, target_concept)
+            transfer_correct += c
+            transfer_total += t
         except Exception as e:
-            print(f"  Warning: Evaluation failed: {e}")
+            print(f"  Warning: Transfer eval failed: {e}")
 
-    transfer_accuracy = transfer_correct / len(target_examples) if target_examples else 0
+    transfer_accuracy = transfer_correct / transfer_total if transfer_total > 0 else 0
 
     # Compute transfer metrics
     from gsam.metrics import compute_transfer_metrics
@@ -289,7 +377,11 @@ def evaluate_transfer(
         "pair_type": experiment["pair"]["pair_type"],
         "parent": experiment["pair"]["parent"],
         "baseline_accuracy": baseline_accuracy,
+        "baseline_correct": baseline_correct,
+        "baseline_total": baseline_total,
         "transfer_accuracy": transfer_accuracy,
+        "transfer_correct": transfer_correct,
+        "transfer_total": transfer_total,
         **metrics,
     }
 
@@ -298,6 +390,10 @@ def evaluate_transfer(
 
     return result
 
+
+# ------------------------------------------------------------------ #
+# Aggregation
+# ------------------------------------------------------------------ #
 
 def compute_aggregate_transfer_metrics(results: List[Dict]) -> Dict:
     """
@@ -330,6 +426,10 @@ def compute_aggregate_transfer_metrics(results: List[Dict]) -> Dict:
     }
 
 
+# ------------------------------------------------------------------ #
+# Persistence
+# ------------------------------------------------------------------ #
+
 def save_concept_pairs(pairs: List[Dict], output_path: str) -> None:
     """Save concept pairs to JSON."""
     with open(output_path, "w") as f:
@@ -337,8 +437,12 @@ def save_concept_pairs(pairs: List[Dict], output_path: str) -> None:
     print(f"Saved {len(pairs)} concept pairs to {output_path}")
 
 
+# ------------------------------------------------------------------ #
+# CLI: Build Benchmark Data
+# ------------------------------------------------------------------ #
+
 def main():
-    """Build the FiNER-Transfer benchmark data."""
+    """Build the FiNER-Transfer benchmark data (pairs + splits)."""
     parser = argparse.ArgumentParser(description="Build FiNER-Transfer Benchmark")
     parser.add_argument("--taxonomy_path", type=str,
                         default="./eval/finance/data/xbrl_taxonomy.json")
@@ -380,6 +484,8 @@ def main():
             "parent": exp["pair"]["parent"],
             "source_count": exp["source_count"],
             "target_count": exp["target_count"],
+            "source_raw_count": exp["source_raw_count"],
+            "target_raw_count": exp["target_raw_count"],
         })
 
     with open(os.path.join(args.output_dir, "transfer_experiments.json"), "w") as f:
