@@ -39,7 +39,7 @@ class GSAMGenerator:
     def generate(
         self,
         question: str,
-        graph_context: str,
+        graph_context: str = "",
         context: str = "",
         reflection: str = "(empty)",
         use_json_mode: bool = False,
@@ -650,19 +650,22 @@ class GSAM:
             if pruned:
                 print(f"  Pruned {pruned} low-utility nodes")
 
-        # Post-curator generation
-        graph_context_post, _ = self.graph_retriever.retrieve(query=question, context=context)
-        gen_response, _, _ = self.generator.generate(
-            question=question,
-            graph_context=graph_context_post,
-            context=context,
-            reflection="(empty)",
-            use_json_mode=use_json_mode,
-            call_id=f"{step_id}_post_curate",
-            log_dir=log_dir,
-        )
+        # Post-curator generation: only re-generate when the curator
+        # actually ran and updated the graph, otherwise the context is
+        # unchanged and the extra LLM call is wasted.
+        if step % curator_frequency == 0:
+            graph_context_post, _ = self.graph_retriever.retrieve(query=question, context=context)
+            gen_response, _, _ = self.generator.generate(
+                question=question,
+                graph_context=graph_context_post,
+                context=context,
+                reflection="(empty)",
+                use_json_mode=use_json_mode,
+                call_id=f"{step_id}_post_curate",
+                log_dir=log_dir,
+            )
+            final_answer = extract_answer(gen_response)
 
-        final_answer = extract_answer(gen_response)
         post_train_answer = final_answer
         post_correct = data_processor.answer_is_correct(final_answer, target)
 
@@ -744,6 +747,16 @@ class GSAM:
                         best_accuracy = val_results["accuracy"]
                         self.knowledge_graph.save(os.path.join(graph_dir, "graph_best.json"))
 
+            # Multi-epoch graph refinement (Paper §5.6)
+            # After each epoch, consolidate: discover edges, reinforce
+            # weights, merge similar strategies with identical neighborhoods.
+            if not config.get('no_multi_epoch_refinement', False):
+                consolidation_stats = self.knowledge_graph.consolidate_epoch()
+                print(f"Epoch {epoch} consolidation: {consolidation_stats}")
+                self.knowledge_graph.save(
+                    os.path.join(graph_dir, f"graph_epoch_{epoch}_consolidated.json")
+                )
+
         # Save results
         with open(os.path.join(save_path, "train_results.json"), "w") as f:
             json.dump({"best_accuracy": best_accuracy, "results": results}, f, indent=2)
@@ -760,8 +773,9 @@ class GSAM:
         save_steps = config_params['save_steps']
 
         correct_count_sample = 0
-        correct_count = 0
         total_count = 0
+        all_answers = []
+        all_targets = []
         all_errors = []
         window_results = []
 
@@ -788,8 +802,14 @@ class GSAM:
             w_correct = w_results['correct']
             w_total = w_results['total']
             correct_count_sample += w_correct
-            correct_count += w_acc * w_total
             total_count += w_total
+            # Accumulate raw answers/targets so final accuracy can be
+            # computed via data_processor.evaluate_accuracy (which uses
+            # the correct metric — token-level for FiNER, sample-level
+            # for Formula) rather than multiplying window accuracy by
+            # window count, which conflates metric levels.
+            all_answers.extend(w_results.get('answers', []))
+            all_targets.extend(w_results.get('targets', []))
 
             for err in w_errors.get('errors', []):
                 all_errors.append({
@@ -806,7 +826,7 @@ class GSAM:
                 "window_correct": w_correct, "window_total": w_total,
             })
 
-            cum_acc = correct_count / total_count if total_count > 0 else 0
+            cum_acc = data_processor.evaluate_accuracy(all_answers, all_targets) if all_answers else 0
             print(f"Window {window_idx+1} accuracy: {w_acc:.3f} | Cumulative: {cum_acc:.3f}")
 
             # Train on window
@@ -824,7 +844,11 @@ class GSAM:
                         os.path.join(graph_dir, f"graph_step_{global_step}.json")
                     )
 
-        final_acc = correct_count / total_count if total_count > 0 else 0
+        # Compute final accuracy using the proper per-task metric
+        if all_answers and all_targets:
+            final_acc = data_processor.evaluate_accuracy(all_answers, all_targets)
+        else:
+            final_acc = 0.0
 
         # Save results
         with open(os.path.join(save_path, "test_results.json"), "w") as f:

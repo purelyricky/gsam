@@ -663,6 +663,8 @@ class KnowledgeGraph:
         kg.use_typed_edges = meta.get("use_typed_edges", True)
 
         for node in data.get("nodes", []):
+            # Copy to avoid mutating the input dict
+            node = dict(node)
             nid = node.pop("id")
             kg.graph.add_node(nid, **node)
             # Recompute embedding
@@ -671,6 +673,7 @@ class KnowledgeGraph:
                 kg._update_embedding(nid, content)
 
         for edge in data.get("edges", []):
+            edge = dict(edge)
             src = edge.pop("source")
             tgt = edge.pop("target")
             kg.graph.add_edge(src, tgt, **edge)
@@ -734,6 +737,137 @@ class KnowledgeGraph:
             "total_concepts": len(concept_ids),
             "tasks_processed": self.tasks_processed,
         }
+
+    # ------------------------------------------------------------------
+    # Multi-Epoch Graph Refinement
+    # ------------------------------------------------------------------
+
+    def consolidate_epoch(
+        self,
+        edge_similarity_threshold: float = 0.85,
+    ) -> Dict[str, int]:
+        """
+        Run multi-epoch graph refinement after each epoch (Paper §5.6).
+
+        Three operations:
+        1. Edge Discovery: For each Strategy node, check if it should
+           apply_to additional Concepts based on shared neighborhoods.
+        2. Edge Weight Reinforcement: Increment weights on applies_to
+           edges for strategies confirmed helpful; create/strengthen
+           fails_for edges for strategies that failed.
+        3. Cross-Node Consolidation: Merge Strategy nodes with high
+           cosine similarity AND identical concept neighborhoods.
+
+        Args:
+            edge_similarity_threshold: Cosine similarity for merging
+                strategy nodes during consolidation.
+
+        Returns:
+            Dict with counts of operations performed.
+        """
+        stats = {"edges_discovered": 0, "edges_reinforced": 0, "nodes_merged": 0}
+
+        # --- 1. Edge Discovery ---
+        # For each Strategy, find Concepts it applies_to. Then look at
+        # sibling Concepts (via is_a). If the strategy was helpful and
+        # the sibling has no strategy yet, create a tentative applies_to.
+        strategy_ids = self.get_nodes_by_type(NodeType.STRATEGY)
+        for sid in strategy_ids:
+            sdata = self.graph.nodes[sid]
+            if sdata.get("helpful_count", 0) <= 0:
+                continue
+
+            # Get concepts this strategy already applies to
+            applied_concepts = set()
+            for _, tgt, edata in self.graph.out_edges(sid, data=True):
+                if edata.get("type") == EdgeType.APPLIES_TO.value:
+                    applied_concepts.add(tgt)
+
+            # For each applied concept, consider siblings
+            new_targets = set()
+            for cid in list(applied_concepts):
+                siblings = self.get_siblings(cid, edge_type=EdgeType.IS_A.value)
+                for sib in siblings:
+                    if sib not in applied_concepts and sib not in new_targets:
+                        # Check if sibling lacks any strategy
+                        has_strategy = any(
+                            self.graph.nodes.get(src, {}).get("type") == NodeType.STRATEGY.value
+                            for src, _, ed in self.graph.in_edges(sib, data=True)
+                            if ed.get("type") == EdgeType.APPLIES_TO.value
+                        )
+                        if not has_strategy:
+                            new_targets.add(sib)
+
+            for tgt in new_targets:
+                if tgt in self.graph:
+                    self.graph.add_edge(
+                        sid, tgt,
+                        type=EdgeType.APPLIES_TO.value,
+                        weight=0.5,
+                        tentative=True,
+                        created_at=time.time(),
+                    )
+                    stats["edges_discovered"] += 1
+
+        # --- 2. Edge Weight Reinforcement ---
+        for sid in strategy_ids:
+            sdata = self.graph.nodes[sid]
+            helpful = sdata.get("helpful_count", 0)
+            harmful = sdata.get("harmful_count", 0)
+
+            for _, tgt, edata in self.graph.out_edges(sid, data=True):
+                if edata.get("type") == EdgeType.APPLIES_TO.value:
+                    old_w = edata.get("weight", 1.0)
+                    # Reinforce based on net helpfulness
+                    delta = helpful - harmful
+                    if delta > 0:
+                        edata["weight"] = old_w + delta * 0.1
+                        stats["edges_reinforced"] += 1
+
+        # --- 3. Cross-Node Consolidation ---
+        if not EMBEDDINGS_AVAILABLE:
+            return stats
+
+        # Find strategy pairs with high similarity AND same neighborhoods
+        merged = set()
+        for i, sid_a in enumerate(strategy_ids):
+            if sid_a in merged or sid_a not in self.embeddings:
+                continue
+            for sid_b in strategy_ids[i + 1:]:
+                if sid_b in merged or sid_b not in self.embeddings:
+                    continue
+
+                sim = float(np.dot(self.embeddings[sid_a], self.embeddings[sid_b]))
+                if sim < edge_similarity_threshold:
+                    continue
+
+                # Check if neighborhoods match (same connected concepts)
+                concepts_a = {
+                    tgt for _, tgt, ed in self.graph.out_edges(sid_a, data=True)
+                    if ed.get("type") == EdgeType.APPLIES_TO.value
+                }
+                concepts_b = {
+                    tgt for _, tgt, ed in self.graph.out_edges(sid_b, data=True)
+                    if ed.get("type") == EdgeType.APPLIES_TO.value
+                }
+
+                if concepts_a and concepts_a == concepts_b:
+                    # Merge b into a
+                    self.merge_nodes(sid_a, self.graph.nodes[sid_b].get("content", ""))
+                    # Re-link b's edges to a
+                    for _, tgt, ed in list(self.graph.out_edges(sid_b, data=True)):
+                        if not self.graph.has_edge(sid_a, tgt):
+                            self.graph.add_edge(sid_a, tgt, **ed)
+                    for src, _, ed in list(self.graph.in_edges(sid_b, data=True)):
+                        if not self.graph.has_edge(src, sid_a):
+                            self.graph.add_edge(src, sid_a, **ed)
+                    self.graph.remove_node(sid_b)
+                    if sid_b in self.embeddings:
+                        del self.embeddings[sid_b]
+                    merged.add(sid_b)
+                    stats["nodes_merged"] += 1
+
+        return stats
 
     # ------------------------------------------------------------------
     # Taxonomy helpers

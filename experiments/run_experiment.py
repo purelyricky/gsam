@@ -87,6 +87,8 @@ def build_command(config: Dict[str, Any], save_path: str) -> List[str]:
             cmd.append("--embedding_only_retrieval")
         if config.get("untyped_edges"):
             cmd.append("--untyped_edges")
+        if config.get("no_multi_epoch_refinement"):
+            cmd.append("--no_multi_epoch_refinement")
         if config.get("max_samples"):
             cmd.extend(["--max_samples", str(config["max_samples"])])
 

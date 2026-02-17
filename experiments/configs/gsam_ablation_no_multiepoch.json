@@ -1,6 +1,6 @@
 {
-  "experiment_name": "gsam_finer_offline",
-  "description": "GSAM offline training on FiNER dataset with full ontology",
+  "experiment_name": "gsam_ablation_no_multiepoch",
+  "description": "Ablation: GSAM without multi-epoch graph refinement (no consolidate_epoch, single epoch)",
   "system": "gsam",
   "task_name": "finer",
   "mode": "offline",
@@ -8,7 +8,7 @@
   "generator_model": "DeepSeek-V3.1",
   "reflector_model": "DeepSeek-V3.1",
   "curator_model": "DeepSeek-V3.1",
-  "num_epochs": 5,
+  "num_epochs": 1,
   "max_num_rounds": 3,
   "curator_frequency": 1,
   "eval_steps": 100,
@@ -23,5 +23,6 @@
   "no_ontology": false,
   "no_failure_cascades": false,
   "embedding_only_retrieval": false,
-  "untyped_edges": false
+  "untyped_edges": false,
+  "no_multi_epoch_refinement": true
 }
