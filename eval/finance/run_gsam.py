@@ -33,7 +33,9 @@ def parse_args():
     parser.add_argument("--curator_model", type=str, default="DeepSeek-V3.1")
 
     # Training configuration
-    parser.add_argument("--num_epochs", type=int, default=1)
+    parser.add_argument("--num_epochs", type=int, default=5,
+                        help="Number of training epochs (default 5 for offline per paper §6.4, "
+                             "online always uses 1)")
     parser.add_argument("--max_num_rounds", type=int, default=3)
     parser.add_argument("--curator_frequency", type=int, default=1)
     parser.add_argument("--eval_steps", type=int, default=100)
@@ -72,6 +74,8 @@ def parse_args():
                         help="Ablation: use embedding-only retrieval (no graph BFS)")
     parser.add_argument("--untyped_edges", action="store_true",
                         help="Ablation: all edges are generic 'related_to'")
+    parser.add_argument("--no_multi_epoch_refinement", action="store_true",
+                        help="Ablation: disable consolidate_epoch() in offline mode")
 
     # Limit for smoke testing
     parser.add_argument("--max_samples", type=int, default=None,
@@ -202,6 +206,7 @@ def main():
         'no_failure_cascades': args.no_failure_cascades,
         'embedding_only_retrieval': args.embedding_only_retrieval,
         'untyped_edges': args.untyped_edges,
+        'no_multi_epoch_refinement': args.no_multi_epoch_refinement,
     }
 
     # Run

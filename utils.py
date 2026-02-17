@@ -268,7 +268,9 @@ def evaluate_test_set(data_processor, generator, playbook, test_samples,
             "accuracy": accuracy,
             "correct": results["correct"],
             "total": results["total"],
-            "no_answer": results["no_answer"]
+            "no_answer": results["no_answer"],
+            "answers": results["answers"],
+            "targets": results["targets"],
         }
         
         error_logs = {

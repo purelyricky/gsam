@@ -76,11 +76,16 @@ def compute_repeated_failure_rate(error_history: List[Dict]) -> Dict[str, Any]:
         if is_repeated:
             repeated_count += 1
 
-        # Count opportunity (could have been warned about this error)
+        # Count opportunity: only when the error pattern was ALREADY seen
+        # before this task (the system had prior knowledge it could use).
+        # First occurrences are NOT opportunities — there was no prior
+        # knowledge to prevent them.
         if concept_key and concept_key in seen_concept_errors:
             opportunities += 1
-        elif concept_key:
-            opportunities += 1  # First occurrence is also an opportunity
+        for conf_pair in confusions:
+            if frozenset(conf_pair) in seen_confusion_pairs:
+                opportunities += 1
+                break  # count each error as one opportunity at most
 
         # Record this error pattern
         if concept_key:
