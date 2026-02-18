@@ -2,12 +2,6 @@
 
 <div align="left">
 
-<p align="left" style="display:flex; gap:18px;">
-  <a href="https://arxiv.org/abs/2510.04618" target="_blank" style="margin-right:0;">
-    <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2510.04618-b31b1b.svg">
-  </a>
-</p>
-
 <img src="assets/images/ace_framework.png" alt="ACE Framework" width="800"/>
 
 </div>
