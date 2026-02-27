@@ -6,3 +6,13 @@ faiss-cpu>=1.7.4
 scikit-learn>=1.0.0
 networkx>=3.0
 numpy>=1.24.0
+
+# Optional: self-hosted inference on Modal.com
+# Install with: pip install modal
+# Then authenticate: modal token new
+# See modal_vllm_server.py for deployment instructions.
+# modal>=0.60.0
+
+# Optional: download BC5CDR medical benchmark dataset
+# Install with: pip install datasets
+# datasets>=2.0.0

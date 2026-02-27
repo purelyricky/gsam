@@ -1,0 +1,8 @@
+{
+  "bc5cdr": {
+    "train_data": "./eval/medical/data/bc5cdr_train.jsonl",
+    "val_data":   "./eval/medical/data/bc5cdr_val.jsonl",
+    "test_data":  "./eval/medical/data/bc5cdr_test.jsonl",
+    "ontology":   "./eval/medical/data/bc5cdr_ontology.json"
+  }
+}

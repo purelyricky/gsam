@@ -27,7 +27,7 @@ def parse_args():
 
     # Model configuration
     parser.add_argument("--api_provider", type=str, default="sambanova",
-                        choices=["sambanova", "together", "openai"])
+                        choices=["sambanova", "together", "openai", "modal"])
     parser.add_argument("--generator_model", type=str, default="DeepSeek-V3.1")
     parser.add_argument("--reflector_model", type=str, default="DeepSeek-V3.1")
     parser.add_argument("--curator_model", type=str, default="DeepSeek-V3.1")

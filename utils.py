@@ -31,14 +31,36 @@ def initialize_clients(api_provider):
         api_key = os.getenv('OPENAI_API_KEY', '')
         if not api_key:
             raise ValueError("OpenAI api key not found in environment variables")
+    elif api_provider == "modal":
+        # Use a self-hosted vLLM server deployed on Modal.com.
+        # The server exposes an OpenAI-compatible /v1 endpoint, so we can
+        # reuse the standard openai client by pointing base_url at the
+        # Modal deployment URL.
+        #
+        # Required env var:
+        #   MODAL_BASE_URL  – full base URL including /v1, e.g.
+        #       https://<workspace>--gsam-vllm-server-serve.modal.run/v1
+        # Optional env var:
+        #   MODAL_API_KEY   – arbitrary string; vLLM does not enforce auth
+        #       by default (defaults to "dummy")
+        base_url = os.getenv('MODAL_BASE_URL', '')
+        if not base_url:
+            raise ValueError(
+                "MODAL_BASE_URL not found in environment variables. "
+                "Deploy the vLLM server first with: modal deploy modal_vllm_server.py"
+            )
+        api_key = os.getenv('MODAL_API_KEY', 'dummy')
     else:
-        raise ValueError((f"Invalid api_provider name: {api_provider}. Must be 'sambanova', 'together', or 'openai'"))
+        raise ValueError(
+            f"Invalid api_provider name: {api_provider}. "
+            "Must be 'sambanova', 'together', 'openai', or 'modal'"
+        )
         
     generator_client = openai.OpenAI(api_key=api_key, base_url=base_url)
     reflector_client = openai.OpenAI(api_key=api_key, base_url=base_url)
     curator_client = openai.OpenAI(api_key=api_key, base_url=base_url)
-    
-    print("Using Together API for all models")
+
+    print(f"Using {api_provider} API for all models")
     return generator_client, reflector_client, curator_client
 
 def get_section_slug(section_name):

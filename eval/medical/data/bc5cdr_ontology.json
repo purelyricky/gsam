@@ -1,0 +1,231 @@
+{
+  "description": "Medical entity ontology for BC5CDR benchmark, structured analogously to the XBRL taxonomy used in FiNER. Entity types are grounded in MeSH (Medical Subject Headings) and SNOMED CT hierarchies.",
+  "version": "1.0",
+  "categories": {
+    "ChemicalEntities": {
+      "description": "Chemical and drug entities from MeSH Chemical and Drug category (MeSH tree D)",
+      "children": {
+        "PharmacologicalAgents": {
+          "description": "Drugs and pharmacological substances used therapeutically",
+          "entities": [
+            "AntineoplasticAgent",
+            "AntibioticAgent",
+            "Antihypertensive",
+            "Anticoagulant",
+            "Analgesic",
+            "Antidepressant",
+            "Anxiolytic",
+            "Corticosteroid",
+            "Immunosuppressant",
+            "Antiviral",
+            "Antifungal",
+            "Antiparasitic",
+            "Vaccine",
+            "Hormone",
+            "Diuretic"
+          ]
+        },
+        "BiochemicalSubstances": {
+          "description": "Biochemically relevant molecules and compounds",
+          "entities": [
+            "Protein",
+            "Enzyme",
+            "Neurotransmitter",
+            "Lipid",
+            "Carbohydrate",
+            "NucleicAcid",
+            "Vitamin",
+            "Mineral",
+            "AminoAcid",
+            "Peptide"
+          ]
+        },
+        "OrganicChemicals": {
+          "description": "Organic chemical compounds not primarily pharmacological",
+          "entities": [
+            "Alkaloid",
+            "Steroid",
+            "Flavonoid",
+            "OrganophosphorousCompound",
+            "Aldehyde",
+            "Ketone",
+            "Amine",
+            "Hydrocarbon"
+          ]
+        },
+        "InorganicChemicals": {
+          "description": "Inorganic and elemental chemical substances",
+          "entities": [
+            "HeavyMetal",
+            "HalogenCompound",
+            "OxidizingAgent",
+            "InorganicSalt",
+            "RadioactiveIsotope"
+          ]
+        }
+      }
+    },
+    "DiseaseEntities": {
+      "description": "Disease and disorder entities from MeSH Diseases category (MeSH tree C) and SNOMED CT clinical findings",
+      "children": {
+        "InfectiousDiseases": {
+          "description": "Diseases caused by infectious agents (bacteria, viruses, fungi, parasites)",
+          "entities": [
+            "BacterialInfection",
+            "ViralInfection",
+            "FungalInfection",
+            "ParasiticInfection",
+            "SexuallyTransmittedDisease",
+            "RespiratoryInfection",
+            "GastrointestinalInfection"
+          ]
+        },
+        "NeoplasticDiseases": {
+          "description": "Cancers and neoplasms (MeSH C04)",
+          "entities": [
+            "Carcinoma",
+            "Sarcoma",
+            "Lymphoma",
+            "Leukemia",
+            "Melanoma",
+            "Adenoma",
+            "Glioma",
+            "BrainTumor",
+            "LungCancer",
+            "BreastCancer",
+            "ColorectalCancer",
+            "ProstateCancer"
+          ]
+        },
+        "CardiovascularDiseases": {
+          "description": "Heart and vascular system disorders (MeSH C14)",
+          "entities": [
+            "CoronaryArteryDisease",
+            "HeartFailure",
+            "Arrhythmia",
+            "Hypertension",
+            "Stroke",
+            "Atherosclerosis",
+            "MyocardialInfarction",
+            "AnginaP",
+            "Cardiomyopathy",
+            "PeripheralVascularDisease"
+          ]
+        },
+        "NeurologicalDiseases": {
+          "description": "Nervous system disorders (MeSH C10)",
+          "entities": [
+            "Epilepsy",
+            "AlzheimerDisease",
+            "ParkinsonDisease",
+            "MultipleSclerosis",
+            "Migraine",
+            "Neuropathy",
+            "Encephalopathy",
+            "Meningitis",
+            "CerebrovascularDisease"
+          ]
+        },
+        "MetabolicDiseases": {
+          "description": "Metabolic and endocrine disorders (MeSH C18, C19)",
+          "entities": [
+            "DiabetesMellitus",
+            "DiabetesType1",
+            "DiabetesType2",
+            "Hypothyroidism",
+            "Hyperthyroidism",
+            "Obesity",
+            "Hyperlipidemia",
+            "Gout",
+            "Osteoporosis"
+          ]
+        },
+        "RespiratoryDiseases": {
+          "description": "Lung and airway disorders (MeSH C08)",
+          "entities": [
+            "Asthma",
+            "COPD",
+            "PneumoniaBacterial",
+            "PneumoniaViral",
+            "PulmonaryFibrosis",
+            "LungEmbolism",
+            "SleepApnea",
+            "Bronchitis"
+          ]
+        },
+        "GastrointestinalDiseases": {
+          "description": "Digestive system disorders (MeSH C06)",
+          "entities": [
+            "CrohnDisease",
+            "UlcerativeColitis",
+            "GastroesophagealReflux",
+            "PepticUlcer",
+            "CirrhosisOfLiver",
+            "Hepatitis",
+            "Pancreatitis",
+            "IrritableBowelSyndrome"
+          ]
+        },
+        "PsychiatricDiseases": {
+          "description": "Mental and behavioural disorders (MeSH F03)",
+          "entities": [
+            "Depression",
+            "Schizophrenia",
+            "BipolarDisorder",
+            "AnxietyDisorder",
+            "ADHD",
+            "AutismSpectrumDisorder",
+            "PTSD",
+            "SubstanceAbuse"
+          ]
+        },
+        "MusculoskeletalDiseases": {
+          "description": "Bone, joint, and muscle disorders (MeSH C05)",
+          "entities": [
+            "RheumatoidArthritis",
+            "Osteoarthritis",
+            "Lupus",
+            "Fibromyalgia",
+            "Gout",
+            "SpinalStenosis",
+            "Myopathy"
+          ]
+        },
+        "RenalDiseases": {
+          "description": "Kidney and urinary system disorders (MeSH C12, C13)",
+          "entities": [
+            "ChronicKidneyDisease",
+            "AcuteKidneyInjury",
+            "Nephropathy",
+            "NephrolithiasisKidneyStone",
+            "GlomerularDisease",
+            "UrinaryTractInfection"
+          ]
+        },
+        "ImmunologicalDiseases": {
+          "description": "Immune system disorders (MeSH C20)",
+          "entities": [
+            "AllergyAtopy",
+            "Anaphylaxis",
+            "ImmunodeficiencyDisease",
+            "AutoimmuneDisease",
+            "SjogrenSyndrome",
+            "VasculitisDisease"
+          ]
+        },
+        "GeneticDiseases": {
+          "description": "Hereditary and genetic disorders (MeSH C16)",
+          "entities": [
+            "CysticFibrosis",
+            "SickleCell",
+            "HuntingtonDisease",
+            "DownSyndrome",
+            "MusculardystrophyDMD",
+            "HemophiliaDisease",
+            "MarfanSyndrome"
+          ]
+        }
+      }
+    }
+  }
+}

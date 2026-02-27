@@ -155,72 +155,65 @@ def build_transfer_splits(
 def evaluate_transfer(
     method_name: str,
     experiment: Dict,
-    system,
+    system_factory,
     data_processor: DataProcessor,
     config: Dict,
     save_path: str,
 ) -> Dict[str, Any]:
     """
-    Run a single transfer experiment.
+    Run a single transfer experiment with an isolated system per experiment.
 
-    Protocol:
-    1. Baseline: Evaluate on target without any adaptation
-    2. Adapt: Train on source examples
-    3. Transfer: Evaluate on target with adapted knowledge
+    Each call creates a *fresh* system via ``system_factory()`` so that
+    knowledge learned while adapting on concept A never contaminates the
+    baseline or the adaptation phase of concept B.
+
+    Protocol (per experiment):
+    1. Fresh system (ontology-only, zero experiential knowledge).
+    2. Baseline: evaluate on *target* examples → ``baseline_accuracy``.
+    3. Adapt: train on *source* examples (graph grows).
+    4. Transfer: evaluate on *target* examples again → ``transfer_accuracy``.
+    5. Δ_transfer = transfer_accuracy − baseline_accuracy.
 
     Args:
-        method_name: "ace" or "gsam"
-        experiment: Transfer experiment config.
-        system: ACE or GSAM system instance.
+        method_name: "ace" or "gsam" (informational only).
+        experiment: Transfer experiment config from build_transfer_splits().
+        system_factory: Zero-argument callable that returns a freshly
+            initialised ACE or GSAM system with only ontology pre-loaded.
+            Using a factory instead of a pre-built system is what prevents
+            state contamination across experiments.
         data_processor: DataProcessor instance.
-        config: Run configuration.
-        save_path: Path to save results.
+        config: Run configuration dict.
+        save_path: Directory for per-experiment logs.
 
     Returns:
-        Dict with transfer metrics.
+        Dict with transfer metrics including delta_transfer, positive_transfer,
+        negative_transfer, baseline_accuracy, and transfer_accuracy.
     """
+    from utils import extract_answer
+    from gsam.metrics import compute_transfer_metrics
+
     source_examples = experiment["source_examples"]
     target_examples = experiment["target_examples"]
     source_concept = experiment["source_concept"]
     target_concept = experiment["target_concept"]
 
     print(f"\nTransfer: {source_concept} -> {target_concept}")
-    print(f"  Source examples: {len(source_examples)}")
-    print(f"  Target examples: {len(target_examples)}")
+    print(f"  Pair type : {experiment['pair']['pair_type']}")
+    print(f"  Source    : {len(source_examples)} examples")
+    print(f"  Target    : {len(target_examples)} examples")
 
-    # Step 1: Baseline evaluation on target (no adaptation)
-    # This requires a fresh system or resetting the system
-    baseline_correct = 0
-    for example in target_examples:
-        target = example.get("target", "")
-        # Simple generation without adaptation
-        from utils import extract_answer
-        if hasattr(system, 'generator'):
-            if hasattr(system, 'knowledge_graph'):
-                # GSAM
-                ctx, _ = system.graph_retriever.retrieve(
-                    example.get("question", ""),
-                    example.get("context", ""),
-                )
-                resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
-                    graph_context=ctx,
-                    context=example.get("context", ""),
-                )
-            else:
-                # ACE
-                resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
-                    playbook=getattr(system, 'playbook', ''),
-                    context=example.get("context", ""),
-                )
-            answer = extract_answer(resp)
-            if data_processor.answer_is_correct(answer, target):
-                baseline_correct += 1
+    # ------------------------------------------------------------------
+    # Create a *fresh* system for this experiment.
+    # This is the critical design decision: every experiment starts from
+    # an identical blank slate (ontology nodes only, no strategies, no
+    # anti-patterns).  Without this, knowledge from adapting on concept A
+    # leaks into the baseline evaluation for concept B.
+    # ------------------------------------------------------------------
+    system = system_factory()
 
-    baseline_accuracy = baseline_correct / len(target_examples) if target_examples else 0
+    log_dir = os.path.join(save_path, f"logs_{source_concept}__{target_concept}")
+    os.makedirs(log_dir, exist_ok=True)
 
-    # Step 2: Adapt on source examples
     config_params = {
         'max_num_rounds': config.get('max_num_rounds', 3),
         'curator_frequency': config.get('curator_frequency', 1),
@@ -229,56 +222,81 @@ def evaluate_transfer(
         'no_ground_truth': config.get('no_ground_truth', False),
     }
 
+    def _eval_on_target(tag: str) -> float:
+        """Evaluate current system state on target examples, return accuracy."""
+        correct = 0
+        for idx, example in enumerate(target_examples):
+            gt = example.get("target", "")
+            try:
+                if hasattr(system, 'knowledge_graph'):
+                    # GSAM: use graph-based retrieval
+                    ctx, _ = system.graph_retriever.retrieve(
+                        query=example.get("question", ""),
+                        context=example.get("context", ""),
+                    )
+                    resp, _, _ = system.generator.generate(
+                        question=example.get("question", ""),
+                        graph_context=ctx,
+                        context=example.get("context", ""),
+                        call_id=f"transfer_{tag}_{source_concept}_{target_concept}_{idx}",
+                        log_dir=log_dir,
+                    )
+                else:
+                    # ACE: use flat playbook
+                    resp, _, _ = system.generator.generate(
+                        question=example.get("question", ""),
+                        playbook=getattr(system, 'playbook', ''),
+                        context=example.get("context", ""),
+                        call_id=f"transfer_{tag}_{source_concept}_{target_concept}_{idx}",
+                        log_dir=log_dir,
+                    )
+                answer = extract_answer(resp)
+                if data_processor.answer_is_correct(answer, gt):
+                    correct += 1
+            except Exception as e:
+                print(f"  Warning: Evaluation failed on target example {idx}: {e}")
+        return correct / len(target_examples) if target_examples else 0.0
+
+    # ------------------------------------------------------------------
+    # Step 1: Baseline (fresh system, no adaptation)
+    # ------------------------------------------------------------------
+    print(f"  [1/3] Baseline evaluation on {target_concept} ...")
+    baseline_accuracy = _eval_on_target("baseline")
+    print(f"        Baseline accuracy: {baseline_accuracy:.3f}")
+
+    # ------------------------------------------------------------------
+    # Step 2: Adapt on source concept
+    # ------------------------------------------------------------------
+    print(f"  [2/3] Adapting on {source_concept} ({len(source_examples)} examples) ...")
     for i, example in enumerate(source_examples):
-        print(f"  Adapting on source {i+1}/{len(source_examples)}")
+        print(f"        Source {i+1}/{len(source_examples)}", end="\r")
         try:
             if hasattr(system, '_train_single_sample'):
-                os.makedirs(os.path.join(save_path, "logs"), exist_ok=True)
                 system._train_single_sample(
                     task_dict=example,
                     data_processor=data_processor,
                     step_id=f"transfer_{source_concept}_s_{i}",
                     step=i + 1,
-                    log_dir=os.path.join(save_path, "logs"),
+                    log_dir=log_dir,
                     config_params=config_params,
                     total_samples=len(source_examples),
                 )
         except Exception as e:
-            print(f"  Warning: Adaptation failed on source example {i}: {e}")
+            print(f"\n  Warning: Adaptation failed on source example {i}: {e}")
+    print()
 
-    # Step 3: Evaluate on target after adaptation
-    transfer_correct = 0
-    for example in target_examples:
-        target = example.get("target", "")
-        try:
-            if hasattr(system, 'knowledge_graph'):
-                ctx, _ = system.graph_retriever.retrieve(
-                    example.get("question", ""),
-                    example.get("context", ""),
-                )
-                resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
-                    graph_context=ctx,
-                    context=example.get("context", ""),
-                )
-            else:
-                resp, _, _ = system.generator.generate(
-                    question=example.get("question", ""),
-                    playbook=getattr(system, 'playbook', ''),
-                    context=example.get("context", ""),
-                )
-            answer = extract_answer(resp)
-            if data_processor.answer_is_correct(answer, target):
-                transfer_correct += 1
-        except Exception as e:
-            print(f"  Warning: Evaluation failed: {e}")
+    # ------------------------------------------------------------------
+    # Step 3: Transfer evaluation (same system, now adapted)
+    # ------------------------------------------------------------------
+    print(f"  [3/3] Transfer evaluation on {target_concept} ...")
+    transfer_accuracy = _eval_on_target("transfer")
+    print(f"        Transfer accuracy: {transfer_accuracy:.3f}")
 
-    transfer_accuracy = transfer_correct / len(target_examples) if target_examples else 0
-
-    # Compute transfer metrics
-    from gsam.metrics import compute_transfer_metrics
+    # ------------------------------------------------------------------
+    # Metrics
+    # ------------------------------------------------------------------
     metrics = compute_transfer_metrics(
-        source_accuracy=0.0,  # Not measured in this protocol
+        source_accuracy=0.0,  # Not tracked in this protocol
         target_accuracy_with_transfer=transfer_accuracy,
         target_accuracy_without_transfer=baseline_accuracy,
     )
@@ -293,8 +311,9 @@ def evaluate_transfer(
         **metrics,
     }
 
-    print(f"  Baseline: {baseline_accuracy:.3f} -> Transfer: {transfer_accuracy:.3f}"
-          f" (delta={metrics['delta_transfer']:.3f})")
+    print(f"  => Baseline {baseline_accuracy:.3f} → Transfer {transfer_accuracy:.3f} "
+          f"(Δ={metrics['delta_transfer']:+.3f}, "
+          f"{'positive' if metrics.get('positive_transfer') else 'negative' if metrics.get('negative_transfer') else 'neutral'})")
 
     return result
 

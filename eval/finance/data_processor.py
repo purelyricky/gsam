@@ -159,7 +159,6 @@ class DataProcessor:
             return float(predicted) == float(ground_truth)
         except Exception:
             return predicted == ground_truth
-        return predicted == ground_truth
     
     
     def answer_is_correct(self, predicted: str, ground_truth: str) -> bool:
