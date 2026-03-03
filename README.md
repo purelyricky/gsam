@@ -19,6 +19,30 @@
 
 GSAM is evaluated on the **FiNER** (financial named entity recognition in XBRL) and **XBRL Formula** tasks from the ACE paper, with a new **FiNER-Transfer** benchmark that tests cross-concept transfer.
 
+---
+
+## Table of Contents
+
+1. [Repository Structure](#repository-structure)
+2. [Installation](#installation)
+   - [Dependencies](#1-clone-and-install-dependencies)
+   - [API Keys — Cloud Providers](#2a-option-a-cloud-providers-sambanova--together--openai)
+   - [API Keys — Self-hosted DeepSeek on Modal](#2b-option-b-self-hosted-deepseek-on-modalcom)
+3. [Running Experiments — In Order](#running-experiments--in-order)
+   - [Step 1: ACE Baseline](#step-1-ace-baseline)
+   - [Step 2: GSAM Experiments](#step-2-gsam-experiments)
+   - [Step 3: GSAM Ablations](#step-3-gsam-ablations)
+   - [Step 4: Build FiNER-Transfer Dataset](#step-4-build-finer-transfer-dataset)
+   - [Step 5: Run Transfer Experiments](#step-5-run-transfer-experiments)
+4. [Reading Your Results](#reading-your-results)
+5. [How GSAM Works](#how-gsam-works)
+6. [Output Structure](#output-structure)
+7. [CLI Reference](#cli-reference)
+8. [Tests](#tests)
+9. [Citation](#citation)
+
+---
+
 ## Repository Structure
 
 ```
@@ -70,17 +94,21 @@ gsam/
 │       └── gsam_ablation_untyped_edges.json
 │
 ├── tests/                             # Unit tests (57 tests)
-│   ├── test_graph_memory.py           # KnowledgeGraph CRUD, retrieval, serialization
-│   ├── test_metrics.py                # RFR, precision, transfer metrics
-│   └── test_ontology.py              # Taxonomy loading, is_a edges, sibling resolution
+│   ├── test_graph_memory.py
+│   ├── test_metrics.py
+│   └── test_ontology.py
 │
-├── llm.py                            # LLM call utilities
-├── logger.py                         # Logging utilities
-├── utils.py                          # Shared utilities (evaluate_test_set, extract_answer)
-├── playbook_utils.py                 # ACE playbook operations (used by GraphConstructor)
-├── requirements.txt                  # Python dependencies
-└── EXTENDING_ACE.md                  # Guide for adding new tasks to ACE
+├── modal_serve.py                     # Self-hosted DeepSeek via vLLM on Modal.com
+├── llm.py                             # LLM call utilities with retry/error handling
+├── logger.py                          # Logging utilities
+├── utils.py                           # Shared utilities (evaluate_test_set, extract_answer)
+├── playbook_utils.py                  # ACE playbook operations
+├── requirements.txt                   # Python dependencies
+├── .env.example                       # Template for .env configuration
+└── EXTENDING_ACE.md                   # Guide for adding new tasks to ACE
 ```
+
+---
 
 ## Installation
 
@@ -99,32 +127,466 @@ The key dependencies are:
 | `networkx>=3.0` | Knowledge graph storage and traversal |
 | `numpy>=1.24.0` | Embedding computations |
 | `sentence-transformers>=2.2.0` | Node embedding similarity for deduplication and retrieval |
-| `openai>=1.0.0` | LLM API client (OpenAI-compatible) |
+| `openai>=1.0.0` | LLM API client (works with SambaNova, Together, OpenAI, Modal) |
 | `tiktoken` | Token counting for budget management |
+| `modal>=0.73.0` | Modal deployment SDK (only needed if self-hosting) |
 
-### 2. Configure API keys
+> **Note on HuggingFace**: `sentence-transformers` automatically downloads `all-MiniLM-L6-v2` on first use. This model is public — no HuggingFace token is required for local runs.
 
-Create a `.env` file in the project root with your API key for one of the supported providers:
+### 2a. Option A: Cloud Providers (SambaNova / Together / OpenAI)
+
+Copy `.env.example` to `.env` and fill in your key:
 
 ```bash
-# Option A: SambaNova (default)
-SAMBANOVA_API_KEY=your_key_here
-
-# Option B: Together AI
-TOGETHER_API_KEY=your_key_here
-
-# Option C: OpenAI
-OPENAI_API_KEY=your_key_here
+cp .env.example .env
 ```
+
+```bash
+# .env — pick one provider and fill it in
+SAMBANOVA_API_KEY=your_sambanova_key   # default provider
+TOGETHER_API_KEY=your_together_key
+OPENAI_API_KEY=your_openai_key
+```
+
+### 2b. Option B: Self-hosted DeepSeek on Modal.com
+
+Run your own OpenAI-compatible DeepSeek endpoint on GPU hardware for a flat per-hour cost (no per-token pricing).
+
+**One-time setup:**
+
+```bash
+# 1. Install and authenticate Modal
+pip install modal
+modal setup        # opens browser — one-time login
+
+# 2. Deploy the vLLM server
+modal deploy modal_serve.py
+#    CLI prints something like:
+#    App deployed. URL: https://YOUR_WORKSPACE--gsam-deepseek-serve.modal.run
+```
+
+**Configure your `.env`:**
+
+```bash
+MODAL_API_URL=https://YOUR_WORKSPACE--gsam-deepseek-serve.modal.run/v1
+# MODAL_API_KEY is optional — vLLM accepts any non-empty string
+# MODAL_API_KEY=modal-key
+```
+
+**Verify the deployment:**
+
+```bash
+modal run modal_serve.py
+# Prints the endpoint URL, runs a health check, and sends a test message
+```
+
+**Cost and model options** (edit `MODEL_NAME` and `N_GPU` at the top of `modal_serve.py`):
+
+| Model | N_GPU | Approx. cost | Notes |
+|-------|-------|-------------|-------|
+| `deepseek-ai/DeepSeek-R1-Distill-Qwen-32B` | 2 × H100 | ~$8/hr | Default — good quality, practical |
+| `deepseek-ai/DeepSeek-R1-Distill-Llama-70B` | 4 × H100 | ~$16/hr | Closer to V3 quality |
+| `deepseek-ai/DeepSeek-V3-0324` | 8 × H100 | ~$32/hr | Matches ACE paper exactly |
+
+The server stays warm for 30 minutes between requests (configurable via `scaledown_window` in `modal_serve.py`) to avoid cold-start delays mid-experiment.
+
+**Running experiments with Modal:**
+
+```bash
+python -m eval.finance.run_gsam \
+    --task_name finer \
+    --mode online \
+    --save_path results/gsam_finer_online \
+    --api_provider modal \
+    --generator_model "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" \
+    --reflector_model "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" \
+    --curator_model "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+```
+
+> Pass the exact `MODEL_NAME` from `modal_serve.py` as `--generator_model` / `--reflector_model` / `--curator_model`.
 
 ### 3. Verify installation
 
 ```bash
-# Run the unit tests to confirm everything is working
 python -m unittest tests.test_graph_memory tests.test_metrics tests.test_ontology -v
 ```
 
-You should see all 57 tests pass.
+All 57 tests should pass.
+
+---
+
+## Running Experiments — In Order
+
+Run experiments in this order to reproduce the paper results. Each step builds on the previous one.
+
+> **Smoke test first**: Add `--max_samples 10` to any command below to verify the pipeline end-to-end in under a minute before committing to a full run.
+
+---
+
+### Step 1: ACE Baseline
+
+Run the ACE baseline to establish the comparison point. Results go into `results/ace_*/`.
+
+**FiNER — offline (trains on train split, evaluates on test split):**
+
+```bash
+python -m eval.finance.run \
+    --task_name finer \
+    --mode offline \
+    --num_epochs 5 \
+    --save_path results/ace_finer_offline \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1 \
+    --reflector_model DeepSeek-V3.1 \
+    --curator_model DeepSeek-V3.1
+```
+
+**FiNER — online (trains and tests on test split in one pass):**
+
+```bash
+python -m eval.finance.run \
+    --task_name finer \
+    --mode online \
+    --save_path results/ace_finer_online \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1
+```
+
+**Formula — online:**
+
+```bash
+python -m eval.finance.run \
+    --task_name formula \
+    --mode online \
+    --save_path results/ace_formula_online \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1
+```
+
+**Where to find ACE results:** `results/ace_finer_online/ace_run_*/final_results.json` → key: `"accuracy"`
+
+---
+
+### Step 2: GSAM Experiments
+
+Run the full GSAM system on both tasks and both modes.
+
+**FiNER — online:**
+
+```bash
+python -m eval.finance.run_gsam \
+    --task_name finer \
+    --mode online \
+    --save_path results/gsam_finer_online \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1 \
+    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
+```
+
+**FiNER — offline (5 epochs per paper §6.4):**
+
+```bash
+python -m eval.finance.run_gsam \
+    --task_name finer \
+    --mode offline \
+    --num_epochs 5 \
+    --save_path results/gsam_finer_offline \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1 \
+    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
+```
+
+**Formula — online:**
+
+```bash
+python -m eval.finance.run_gsam \
+    --task_name formula \
+    --mode online \
+    --save_path results/gsam_formula_online \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1 \
+    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
+```
+
+Alternatively, run all GSAM experiments via the experiment runner:
+
+```bash
+python -m experiments.run_experiment \
+    --config_dir experiments/configs/ \
+    --save_path results \
+    --filter gsam_finer
+```
+
+**Where to find GSAM results:** `results/gsam_finer_online/gsam_run_*/final_results.json` → key: `"accuracy"`
+
+---
+
+### Step 3: GSAM Ablations
+
+Each ablation removes one component to measure its contribution.
+
+```bash
+# No ontology initialization
+python -m eval.finance.run_gsam \
+    --task_name finer --mode online \
+    --save_path results/ablation_no_ontology \
+    --api_provider sambanova \
+    --no_ontology
+
+# No failure cascades (no AntiPattern nodes)
+python -m eval.finance.run_gsam \
+    --task_name finer --mode online \
+    --save_path results/ablation_no_cascades \
+    --api_provider sambanova \
+    --no_failure_cascades
+
+# Embedding-only retrieval (no graph BFS)
+python -m eval.finance.run_gsam \
+    --task_name finer --mode online \
+    --save_path results/ablation_embedding_only \
+    --api_provider sambanova \
+    --embedding_only_retrieval
+
+# Untyped edges
+python -m eval.finance.run_gsam \
+    --task_name finer --mode online \
+    --save_path results/ablation_untyped_edges \
+    --api_provider sambanova \
+    --untyped_edges
+```
+
+Or run all at once:
+
+```bash
+python -m experiments.run_experiment \
+    --config_dir experiments/configs/ \
+    --save_path results \
+    --filter ablation
+```
+
+**Where to find ablation results:** `results/ablation_*/gsam_run_*/final_results.json` → key: `"accuracy"`, plus `rfr_metrics` from the metrics module (see [Reading Your Results](#reading-your-results) below).
+
+---
+
+### Step 4: Build FiNER-Transfer Dataset
+
+Run this **once** to generate the transfer experiment splits. It reads the FiNER training data and the XBRL taxonomy to create sibling and distant concept pairs.
+
+```bash
+python -m eval.finance.finer_transfer \
+    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json \
+    --finer_data_path ./eval/finance/data/finer_train_batched_1000_samples.jsonl \
+    --output_dir ./eval/finance/data/finer_transfer
+```
+
+This produces:
+- `eval/finance/data/finer_transfer/concept_pairs.json` — all sibling pairs (same subcategory) and distant pairs (different categories)
+- `eval/finance/data/finer_transfer/transfer_experiments.json` — experiment configs with source/target sample counts
+
+**Verify it worked:**
+
+```python
+import json
+pairs = json.load(open("eval/finance/data/finer_transfer/concept_pairs.json"))
+print(f"Sibling pairs: {len([p for p in pairs if p['relation'] == 'sibling'])}")
+print(f"Distant pairs: {len([p for p in pairs if p['relation'] == 'distant'])}")
+```
+
+---
+
+### Step 5: Run Transfer Experiments
+
+After building the dataset (Step 4), run the transfer protocol: for each concept pair (A → B), evaluate on B with no adaptation, adapt on A, then re-evaluate on B.
+
+```python
+from eval.finance.finer_transfer import (
+    load_taxonomy, build_concept_pairs, build_transfer_splits,
+    evaluate_transfer, compute_aggregate_transfer_metrics,
+)
+from eval.finance.data_processor import DataProcessor
+from gsam import GSAM
+import json
+
+# Load the generated pairs
+experiments = json.load(open("eval/finance/data/finer_transfer/transfer_experiments.json"))
+
+# Initialize GSAM
+gsam = GSAM(
+    api_provider="sambanova",
+    generator_model="DeepSeek-V3.1",
+    reflector_model="DeepSeek-V3.1",
+    curator_model="DeepSeek-V3.1",
+    taxonomy_path="./eval/finance/data/xbrl_taxonomy.json",
+)
+
+processor = DataProcessor(task_name="finer")
+config = {
+    'max_num_rounds': 3,
+    'curator_frequency': 1,
+    'playbook_token_budget': 80000,
+}
+
+# Run all transfer experiments
+results = []
+for experiment in experiments:
+    result = evaluate_transfer(
+        system_name="gsam",
+        experiment=experiment,
+        system=gsam,
+        data_processor=processor,
+        config=config,
+        save_dir="results/transfer",
+    )
+    results.append(result)
+
+# Aggregate
+agg = compute_aggregate_transfer_metrics(results)
+print(f"Near-transfer rate:     {agg['near_transfer_rate']:.2%}")
+print(f"Far-transfer rate:      {agg['far_transfer_rate']:.2%}")
+print(f"Negative transfer rate: {agg['negative_transfer_rate']:.2%}")
+
+# Save
+import json
+json.dump(agg, open("results/transfer/aggregate_metrics.json", "w"), indent=2)
+```
+
+**Where to find transfer results:** `results/transfer/aggregate_metrics.json` → keys: `near_transfer_rate`, `far_transfer_rate`, `negative_transfer_rate`
+
+---
+
+## Reading Your Results
+
+Every metric produced by GSAM experiments and its exact location:
+
+### Accuracy (main result)
+
+```python
+import json
+
+# ACE baseline accuracy
+ace = json.load(open("results/ace_finer_online/ace_run_TIMESTAMP_finer_online/final_results.json"))
+print(f"ACE accuracy: {ace['accuracy']:.3f}")
+
+# GSAM accuracy
+gsam = json.load(open("results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/final_results.json"))
+print(f"GSAM accuracy: {gsam['accuracy']:.3f}")
+# Also available: gsam['correct'], gsam['total']
+```
+
+Files: `{save_path}/gsam_run_*/final_results.json`
+
+---
+
+### Repeated Failure Rate (RFR)
+
+Measures how often the same conceptual error recurs. Lower is better.
+
+```python
+from gsam.metrics import aggregate_experiment_results
+
+summary = aggregate_experiment_results(
+    "results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/"
+)
+rfr = summary["rfr_metrics"]
+print(f"RFR: {rfr['rfr']:.3f}")
+print(f"  Repeated errors: {rfr['repeated_errors']}")
+print(f"  Total errors:    {rfr['total_errors']}")
+```
+
+Source file: `{save_path}/gsam_run_*/error_tracking.jsonl` (raw per-error data)
+
+---
+
+### Retrieval Precision
+
+Fraction of retrieved graph nodes actually referenced by the generator. Higher means retrieval is focused and relevant.
+
+```python
+summary = aggregate_experiment_results(
+    "results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/"
+)
+ret = summary["retrieval_metrics"]
+print(f"Mean retrieval precision: {ret['mean_precision']:.3f}")
+print(f"Mean retrieval time:      {ret['mean_retrieval_time_s']:.3f}s")
+```
+
+Source file: `{save_path}/gsam_run_*/retrieval_logs.jsonl` (raw per-query data)
+
+---
+
+### Concept Coverage
+
+Fraction of the 139 XBRL entity types that have at least one learned Strategy or AntiPattern.
+
+```python
+summary = aggregate_experiment_results(
+    "results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/"
+)
+print(f"Concept coverage: {summary['concept_coverage']:.2%}")
+```
+
+Source file: `{save_path}/gsam_run_*/graph_stats.json` → key: `concept_coverage`
+
+---
+
+### Graph Growth
+
+How the knowledge graph evolved over training:
+
+```python
+import json
+
+stats = json.load(open(
+    "results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/graph_stats.json"
+))
+print(f"Total nodes:   {stats['total_nodes']}")
+print(f"Total edges:   {stats['total_edges']}")
+print(f"Strategies:    {stats['node_counts'].get('Strategy', 0)}")
+print(f"AntiPatterns:  {stats['node_counts'].get('AntiPattern', 0)}")
+print(f"Confusions:    {stats['node_counts'].get('Confusion', 0)}")
+```
+
+---
+
+### Transfer Metrics (FiNER-Transfer benchmark)
+
+```python
+import json
+
+agg = json.load(open("results/transfer/aggregate_metrics.json"))
+print(f"Near-transfer rate:     {agg['near_transfer_rate']:.2%}")   # sibling pairs
+print(f"Far-transfer rate:      {agg['far_transfer_rate']:.2%}")    # distant pairs
+print(f"Negative transfer rate: {agg['negative_transfer_rate']:.2%}")
+```
+
+Per-experiment raw data: `results/transfer/{pair_name}.json` → keys: `baseline_acc`, `transfer_acc`, `delta_transfer`
+
+---
+
+### Ablation Comparison Table
+
+To reproduce the ablation table from the paper, collect accuracy from each ablation run:
+
+```python
+import json, glob, os
+
+runs = {
+    "Full GSAM":           "results/gsam_finer_online",
+    "No ontology":         "results/ablation_no_ontology",
+    "No cascades":         "results/ablation_no_cascades",
+    "Embedding only":      "results/ablation_embedding_only",
+    "Untyped edges":       "results/ablation_untyped_edges",
+}
+
+for name, path in runs.items():
+    # Find the results file (timestamp varies)
+    files = glob.glob(os.path.join(path, "*/final_results.json"))
+    if files:
+        r = json.load(open(files[0]))
+        print(f"{name:25s}  accuracy={r['accuracy']:.3f}")
+```
+
+---
 
 ## How GSAM Works
 
@@ -180,79 +642,50 @@ Stage 3: Taxonomic Expansion
   - Include failure cascade warnings for formulas
 ```
 
-## Quick Start
+---
 
-### Run GSAM on FiNER (online mode)
+## Output Structure
 
-This trains and evaluates GSAM in a single pass over the test set, updating the knowledge graph after each window:
+After a GSAM run, the following files are produced:
 
-```bash
-python -m eval.finance.run_gsam \
-    --task_name finer \
-    --mode online \
-    --save_path results/gsam_finer_online \
-    --api_provider sambanova \
-    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
+```
+results/gsam_run_TIMESTAMP_finer_online/
+├── run_config.json                     # Full configuration used for this run
+├── final_results.json                  # Final accuracy: {"accuracy": 0.XX, "correct": N, "total": N}
+├── initial_test_results.json           # Baseline accuracy with empty/ontology-only graph
+├── test_results.json                   # Final accuracy after adaptation (same as final_results)
+├── retrieval_logs.jsonl                # Per-query retrieval precision and timing
+├── error_tracking.jsonl                # Per-error concept tracking (source for RFR)
+├── graph_stats.json                    # Final graph statistics (node counts, edge counts, coverage)
+├── detailed_llm_logs/                  # Raw LLM request/response logs per call
+└── graph_checkpoints/
+    ├── graph_step_0.json               # Initial graph (ontology-only backbone)
+    ├── graph_step_50.json              # Checkpoint every --save_steps steps
+    ├── graph_best.json                 # Best validation accuracy (offline mode only)
+    └── graph_final.json                # Final evolved graph after training
 ```
 
-### Run GSAM on FiNER (offline mode)
+### Inspecting a saved graph
 
-This trains on the training set with validation checkpoints, then evaluates on the test set:
+```python
+from gsam.graph_memory import KnowledgeGraph, NodeType
 
-```bash
-python -m eval.finance.run_gsam \
-    --task_name finer \
-    --mode offline \
-    --save_path results/gsam_finer_offline \
-    --api_provider sambanova \
-    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
+graph = KnowledgeGraph.load("results/gsam_run_TIMESTAMP/graph_checkpoints/graph_final.json")
+
+print(graph)
+# KnowledgeGraph(nodes=245, edges=412, concepts=139, coverage=0.67)
+
+# List strategies
+for nid in graph.get_nodes_by_type(NodeType.STRATEGY)[:5]:
+    data = graph.graph.nodes[nid]
+    print(f"[{nid}] helpful={data['helpful_count']} harmful={data['harmful_count']}")
+    print(f"  {data['content'][:100]}")
+
+# Save a copy
+graph.save("my_graph.json")
 ```
 
-### Run GSAM on XBRL Formula
-
-```bash
-python -m eval.finance.run_gsam \
-    --task_name formula \
-    --mode online \
-    --save_path results/gsam_formula_online \
-    --api_provider sambanova \
-    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
-```
-
-### Run ACE baseline for comparison
-
-```bash
-python -m eval.finance.run \
-    --task_name finer \
-    --mode online \
-    --save_path results/ace_finer_online \
-    --api_provider sambanova
-```
-
-### Evaluate a saved graph (no training)
-
-```bash
-python -m eval.finance.run_gsam \
-    --task_name finer \
-    --mode eval_only \
-    --save_path results/eval_results \
-    --api_provider sambanova \
-    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
-```
-
-### Smoke test with limited samples
-
-Use `--max_samples` to quickly verify everything works before a full run:
-
-```bash
-python -m eval.finance.run_gsam \
-    --task_name finer \
-    --mode online \
-    --save_path results/smoke_test \
-    --api_provider sambanova \
-    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json \
-    --max_samples 10
-```
+---
 
 ## Programmatic Usage
 
@@ -260,7 +693,6 @@ python -m eval.finance.run_gsam \
 from gsam import GSAM
 from eval.finance.data_processor import DataProcessor
 
-# Initialize GSAM with ontology
 gsam_system = GSAM(
     api_provider="sambanova",
     generator_model="DeepSeek-V3.1",
@@ -268,15 +700,13 @@ gsam_system = GSAM(
     curator_model="DeepSeek-V3.1",
     max_tokens=4096,
     taxonomy_path="./eval/finance/data/xbrl_taxonomy.json",
-    merge_threshold=0.9,       # Cosine similarity for node deduplication
-    retrieval_depth=2,         # BFS depth for graph retrieval
-    prune_frequency=50,        # Prune low-utility nodes every N steps
+    merge_threshold=0.9,
+    retrieval_depth=2,
+    prune_frequency=50,
 )
 
-# Prepare data
 processor = DataProcessor(task_name="finer")
 
-# Configure and run
 config = {
     'num_epochs': 1,
     'max_num_rounds': 3,
@@ -300,212 +730,16 @@ results = gsam_system.run(
     config=config,
 )
 
-# Inspect the evolved knowledge graph
-print(gsam_system.knowledge_graph)
-# KnowledgeGraph(nodes=245, edges=412, concepts=139, coverage=0.67)
-
 stats = gsam_system.knowledge_graph.stats()
 print(f"Strategies: {stats['node_counts'].get('Strategy', 0)}")
-print(f"Anti-patterns: {stats['node_counts'].get('AntiPattern', 0)}")
 print(f"Concept coverage: {stats['concept_coverage']:.2%}")
-
-# Save/load the graph
-gsam_system.knowledge_graph.save("my_graph.json")
-
-from gsam.graph_memory import KnowledgeGraph
-loaded_graph = KnowledgeGraph.load("my_graph.json")
 ```
 
-## Running Experiments
-
-### Using experiment configs
-
-Each experiment is defined by a JSON config file in `experiments/configs/`. The experiment runner handles argument passing:
-
-```bash
-# Run a single experiment
-python -m experiments.run_experiment \
-    --config experiments/configs/gsam_finer_online.json \
-    --save_path results
-
-# Run all ablation experiments
-python -m experiments.run_experiment \
-    --config_dir experiments/configs/ \
-    --save_path results \
-    --filter ablation
-
-# Run everything
-python -m experiments.run_experiment \
-    --config_dir experiments/configs/ \
-    --save_path results
-```
-
-### Available experiments
-
-| Config | What it tests |
-|--------|---------------|
-| `gsam_finer_offline.json` | Full GSAM with ontology, offline training on FiNER |
-| `gsam_finer_online.json` | Full GSAM with ontology, online adaptation on FiNER |
-| `gsam_ablation_no_ontology.json` | Ablation: no XBRL taxonomy initialization (graph starts empty) |
-| `gsam_ablation_no_cascades.json` | Ablation: no failure cascade edges or AntiPattern nodes |
-| `gsam_ablation_embedding_only.json` | Ablation: retrieval by embedding similarity only (no graph BFS) |
-| `gsam_ablation_untyped_edges.json` | Ablation: all edges become generic `related_to` (no typed edges) |
-
-### Ablation study rationale
-
-Each ablation isolates one component of GSAM to measure its contribution:
-
-- **No ontology** (`--no_ontology`): Tests whether pre-loading the XBRL taxonomy as Concept nodes improves accuracy vs. learning concepts from scratch. Expected impact: weaker concept matching, no sibling transfer.
-
-- **No failure cascades** (`--no_failure_cascades`): Tests whether tracking anti-patterns and their cascading effects through formula dependencies reduces repeated errors. Expected impact: higher Repeated Failure Rate (RFR).
-
-- **Embedding-only retrieval** (`--embedding_only_retrieval`): Tests whether graph structure adds value beyond embedding similarity. Retrieves top-k strategies by cosine similarity without BFS traversal or taxonomic expansion. Expected impact: lower retrieval precision, no cross-concept transfer.
-
-- **Untyped edges** (`--untyped_edges`): Tests whether typed edges (is_a, applies_to, fails_for) matter vs. generic connections. Expected impact: noisier retrieval, weaker serialized context.
-
-## FiNER-Transfer Benchmark
-
-The FiNER-Transfer benchmark measures cross-concept transfer: whether adapting on one XBRL entity type improves performance on a related entity type.
-
-### Step 1: Build the benchmark
-
-```bash
-python -m eval.finance.finer_transfer \
-    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json \
-    --finer_data_path ./eval/finance/data/finer_train_batched_1000_samples.jsonl \
-    --output_dir ./eval/finance/data/finer_transfer
-```
-
-This generates:
-- `concept_pairs.json`: All sibling pairs (same subcategory) and distant pairs (different categories)
-- `transfer_experiments.json`: Experiment configs with source/target counts
-
-### Step 2: Run transfer experiments
-
-The transfer evaluation protocol for each concept pair (A, B):
-
-1. **Baseline**: Evaluate on concept B with no adaptation
-2. **Adapt**: Train on concept A examples (the source)
-3. **Transfer**: Evaluate on concept B again with the adapted graph
-
-```python
-from eval.finance.finer_transfer import (
-    load_taxonomy, build_concept_pairs, build_transfer_splits,
-    evaluate_transfer, compute_aggregate_transfer_metrics,
-)
-from eval.finance.data_processor import DataProcessor
-from gsam import GSAM
-
-# Build experiment pairs
-taxonomy = load_taxonomy("./eval/finance/data/xbrl_taxonomy.json")
-pairs = build_concept_pairs(taxonomy)
-
-# Initialize system
-gsam = GSAM(
-    api_provider="sambanova",
-    generator_model="DeepSeek-V3.1",
-    reflector_model="DeepSeek-V3.1",
-    curator_model="DeepSeek-V3.1",
-    taxonomy_path="./eval/finance/data/xbrl_taxonomy.json",
-)
-
-processor = DataProcessor(task_name="finer")
-config = {'max_num_rounds': 3, 'curator_frequency': 1, 'playbook_token_budget': 80000}
-
-# Run transfer experiments
-results = []
-for experiment in experiments[:5]:  # First 5 pairs
-    result = evaluate_transfer("gsam", experiment, gsam, processor, config, "results/transfer")
-    results.append(result)
-
-# Aggregate metrics
-agg = compute_aggregate_transfer_metrics(results)
-print(f"Near-transfer rate: {agg['near_transfer_rate']:.2%}")
-print(f"Far-transfer rate: {agg['far_transfer_rate']:.2%}")
-print(f"Negative transfer rate: {agg['negative_transfer_rate']:.2%}")
-```
-
-## GSAM-Specific Metrics
-
-GSAM introduces several metrics beyond standard accuracy. After a run completes, use the metrics module to compute them:
-
-```python
-from gsam.metrics import (
-    compute_repeated_failure_rate,
-    compute_retrieval_precision,
-    compute_concept_coverage,
-    aggregate_experiment_results,
-)
-
-# Aggregate everything from a results directory
-summary = aggregate_experiment_results("results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/")
-
-# Or compute individually:
-
-# 1. Repeated Failure Rate (RFR)
-#    Measures how often the same conceptual error recurs.
-#    Lower is better; GSAM should reduce this by anchoring
-#    anti-patterns to specific concepts.
-rfr = summary["rfr_metrics"]
-print(f"RFR: {rfr['rfr']:.3f} ({rfr['repeated_errors']}/{rfr['total_errors']} repeated)")
-
-# 2. Retrieval Precision
-#    Fraction of retrieved nodes that the generator actually referenced.
-#    Higher means retrieval is focused and relevant.
-ret = summary["retrieval_metrics"]
-print(f"Retrieval precision: {ret['mean_precision']:.3f}")
-print(f"Mean retrieval time: {ret['mean_retrieval_time_s']:.3f}s")
-
-# 3. Concept Coverage
-#    Fraction of XBRL entity types with at least one learned strategy.
-#    Measures how broadly the graph covers the domain.
-print(f"Concept coverage: {summary['concept_coverage']:.2%}")
-```
-
-## Output Structure
-
-After a GSAM run, the following files are produced:
-
-```
-results/gsam_run_TIMESTAMP_finer_online/
-├── run_config.json                     # Full configuration used
-├── final_results.json                  # Consolidated accuracy results
-├── initial_test_results.json           # Baseline accuracy (empty graph)
-├── test_results.json                   # Final accuracy after adaptation
-├── retrieval_logs.jsonl                # Per-task retrieval precision and timing
-├── error_tracking.jsonl                # Per-error concept and confusion tracking
-├── graph_stats.json                    # Final graph summary statistics
-├── detailed_llm_logs/                  # Raw LLM request/response logs
-└── graph_checkpoints/
-    ├── graph_step_0.json               # Initial graph (ontology only)
-    ├── graph_step_50.json              # Intermediate checkpoint
-    ├── graph_best.json                 # Best validation accuracy (offline only)
-    └── graph_final.json                # Final evolved graph
-```
-
-### Understanding the graph JSON
-
-Each graph checkpoint is a JSON file you can load and inspect:
-
-```python
-from gsam.graph_memory import KnowledgeGraph, NodeType
-
-graph = KnowledgeGraph.load("results/.../graph_checkpoints/graph_final.json")
-
-# Print summary
-print(graph)
-# KnowledgeGraph(nodes=245, edges=412, concepts=139, coverage=0.67)
-
-# Inspect specific nodes
-for nid in graph.get_nodes_by_type(NodeType.STRATEGY)[:5]:
-    data = graph.graph.nodes[nid]
-    print(f"[{nid}] helpful={data['helpful_count']} harmful={data['harmful_count']}")
-    print(f"  {data['content'][:100]}")
-```
+---
 
 ## CLI Reference
 
-### `eval.finance.run_gsam` -- Full argument list
+### `eval.finance.run_gsam` — Full argument list
 
 <details>
 <summary>Click to expand</summary>
@@ -515,11 +749,11 @@ for nid in graph.get_nodes_by_type(NodeType.STRATEGY)[:5]:
 | `--task_name` | Task name (`finer` or `formula`) | Required |
 | `--mode` | `offline`, `online`, or `eval_only` | `offline` |
 | `--save_path` | Directory to save results | Required |
-| `--api_provider` | `sambanova`, `together`, or `openai` | `sambanova` |
+| `--api_provider` | `sambanova`, `together`, `openai`, or `modal` | `sambanova` |
 | `--generator_model` | Model for the generator agent | `DeepSeek-V3.1` |
 | `--reflector_model` | Model for the reflector agent | `DeepSeek-V3.1` |
 | `--curator_model` | Model for the curator agent | `DeepSeek-V3.1` |
-| `--num_epochs` | Training epochs (offline only) | `1` |
+| `--num_epochs` | Training epochs (offline only) | `5` |
 | `--max_num_rounds` | Max reflection rounds per incorrect answer | `3` |
 | `--curator_frequency` | Run curator every N training steps | `1` |
 | `--eval_steps` | Evaluate on validation set every N steps | `100` |
@@ -542,9 +776,15 @@ for nid in graph.get_nodes_by_type(NodeType.STRATEGY)[:5]:
 
 </details>
 
-## Tests
+### `eval.finance.run` (ACE baseline) — Key differences
 
-Run the full test suite:
+- No `--taxonomy_path`, `--merge_threshold`, `--retrieval_depth`, `--prune_frequency`, or ablation flags
+- Has `--use_bulletpoint_analyzer` and `--bulletpoint_analyzer_threshold` instead
+- Default `--num_epochs` is `1` (vs. `5` for GSAM)
+
+---
+
+## Tests
 
 ```bash
 python -m unittest tests.test_graph_memory tests.test_metrics tests.test_ontology -v
@@ -555,6 +795,8 @@ The tests cover:
 - **test_graph_memory.py** (36 tests): Node/edge CRUD, auto-ID generation, node merging, subgraph extraction, neighbor filtering, taxonomy helpers (ancestors, children, siblings, LCA), serialization/deserialization, pruning rules, graph statistics
 - **test_metrics.py** (14 tests): RFR computation with repeated/unique/confusion-pair errors, retrieval precision aggregation, concept coverage, transfer metric computation (positive/negative/zero delta)
 - **test_ontology.py** (7 tests): Taxonomy loading from JSON, category/subcategory/entity node creation, is_a edge structure, taxonomy path attributes, sibling resolution, entity name mapping
+
+---
 
 ## Citation
 
