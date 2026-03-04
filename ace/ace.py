@@ -10,6 +10,7 @@ This module coordinates three agents:
 
 import os
 import json
+import time
 from datetime import datetime
 from typing import Dict, List, Tuple, Optional, Any
 
@@ -261,7 +262,7 @@ class ACE:
                 )
                 results['initial_test_results'] = initial_test_results
                 print(f"Initial Test Accuracy: {initial_test_results['accuracy']:.3f}\n")
-            
+
             # 2. Run offline training
             print(f"\n{'='*60}")
             print(f"STARTING OFFLINE TRAINING")
@@ -277,7 +278,9 @@ class ACE:
                 log_dir=log_dir
             )
             results['training_results'] = training_results
-            
+            if training_results.get("latency_stats"):
+                results['latency_stats'] = training_results["latency_stats"]
+
             # 3. Run final test if test_samples provided
             if test_samples:
                 print(f"\n{'='*60}")
@@ -294,7 +297,7 @@ class ACE:
                 )
                 results['final_test_results'] = final_test_results
                 print(f"Final Test Accuracy: {final_test_results['accuracy']:.3f}\n")
-        
+
         elif mode == 'online':
             # ONLINE MODE WORKFLOW
             # 1. Run initial test
@@ -312,7 +315,7 @@ class ACE:
             )
             results['initial_test_results'] = initial_test_results
             print(f"Initial Test Accuracy: {initial_test_results['accuracy']:.3f}\n")
-            
+
             # 2. Run online training and testing
             print(f"\n{'='*60}")
             print(f"STARTING ONLINE TRAIN AND TEST")
@@ -327,6 +330,8 @@ class ACE:
                 log_dir=log_dir
             )
             results['online_test_results'] = online_results
+            if online_results.get("latency_stats"):
+                results['latency_stats'] = online_results["latency_stats"]
         
         else:  # eval_only
             # EVAL ONLY MODE WORKFLOW
@@ -446,7 +451,7 @@ class ACE:
             total_samples: Total number of samples in dataset
             
         Returns:
-            Tuple of (pre_train_answer, post_train_answer, tracking_dict)
+            Tuple of (pre_train_answer, post_train_answer, tracking_dict, latency_dict)
         """
         # Extract configuration
         max_num_rounds = config_params['max_num_rounds']
@@ -454,14 +459,21 @@ class ACE:
         token_budget = config_params['token_budget']
         use_json_mode = config_params['use_json_mode']
         no_ground_truth = config_params['no_ground_truth']
-        
+
         # Extract sample data
         question = task_dict.get("question", "")
         context = task_dict.get("context", "")
         target = task_dict.get("target", "")
-        
+
+        # Per-sample latency accumulators
+        _generator_time = 0.0
+        _reflector_time = 0.0
+        _curator_time = 0.0
+        _playbook_update_time = 0.0
+
         # STEP 1: Initial generation (pre-train)
         print("Generating initial answer...")
+        _t0 = time.time()
         gen_response, bullet_ids, call_info = self.generator.generate(
             question=question,
             playbook=self.playbook,
@@ -471,6 +483,7 @@ class ACE:
             call_id=f"{step_id}_gen_initial",
             log_dir=log_dir
         )
+        _generator_time += time.time() - _t0
         
         # Extract answer and check correctness
         final_answer = extract_answer(gen_response)
@@ -500,13 +513,14 @@ class ACE:
             # For incorrect answers - iterate reflection rounds
             for round_num in range(max_num_rounds):
                 print(f"Reflection round {round_num + 1}/{max_num_rounds}")
-                
+
                 # Get bullets for reflector
                 playbook_bullets = extract_playbook_bullets(
                     self.playbook, bullet_ids
                 )
-                
+
                 # Reflect on error
+                _t0 = time.time()
                 reflection_content, bullet_tags, _ = self.reflector.reflect(
                     question=question,
                     reasoning_trace=gen_response,
@@ -519,14 +533,18 @@ class ACE:
                     call_id=f"{step_id}_round_{round_num}",
                     log_dir=log_dir
                 )
-                
+                _reflector_time += time.time() - _t0
+
                 # Update bullet counts
                 if bullet_tags:
+                    _t0 = time.time()
                     self.playbook = update_bullet_counts(
                         self.playbook, bullet_tags
                     )
-                
+                    _playbook_update_time += time.time() - _t0
+
                 # Regenerate with reflection
+                _t0 = time.time()
                 gen_response, bullet_ids, _ = self.generator.generate(
                     question=question,
                     playbook=self.playbook,
@@ -536,20 +554,22 @@ class ACE:
                     call_id=f"{step_id}_post_reflect_round_{round_num}",
                     log_dir=log_dir
                 )
-                
+                _generator_time += time.time() - _t0
+
                 final_answer = extract_answer(gen_response)
-                
+
                 if data_processor.answer_is_correct(final_answer, target):
                     print(f"Corrected after reflection round {round_num + 1}!")
                     is_correct = True
                     break
-        
+
         else:
             # For correct answers - still run reflector to tag helpful bullets
             playbook_bullets = extract_playbook_bullets(
                 self.playbook, bullet_ids
             )
-            
+
+            _t0 = time.time()
             reflection_content, bullet_tags, _ = self.reflector.reflect(
                 question=question,
                 reasoning_trace=gen_response,
@@ -562,25 +582,29 @@ class ACE:
                 call_id=f"{step_id}_reflect_on_correct",
                 log_dir=log_dir
             )
-            
+            _reflector_time += time.time() - _t0
+
             # Update bullet counts
             if bullet_tags:
+                _t0 = time.time()
                 self.playbook = update_bullet_counts(
                     self.playbook, bullet_tags
                 )
-            
+                _playbook_update_time += time.time() - _t0
+
             # Log with reflection
             log_bullet_usage(usage_log_path, epoch, step, task_dict, bullet_ids,
-                           playbook=self.playbook, 
+                           playbook=self.playbook,
                            reflection_content=reflection_content,
                            is_correct=is_correct)
-        
+
         # STEP 3: Curator - Periodically update playbook
         if step % curator_frequency == 0:
             print(f"\n--- Running Curator at step {step} ---")
-            
+
             stats = get_playbook_stats(self.playbook)
-            
+
+            _t0 = time.time()
             self.playbook, self.next_global_id, operations, _ = self.curator.curate(
                 current_playbook=self.playbook,
                 recent_reflection=reflection_content,
@@ -595,17 +619,21 @@ class ACE:
                 log_dir=log_dir,
                 next_global_id=self.next_global_id
             )
-            
+            _curator_time += time.time() - _t0
+
             # Run bulletpoint analyzer if enabled
             if self.use_bulletpoint_analyzer and self.bulletpoint_analyzer:
                 print(f"  Running BulletpointAnalyzer (threshold={self.bulletpoint_analyzer_threshold})...")
+                _t0 = time.time()
                 self.playbook = self.bulletpoint_analyzer.analyze(
                     playbook=self.playbook,
                     threshold=self.bulletpoint_analyzer_threshold,
                     merge=True
                 )
-        
+                _playbook_update_time += time.time() - _t0
+
         # STEP 4: Post-curator generation
+        _t0 = time.time()
         gen_response, _, _ = self.generator.generate(
             question=question,
             playbook=self.playbook,
@@ -615,10 +643,11 @@ class ACE:
             call_id=f"{step_id}_post_curate",
             log_dir=log_dir
         )
-        
+        _generator_time += time.time() - _t0
+
         final_answer = extract_answer(gen_response)
         post_train_answer = final_answer
-        
+
         post_train_is_correct = data_processor.answer_is_correct(final_answer, target)
         tracking_dict["post_train_result"] = {
             "final_answer": final_answer,
@@ -626,8 +655,15 @@ class ACE:
             "playbook_num_tokens": count_tokens(self.playbook),
             "playbook_length": len(self.playbook)
         }
-        
-        return pre_train_answer, post_train_answer, tracking_dict
+
+        latency_dict = {
+            "generator_time": _generator_time,
+            "reflector_time": _reflector_time,
+            "curator_time": _curator_time,
+            "playbook_update_time": _playbook_update_time,
+        }
+
+        return pre_train_answer, post_train_answer, tracking_dict, latency_dict
     
     def _offline_train(
         self,
@@ -672,6 +708,7 @@ class ACE:
         error_logs = []
         best_accuracy = 0.0
         self.best_playbook = self.playbook
+        all_latencies = []
 
         print(f"Total epochs: {num_epochs}")
         print(f"Train samples per epoch: {len(train_samples)}")
@@ -697,7 +734,7 @@ class ACE:
                 target = task_dict.get("target", "")
                 
                 # Use helper method for training single sample
-                pre_train_answer, post_train_answer, tracking_dict = self._train_single_sample(
+                pre_train_answer, post_train_answer, tracking_dict, latency = self._train_single_sample(
                     task_dict=task_dict,
                     data_processor=data_processor,
                     step_id=f"train_e_{epoch}_s_{step}",
@@ -708,13 +745,14 @@ class ACE:
                     config_params=config_params,
                     total_samples=len(train_samples)
                 )
-                
+
                 # Collect answers for accuracy calculation
                 epoch_answers_pre_train.append(pre_train_answer)
                 epoch_targets_pre_train.append(target)
                 epoch_answers_post_train.append(post_train_answer)
                 epoch_targets_post_train.append(target)
-                
+                all_latencies.append(latency)
+
                 # Track pre-train and post-train results
                 pre_train_post_train_result = {
                     "epoch": epoch,
@@ -802,6 +840,21 @@ class ACE:
             with open(epoch_playbook_path, "w") as f:
                 f.write(self.playbook)
 
+        # Compute latency stats
+        latency_stats = {}
+        if all_latencies:
+            n = len(all_latencies)
+            for key in ("generator_time", "reflector_time", "curator_time",
+                        "playbook_update_time"):
+                latency_stats[key.replace("_time", "_mean_s")] = sum(
+                    d[key] for d in all_latencies
+                ) / n
+            latency_stats["retrieval_mean_s"] = 0.0
+            latency_stats["graph_update_mean_s"] = 0.0
+            latency_stats["total_per_sample_mean_s"] = sum(
+                sum(d.values()) for d in all_latencies
+            ) / n
+
         # Save training results
         results_path = os.path.join(save_path, "train_results.json")
         with open(results_path, "w") as f:
@@ -809,28 +862,28 @@ class ACE:
                 "best_accuracy": best_accuracy,
                 "results": results,
             }, f, indent=2)
-        
+
         pre_train_post_train_results_path = os.path.join(save_path, "pre_train_post_train_results.json")
         with open(pre_train_post_train_results_path, "w") as f:
             json.dump(pre_train_post_train_results, f, indent=2)
-        
+
         # Save final playbook
         final_playbook_path = os.path.join(save_path, f"final_playbook.txt")
         with open(final_playbook_path, "w") as f:
             f.write(self.playbook)
-        
+
         # Save best playbook
         best_playbook_path = os.path.join(save_path, f"best_playbook.txt")
         with open(best_playbook_path, "w") as f:
             f.write(self.best_playbook)
-        
+
         print(f"\n{'='*60}")
         print(f"OFFLINE TRAINING COMPLETE")
         print(f"{'='*60}")
         print(f"Best Validation Accuracy: {best_accuracy:.3f}")
         print(f"{'='*60}\n")
 
-        return {"best_validation_accuracy": best_accuracy}
+        return {"best_validation_accuracy": best_accuracy, "latency_stats": latency_stats}
 
     
     def test(
@@ -918,7 +971,8 @@ class ACE:
         # Initialize tracking
         train_results = []
         pre_train_post_train_results = []
-        
+        all_latencies = []
+
         # Test tracking - accumulate across all windows
         correct_count_sample_based = 0
         correct_count = 0
@@ -1016,7 +1070,7 @@ class ACE:
                 target = task_dict.get("target", "")
                 
                 # Use helper method for training single sample
-                pre_train_answer, post_train_answer, tracking_dict = self._train_single_sample(
+                pre_train_answer, post_train_answer, tracking_dict, latency = self._train_single_sample(
                     task_dict=task_dict,
                     data_processor=data_processor,
                     step_id=f"online_train_s_{global_step}",
@@ -1027,13 +1081,14 @@ class ACE:
                     config_params=config_params,
                     total_samples=len(test_samples)
                 )
-                
+
                 # Collect answers for accuracy calculation
                 epoch_answers_pre_train.append(pre_train_answer)
                 epoch_targets_pre_train.append(target)
                 epoch_answers_post_train.append(post_train_answer)
                 epoch_targets_post_train.append(target)
-                
+                all_latencies.append(latency)
+
                 # Track pre-train and post-train results
                 pre_train_post_train_result = {
                     "window": window_idx + 1,
@@ -1088,18 +1143,33 @@ class ACE:
         print(f"\n{'='*60}")
         print(f"ONLINE TRAIN AND TEST COMPLETE")
         print(f"{'='*60}")
-        
+
         # Calculate final cumulative test accuracy
         assert total_count == len(test_samples)
         final_test_accuracy = correct_count / total_count
-        
+
+        # Compute latency stats
+        latency_stats = {}
+        if all_latencies:
+            n = len(all_latencies)
+            for key in ("generator_time", "reflector_time", "curator_time",
+                        "playbook_update_time"):
+                latency_stats[key.replace("_time", "_mean_s")] = sum(
+                    d[key] for d in all_latencies
+                ) / n
+            latency_stats["retrieval_mean_s"] = 0.0
+            latency_stats["graph_update_mean_s"] = 0.0
+            latency_stats["total_per_sample_mean_s"] = sum(
+                sum(d.values()) for d in all_latencies
+            ) / n
+
         test_results = {
             "accuracy": final_test_accuracy,
             "correct": correct_count_sample_based,
             "total": total_count,
             "window_results": window_test_results
         }
-        
+
         test_error_log = {
             "accuracy": final_test_accuracy,
             "errors": all_test_errors
@@ -1113,30 +1183,31 @@ class ACE:
                 "test_results": test_results,
                 "test_error_log": test_error_log
             }, f, indent=2)
-        
+
         # Save training results (per window)
         train_results_path = os.path.join(save_path, "train_results.json")
         with open(train_results_path, "w") as f:
             json.dump({"train_results": train_results}, f, indent=2)
-        
+
         # Save pre-train/post-train results
         pre_train_post_train_results_path = os.path.join(save_path, "pre_train_post_train_results.json")
         with open(pre_train_post_train_results_path, "w") as f:
             json.dump(pre_train_post_train_results, f, indent=2)
-        
+
         # Save final playbook
         final_playbook_path = os.path.join(save_path, f"final_playbook.txt")
         with open(final_playbook_path, "w") as f:
             f.write(self.playbook)
-        
+
         print(f"\n{'='*60}")
         print(f"ONLINE TRAINING AND TESTING COMPLETE")
         print(f"{'='*60}")
         print(f"Final Test Accuracy: {final_test_accuracy:.3f}")
         print(f"{'='*60}\n")
-        
+
         return {
             "accuracy": final_test_accuracy,
             "correct": correct_count_sample_based,
             "total": total_count,
+            "latency_stats": latency_stats,
         }

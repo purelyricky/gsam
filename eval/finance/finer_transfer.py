@@ -78,14 +78,19 @@ def build_concept_pairs(taxonomy: Dict) -> List[Dict]:
         for e in entities:
             entity_to_cat[e] = cat
 
-    # Sample distant pairs
+    # Sample distant pairs — match count to sibling pairs, deduplicate
     random.seed(42)
     distant_pairs = []
+    distant_seen = set()
     attempts = 0
-    while len(distant_pairs) < min(20, len(pairs)) and attempts < 1000:
+    while len(distant_pairs) < len(pairs) and attempts < 10000:
         a = random.choice(all_entities)
         b = random.choice(all_entities)
-        if a != b and entity_to_cat.get(a) != entity_to_cat.get(b):
+        pair_key = frozenset({a, b})
+        if (a != b
+                and entity_to_cat.get(a) != entity_to_cat.get(b)
+                and pair_key not in distant_seen):
+            distant_seen.add(pair_key)
             distant_pairs.append({
                 "concept_a": a,
                 "concept_b": b,
@@ -152,6 +157,35 @@ def build_transfer_splits(
     return experiments
 
 
+def _reset_system(system) -> None:
+    """
+    Reset system memory to its initial state before each transfer experiment.
+
+    For GSAM: removes all learned nodes (Strategy, AntiPattern, Confusion)
+    while preserving the ontology-initialized Concept and Formula nodes.
+
+    For ACE: resets the playbook to empty and resets the bullet ID counter.
+    """
+    if hasattr(system, 'knowledge_graph'):
+        # GSAM: remove learned (experiential) nodes, keep ontology backbone
+        from gsam.graph_memory import NodeType
+        learned_values = {
+            NodeType.STRATEGY.value,
+            NodeType.ANTI_PATTERN.value,
+            NodeType.CONFUSION.value,
+        }
+        nodes_to_remove = [
+            nid for nid, data in system.knowledge_graph.graph.nodes(data=True)
+            if data.get("type") in learned_values
+        ]
+        system.knowledge_graph.graph.remove_nodes_from(nodes_to_remove)
+        system.knowledge_graph.tasks_processed = 0
+    elif hasattr(system, '_initialize_empty_playbook'):
+        # ACE: reset playbook and ID counter
+        system.playbook = system._initialize_empty_playbook()
+        system.next_global_id = 1
+
+
 def evaluate_transfer(
     method_name: str,
     experiment: Dict,
@@ -164,9 +198,13 @@ def evaluate_transfer(
     Run a single transfer experiment.
 
     Protocol:
-    1. Baseline: Evaluate on target without any adaptation
-    2. Adapt: Train on source examples
-    3. Transfer: Evaluate on target with adapted knowledge
+    1. Reset: Clear learned memory to initial state (keeps ontology for GSAM)
+    2. Baseline: Evaluate on target without any adaptation
+    3. Adapt: Train on source examples
+    4. Transfer: Evaluate on target with adapted knowledge
+
+    Each experiment starts from the same clean state so that transfer gains
+    are attributable to learning from the source concept only.
 
     Args:
         method_name: "ace" or "gsam"
@@ -179,6 +217,9 @@ def evaluate_transfer(
     Returns:
         Dict with transfer metrics.
     """
+    # Reset system to initial state so experiments are independent
+    _reset_system(system)
+
     source_examples = experiment["source_examples"]
     target_examples = experiment["target_examples"]
     source_concept = experiment["source_concept"]

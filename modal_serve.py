@@ -36,7 +36,7 @@ DeepSeek-R1-Distill-Qwen-32B   → 2 × H100  (~$8/hr)    good quality, practica
 DeepSeek-R1-Distill-Llama-70B  → 4 × H100  (~$16/hr)   closer to V3 quality
 deepseek-ai/DeepSeek-V3-0324   → 8 × H100  (~$32/hr)   matches ACE paper exactly
 
-Default is the 32B distill — cheapest option that still gives good results.
+Default is DeepSeek-V3-0324 (8 × H100) — matches the ACE paper exactly.
 Change N_GPU and the tensor-parallel-size accordingly (must match).
 
 The served model name (what you pass as --generator_model in run commands)
@@ -47,9 +47,12 @@ import modal
 
 # ---------------------------------------------------------------------------
 # Model selection — edit these two lines to change the model
+# Default: deepseek-ai/DeepSeek-V3-0324 (HuggingFace ID for DeepSeek-V3,
+# the model used in the paper; pass this string as --generator_model when
+# using --api_provider modal).
 # ---------------------------------------------------------------------------
-MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
-N_GPU = 2          # must match tensor-parallel-size in serve() below
+MODEL_NAME = "deepseek-ai/DeepSeek-V3-0324"
+N_GPU = 8          # must match tensor-parallel-size in serve() below
 
 # ---------------------------------------------------------------------------
 # Container image — vLLM + HuggingFace Hub on CUDA 12.8
@@ -79,10 +82,10 @@ app = modal.App("gsam-deepseek")
 @app.function(
     image=vllm_image,
     gpu=f"H100:{N_GPU}",
-    # Keep warm for 30 min between requests to avoid cold-start delays mid-experiment.
-    # Lower this if you want to save cost when not running experiments.
-    scaledown_window=30 * MINUTES,
-    timeout=20 * MINUTES,
+    # Keep warm between requests to avoid cold-start delays mid-experiment.
+    # Modal's maximum allowed value is 20 minutes (1200 s).
+    scaledown_window=20 * MINUTES,
+    timeout=60 * 60,   # 1 hour — long enough for a full 300-sample run (~43 min)
     volumes={
         "/root/.cache/huggingface": hf_cache_vol,
         "/root/.cache/vllm": vllm_cache_vol,
@@ -92,7 +95,6 @@ app = modal.App("gsam-deepseek")
     # but it speeds up downloads via authenticated requests.
     # secrets=[modal.Secret.from_name("huggingface-secret")],
 )
-@modal.concurrent(max_inputs=32)
 @modal.web_server(port=VLLM_PORT, startup_timeout=20 * MINUTES)
 def serve():
     import subprocess

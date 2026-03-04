@@ -411,6 +411,8 @@ class GSAM:
                 save_path, log_dir, graph_dir,
             )
             results['training_results'] = training_results
+            if training_results.get("latency_stats"):
+                results['latency_stats'] = training_results["latency_stats"]
 
             if test_samples:
                 final = self._run_test(test_samples, data_processor, config, log_dir, save_path, "final")
@@ -427,6 +429,8 @@ class GSAM:
                 save_path, log_dir, graph_dir,
             )
             results['online_test_results'] = online_results
+            if online_results.get("latency_stats"):
+                results['latency_stats'] = online_results["latency_stats"]
 
         else:  # eval_only
             test_results = self._run_test(test_samples, data_processor, config, log_dir, save_path, "test")
@@ -485,7 +489,7 @@ class GSAM:
         log_dir: str,
         config_params: Dict,
         total_samples: int,
-    ) -> Tuple[str, str, Dict]:
+    ) -> Tuple[str, str, Dict, Dict]:
         """Train on a single sample using graph-structured memory."""
         max_num_rounds = config_params['max_num_rounds']
         curator_frequency = config_params['curator_frequency']
@@ -497,6 +501,12 @@ class GSAM:
         context = task_dict.get("context", "")
         target = task_dict.get("target", "")
 
+        # Per-sample latency accumulators
+        _generator_time = 0.0
+        _reflector_time = 0.0
+        _curator_time = 0.0
+        _graph_update_time = 0.0
+
         # STEP 1: Graph Retrieval
         start_retrieval = time.time()
         graph_context, retrieved_ids = self.graph_retriever.retrieve(
@@ -505,6 +515,7 @@ class GSAM:
         retrieval_time = time.time() - start_retrieval
 
         # STEP 2: Initial Generation
+        _t0 = time.time()
         gen_response, node_ids, call_info = self.generator.generate(
             question=question,
             graph_context=graph_context,
@@ -514,6 +525,7 @@ class GSAM:
             call_id=f"{step_id}_gen_initial",
             log_dir=log_dir,
         )
+        _generator_time += time.time() - _t0
 
         final_answer = extract_answer(gen_response)
         is_correct = data_processor.answer_is_correct(final_answer, target)
@@ -552,6 +564,7 @@ class GSAM:
             for round_num in range(max_num_rounds):
                 print(f"Reflection round {round_num + 1}/{max_num_rounds}")
 
+                _t0 = time.time()
                 reflection_content, node_tags, _ = self.reflector.reflect(
                     question=question,
                     reasoning_trace=gen_response,
@@ -564,6 +577,7 @@ class GSAM:
                     call_id=f"{step_id}_round_{round_num}",
                     log_dir=log_dir,
                 )
+                _reflector_time += time.time() - _t0
 
                 # Update node counts
                 if node_tags:
@@ -580,6 +594,7 @@ class GSAM:
                 })
 
                 # Regenerate with reflection
+                _t0 = time.time()
                 gen_response, node_ids, _ = self.generator.generate(
                     question=question,
                     graph_context=graph_context,
@@ -589,6 +604,7 @@ class GSAM:
                     call_id=f"{step_id}_post_reflect_{round_num}",
                     log_dir=log_dir,
                 )
+                _generator_time += time.time() - _t0
 
                 final_answer = extract_answer(gen_response)
                 if data_processor.answer_is_correct(final_answer, target):
@@ -597,6 +613,7 @@ class GSAM:
                     break
         else:
             # Correct answer - still reflect to tag helpful nodes
+            _t0 = time.time()
             reflection_content, node_tags, _ = self.reflector.reflect(
                 question=question,
                 reasoning_trace=gen_response,
@@ -609,6 +626,7 @@ class GSAM:
                 call_id=f"{step_id}_reflect_correct",
                 log_dir=log_dir,
             )
+            _reflector_time += time.time() - _t0
             if node_tags:
                 self.graph_constructor.update_node_tags(node_tags)
 
@@ -619,6 +637,7 @@ class GSAM:
             graph_stats_str = json.dumps(self.knowledge_graph.stats(), indent=2)
             graph_summary = self._get_graph_summary_for_curator()
 
+            _t0 = time.time()
             curator_response, _ = self.curator.curate(
                 graph_stats=graph_stats_str,
                 graph_summary=graph_summary,
@@ -632,9 +651,11 @@ class GSAM:
                 call_id=step_id,
                 log_dir=log_dir,
             )
+            _curator_time += time.time() - _t0
 
             # Convert curator output to graph operations
             if not curator_response.startswith("INCORRECT_DUE_TO_EMPTY_RESPONSE"):
+                _t0 = time.time()
                 ops = self.graph_constructor.process_curator_output(
                     curator_output=curator_response,
                     reflection_content=reflection_content,
@@ -642,6 +663,7 @@ class GSAM:
                     call_id=step_id,
                     log_dir=log_dir,
                 )
+                _graph_update_time += time.time() - _t0
                 print(f"  Applied {len(ops)} graph operations")
 
         # STEP 5: Periodic pruning
@@ -654,7 +676,10 @@ class GSAM:
         # actually ran and updated the graph, otherwise the context is
         # unchanged and the extra LLM call is wasted.
         if step % curator_frequency == 0:
+            _t0 = time.time()
             graph_context_post, _ = self.graph_retriever.retrieve(query=question, context=context)
+            retrieval_time += time.time() - _t0
+            _t0 = time.time()
             gen_response, _, _ = self.generator.generate(
                 question=question,
                 graph_context=graph_context_post,
@@ -664,6 +689,7 @@ class GSAM:
                 call_id=f"{step_id}_post_curate",
                 log_dir=log_dir,
             )
+            _generator_time += time.time() - _t0
             final_answer = extract_answer(gen_response)
 
         post_train_answer = final_answer
@@ -677,7 +703,15 @@ class GSAM:
             "graph_stats": self.knowledge_graph.stats(),
         }
 
-        return pre_train_answer, post_train_answer, tracking_dict
+        latency_dict = {
+            "generator_time": _generator_time,
+            "reflector_time": _reflector_time,
+            "curator_time": _curator_time,
+            "retrieval_time": retrieval_time,
+            "graph_update_time": _graph_update_time,
+        }
+
+        return pre_train_answer, post_train_answer, tracking_dict, latency_dict
 
     def _offline_train(self, train_samples, val_samples, data_processor, config,
                        save_path, log_dir, graph_dir):
@@ -690,6 +724,7 @@ class GSAM:
         results = []
         pre_post_results = []
         best_accuracy = 0.0
+        all_latencies = []
 
         for epoch in range(1, num_epochs + 1):
             print(f"\n{'='*60}\nEPOCH {epoch}/{num_epochs}\n{'='*60}")
@@ -702,7 +737,7 @@ class GSAM:
                 print(f"\n--- Step {step}/{len(train_samples)} ---")
 
                 target = task_dict.get("target", "")
-                pre, post, tracking = self._train_single_sample(
+                pre, post, tracking, latency = self._train_single_sample(
                     task_dict, data_processor, f"train_e_{epoch}_s_{step}",
                     step, log_dir, config_params, len(train_samples),
                 )
@@ -711,6 +746,7 @@ class GSAM:
                 targets_pre.append(target)
                 answers_post.append(post)
                 targets_post.append(target)
+                all_latencies.append(latency)
 
                 pre_post_results.append({
                     "epoch": epoch, "step": step, "target": target, **tracking,
@@ -757,13 +793,26 @@ class GSAM:
                     os.path.join(graph_dir, f"graph_epoch_{epoch}_consolidated.json")
                 )
 
+        # Compute latency stats
+        latency_stats = {}
+        if all_latencies:
+            n = len(all_latencies)
+            for key in ("generator_time", "reflector_time", "curator_time",
+                        "retrieval_time", "graph_update_time"):
+                latency_stats[key.replace("_time", "_mean_s")] = sum(
+                    d[key] for d in all_latencies
+                ) / n
+            latency_stats["total_per_sample_mean_s"] = sum(
+                sum(d.values()) for d in all_latencies
+            ) / n
+
         # Save results
         with open(os.path.join(save_path, "train_results.json"), "w") as f:
             json.dump({"best_accuracy": best_accuracy, "results": results}, f, indent=2)
         with open(os.path.join(save_path, "pre_train_post_train_results.json"), "w") as f:
             json.dump(pre_post_results, f, indent=2)
 
-        return {"best_validation_accuracy": best_accuracy}
+        return {"best_validation_accuracy": best_accuracy, "latency_stats": latency_stats}
 
     def _online_train_and_test(self, test_samples, data_processor, config,
                                save_path, log_dir, graph_dir):
@@ -778,6 +827,7 @@ class GSAM:
         all_targets = []
         all_errors = []
         window_results = []
+        all_latencies = []
 
         num_windows = (len(test_samples) + online_eval_frequency - 1) // online_eval_frequency
         global_step = 0
@@ -834,10 +884,11 @@ class GSAM:
                 global_step += 1
                 print(f"\n--- Window {window_idx+1}, Step {local_step+1}/{len(window_samples)} (Global {global_step}) ---")
 
-                self._train_single_sample(
+                _, _, _, latency = self._train_single_sample(
                     task_dict, data_processor, f"online_train_s_{global_step}",
                     global_step, log_dir, config_params, len(test_samples),
                 )
+                all_latencies.append(latency)
 
                 if global_step % save_steps == 0:
                     self.knowledge_graph.save(
@@ -849,6 +900,19 @@ class GSAM:
             final_acc = data_processor.evaluate_accuracy(all_answers, all_targets)
         else:
             final_acc = 0.0
+
+        # Compute latency stats
+        latency_stats = {}
+        if all_latencies:
+            n = len(all_latencies)
+            for key in ("generator_time", "reflector_time", "curator_time",
+                        "retrieval_time", "graph_update_time"):
+                latency_stats[key.replace("_time", "_mean_s")] = sum(
+                    d[key] for d in all_latencies
+                ) / n
+            latency_stats["total_per_sample_mean_s"] = sum(
+                sum(d.values()) for d in all_latencies
+            ) / n
 
         # Save results
         with open(os.path.join(save_path, "test_results.json"), "w") as f:
@@ -864,6 +928,7 @@ class GSAM:
             "accuracy": final_acc,
             "correct": correct_count_sample,
             "total": total_count,
+            "latency_stats": latency_stats,
         }
 
     # ------------------------------------------------------------------

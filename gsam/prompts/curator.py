@@ -64,6 +64,16 @@ Output ONLY a valid JSON object with these exact fields:
    - concept_pair: list of two concept names that are confused
    - distinguishing_criteria: how to tell them apart
 
+4. ADD_PART_OF: Record that a component concept is part of an aggregate concept
+   - component: name of the component XBRL concept (e.g. "RevenueFromContractWithCustomer")
+   - aggregate: name of the aggregate XBRL concept (e.g. "Revenue")
+   - Use when a concept is a sub-element or line-item of a broader concept.
+
+5. ADD_CONFLICTS_WITH: Record that two strategies are mutually exclusive
+   - strategy_a: content of the first strategy (must already exist in the graph)
+   - strategy_b: content of the second strategy (must already exist in the graph)
+   - Use when applying both strategies simultaneously would produce contradictory results.
+
 **RESPONSE FORMAT:**
 {{
   "reasoning": "[Your analysis here]",
@@ -86,6 +96,16 @@ Output ONLY a valid JSON object with these exact fields:
       "content": "[Confusion description]",
       "concept_pair": ["Concept1", "Concept2"],
       "distinguishing_criteria": "[How to distinguish]"
+    }},
+    {{
+      "type": "ADD_PART_OF",
+      "component": "ComponentConceptName",
+      "aggregate": "AggregateConceptName"
+    }},
+    {{
+      "type": "ADD_CONFLICTS_WITH",
+      "strategy_a": "[Content of first strategy]",
+      "strategy_b": "[Content of second strategy]"
     }}
   ]
 }}
@@ -123,6 +143,9 @@ GSAM_CURATOR_PROMPT_NO_GT = """You are a master curator of a knowledge graph for
 **Question Context:**
 {question_context}
 
+**Available Operations:** ADD_STRATEGY, ADD_ANTIPATTERN, ADD_CONFUSION,
+ADD_PART_OF (component/aggregate concept names), ADD_CONFLICTS_WITH (strategy_a/strategy_b contents).
+
 **RESPONSE FORMAT:**
 {{
   "reasoning": "[Your analysis here]",
@@ -139,6 +162,16 @@ GSAM_CURATOR_PROMPT_NO_GT = """You are a master curator of a knowledge graph for
       "severity": "medium",
       "concepts": ["ConceptName"],
       "cascading_formulas": []
+    }},
+    {{
+      "type": "ADD_PART_OF",
+      "component": "ComponentConceptName",
+      "aggregate": "AggregateConceptName"
+    }},
+    {{
+      "type": "ADD_CONFLICTS_WITH",
+      "strategy_a": "[Content of first strategy]",
+      "strategy_b": "[Content of second strategy]"
     }}
   ]
 }}

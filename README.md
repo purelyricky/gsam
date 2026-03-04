@@ -2,7 +2,7 @@
 
 <div align="left">
 
-<img src="assets/images/ace_framework.png" alt="ACE Framework" width="800"/>
+<img src="assets/images/gsam_framework.png" alt="ACE Framework" width="800"/>
 
 </div>
 
@@ -86,12 +86,19 @@ gsam/
 ├── experiments/
 │   ├── run_experiment.py              # Experiment runner (single or suite)
 │   └── configs/                       # JSON experiment configs
+│       ├── ace_finer_offline.json
+│       ├── ace_finer_online.json
+│       ├── ace_formula_offline.json
+│       ├── ace_formula_online.json
 │       ├── gsam_finer_offline.json
 │       ├── gsam_finer_online.json
+│       ├── gsam_formula_offline.json
+│       ├── gsam_formula_online.json
 │       ├── gsam_ablation_no_ontology.json
 │       ├── gsam_ablation_no_cascades.json
 │       ├── gsam_ablation_embedding_only.json
-│       └── gsam_ablation_untyped_edges.json
+│       ├── gsam_ablation_untyped_edges.json
+│       └── gsam_ablation_no_multiepoch.json
 │
 ├── tests/                             # Unit tests (57 tests)
 │   ├── test_graph_memory.py
@@ -130,7 +137,7 @@ The key dependencies are:
 | `sentence-transformers>=2.2.0` | Node embedding similarity for deduplication and retrieval |
 | `openai>=1.0.0` | LLM API client (works with SambaNova, Together, OpenAI, Modal) |
 | `tiktoken` | Token counting for budget management |
-| `modal>=0.73.0` | Modal deployment SDK (only needed if self-hosting) |
+| `modal>=0.73.148` | Modal deployment SDK (only needed if self-hosting) |
 
 > **Note on HuggingFace**: `sentence-transformers` automatically downloads `all-MiniLM-L6-v2` on first use. This model is public — no HuggingFace token is required for local runs.
 
@@ -189,7 +196,7 @@ modal run modal_serve.py
 | `deepseek-ai/DeepSeek-R1-Distill-Llama-70B` | 4 × H100 | ~$16/hr | Closer to V3 quality |
 | `deepseek-ai/DeepSeek-V3-0324` | 8 × H100 | ~$32/hr | Matches ACE paper exactly |
 
-The server stays warm for 30 minutes between requests (configurable via `scaledown_window` in `modal_serve.py`) to avoid cold-start delays mid-experiment.
+The server stays warm for up to 20 minutes between requests (Modal's maximum; configurable via `scaledown_window` in `modal_serve.py`) to avoid cold-start delays mid-experiment.
 
 **Running experiments with Modal:**
 
@@ -264,6 +271,18 @@ python -m eval.finance.run \
     --generator_model DeepSeek-V3.1
 ```
 
+**Formula — offline (5 epochs):**
+
+```bash
+python -m eval.finance.run \
+    --task_name formula \
+    --mode offline \
+    --num_epochs 5 \
+    --save_path results/ace_formula_offline \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1
+```
+
 **Where to find ACE results:** `results/ace_finer_online/ace_run_*/final_results.json` → key: `"accuracy"` (top-level)
 
 ---
@@ -304,6 +323,19 @@ python -m eval.finance.run_gsam \
     --task_name formula \
     --mode online \
     --save_path results/gsam_formula_online \
+    --api_provider sambanova \
+    --generator_model DeepSeek-V3.1 \
+    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
+```
+
+**Formula — offline (5 epochs per paper §6.4):**
+
+```bash
+python -m eval.finance.run_gsam \
+    --task_name formula \
+    --mode offline \
+    --num_epochs 5 \
+    --save_path results/gsam_formula_offline \
     --api_provider sambanova \
     --generator_model DeepSeek-V3.1 \
     --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
@@ -356,6 +388,15 @@ python -m eval.finance.run_gsam \
     --save_path results/ablation_untyped_edges \
     --api_provider sambanova \
     --untyped_edges
+
+# No multi-epoch graph refinement (single pass; compare to offline 5-epoch)
+python -m eval.finance.run_gsam \
+    --task_name finer --mode offline \
+    --num_epochs 1 \
+    --save_path results/ablation_no_multiepoch \
+    --api_provider sambanova \
+    --no_multi_epoch_refinement \
+    --taxonomy_path ./eval/finance/data/xbrl_taxonomy.json
 ```
 
 Or run all at once:

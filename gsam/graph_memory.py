@@ -611,6 +611,30 @@ class KnowledgeGraph:
             lines.append("ADDITIONAL STRATEGIES:")
             lines.extend(orphan_strats)
 
+        # --- Conflicts between strategies ---
+        conflict_lines = []
+        seen_conflict_pairs: set = set()
+        for nid, data in subgraph.nodes(data=True):
+            if data.get("type") != NodeType.STRATEGY.value:
+                continue
+            for _, tgt, edata in subgraph.out_edges(nid, data=True):
+                if edata.get("type") != EdgeType.CONFLICTS_WITH.value:
+                    continue
+                pair_key = tuple(sorted([nid, tgt]))
+                if pair_key in seen_conflict_pairs:
+                    continue
+                seen_conflict_pairs.add(pair_key)
+                tgt_data = subgraph.nodes.get(tgt, {})
+                conflict_lines.append(
+                    f"  [{nid}] {data.get('content', '')[:80]}"
+                    f" <-> [{tgt}] {tgt_data.get('content', '')[:80]}"
+                )
+
+        if conflict_lines:
+            lines.append("")
+            lines.append("CONFLICTS WITH (mutually exclusive strategies):")
+            lines.extend(conflict_lines)
+
         return "\n".join(lines)
 
     # ------------------------------------------------------------------

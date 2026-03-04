@@ -79,6 +79,25 @@ class GraphRetriever:
         seed_ids = [cid for cid, _ in matched_concepts]
         subgraph = self.graph.get_subgraph(seed_ids, depth=self.retrieval_depth)
 
+        # Stage 2b: Include nodes reachable via conflicts_with from any
+        # strategy or anti-pattern already in the subgraph so the model
+        # can see which strategies are mutually exclusive.
+        conflicts_extra: Set[str] = set()
+        for nid in list(subgraph.nodes()):
+            ntype = subgraph.nodes[nid].get("type", "")
+            if ntype not in (NodeType.STRATEGY.value, NodeType.ANTI_PATTERN.value):
+                continue
+            for _, nbr, edata in self.graph.graph.out_edges(nid, data=True):
+                if edata.get("type") == EdgeType.CONFLICTS_WITH.value and nbr not in subgraph.nodes:
+                    conflicts_extra.add(nbr)
+            for nbr, _, edata in self.graph.graph.in_edges(nid, data=True):
+                if edata.get("type") == EdgeType.CONFLICTS_WITH.value and nbr not in subgraph.nodes:
+                    conflicts_extra.add(nbr)
+
+        if conflicts_extra:
+            all_ids_stage2 = set(subgraph.nodes()) | conflicts_extra
+            subgraph = self.graph.get_subgraph(list(all_ids_stage2), depth=0)
+
         # Stage 3: Taxonomic Expansion
         transfer_nodes = self._taxonomic_expansion(matched_concepts, subgraph)
 

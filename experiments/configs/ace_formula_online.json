@@ -1,0 +1,19 @@
+{
+  "experiment_name": "ace_formula_online",
+  "description": "ACE baseline online adaptation on XBRL Formula dataset",
+  "system": "ace",
+  "task_name": "formula",
+  "mode": "online",
+  "api_provider": "sambanova",
+  "generator_model": "DeepSeek-V3.1",
+  "reflector_model": "DeepSeek-V3.1",
+  "curator_model": "DeepSeek-V3.1",
+  "num_epochs": 1,
+  "max_num_rounds": 3,
+  "curator_frequency": 1,
+  "online_eval_frequency": 15,
+  "save_steps": 50,
+  "max_tokens": 4096,
+  "playbook_token_budget": 80000,
+  "test_workers": 20
+}

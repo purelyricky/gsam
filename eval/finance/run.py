@@ -42,7 +42,7 @@ def parse_args():
                         help="Model for curator")
     
     # Training configuration
-    parser.add_argument("--num_epochs", type=int, default=1,
+    parser.add_argument("--num_epochs", type=int, default=5,
                         help="Number of training epochs")
     parser.add_argument("--max_num_rounds", type=int, default=3,
                         help="Max reflection rounds for incorrect answers")

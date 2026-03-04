@@ -260,6 +260,64 @@ def main():
         print("  Run Step 5 from the README to generate transfer results.")
 
     # ------------------------------------------------------------------
+    # TABLE 6 — Latency Breakdown (seconds/sample)
+    # ------------------------------------------------------------------
+    print(f"\n{sep}")
+    print("TABLE 6 — Latency Breakdown (seconds/sample)")
+    print(f"{sep}")
+    print(f"  {'Method':<30}  {'Generator':>10}  {'Reflector':>10}  {'Curator':>10}  "
+          f"{'Retrieval':>10}  {'Graph Upd':>10}  {'Total':>8}")
+    print(f"  {'-'*30}  {'-'*10}  {'-'*10}  {'-'*10}  {'-'*10}  {'-'*10}  {'-'*8}")
+
+    latency_rows = [
+        ("ACE (baseline)",  "ace_finer_online",  "online"),
+        ("GSAM (full)",     "gsam_finer_online", "online"),
+    ]
+
+    def get_latency(results_dict):
+        """Extract latency_stats from a final_results.json dict."""
+        if results_dict is None:
+            return None
+        # Top-level (written by run() for both ACE and GSAM)
+        if "latency_stats" in results_dict:
+            return results_dict["latency_stats"]
+        # Fallback: nested inside online_test_results (GSAM legacy)
+        for key in ("online_test_results", "final_test_results", "training_results"):
+            sub = results_dict.get(key, {})
+            if isinstance(sub, dict) and "latency_stats" in sub:
+                return sub["latency_stats"]
+        return None
+
+    def fmt_lat(v):
+        if v is None:
+            return "   N/A   "
+        return f"{v:.3f}"
+
+    for label, prefix, mode in latency_rows:
+        run = find_latest_run(base, prefix)
+        f = find_results_file(run) if run else None
+        data = load_json(f)
+        lat = get_latency(data)
+
+        if lat:
+            gen  = lat.get("generator_mean_s")
+            ref  = lat.get("reflector_mean_s")
+            cur  = lat.get("curator_mean_s")
+            ret  = lat.get("retrieval_mean_s")
+            gupd = lat.get("graph_update_mean_s")
+            tot  = lat.get("total_per_sample_mean_s")
+        else:
+            gen = ref = cur = ret = gupd = tot = None
+
+        print(f"  {label:<30}  {fmt_lat(gen):>10}  {fmt_lat(ref):>10}  {fmt_lat(cur):>10}  "
+              f"{fmt_lat(ret):>10}  {fmt_lat(gupd):>10}  {fmt_lat(tot):>8}")
+
+    print()
+    print("  All times in seconds per training sample (mean over run).")
+    print("  Retrieval and Graph Update are 0.0 for ACE (no graph component).")
+    print("  Source key: result['latency_stats'] in final_results.json")
+
+    # ------------------------------------------------------------------
     # SUMMARY — Key metrics for paper hypotheses
     # ------------------------------------------------------------------
     print(f"\n{sep}")

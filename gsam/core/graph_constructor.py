@@ -121,6 +121,12 @@ class GraphConstructor:
             elif op_type == "ADD_CONFUSION":
                 ops = self._handle_add_confusion(op)
                 operations.extend(ops)
+            elif op_type == "ADD_PART_OF":
+                ops = self._handle_add_part_of(op)
+                operations.extend(ops)
+            elif op_type == "ADD_CONFLICTS_WITH":
+                ops = self._handle_add_conflicts_with(op)
+                operations.extend(ops)
             elif op_type == "ADD":
                 # Fallback for ACE-style ADD operations
                 ops = self._handle_legacy_add(op)
@@ -301,6 +307,79 @@ class GraphConstructor:
                 edge_type=EdgeType.CONFUSED_WITH.value,
             ))
 
+        return ops
+
+    def _handle_add_part_of(self, op: Dict) -> List[GraphOperation]:
+        """Convert an ADD_PART_OF curator operation to a part_of edge.
+
+        Expects:
+            component: name of the component concept (e.g. "RevenueFromContractWithCustomer")
+            aggregate: name of the aggregate concept (e.g. "Revenue")
+
+        Creates a single directed part_of edge from the component concept node
+        to the aggregate concept node.  Both concepts must already exist in the
+        graph (they are XBRL ontology nodes); if either cannot be resolved the
+        operation is silently skipped.
+        """
+        component_name = op.get("component", "")
+        aggregate_name = op.get("aggregate", "")
+
+        if not component_name or not aggregate_name:
+            return []
+
+        component_nid = self._resolve_concept(component_name)
+        aggregate_nid = self._resolve_concept(aggregate_name)
+
+        if not component_nid or not aggregate_nid:
+            return []
+
+        return [GraphOperation(
+            op_type="ADD_EDGE",
+            source_id=component_nid,
+            target_id=aggregate_nid,
+            edge_type=EdgeType.PART_OF.value,
+        )]
+
+    def _handle_add_conflicts_with(self, op: Dict) -> List[GraphOperation]:
+        """Convert an ADD_CONFLICTS_WITH curator operation to conflicts_with edges.
+
+        Expects:
+            strategy_a: content of the first strategy (used for similarity lookup)
+            strategy_b: content of the second strategy (used for similarity lookup)
+
+        Creates bidirectional conflicts_with edges between the two strategy nodes.
+        If either strategy cannot be found in the graph the operation is skipped.
+        """
+        strategy_a_content = op.get("strategy_a", "")
+        strategy_b_content = op.get("strategy_b", "")
+
+        if not strategy_a_content or not strategy_b_content:
+            return []
+
+        sid_a = self.graph.find_similar_node(
+            strategy_a_content, NodeType.STRATEGY, threshold=0.7
+        )
+        sid_b = self.graph.find_similar_node(
+            strategy_b_content, NodeType.STRATEGY, threshold=0.7
+        )
+
+        if not sid_a or not sid_b or sid_a == sid_b:
+            return []
+
+        ops = [
+            GraphOperation(
+                op_type="ADD_EDGE",
+                source_id=sid_a,
+                target_id=sid_b,
+                edge_type=EdgeType.CONFLICTS_WITH.value,
+            ),
+            GraphOperation(
+                op_type="ADD_EDGE",
+                source_id=sid_b,
+                target_id=sid_a,
+                edge_type=EdgeType.CONFLICTS_WITH.value,
+            ),
+        ]
         return ops
 
     def _handle_legacy_add(self, op: Dict) -> List[GraphOperation]:
