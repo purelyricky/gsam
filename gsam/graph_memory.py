@@ -513,7 +513,6 @@ class KnowledgeGraph:
                 lines.append(f"  [{cid}] {c.get('name', c.get('content', ''))}{path_str}")
 
                 # Find strategies applying to this concept
-                c_strats = []
                 for sid, _, edata in subgraph.in_edges(cid, data=True):
                     if edata.get("type") == EdgeType.APPLIES_TO.value:
                         snode = subgraph.nodes.get(sid, {})

@@ -292,8 +292,8 @@ def evaluate_test_set(data_processor, generator, playbook, test_samples,
         
         print(f"\n📊 Final Accuracy: {accuracy:.3f} ({results['correct']}/{results['total']})")
     else:
-        results = {"accuracy": 0.0, "correct": 0, "total": 0}
+        final_results = {"accuracy": 0.0, "correct": 0, "total": 0}
         error_logs = {}
         print(f"\n📊 No valid results!")
-        
+
     return final_results, error_logs

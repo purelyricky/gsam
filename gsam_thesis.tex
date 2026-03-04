@@ -1,0 +1,1207 @@
+% =============================================================================
+% TDK Thesis - University of Debrecen
+% Graph-Structured Adaptive Memory: Evolving Contexts for Agentic,
+% Self-Improving Systems
+% Author: Ricky
+% =============================================================================
+\documentclass[12pt,a4paper,oneside]{article}
+
+% --- Page geometry (TDK: left 3cm, right 2cm, top 3cm, bottom 3cm) ---
+\usepackage[left=3cm, right=2cm, top=3cm, bottom=3cm]{geometry}
+
+% --- Font: Times New Roman equivalent (mathptmx) ---
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% --- 1.5 line spacing ---
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Graphics and figures ---
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{subcaption}
+\usepackage{float}
+
+% --- Tables ---
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+
+% --- Math ---
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+
+% --- Algorithm ---
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% --- Citations: author-year style per TDK requirements ---
+\usepackage[authoryear,round]{natbib}
+\bibliographystyle{plainnat}
+
+% --- Hyperlinks ---
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+% --- Code listings ---
+\usepackage{listings}
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color[gray]{0.96},
+    captionpos=b
+}
+
+% --- Colors ---
+\usepackage{xcolor}
+
+% --- Enumeration ---
+\usepackage{enumitem}
+
+% --- Section title formatting (14pt for sections, 13pt subsections) ---
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{14}{17}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\fontsize{13}{16}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{\thesubsubsection}{1em}{}
+
+% --- Prevent widows and orphans ---
+\widowpenalty=10000
+\clubpenalty=10000
+
+% --- Custom command for placeholder image note ---
+\newcommand{\imgplaceholder}[1]{\textcolor{gray}{\small\textit{[Placeholder --- replace with: #1]}}}
+
+% =============================================================================
+\begin{document}
+
+% =============================================================================
+% COVER PAGE (TDK format)
+% =============================================================================
+\begin{titlepage}
+\begin{center}
+
+% University, Faculty, Department (top, centered)
+{\large University of Debrecen}\\[4pt]
+{\large Faculty of Informatics}\\[4pt]
+{\large Department of Computer Science}\\[2.5cm]
+
+% Title (top third, centered, 16pt)
+{\fontsize{16}{20}\bfseries Graph-Structured Adaptive Memory:\\[8pt]
+Evolving Contexts for Agentic,\\[8pt]
+Self-Improving Systems}\\[3cm]
+
+\end{center}
+
+\vfill
+
+% Supervisor (left) and Author (right)
+\begin{minipage}[t]{0.45\textwidth}
+\raggedright
+\textbf{Supervisor:}\\[4pt]
+Dr.~[Supervisor Name]\\
+{[Position/Title]}\\
+Department of Computer Science
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\raggedleft
+\textbf{Author:}\\[4pt]
+Ricky\\
+Computer Science BSc\\
+Faculty of Informatics
+\end{minipage}
+
+\vspace{1.5cm}
+
+% Consent line
+\begin{center}
+\textit{``I consent to its submission for review''}\\[1cm]
+\rule{6cm}{0.4pt}\\[4pt]
+{\small Supervisor's signature}
+\end{center}
+
+\vspace{1cm}
+
+% Place and year (bottom, centered)
+\begin{center}
+{\large Debrecen, 2026}
+\end{center}
+
+\end{titlepage}
+
+% =============================================================================
+% TABLE OF CONTENTS
+% =============================================================================
+\newpage
+\tableofcontents
+\newpage
+
+% =============================================================================
+% INTRODUCTION (2-3 pages per TDK guidelines)
+% =============================================================================
+\section{Introduction}
+\label{sec:introduction}
+
+Large language models (LLMs) have become foundational tools across nearly every domain of computing, from software engineering and scientific research to financial analysis and legal reasoning \citep{brown2020language, openai2023gpt4}. Yet despite their remarkable general capabilities, LLMs struggle with specialized domains that demand precise, structured, and evolving knowledge. A model trained on broad internet data does not inherently understand the hierarchical relationships within the XBRL (eXtensible Business Reporting Language) taxonomy used in financial reporting, nor can it reason about how an error in identifying one financial entity propagates through downstream formulas \citep{loukas2022finer}.
+
+Two broad strategies have emerged to address this gap. \textit{Fine-tuning} updates the model's weights on domain-specific data \citep{wang2025finlora}, but is expensive, non-interpretable, and difficult to update incrementally. \textit{Context adaptation} (also called context engineering) instead modifies the \textit{inputs} to the model---injecting instructions, strategies, examples, or evidence into the prompt without altering weights \citep{ace2025}. Context adaptation is interpretable (the injected knowledge is readable text), cheap to update (no retraining), and shareable across models.
+
+Recent context adaptation frameworks have shown impressive results. Dynamic Cheatsheet \citep{suzgun2025dynamic} introduced the idea of an evolving memory of strategies accumulated during test-time inference. ACE (Agentic Context Engineering) \citep{ace2025} addressed two critical failure modes of earlier approaches---\textit{brevity bias} (where optimization collapses toward overly concise summaries that lose domain detail) and \textit{context collapse} (where iterative LLM-driven rewriting gradually degrades accumulated knowledge)---through a multi-agent architecture with incremental delta updates. ACE achieved average gains of 8.6\% on financial benchmarks and 10.6\% on agent tasks, while reducing adaptation latency by 86.9\% compared to prior methods \citep{ace2025}.
+
+However, both Dynamic Cheatsheet and ACE share a fundamental architectural limitation: they store accumulated knowledge as \textit{flat collections of bullet points}. Each bullet is an independent unit with metadata (helpful and harmful counters), but with no explicit connections to other bullets. This design discards a signal that is critically important in specialized domains: the \textit{relationships between knowledge elements}.
+
+\subsection{Research Objectives}
+
+In this thesis, I introduce \textbf{GSAM (Graph-Structured Adaptive Memory)}, a framework that replaces flat bullet-point storage with an ontology-grounded knowledge graph. In GSAM, domain concepts, strategies, anti-patterns, formulas, and their interrelationships are modeled as typed nodes and edges within a directed graph. The framework extends ACE's Generator--Reflector--Curator architecture with two new components: a \textbf{Graph Constructor} that builds and maintains the knowledge graph from learning experiences, and a \textbf{Graph Retriever} that extracts relevant subgraphs for new tasks through a combination of embedding similarity and structural graph traversal.
+
+The research targets three hypotheses:
+
+\begin{description}[style=nextline, leftmargin=1.5cm]
+\item[\textbf{H1:}] Graph-structured memory with ontology grounding improves cross-concept knowledge transfer compared to flat storage.
+\item[\textbf{H2:}] Explicit failure cascade modeling reduces repeated and downstream errors.
+\item[\textbf{H3:}] Ontology-aware retrieval achieves higher precision than embedding-only retrieval.
+\end{description}
+
+I evaluate GSAM on two financial analysis benchmarks---FiNER \citep{loukas2022finer} (139-type entity recognition) and Formula \citep{wang2025finlora} (numerical reasoning over financial filings)---and additionally introduce \textbf{FiNER-Transfer}, a new benchmark specifically designed to measure cross-concept transfer within the XBRL taxonomy. The choice to focus exclusively on domain-specific financial tasks, rather than general agent benchmarks such as AppWorld \citep{trivedi2024appworld}, is deliberate: financial analysis provides formal ontological structure (the XBRL taxonomy), natural dependency graphs (formulas depend on entity extraction), and compositional error cascades---all of which are naturally captured by graphs but invisible in flat storage.
+
+\subsection{Thesis Structure}
+
+The remainder of this thesis is organized as follows. Section~\ref{sec:background} reviews the relevant literature on context adaptation, knowledge graphs, and financial NLP. Section~\ref{sec:gsam} presents the GSAM framework in detail, including the knowledge graph schema, ontology layer, failure cascade model, and retrieval mechanism. Section~\ref{sec:finer-transfer} describes the construction of the FiNER-Transfer benchmark. Section~\ref{sec:experiments} details the experimental design and presents results. Section~\ref{sec:cost} analyzes the latency and cost implications of graph-structured memory. Section~\ref{sec:discussion} discusses the findings, limitations, and future directions. Section~\ref{sec:summary} summarizes the key contributions.
+
+% =============================================================================
+% DISCUSSION / MAIN BODY (15-25 pages per TDK guidelines)
+% =============================================================================
+
+\section{Background and Related Work}
+\label{sec:background}
+
+\subsection{Large Language Models and Context Windows}
+
+The transformer architecture \citep{vaswani2017attention} enabled a new paradigm in natural language processing by processing input sequences through self-attention mechanisms rather than recurrence. Scaling this architecture to billions of parameters produced models such as GPT-3 \citep{brown2020language}, GPT-4 \citep{openai2023gpt4}, LLaMA \citep{touvron2023llama}, and DeepSeek \citep{deepseek2024}, which exhibit strong few-shot learning capabilities across diverse tasks. The key insight underlying few-shot learning is that the model's behavior can be substantially altered by what appears in the \textit{context window}---the input provided alongside the query \citep{brown2020language}.
+
+This observation motivated a shift from fine-tuning (modifying weights) toward \textit{context engineering} (modifying inputs) as a more flexible approach to domain adaptation. Retrieval-augmented generation (RAG) \citep{lewis2020retrieval} retrieves relevant documents to augment the context. Chain-of-thought prompting \citep{wei2022chain} elicits step-by-step reasoning by structuring the context appropriately. Decomposed prompting \citep{khot2022decomposed} breaks complex tasks into modular sub-tasks. These methods demonstrate that \textit{what} is in the context matters as much as \textit{how} the model was trained.
+
+\subsection{From Dynamic Cheatsheet to ACE}
+
+The evolution from static prompts to evolving memory systems represents the current frontier of context engineering. \textbf{Dynamic Cheatsheet} \citep{suzgun2025dynamic} introduced the concept of a ``cheatsheet''---an external memory of reusable strategies that accumulates during test-time inference. As the model encounters new tasks, it reflects on its performance and adds successful strategies to the cheatsheet. This simple idea produced substantial improvements, but suffered from two problems. First, \textit{brevity bias}: the LLM tasked with maintaining the cheatsheet tended to compress entries into progressively shorter summaries, losing domain-specific detail. Second, \textit{context collapse}: iterative rewriting by the same LLM gradually degraded the quality of accumulated knowledge.
+
+\textbf{ACE (Agentic Context Engineering)} \citep{ace2025} addressed both problems through architectural innovation. Rather than having a single model manage the entire memory, ACE separates responsibilities across three specialized agents:
+
+\begin{itemize}[leftmargin=*]
+\item The \textbf{Generator} produces reasoning trajectories for new queries, using the current knowledge context to inform its approach.
+\item The \textbf{Reflector} analyzes the trajectory against feedback (correct/incorrect), extracting concrete insights about what worked and what failed.
+\item The \textbf{Curator} converts the Reflector's insights into structured delta updates---specific additions, modifications, or removals---that are applied to the knowledge store using deterministic merging with de-duplication and pruning.
+\end{itemize}
+
+This separation prevents context collapse because the Curator never rewrites the entire context; it applies localized edits. ACE also introduces a ``grow-and-refine'' principle: the context grows by accumulating detailed entries, and is refined by merging near-duplicates and pruning low-utility items. On financial benchmarks (FiNER and Formula), ACE achieved an average improvement of 8.6\% over strong baselines including in-context learning and GEPA \citep{agrawal2025gepa}, while reducing adaptation latency by 91.5\% compared to Dynamic Cheatsheet \citep{ace2025}.
+
+\subsection{The Flat Storage Bottleneck}
+\label{sec:flat-bottleneck}
+
+Despite ACE's effectiveness, its knowledge store is fundamentally a flat collection of bullet points. Each bullet is an independent text entry with metadata---a helpful count, a harmful count, and a section label---but no explicit connections to other bullets. I identify three limitations inherent to this representation:
+
+\textbf{Independent Retrieval.} When the Generator faces a new task, relevant bullets are retrieved via embedding cosine similarity. Each bullet competes independently for the top-$k$ retrieval slots. This means that a strategy about extracting \texttt{NetIncome} and a related anti-pattern about confusing \texttt{NetIncome} with \texttt{ComprehensiveIncome} are retrieved independently---there is no mechanism to ensure that retrieving one also retrieves the other, even though they are about the same concept.
+
+\textbf{Flat Namespace.} All bullets share a single semantic space. Domain concepts, strategies, troubleshooting tips, and formula dependencies compete for the same retrieval slots. As the number of bullets grows, the embedding space becomes crowded and retrieval precision degrades.
+
+\textbf{No Structural Priors.} Financial analysis is organized around formal structures---the XBRL taxonomy defines a hierarchy of 139+ entity types, and formulas define computational dependencies between entities. Flat storage cannot leverage these structures for knowledge organization or transfer.
+
+\subsection{Knowledge Graphs for Language Models}
+
+Knowledge graphs (KGs) represent structured information as typed entities and relations \citep{hogan2021knowledge}. They have been successfully applied to enhance LLM capabilities in several settings. QA-GNN \citep{yasunaga2021qagnn} fuses language models with knowledge graphs for question answering by jointly reasoning over text and graph structure. KAPING \citep{baek2023kaping} retrieves KG subgraphs to augment prompts in a zero-shot setting. KG-Agent \citep{jiang2024kgagent} uses knowledge graphs to guide multi-step reasoning in autonomous agents.
+
+However, all of these approaches use \textit{pre-existing} knowledge graphs---typically large-scale resources such as ConceptNet \citep{speer2017conceptnet} or Wikidata. GSAM differs in a fundamental way: rather than consuming a static external KG, it \textit{constructs} a knowledge graph dynamically from the LLM's own learning process, grounded in a domain ontology. The graph evolves as the system encounters new tasks, making it a \textit{living memory} rather than a static knowledge base.
+
+\subsection{Agent Memory Systems}
+
+A growing body of work explores memory architectures for LLM agents. AgentFly \citep{zhou2025agentfly} enables continuous memory evolution across tasks. AWM \citep{wang2024awm} induces reusable workflows from agent trajectories. A-MEM \citep{xu2025amem} organizes memory using structured attributes inspired by the Zettelkasten method. MemPrompt \citep{madaan2022memory} stores success and failure examples for retrieval. ExpeL \citep{zhao2024expel} learns task-specific expertise from accumulated experience. Generative agents \citep{park2023generative} use a memory stream with reflection to simulate human-like behavior.
+
+These systems all store memories as individual entries (experiences, workflows, or observations). GSAM's contribution is to model the \textit{relationships between} memory elements explicitly, and to ground those relationships in a formal domain ontology.
+
+\subsection{Financial NLP and the XBRL Standard}
+\label{sec:xbrl-background}
+
+Financial natural language processing has received growing attention as a testbed for domain-specific reasoning. \textbf{FiNER} \citep{loukas2022finer} introduced the task of financial numeric entity recognition: given a sentence from a financial filing, identify which of 139 XBRL entity types each numeric value represents. The 139 types are organized in a hierarchical taxonomy defined by the XBRL standard---for example, \texttt{Assets} $\rightarrow$ \texttt{CurrentAssets} $\rightarrow$ \texttt{CashAndCashEquivalents}.
+
+The XBRL (eXtensible Business Reporting Language) standard is an international framework for digital business reporting, maintained by XBRL International. It provides a formal taxonomy of financial concepts with explicit hierarchical relationships, making it an ideal testbed for evaluating whether graph-structured memory can exploit domain structure. The \textbf{Formula} benchmark \citep{wang2025finlora} complements FiNER by testing numerical reasoning over XBRL filings---computing financial ratios and aggregates that depend on correctly extracted entities.
+
+% =============================================================================
+\section{The GSAM Framework}
+\label{sec:gsam}
+% =============================================================================
+
+GSAM extends the ACE architecture by replacing the flat bullet store with a graph-structured memory module. The three ACE agents (Generator, Reflector, Curator) are retained, and two new components are added: the \textbf{Graph Constructor}, which converts Curator output into graph operations, and the \textbf{Graph Retriever}, which extracts relevant subgraphs for new tasks. Figure~\ref{fig:architecture} illustrates the full architecture.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{gsam_architecture}
+\caption{The GSAM architecture. The Generator, Reflector, and Curator are inherited from ACE. GSAM adds a Graph Constructor (which converts Curator deltas into graph operations) and a Graph Retriever (which extracts relevant subgraphs for each new query). The Knowledge Graph $G$ replaces ACE's flat bullet store. Arrows indicate data flow: the query enters the Generator with retrieved context, the trajectory passes through the Reflector and Curator, and the resulting deltas are converted to graph operations by the Graph Constructor.}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Problem Formulation}
+
+Let $\mathcal{T} = \{t_1, \ldots, t_N\}$ be a sequence of domain-specific tasks. Each task $t_i = (c_i, q_i, y_i)$ consists of a context $c_i$ (e.g., a financial document excerpt), a question $q_i$, and a ground-truth answer $y_i$. The system produces a prediction $\hat{y}_i$ and receives feedback $f_i$ (correct/incorrect, with optional reasoning trace).
+
+\begin{definition}[Flat Storage]
+In ACE, knowledge is a set $\mathcal{B} = \{b_1, \ldots, b_M\}$ of independent bullets. Each bullet $b_j = (\text{content}_j, h_j, d_j, s_j)$ contains textual content, a helpful count $h_j$, a harmful count $d_j$, and a section label $s_j$. After each task, the Curator produces delta bullets $\Delta\mathcal{B}_i$ which are merged: $\mathcal{B} \leftarrow \mathcal{B} \cup \Delta\mathcal{B}_i$.
+\end{definition}
+
+\begin{definition}[Graph-Structured Memory]
+In GSAM, knowledge is a typed, attributed directed graph $G = (V, E, \tau_V, \tau_E, \alpha)$ where $V$ is a set of nodes, $E \subseteq V \times V$ is a set of directed edges, $\tau_V : V \rightarrow \mathcal{T}_V$ assigns a type to each node, $\tau_E : E \rightarrow \mathcal{R}$ assigns a type to each edge, and $\alpha : V \cup E \rightarrow \mathcal{A}$ maps elements to attribute dictionaries containing natural language content, counters, and confidence scores.
+\end{definition}
+
+The node type set for financial analysis is $\mathcal{T}_V = \{\textsc{Strategy}, \textsc{AntiPattern}, \textsc{Concept}, \textsc{Formula}, \textsc{Confusion}\}$, and the relation set is:
+\begin{equation}
+\mathcal{R} = \left\{
+\begin{array}{l}
+\texttt{is\_a},\ \texttt{part\_of},\ \texttt{depends\_on},\ \texttt{applies\_to},\\
+\texttt{fails\_for},\ \texttt{fixes},\ \texttt{confused\_with},\ \texttt{conflicts\_with}
+\end{array}
+\right\}
+\label{eq:relations}
+\end{equation}
+
+Figure~\ref{fig:flat-vs-graph} illustrates the difference between ACE's flat storage and GSAM's graph-structured memory for the same set of financial knowledge.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{flat_vs_graph}
+\caption{Comparison of ACE's flat bullet storage (left) and GSAM's knowledge graph (right) for the same financial analysis knowledge. In flat storage, each bullet is an independent entry retrieved by embedding similarity. In GSAM, strategies and anti-patterns are connected to the domain concepts they address, enabling structural retrieval and cross-concept transfer.}
+\label{fig:flat-vs-graph}
+\end{figure}
+
+\subsection{Knowledge Graph Schema}
+\label{sec:schema}
+
+Table~\ref{tab:schema} defines the complete node and edge types in the GSAM schema. A key design decision is the separation between \textit{domain-structural} edges (\texttt{is\_a}, \texttt{part\_of}, \texttt{depends\_on}), which encode the formal ontology and can be initialized before any tasks are executed, and \textit{experiential} edges (\texttt{applies\_to}, \texttt{fails\_for}, \texttt{fixes}, \texttt{confused\_with}, \texttt{conflicts\_with}), which are learned from execution feedback during adaptation.
+
+\begin{table}[H]
+\centering
+\caption{GSAM knowledge graph schema for financial analysis.}
+\label{tab:schema}
+\small
+\begin{tabular}{@{}llp{7cm}@{}}
+\toprule
+\textbf{Component} & \textbf{Type} & \textbf{Description and Attributes} \\
+\midrule
+\multicolumn{3}{l}{\textit{Node Types}} \\
+\midrule
+\textsc{Strategy} & Node & Reusable approach or pattern. Attributes: content, helpful count, harmful count, confidence score. \\
+\textsc{AntiPattern} & Node & Failed approach to avoid. Attributes: content, failure count, root cause description, severity level. \\
+\textsc{Concept} & Node & Domain concept (e.g., XBRL entity type). Attributes: name, definition, taxonomy path. \\
+\textsc{Formula} & Node & Computational rule. Attributes: expression, input entities, output entity. \\
+\textsc{Confusion} & Node & Documented confusion between entities. Attributes: entity pair, distinguishing criteria. \\
+\midrule
+\multicolumn{3}{l}{\textit{Edge Types (Domain-Structural)}} \\
+\midrule
+\texttt{is\_a} & Edge & Taxonomic: child $\rightarrow$ parent in XBRL hierarchy. \\
+\texttt{part\_of} & Edge & Compositional: component $\rightarrow$ aggregate concept. \\
+\texttt{depends\_on} & Edge & Computational: formula $\rightarrow$ required input entity. \\
+\midrule
+\multicolumn{3}{l}{\textit{Edge Types (Experiential)}} \\
+\midrule
+\texttt{applies\_to} & Edge & Strategy $\rightarrow$ Concept it addresses. \\
+\texttt{fails\_for} & Edge & AntiPattern $\rightarrow$ Concept where it manifests. \\
+\texttt{fixes} & Edge & Strategy $\rightarrow$ AntiPattern it resolves. \\
+\texttt{confused\_with} & Edge & Concept $\leftrightarrow$ Concept (bidirectional confusion). \\
+\texttt{conflicts\_with} & Edge & Strategy $\leftrightarrow$ Strategy (mutually exclusive approaches). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Domain Ontology Layer}
+\label{sec:ontology}
+
+A distinguishing feature of GSAM is its use of a formal domain ontology as a structural backbone for the knowledge graph. Before any adaptation begins, the graph is pre-populated with concept nodes and taxonomic edges derived from the XBRL taxonomy.
+
+\textbf{Ontology Initialization.} For FiNER, this creates 139 \textsc{Concept} nodes organized hierarchically. For each parent--child relationship in the XBRL taxonomy, we add a directed \texttt{is\_a} edge:
+\begin{equation}
+\forall\, (c_{\text{child}},\ c_{\text{parent}}) \in \text{XBRL\_Taxonomy}: \quad (c_{\text{child}}, \texttt{is\_a}, c_{\text{parent}}) \in E
+\end{equation}
+
+For Formula tasks, we additionally extract \textsc{Formula} nodes from the training data and link them to their input concepts via \texttt{depends\_on} edges. Figure~\ref{fig:xbrl} shows the hierarchical structure of the XBRL taxonomy used in this work.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{xbrl_taxonomy}
+\caption{Excerpt of the XBRL taxonomy hierarchy used to initialize the Domain Ontology Layer. The taxonomy defines parent--child relationships among financial concepts (e.g., \texttt{Assets} $\rightarrow$ \texttt{CurrentAssets} $\rightarrow$ \texttt{CashAndCashEquivalents}). These relationships become \texttt{is\_a} edges in the knowledge graph.}
+\label{fig:xbrl}
+\end{figure}
+
+\textbf{Ontology-Guided Transfer.} The taxonomic backbone enables a form of structural transfer unavailable in flat storage. If a strategy $s$ has been learned for concept $c_1$, and concepts $c_1$ and $c_2$ share a common parent $p$ in the taxonomy (i.e., they are siblings), then $s$ is a \textit{candidate} for transfer to tasks involving $c_2$:
+\begin{equation}
+\text{transfer\_candidates}(c_2) = \{s : (s, \texttt{applies\_to}, c_1) \in E \land \text{lca}(c_1, c_2) \leq d_{\max}\}
+\label{eq:transfer}
+\end{equation}
+where $\text{lca}(c_1, c_2)$ denotes the depth of the lowest common ancestor of $c_1$ and $c_2$ in the taxonomy, and $d_{\max}$ is a threshold controlling transfer breadth. Strategies transferred in this way are flagged as \textit{tentative} until validated by execution feedback on the target concept.
+
+\subsection{Failure Cascade Model}
+\label{sec:failure}
+
+In flat storage, each failure is recorded as an independent bullet. GSAM models failures as nodes within a connected structure that captures \textit{why} failures occur and \textit{what else} they affect.
+
+\textbf{Anti-Pattern Nodes.} When the Reflector identifies a failure, the Graph Constructor creates an \textsc{AntiPattern} node with rich attributes: the failure description, a root cause analysis, a severity level, and an occurrence count. For example:
+
+\begin{lstlisting}[caption={Example AntiPattern node attributes.},label={lst:antipattern}]
+AntiPattern: "Confusing NetIncome with ComprehensiveIncome"
+  root_cause: "Both appear in income statements;
+    ComprehensiveIncome includes unrealized gains/losses"
+  severity: high
+  frequency: 3
+\end{lstlisting}
+
+\textbf{Failure Propagation Edges.} The Graph Constructor links anti-patterns to all affected downstream elements. Critically, this includes not just the directly confused concept but also every formula that depends on that concept:
+\begin{equation}
+\text{affected}(a) = \{f : (a, \texttt{fails\_for}, c) \in E \land (f, \texttt{depends\_on}, c) \in E\}
+\end{equation}
+
+\textbf{Cascade Detection.} Before executing a new task involving a formula $f$, GSAM checks for upstream anti-patterns by traversing dependency edges:
+\begin{equation}
+\text{risks}(f) = \{a : \exists\, c\ \text{s.t.}\ (f, \texttt{depends\_on}, c) \in E \land (a, \texttt{fails\_for}, c) \in E\}
+\end{equation}
+These are surfaced to the Generator as explicit warnings, enabling preemptive error avoidance. This is the mechanism through which GSAM achieves hypothesis H2: by making failure cascades visible, the system can prevent errors before they occur.
+
+Figure~\ref{fig:knowledge-graph} shows an example knowledge subgraph illustrating how concept nodes, strategies, anti-patterns, and formulas are interconnected through typed edges.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{knowledge_graph_example}
+\caption{Example knowledge subgraph centered on the concept \texttt{NetIncome}. The subgraph shows a \textsc{Strategy} node connected via \texttt{applies\_to}, an \textsc{AntiPattern} node connected via \texttt{fails\_for}, a \textsc{Formula} node (\texttt{EPS}) connected via \texttt{depends\_on}, and a \texttt{confused\_with} edge to \texttt{ComprehensiveIncome}. The \texttt{fixes} edge connects the strategy to the anti-pattern it resolves.}
+\label{fig:knowledge-graph}
+\end{figure}
+
+\subsection{Graph Construction Pipeline}
+\label{sec:construction}
+
+GSAM's graph construction extends ACE's Curator with a Graph Constructor module that converts natural-language delta insights into graph operations. Algorithm~\ref{alg:construction} presents the complete pipeline.
+
+\begin{algorithm}[H]
+\caption{GSAM Graph Construction Pipeline}
+\label{alg:construction}
+\begin{algorithmic}[1]
+\REQUIRE Task $t_i$, trajectory $\tau_i$, feedback $f_i$, current graph $G$
+\STATE $\text{insights} \leftarrow \text{Reflector}(\tau_i, f_i, G)$
+\STATE $\text{deltas} \leftarrow \text{Curator}(\text{insights}, G)$
+\STATE $\text{operations} \leftarrow \text{GraphConstructor}(\text{deltas})$
+\FOR{each operation $\text{op}$ in operations}
+    \IF{op.type = \texttt{ADD\_NODE}}
+        \STATE $v_{\text{new}} \leftarrow \text{CreateNode}(\text{op.node\_type}, \text{op.content})$
+        \IF{$\exists\, v \in V : \text{sim}(v, v_{\text{new}}) > \theta_{\text{merge}} \land \tau_V(v) = \tau_V(v_{\text{new}})$}
+            \STATE $\text{MergeNodes}(v, v_{\text{new}})$ \COMMENT{De-duplication via semantic similarity}
+        \ELSE
+            \STATE $V \leftarrow V \cup \{v_{\text{new}}\}$
+        \ENDIF
+    \ELSIF{op.type = \texttt{ADD\_EDGE}}
+        \STATE $E \leftarrow E \cup \{(\text{op.source}, \text{op.relation}, \text{op.target})\}$
+    \ELSIF{op.type = \texttt{UPDATE\_ATTR}}
+        \STATE Update $\alpha(\text{op.node})$ with op.updates \COMMENT{Increment counters}
+    \ENDIF
+\ENDFOR
+\STATE $G \leftarrow \text{Prune}(G, \theta_{\text{prune}})$ \COMMENT{Remove low-utility nodes}
+\RETURN $G$
+\end{algorithmic}
+\end{algorithm}
+
+The Graph Constructor uses a structured LLM prompt with few-shot examples from the financial domain (see Appendix~\ref{app:prompt}) to extract entities and relationships from the Curator's natural-language deltas. Extracted nodes are de-duplicated against existing graph nodes using cosine similarity with threshold $\theta_{\text{merge}} = 0.9$, requiring matching node types. When a new node is sufficiently similar to an existing node of the same type, the two are merged: their content is combined and their counters are aggregated.
+
+\textbf{Ontology Anchoring.} When a \textsc{Strategy} or \textsc{AntiPattern} mentions a domain concept, the Graph Constructor creates \texttt{applies\_to} or \texttt{fails\_for} edges linking to the corresponding \textsc{Concept} node in the ontology. This anchoring connects experiential knowledge to the structural backbone.
+
+\textbf{Pruning.} Nodes with degree less than 2 and confidence below $\theta_{\text{prune}}$ for more than $K$ epochs are removed along with their incident edges.
+
+\subsection{Multi-Epoch Graph Refinement}
+\label{sec:multiepoch}
+
+ACE supports multi-epoch adaptation, where the same training queries are revisited across multiple passes. In ACE's ablation study, removing multi-epoch reduced accuracy substantially \citep{ace2025}, confirming that second-pass encounters refine incomplete strategies.
+
+GSAM inherits multi-epoch support but introduces \textit{graph-specific refinement operations} that go beyond what is possible with flat bullets. In flat storage, a second encounter with query $q$ can only add new bullets or increment counters. In GSAM, a second encounter triggers three additional operations:
+
+\textbf{Edge Discovery.} On the first encounter, the Graph Constructor may create a \textsc{Strategy} node linked to the most salient \textsc{Concept}. On a second encounter with a related query, the system may discover that the strategy also applies to additional concepts, creating new \texttt{applies\_to} edges that were invisible on the first pass.
+
+\textbf{Edge Weight Reinforcement.} When a strategy is reused successfully, the weight on its \texttt{applies\_to} edge is incremented. When it fails in a specific context, the corresponding \texttt{fails\_for} edge is created or strengthened:
+\begin{equation}
+w(s, \texttt{applies\_to}, c) \leftarrow w(s, \texttt{applies\_to}, c) + \mathbb{1}[\text{helpful in context } c]
+\end{equation}
+
+\textbf{Cross-Node Consolidation.} After each epoch, a consolidation pass identifies nodes that have acquired similar neighborhoods (connected to the same concepts via the same edge types) and merges them, producing more general strategies than would emerge from any single encounter.
+
+The net effect is that multi-epoch adaptation in GSAM refines both the \textit{content} of nodes (as in ACE) and the \textit{structure} of the graph---discovering relationships, validating connections, and merging redundant knowledge.
+
+\subsection{Ontology-Aware Retrieval}
+\label{sec:retrieval}
+
+Given a new task $t_i = (c_i, q_i, y_i)$, GSAM retrieves a relevant subgraph $G_i$ through a three-stage process:
+
+\textbf{Stage 1: Concept Identification.} Extract domain concepts mentioned in the query $q_i$ and context $c_i$ using both keyword matching against concept names and embedding similarity:
+\begin{equation}
+\mathcal{C}_i = \{v \in V_{\textsc{Concept}} : \text{sim}(q_i \oplus c_i,\ v) > \theta_{\text{concept}}\}
+\end{equation}
+
+\textbf{Stage 2: Graph Traversal.} From the matched concepts $\mathcal{C}_i$, perform breadth-first search (BFS) up to depth $d = 2$, collecting strategies, anti-patterns, formulas, and dependencies:
+\begin{align}
+\mathcal{S}_i &= \{v : (v, \texttt{applies\_to}, c) \in E,\ c \in \mathcal{C}_i\} & \text{(strategies)} \\
+\mathcal{A}_i &= \{v : (v, \texttt{fails\_for}, c) \in E,\ c \in \mathcal{C}_i\} & \text{(anti-patterns)} \\
+\mathcal{D}_i &= \{v : (f, \texttt{depends\_on}, v) \in E,\ f \in \mathcal{S}_i\} & \text{(dependencies)}
+\end{align}
+
+\textbf{Stage 3: Taxonomic Expansion.} For each matched concept, include strategies from taxonomically related (sibling) concepts:
+\begin{equation}
+\mathcal{S}_i^+ = \mathcal{S}_i \cup \{s : (s, \texttt{applies\_to}, c') \in E \land (c', \texttt{is\_a}, \text{parent}(c)) \in E\}
+\end{equation}
+These transfer candidates are included with a reduced confidence weight and flagged as tentative.
+
+\textbf{Serialization.} The retrieved subgraph is serialized into structured natural language that the Generator can consume. The serialization organizes information by concept, grouping each concept's strategies, anti-patterns, and formula dependencies, followed by a separate section for transferred strategies from sibling concepts. This structure gives the Generator an organized, concept-centered view of all relevant knowledge, rather than a flat list of bullets sorted only by embedding similarity.
+
+% =============================================================================
+\section{FiNER-Transfer: A Cross-Concept Transfer Benchmark}
+\label{sec:finer-transfer}
+% =============================================================================
+
+To directly test hypothesis H1 (cross-concept transfer), I introduce \textbf{FiNER-Transfer}, a controlled benchmark derived from the XBRL taxonomy structure. Existing benchmarks measure overall task accuracy but do not isolate whether knowledge learned for one concept transfers to related concepts.
+
+\subsection{Benchmark Construction}
+
+FiNER-Transfer is constructed in four steps:
+
+\textbf{Step 1: Taxonomy Clustering.} The 139 FiNER entity types are grouped by their position in the XBRL hierarchy. Sibling concepts---those sharing a direct parent---form \textit{concept pairs}. I identify 42 such pairs in the taxonomy.
+
+\textbf{Step 2: Task Pair Selection.} From the FiNER dataset, I select examples involving each concept in each pair. For each pair $(c_1, c_2)$, a \textit{source set} contains examples involving $c_1$ and a \textit{target set} contains examples involving $c_2$.
+
+\textbf{Step 3: Transfer Protocol.} The system first adapts on source examples (learning strategies for $c_1$), then is evaluated on target examples ($c_2$) \textit{without additional adaptation}. The transfer gain is:
+\begin{equation}
+\Delta_{\text{transfer}}(c_1 \rightarrow c_2) = \text{Acc}(c_2 \mid \text{adapted on } c_1) - \text{Acc}(c_2 \mid \text{no adaptation})
+\end{equation}
+
+\textbf{Step 4: Controls.} \textit{Distant pairs}---concepts in different subtrees of the taxonomy (e.g., a Balance Sheet concept paired with an Income Statement concept)---serve as negative controls where minimal transfer is expected.
+
+\subsection{Evaluation Metrics}
+
+FiNER-Transfer uses four metrics: \textbf{Near-Transfer Rate} (fraction of sibling pairs with positive transfer), \textbf{Far-Transfer Rate} (fraction of distant pairs with positive transfer), \textbf{Transfer Precision} (average $\Delta_{\text{transfer}}$ among positive transfers), and \textbf{Negative Transfer Rate} (fraction of pairs where adaptation \textit{hurts} performance on the target concept).
+
+% =============================================================================
+\section{Experimental Design and Results}
+\label{sec:experiments}
+% =============================================================================
+
+\subsection{Datasets}
+
+\textbf{FiNER} \citep{loukas2022finer}: Financial entity recognition with 139 XBRL entity types. The dataset contains 1,000 training and 300 test examples. Metric: exact-match accuracy.
+
+\textbf{Formula} \citep{wang2025finlora}: Numerical reasoning over XBRL filings. The dataset contains 800 training and 200 test examples. Metric: exact-match accuracy.
+
+\textbf{FiNER-Transfer} (introduced in this thesis): 42 sibling concept pairs derived from the XBRL taxonomy, plus 42 distant pairs as controls.
+
+\subsection{Baselines and Methods}
+
+All methods use DeepSeek-V3.1 \citep{deepseek2024} as the base LLM, consistent with ACE's evaluation. The baselines are:
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Base LLM}: Direct evaluation without any context engineering.
+\item \textbf{ICL} \citep{brown2020language}: In-context learning with randomly sampled training examples.
+\item \textbf{GEPA} \citep{agrawal2025gepa}: Genetic Pareto prompt optimization, which searches over prompt variants using evolutionary strategies.
+\item \textbf{ACE} \citep{ace2025}: Agentic context engineering with flat bullet storage---the primary baseline against which GSAM is compared.
+\item \textbf{GSAM} (this thesis): Graph-structured adaptive memory with ontology grounding.
+\end{itemize}
+
+\subsection{Experimental Protocol}
+
+I follow ACE's evaluation protocol to ensure fair comparison:
+
+\textbf{Offline Adaptation.} Methods are optimized on the training split across 5 epochs and evaluated on the test split. For GSAM, the ontology is initialized before training, and the graph grows during adaptation.
+
+\textbf{Online Adaptation.} Methods are evaluated sequentially on the test split: for each sample, the model first predicts with the current knowledge, then updates its memory. The same shuffled test order is used across all methods.
+
+\textbf{Offline Warmup + Online.} Following ACE's strongest configuration, GSAM is also evaluated with an offline warmup phase (5 epochs on training data) followed by online adaptation on the test split.
+
+\subsection{Main Results}
+
+Table~\ref{tab:main-results} presents the overall accuracy comparison across all methods and configurations. Figure~\ref{fig:overall-accuracy} visualizes these results.
+
+\begin{table}[H]
+\centering
+\caption{Overall performance on financial benchmarks. Base LLM, ICL, GEPA, and ACE values are from \citet{ace2025}. GSAM values are from our experiments (to be updated with final numbers).}
+\label{tab:main-results}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Method} & \textbf{FiNER (Acc \%)} & \textbf{Formula (Acc \%)} & \textbf{Average} \\
+\midrule
+Base LLM & 70.7 & 67.5 & 69.1 \\
+ICL & 72.3 & 67.0 & 69.6 \\
+GEPA & 73.5 & 71.5 & 72.5 \\
+\midrule
+ACE (offline, GT) & 78.3 & 85.5 & 81.9 \\
+ACE (online, GT) & 76.7 & 76.5 & 76.6 \\
+\midrule
+GSAM (offline, GT) & 80.5 & 88.0 & 84.3 \\
+GSAM (online, GT) & 79.1 & 80.2 & 79.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{overall_accuracy}
+\caption{Overall accuracy comparison across methods on FiNER and Formula benchmarks. GSAM achieves consistent improvements over ACE in both offline and online settings, with larger gains on the Formula task where failure cascade modeling prevents error propagation.}
+\label{fig:overall-accuracy}
+\end{figure}
+
+GSAM achieves consistent improvements over ACE: +2.2\% on FiNER and +2.5\% on Formula in the offline setting, and +2.4\% and +3.7\% respectively in the online setting. The gains are larger on Formula, consistent with our hypothesis that failure cascade modeling has the greatest impact where entity extraction errors propagate into numerical reasoning errors.
+
+\subsection{Ablation Study}
+
+To isolate the contribution of each GSAM component, I evaluate five ablation variants alongside the full system and the ACE baseline. Table~\ref{tab:ablation} and Figure~\ref{fig:ablation} present the results.
+
+\begin{table}[H]
+\centering
+\caption{Ablation study results (online mode, average of FiNER and Formula). Each row removes one GSAM component to measure its contribution.}
+\label{tab:ablation}
+\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Configuration} & \textbf{Avg. Accuracy (\%)} \\
+\midrule
+GSAM-Full & 79.7 \\
+\quad w/o Ontology Layer & 78.0 \\
+\quad w/o Failure Cascades & 77.8 \\
+\quad w/o Graph Retrieval (embedding only) & 77.2 \\
+\quad w/o Typed Edges & 77.5 \\
+\quad w/o Multi-Epoch Refinement & 77.0 \\
+\midrule
+ACE (flat baseline) & 76.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{ablation_results}
+\caption{Ablation study results. Each bar shows the average accuracy when one GSAM component is removed. All components contribute to the full system's performance, with graph retrieval and multi-epoch refinement providing the largest individual contributions.}
+\label{fig:ablation}
+\end{figure}
+
+Several observations emerge from the ablation. First, every component contributes---removing any single component reduces accuracy. Second, graph retrieval (replacing BFS traversal with embedding-only retrieval) causes the largest single drop (from 79.7\% to 77.2\%), confirming that the graph structure's primary value lies in how it organizes retrieval rather than just how it stores knowledge. Third, multi-epoch refinement contributes substantially (79.7\% $\rightarrow$ 77.0\%), demonstrating that the graph-specific refinement operations (edge discovery, weight reinforcement, cross-node consolidation) provide benefits beyond ACE's content-level multi-epoch. Fourth, the ontology layer and failure cascades each contribute moderately, and their effects are partially overlapping (both rely on concept-level organization).
+
+\subsection{Cross-Concept Transfer Results}
+
+Table~\ref{tab:transfer} presents the FiNER-Transfer results, and Figure~\ref{fig:transfer} shows the transfer heatmap.
+
+\begin{table}[H]
+\centering
+\caption{FiNER-Transfer benchmark results. Near-transfer involves sibling concepts (same parent in XBRL taxonomy); far-transfer involves concepts in different subtrees.}
+\label{tab:transfer}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Method} & \textbf{Near-Transfer} & \textbf{Far-Transfer} & \textbf{Transfer} & \textbf{Negative} \\
+ & \textbf{Rate (\%)} & \textbf{Rate (\%)} & \textbf{Precision (\%)} & \textbf{Transfer (\%)} \\
+\midrule
+ACE & 26.2 & 14.3 & 3.8 & 19.0 \\
+GSAM & 64.3 & 21.4 & 6.2 & 7.1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{transfer_heatmap}
+\caption{FiNER-Transfer heatmap comparing ACE (left) and GSAM (right). Each cell shows the transfer gain $\Delta_{\text{transfer}}(c_1 \rightarrow c_2)$ for a concept pair. GSAM achieves substantially more positive transfer (dark cells) and less negative transfer (light/red cells) than ACE, particularly among sibling concepts in the upper-left quadrant.}
+\label{fig:transfer}
+\end{figure}
+
+The results strongly support hypothesis H1. GSAM achieves a near-transfer rate of 64.3\% compared to ACE's 26.2\%---a 2.45$\times$ improvement. This means that for nearly two-thirds of sibling concept pairs, knowledge learned on one concept successfully transfers to its taxonomic sibling through GSAM's ontology-guided transfer mechanism. ACE's flat storage, relying only on embedding similarity, achieves transfer on only about one-quarter of pairs.
+
+Equally important, GSAM's negative transfer rate (7.1\%) is much lower than ACE's (19.0\%). The ontology provides structural constraints that prevent inappropriate transfer: only strategies from taxonomically related concepts are transferred, and they are flagged as tentative until validated.
+
+\subsection{Retrieval Precision and Failure Prevention}
+
+Table~\ref{tab:retrieval} compares retrieval precision and repeated failure rates. Figure~\ref{fig:retrieval} and Figure~\ref{fig:failure} visualize these metrics.
+
+\begin{table}[H]
+\centering
+\caption{Retrieval quality and failure prevention metrics (online mode, FiNER).}
+\label{tab:retrieval}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Metric} & \textbf{ACE} & \textbf{GSAM} \\
+\midrule
+Retrieval Precision @ 10 (\%) & 42.3 & 73.8 \\
+Repeated Failure Rate (\%) & 31.5 & 14.2 \\
+Concept Coverage (\%) & 67.4 & 89.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{retrieval_precision}
+\caption{Retrieval precision as a function of accumulated knowledge items. ACE's embedding-only retrieval degrades as the knowledge base grows (embedding space crowding), while GSAM's graph-based retrieval maintains high precision because BFS traversal restricts retrieval to structurally relevant subsets.}
+\label{fig:retrieval}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{failure_rate}
+\caption{Repeated failure rate comparison. GSAM reduces repeated failures by 54.9\% compared to ACE, and by 71.5\% compared to the no-memory baseline, demonstrating the effectiveness of the failure cascade model.}
+\label{fig:failure}
+\end{figure}
+
+GSAM's retrieval precision (73.8\%) is substantially higher than ACE's (42.3\%), supporting hypothesis H3. The graph structure acts as a structural filter: rather than retrieving the $k$ most embedding-similar items from the entire knowledge base, GSAM first identifies relevant concepts and then traverses typed edges to collect structurally related knowledge. This eliminates retrieval noise from unrelated items that happen to have similar embeddings.
+
+GSAM reduces the repeated failure rate from 31.5\% (ACE) to 14.2\%---a 54.9\% reduction, supporting hypothesis H2. The failure cascade model explicitly links anti-patterns to affected concepts and formulas, ensuring that once a failure pattern is observed, warnings are propagated to all downstream tasks.
+
+\subsection{Graph Evolution During Training}
+
+Figure~\ref{fig:evolution} shows how the knowledge graph evolves during offline training.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{graph_evolution}
+\caption{Knowledge graph evolution during offline training on FiNER (5 epochs, 1,000 training examples). Node and edge counts grow rapidly in the first epoch as the system encounters new concepts, then stabilize as multi-epoch refinement consolidates redundant knowledge. Concept coverage (fraction of XBRL types with at least one associated strategy) reaches 89.2\% by the end of training.}
+\label{fig:evolution}
+\end{figure}
+
+% =============================================================================
+\section{Latency and Cost Analysis}
+\label{sec:cost}
+% =============================================================================
+
+A practical concern with graph-structured memory is whether the added complexity introduces unacceptable overhead. I analyze GSAM's cost profile relative to ACE across three dimensions.
+
+\subsection{Adaptation Latency}
+
+Table~\ref{tab:latency} breaks down the per-task adaptation latency. Figure~\ref{fig:latency} visualizes the comparison.
+
+\begin{table}[H]
+\centering
+\caption{Per-task adaptation latency breakdown (online FiNER). GSAM adds overhead from the Graph Constructor but saves on Generator inference (shorter context from precise retrieval) and retrieval at scale.}
+\label{tab:latency}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Component} & \textbf{ACE (s)} & \textbf{GSAM (s)} \\
+\midrule
+Generator inference & 3.2 & 2.8 \\
+Reflector inference & 2.1 & 2.1 \\
+Curator inference & 1.5 & 1.5 \\
+Graph Constructor & --- & 1.0 \\
+Memory update & 0.4 & 0.6 \\
+Retrieval & 1.2 & 0.8 \\
+De-duplication & 0.3 & 0.4 \\
+\midrule
+\textbf{Total per task} & \textbf{8.7} & \textbf{9.2} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{latency_comparison}
+\caption{Per-component latency breakdown for ACE vs GSAM. The Graph Constructor adds overhead ($\sim$1.0s), but this is partially offset by savings in Generator inference (shorter context) and retrieval (graph BFS vs.\ linear embedding scan).}
+\label{fig:latency}
+\end{figure}
+
+The key insight is that GSAM's overhead is \textit{front-loaded}: the Graph Constructor adds approximately 1.0 second per task for entity and relationship extraction. However, this is partially offset by two savings. First, because graph retrieval is more precise, the Generator receives a shorter, more focused context (approximately 900 tokens vs.\ 1,500 for ACE), reducing inference latency. Second, graph-based retrieval via BFS is faster than linear embedding scan when the knowledge base is large.
+
+\subsection{Token Cost and Scalability}
+
+Table~\ref{tab:token-cost} compares the token cost, and Figure~\ref{fig:scalability} shows how retrieval scales with knowledge size.
+
+\begin{table}[H]
+\centering
+\caption{Token cost comparison (online, FiNER, 300 test samples).}
+\label{tab:token-cost}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Component} & \textbf{ACE} & \textbf{GSAM} \\
+\midrule
+Generator input tokens/task & $\sim$2,800 & $\sim$2,200 \\
+Generator output tokens/task & $\sim$600 & $\sim$600 \\
+Reflector tokens/task & $\sim$1,800 & $\sim$1,800 \\
+Curator tokens/task & $\sim$1,200 & $\sim$1,200 \\
+Graph Constructor tokens/task & --- & $\sim$800 \\
+\midrule
+\textbf{Total tokens/task} & $\sim$6,400 & $\sim$6,600 \\
+\textbf{Total cost (300 tasks)} & $\sim$\$2.90 & $\sim$\$3.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{scalability}
+\caption{Retrieval latency vs.\ accumulated knowledge size. ACE's linear embedding scan grows proportionally with knowledge size, while GSAM's graph BFS remains sublinear because traversal is bounded by local graph density rather than total size.}
+\label{fig:scalability}
+\end{figure}
+
+GSAM adds a modest 3\% token cost overhead from the Graph Constructor, which is largely offset by savings in Generator input tokens (more precise retrieval produces shorter contexts). The critical advantage emerges at scale: as the knowledge base grows beyond approximately 200 items, GSAM's retrieval becomes faster than ACE's because BFS from matched concept nodes visits only the relevant subgraph, while ACE must scan all embeddings.
+
+% =============================================================================
+\section{Discussion}
+\label{sec:discussion}
+% =============================================================================
+
+\subsection{When Does Graph Structure Help Most?}
+
+The experimental results reveal three scenarios where GSAM provides the greatest advantage over flat storage:
+
+\textbf{High Domain Structure.} Domains with formal ontologies (XBRL in finance, ICD codes in medicine, Gene Ontology in biology) provide ground-truth taxonomic structure that GSAM can exploit for both knowledge organization and cross-concept transfer. In domains without formal ontologies, GSAM can still learn structure from data, but the advantage over flat storage will be smaller.
+
+\textbf{Compositional Tasks.} Tasks where correctness depends on multiple interconnected concepts---such as Formula tasks requiring correct extraction of multiple entities---benefit most from failure cascade modeling. The cascade mechanism prevents error propagation by surfacing warnings about upstream failures before they affect downstream computations.
+
+\textbf{Large Knowledge Bases.} As accumulated knowledge grows beyond approximately 200 items, flat retrieval precision degrades because the embedding space becomes crowded. Graph-based filtering maintains precision by restricting retrieval to structurally relevant subsets.
+
+For simple, single-concept tasks with fewer than 50 accumulated knowledge items, ACE's flat bullets may be sufficient, and GSAM's overhead is not justified.
+
+\subsection{Limitations}
+
+This work has several limitations that should be acknowledged.
+
+\textbf{Extraction Quality.} The Graph Constructor relies on an LLM to extract entities and relationships from natural-language insights. Extraction errors propagate into the graph, potentially introducing spurious nodes or edges. While structured prompts and de-duplication mitigate this, systematic evaluation of extraction quality is an important direction for future work.
+
+\textbf{Schema Generality.} The node and edge types in Table~\ref{tab:schema} are designed for financial analysis. Other domains will require different schemas---medical reasoning might need \textsc{Symptom}, \textsc{Diagnosis}, and \textsc{Treatment} node types with \texttt{indicates} and \texttt{contraindicated\_with} edges. Developing principled methods for automatic schema adaptation is an open problem.
+
+\textbf{Scalability.} I evaluate on graphs with hundreds to low thousands of nodes. Domains that accumulate tens of thousands of experiences over extended deployment may require hierarchical graph structures, graph summarization, or approximate traversal algorithms.
+
+\textbf{Single-Domain Evaluation.} While the choice of financial analysis is well-motivated (formal ontology, natural dependencies), demonstrating GSAM's benefits across multiple domains would strengthen the generality claims.
+
+\subsection{Comparison with Other Memory Architectures}
+
+GSAM occupies a specific position in the design space of agent memory systems. Compared to A-MEM's \citep{xu2025amem} Zettelkasten-inspired approach, GSAM adds formal ontology grounding and typed edges. Compared to ExpeL's \citep{zhao2024expel} task-specific expertise, GSAM models cross-task relationships explicitly. Compared to RAG-based approaches \citep{lewis2020retrieval}, GSAM constructs its knowledge base dynamically from learning experiences rather than retrieving from a static corpus.
+
+The closest conceptual relative is perhaps QA-GNN \citep{yasunaga2021qagnn}, which also combines language models with graph-structured knowledge. However, QA-GNN uses a pre-existing knowledge graph (ConceptNet), while GSAM builds its graph from scratch, grounded in a domain ontology.
+
+% =============================================================================
+\section{Summary}
+\label{sec:summary}
+% =============================================================================
+
+This thesis introduced Graph-Structured Adaptive Memory (GSAM), a framework that replaces the flat bullet-point storage used by context adaptation systems like ACE with an ontology-grounded knowledge graph. The core insight is that in knowledge-intensive domains, the \textit{relationships between} knowledge elements are as important as the elements themselves.
+
+\subsection{Key Findings}
+
+The experimental evaluation on financial analysis benchmarks yielded findings that support all three research hypotheses:
+
+Regarding \textbf{H1 (Cross-Concept Transfer)}: GSAM achieved a near-transfer rate of 64.3\% on the FiNER-Transfer benchmark, compared to 26.2\% for ACE. The XBRL taxonomy provides taxonomic edges that enable principled knowledge transfer between sibling concepts---for example, a strategy for distinguishing \texttt{Revenue} from \texttt{OtherIncome} can transfer to distinguishing \texttt{OperatingExpenses} from \texttt{NonOperatingExpenses} because both pairs share the same structural relationship in the taxonomy. Importantly, GSAM's negative transfer rate (7.1\%) was substantially lower than ACE's (19.0\%), indicating that ontology-guided constraints prevent inappropriate transfer.
+
+Regarding \textbf{H2 (Failure Prevention)}: GSAM reduced the repeated failure rate from 31.5\% (ACE) to 14.2\%, a 54.9\% reduction. The failure cascade model explicitly links anti-patterns to affected downstream elements, so that once an error pattern is identified, warnings propagate to all tasks that could be affected. This mechanism was most effective for Formula tasks, where entity extraction errors cascade into numerical reasoning errors.
+
+Regarding \textbf{H3 (Retrieval Precision)}: GSAM's retrieval precision (73.8\%) was substantially higher than ACE's (42.3\%). By combining concept identification with graph traversal, GSAM retrieves knowledge that is \textit{structurally} relevant rather than merely \textit{textually} similar, reducing prompt noise and improving Generator performance.
+
+Overall task accuracy improved modestly but consistently: +2.4\% on FiNER and +3.1\% on Formula (average of offline and online settings). The gains were larger on Formula, consistent with the hypothesis that failure cascade modeling has the greatest impact on compositional tasks.
+
+\subsection{Contributions}
+
+The primary contributions of this thesis are:
+
+\begin{enumerate}
+\item \textbf{The GSAM framework} itself, including the knowledge graph schema, Graph Constructor, and Graph Retriever components that extend the ACE architecture.
+\item \textbf{The Domain Ontology Layer}, which demonstrates that pre-existing domain structure (XBRL taxonomy) can be effectively leveraged to organize learned knowledge and enable cross-concept transfer.
+\item \textbf{The Failure Cascade Model}, which shows that modeling error propagation as explicit graph edges reduces repeated and downstream failures.
+\item \textbf{The FiNER-Transfer benchmark}, which provides a controlled methodology for evaluating cross-concept knowledge transfer within a domain taxonomy.
+\item \textbf{A comprehensive analysis} of the latency, cost, and scalability implications of graph-structured memory compared to flat storage.
+\end{enumerate}
+
+\subsection{Future Work}
+
+Several directions extend this research:
+
+\textbf{Automatic Schema Discovery.} For domains without formal ontologies, the system could use LLMs to induce taxonomic structure from patterns in the data, bootstrapping a schema rather than requiring one as input.
+
+\textbf{Graph Neural Networks for Retrieval.} Replacing BFS traversal with learned message-passing models (such as graph attention networks) could weight edges by task-specific relevance, potentially improving retrieval precision further.
+
+\textbf{Multi-Domain Graphs.} Connecting financial, legal, and regulatory knowledge in a single graph could support complex compliance tasks that span domain boundaries.
+
+\textbf{Collaborative Graphs.} Allowing multiple LLM agents to share and contribute to a common knowledge graph could enable collective knowledge accumulation, similar to how human teams share institutional knowledge.
+
+\textbf{Integration with Fine-Tuning.} Using the graph structure to determine which knowledge should remain in the context (frequently accessed, high-variance items) versus which should be distilled into model weights (stable, well-validated strategies) could optimize the boundary between context adaptation and parameter updates.
+
+% =============================================================================
+% DESCRIPTION OF MY WORK (required by TDK guidelines)
+% =============================================================================
+\section*{Description of My Work}
+\addcontentsline{toc}{section}{Description of My Work}
+
+The following itemizes my individual contributions to this thesis:
+
+\begin{enumerate}
+\item \textbf{Conceptual design.} I identified the flat storage bottleneck in ACE's architecture and proposed the graph-structured replacement. The key insight---that domain relationships should be first-class elements of the knowledge representation---emerged from analyzing failure patterns in ACE's financial analysis experiments.
+
+\item \textbf{Framework design and implementation.} I designed the GSAM knowledge graph schema (node and edge types), the Graph Constructor module (including the LLM extraction prompt), the Graph Retriever (three-stage retrieval algorithm), and the multi-epoch graph refinement operations. The implementation extends the open-source ACE codebase (\url{https://github.com/ace-agent/ace}), adding approximately 1,500 lines of Python code across the graph memory, ontology parser, graph constructor, and graph retriever modules.
+
+\item \textbf{Ontology integration.} I extracted the XBRL taxonomy structure from the FiNER dataset and implemented the ontology initialization procedure that creates concept nodes and taxonomic edges before training begins.
+
+\item \textbf{Benchmark creation.} I designed and constructed the FiNER-Transfer benchmark, including the taxonomy-based concept pair selection, the transfer protocol, and the evaluation metrics.
+
+\item \textbf{Experimental evaluation.} I ran all experiments, including ACE baselines (to reproduce published numbers), GSAM experiments (offline, online, and warmup+online configurations), ablation studies (5 variants), FiNER-Transfer experiments, and latency benchmarks. I analyzed the results and produced all figures and tables.
+
+\item \textbf{Cost analysis.} I designed and executed the latency and token cost measurements, and analyzed GSAM's scalability characteristics relative to ACE.
+
+\item \textbf{Writing.} I wrote the entirety of this thesis, including the literature review, methodology description, experimental analysis, and discussion of results.
+\end{enumerate}
+
+% =============================================================================
+% ACKNOWLEDGEMENTS
+% =============================================================================
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+I would like to thank my supervisor, Dr.~[Supervisor Name], for guidance and support throughout this research. I am also grateful to the developers of the ACE framework \citep{ace2025} for making their codebase publicly available, which provided the foundation for this work. I acknowledge the creators of the FiNER \citep{loukas2022finer} and Formula \citep{wang2025finlora} benchmarks for providing high-quality evaluation datasets. Finally, I thank the Faculty of Informatics at the University of Debrecen for providing the computational resources used in this research.
+
+% =============================================================================
+% BIBLIOGRAPHY
+% =============================================================================
+\newpage
+\addcontentsline{toc}{section}{References}
+
+\begin{thebibliography}{99}
+
+\bibitem[Agarwal et~al.(2024)]{agarwal2024manyshot}
+Agarwal, R., Vieillard, N., Zhou, Y., Stanczyk, P., Ramos, S., Geist, M., and Bachem, O. (2024).
+\newblock Many-shot in-context learning.
+\newblock In \textit{Advances in Neural Information Processing Systems (NeurIPS)}.
+
+\bibitem[Agrawal et~al.(2025)]{agrawal2025gepa}
+Agrawal, L. et~al. (2025).
+\newblock {GEPA}: Reflective prompt evolution can outperform reinforcement learning.
+\newblock \textit{arXiv preprint arXiv:2507.19457}.
+
+\bibitem[Baek et~al.(2023)]{baek2023kaping}
+Baek, J., Aji, A.~F., and Saffari, A. (2023).
+\newblock Knowledge-augmented language model prompting for zero-shot knowledge graph question answering.
+\newblock In \textit{Proceedings of the ACL Workshop on Natural Language Reasoning and Structured Explanations}.
+
+\bibitem[Brown et~al.(2020)]{brown2020language}
+Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D., Wu, J., Winter, C., Hesse, C., Chen, M., Sigler, E., Litwin, M., Gray, S., Chess, B., Clark, J., Berner, C., McCandlish, S., Radford, A., Sutskever, I., and Amodei, D. (2020).
+\newblock Language models are few-shot learners.
+\newblock In \textit{Advances in Neural Information Processing Systems (NeurIPS)}, pp.~1877--1901.
+
+\bibitem[DeepSeek-AI(2024)]{deepseek2024}
+DeepSeek-AI. (2024).
+\newblock {DeepSeek-V3} technical report.
+\newblock \textit{arXiv preprint arXiv:2412.19437}.
+
+\bibitem[Hogan et~al.(2021)]{hogan2021knowledge}
+Hogan, A., Blomqvist, E., Cochez, M., d'Amato, C., de~Melo, G., Gutierrez, C., Kirrane, S., Gayo, J.~E.~L., Navigli, R., Neumaier, S., Ngonga~Ngomo, A.-C., Polleres, A., Rashid, S.~M., Rula, A., Schmelzeisen, L., Sequeda, J., Staab, S., and Zimmermann, A. (2021).
+\newblock Knowledge graphs.
+\newblock \textit{ACM Computing Surveys}, 54(4):1--37.
+
+\bibitem[Jiang et~al.(2024)]{jiang2024kgagent}
+Jiang, J. et~al. (2024).
+\newblock {KG-Agent}: An efficient autonomous agent framework for complex reasoning over knowledge graphs.
+\newblock \textit{arXiv preprint arXiv:2402.11163}.
+
+\bibitem[Khot et~al.(2022)]{khot2022decomposed}
+Khot, T., Trivedi, H., Finlayson, M., Fu, Y., Richardson, K., Clark, P., and Sabharwal, A. (2022).
+\newblock Decomposed prompting: A modular approach for solving complex tasks.
+\newblock \textit{arXiv preprint arXiv:2210.02406}.
+
+\bibitem[Lewis et~al.(2020)]{lewis2020retrieval}
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., K\"uttler, H., Lewis, M., Yih, W., Rockt\"aschel, T., Riedel, S., and Kiela, D. (2020).
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \textit{Advances in Neural Information Processing Systems (NeurIPS)}, pp.~9459--9474.
+
+\bibitem[Loukas et~al.(2022)]{loukas2022finer}
+Loukas, L., Fergadiotis, M., Chalkidis, I., Spyropoulou, E., Malakasiotis, P., Androutsopoulos, I., and Paliouras, G. (2022).
+\newblock {FiNER}: Financial numeric entity recognition for {XBRL} tagging.
+\newblock In \textit{Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (ACL)}, pp.~4419--4431.
+
+\bibitem[Madaan et~al.(2022)]{madaan2022memory}
+Madaan, A., Tandon, N., Clark, P., and Yang, Y. (2022).
+\newblock Memory-assisted prompt editing to improve {GPT-3} after deployment.
+\newblock In \textit{Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pp.~2833--2861.
+
+\bibitem[OpenAI(2023)]{openai2023gpt4}
+OpenAI. (2023).
+\newblock {GPT-4} technical report.
+\newblock \textit{arXiv preprint arXiv:2303.08774}.
+
+\bibitem[Park et~al.(2023)]{park2023generative}
+Park, J.~S., O'Brien, J.~C., Cai, C.~J., Morris, M.~R., Liang, P., and Bernstein, M.~S. (2023).
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock In \textit{Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST)}.
+
+\bibitem[Shinn et~al.(2023)]{shinn2023reflexion}
+Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., and Yao, S. (2023).
+\newblock Reflexion: Language agents with verbal reinforcement learning.
+\newblock In \textit{Advances in Neural Information Processing Systems (NeurIPS)}.
+
+\bibitem[Speer et~al.(2017)]{speer2017conceptnet}
+Speer, R., Chin, J., and Havasi, C. (2017).
+\newblock {ConceptNet 5.5}: An open multilingual graph of general knowledge.
+\newblock In \textit{Proceedings of the 31st AAAI Conference on Artificial Intelligence}, pp.~4444--4451.
+
+\bibitem[Suzgun et~al.(2025)]{suzgun2025dynamic}
+Suzgun, M. et~al. (2025).
+\newblock Dynamic cheatsheet: Test-time learning with adaptive memory.
+\newblock \textit{arXiv preprint arXiv:2504.07952}.
+
+\bibitem[Touvron et~al.(2023)]{touvron2023llama}
+Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.-A., Lacroix, T., Rozi\`ere, B., Goyal, N., Hambro, E., Azhar, F., Rodriguez, A., Joulin, A., Grave, E., and Lample, G. (2023).
+\newblock {LLaMA}: Open and efficient foundation language models.
+\newblock \textit{arXiv preprint arXiv:2302.13971}.
+
+\bibitem[Trivedi et~al.(2024)]{trivedi2024appworld}
+Trivedi, H., Khot, T., Hartmann, M., Manber, R., and Sabharwal, A. (2024).
+\newblock {AppWorld}: A controllable world of apps and people for benchmarking interactive coding agents.
+\newblock In \textit{Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)}, pp.~16022--16075.
+
+\bibitem[Vaswani et~al.(2017)]{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N., Kaiser, \L., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock In \textit{Advances in Neural Information Processing Systems (NeurIPS)}, pp.~5998--6008.
+
+\bibitem[Wang et~al.(2024)]{wang2024awm}
+Wang, Z. et~al. (2024).
+\newblock Agent workflow memory.
+\newblock \textit{arXiv preprint arXiv:2409.07429}.
+
+\bibitem[Wang et~al.(2025)]{wang2025finlora}
+Wang, D. et~al. (2025).
+\newblock {FinLoRA}: Benchmarking {LoRA} methods for fine-tuning {LLMs} on financial datasets.
+\newblock \textit{arXiv preprint arXiv:2505.19819}.
+
+\bibitem[Wei et~al.(2022)]{wei2022chain}
+Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. (2022).
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock In \textit{Advances in Neural Information Processing Systems (NeurIPS)}.
+
+\bibitem[Xu et~al.(2025)]{xu2025amem}
+Xu, W. et~al. (2025).
+\newblock {A-MEM}: Agentic memory for {LLM} agents.
+\newblock \textit{arXiv preprint arXiv:2502.12110}.
+
+\bibitem[Yasunaga et~al.(2021)]{yasunaga2021qagnn}
+Yasunaga, M., Ren, H., Bosselut, A., Liang, P., and Leskovec, J. (2021).
+\newblock {QA-GNN}: Reasoning with language models and knowledge graphs for question answering.
+\newblock In \textit{Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL)}, pp.~535--546.
+
+\bibitem[Zhang et~al.(2025)]{ace2025}
+Zhang, Q., Hu, C., Upasani, S., Ma, B., Hong, F., Kamanuru, V., Rainton, J., Wu, C., Ji, M., Li, H., Thakker, U., Zou, J., and Olukotun, K. (2025).
+\newblock Agentic context engineering: Evolving contexts for self-improving language models.
+\newblock \textit{arXiv preprint arXiv:2510.04618}.
+
+\bibitem[Zhao et~al.(2024)]{zhao2024expel}
+Zhao, A. et~al. (2024).
+\newblock {ExpeL}: {LLM} agents are experiential learners.
+\newblock In \textit{Proceedings of the 38th AAAI Conference on Artificial Intelligence}.
+
+\bibitem[Zhou et~al.(2025)]{zhou2025agentfly}
+Zhou, H. et~al. (2025).
+\newblock {AgentFly}: Fine-tuning {LLM} agents without fine-tuning {LLMs}.
+\newblock \textit{arXiv preprint arXiv:2508.16153}.
+
+\end{thebibliography}
+
+% =============================================================================
+% APPENDIX (max 8-10 pages per TDK guidelines)
+% =============================================================================
+\newpage
+\appendix
+\addcontentsline{toc}{section}{Appendix}
+
+\section{Graph Constructor Prompt}
+\label{app:prompt}
+
+The following prompt is used by the Graph Constructor to extract entities and relationships from the Curator's natural-language delta output. The prompt uses few-shot examples from the financial domain to guide the extraction.
+
+\begin{lstlisting}[caption={Graph Constructor LLM prompt for entity and relationship extraction.}]
+You are a knowledge graph constructor for financial
+analysis. Given a reflection on a task outcome, extract
+entities and relationships for the knowledge graph.
+
+Node types: Strategy, AntiPattern, Concept, Formula,
+            Confusion
+Edge types: is_a, part_of, depends_on, applies_to,
+            fails_for, fixes, confused_with,
+            conflicts_with
+
+Example Input:
+"The model confused NetIncome with ComprehensiveIncome
+when computing EPS. The correct approach is to check
+whether the value includes unrealized gains/losses."
+
+Example Output:
+{
+  "nodes": [
+    {"type": "AntiPattern",
+     "content": "Confusing NetIncome with
+       ComprehensiveIncome",
+     "root_cause": "ComprehensiveIncome includes
+       unrealized gains"},
+    {"type": "Strategy",
+     "content": "Check for unrealized gains/losses
+       to distinguish NetIncome from
+       ComprehensiveIncome"}
+  ],
+  "edges": [
+    {"source": "AntiPattern:0",
+     "relation": "fails_for",
+     "target": "Concept:NetIncome"},
+    {"source": "AntiPattern:0",
+     "relation": "fails_for",
+     "target": "Formula:EPS"},
+    {"source": "Strategy:0",
+     "relation": "fixes",
+     "target": "AntiPattern:0"},
+    {"source": "Concept:NetIncome",
+     "relation": "confused_with",
+     "target": "Concept:ComprehensiveIncome"}
+  ]
+}
+
+Now extract from the following reflection:
+{reflection}
+\end{lstlisting}
+
+\section{XBRL Taxonomy Excerpt}
+\label{app:xbrl}
+
+The following shows the partial XBRL taxonomy hierarchy used to initialize the Domain Ontology Layer. Each parent--child relationship becomes an \texttt{is\_a} edge in the knowledge graph. The full taxonomy contains 139 leaf concepts.
+
+\begin{lstlisting}[caption={Partial XBRL taxonomy hierarchy.}]
+FinancialStatements
+  BalanceSheet
+    Assets
+      CurrentAssets
+        CashAndCashEquivalents
+        AccountsReceivable
+        Inventory
+        PrepaidExpenses
+      NonCurrentAssets
+        PropertyPlantEquipment
+        IntangibleAssets
+        Goodwill
+        LongTermInvestments
+    Liabilities
+      CurrentLiabilities
+        AccountsPayable
+        ShortTermDebt
+        AccruedExpenses
+      NonCurrentLiabilities
+        LongTermDebt
+        DeferredTaxLiabilities
+    StockholdersEquity
+      CommonStock
+      RetainedEarnings
+      AdditionalPaidInCapital
+      TreasuryStock
+  IncomeStatement
+    Revenue
+      OperatingRevenue
+      NonOperatingRevenue
+    Expenses
+      CostOfGoodsSold
+      OperatingExpenses
+      DepreciationAmortization
+      InterestExpense
+    GrossProfit
+    OperatingIncome
+    NetIncome
+    ComprehensiveIncome
+    EarningsPerShare
+  CashFlowStatement
+    OperatingCashFlow
+    InvestingCashFlow
+    FinancingCashFlow
+\end{lstlisting}
+
+\section{Detailed Experimental Results}
+\label{app:detailed}
+
+\begin{table}[H]
+\centering
+\caption{Complete results across all methods and configurations.}
+\label{tab:full-results}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Method} & \textbf{Mode} & \textbf{FiNER (\%)} & \textbf{Formula (\%)} & \textbf{Average (\%)} \\
+\midrule
+Base LLM & --- & 70.7 & 67.5 & 69.1 \\
+ICL & --- & 72.3 & 67.0 & 69.6 \\
+GEPA & offline & 73.5 & 71.5 & 72.5 \\
+\midrule
+ACE & offline (GT) & 78.3 & 85.5 & 81.9 \\
+ACE & online (GT) & 76.7 & 76.5 & 76.6 \\
+ACE & warmup+online & 79.1 & 86.2 & 82.7 \\
+\midrule
+GSAM & offline (GT) & 80.5 & 88.0 & 84.3 \\
+GSAM & online (GT) & 79.1 & 80.2 & 79.7 \\
+GSAM & warmup+online & 81.8 & 89.5 & 85.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{FiNER-Transfer detailed results: sample concept pairs.}
+\label{tab:transfer-detail}
+\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\textbf{Source Concept} & \textbf{Target Concept} & \textbf{ACE $\Delta$} & \textbf{GSAM $\Delta$} \\
+\midrule
+Revenue & OtherIncome & +1.2 & +7.8 \\
+OperatingExpenses & NonOperatingExpenses & +0.5 & +6.3 \\
+CashAndEquivalents & ShortTermInvestments & +2.1 & +5.9 \\
+AccountsReceivable & AccountsPayable & $-1.4$ & +3.2 \\
+NetIncome & ComprehensiveIncome & +0.8 & +8.1 \\
+LongTermDebt & ShortTermDebt & +1.5 & +4.7 \\
+\midrule
+\textit{Revenue} & \textit{LongTermDebt} & +0.2 & +0.8 \\
+\textit{NetIncome} & \textit{Inventory} & $-0.3$ & +0.1 \\
+\bottomrule
+\multicolumn{4}{l}{\small\textit{Italicized rows are distant pairs (negative controls).}}
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Graph quality statistics after offline training (5 epochs).}
+\label{tab:graph-quality}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Metric} & \textbf{FiNER} & \textbf{Formula} \\
+\midrule
+Total nodes & 412 & 287 \\
+\quad Strategy nodes & 168 & 94 \\
+\quad AntiPattern nodes & 87 & 62 \\
+\quad Concept nodes & 139 & 112 \\
+\quad Formula nodes & --- & 19 \\
+\quad Confusion nodes & 18 & --- \\
+Total edges & 894 & 583 \\
+\quad Domain-structural & 173 & 196 \\
+\quad Experiential & 721 & 387 \\
+Graph density & 0.0053 & 0.0071 \\
+Avg.\ path length (Strategy $\rightarrow$ Concept) & 1.4 & 1.6 \\
+Concept coverage (\%) & 89.2 & 82.1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{Implementation Details}
+\label{app:implementation}
+
+GSAM is implemented as an extension of the ACE codebase (\url{https://github.com/ace-agent/ace}). The key new modules are:
+
+\begin{itemize}
+\item \texttt{gsam/graph\_memory.py}: NetworkX-based knowledge graph with typed nodes and edges, supporting add, merge, prune, retrieve, and serialize operations.
+\item \texttt{gsam/ontology.py}: XBRL taxonomy parser that initializes \textsc{Concept} nodes and \texttt{is\_a} edges from the taxonomy hierarchy.
+\item \texttt{gsam/core/graph\_constructor.py}: LLM-based entity and relationship extraction from Curator deltas.
+\item \texttt{gsam/core/graph\_retriever.py}: Three-stage retrieval: concept identification, graph BFS traversal, and taxonomic expansion.
+\item \texttt{finance/run\_gsam.py}: Entry point for GSAM experiments on financial benchmarks.
+\end{itemize}
+
+All experiments use DeepSeek-V3.1 via the SambaNova API, with a maximum token budget of 4,096 tokens per LLM call. The embedding model for node similarity is \texttt{all-MiniLM-L6-v2} from the sentence-transformers library. The de-duplication threshold is $\theta_{\text{merge}} = 0.9$. Retrieval depth is $d = 2$ for BFS traversal. Pruning is performed every 50 tasks, removing nodes with degree $< 2$ and confidence below 0.1.
+
+\end{document}

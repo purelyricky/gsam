@@ -99,6 +99,7 @@ gsam/
 │   └── test_ontology.py
 │
 ├── modal_serve.py                     # Self-hosted DeepSeek via vLLM on Modal.com
+├── analyze_results.py                 # Print all paper tables and metrics from results/
 ├── llm.py                             # LLM call utilities with retry/error handling
 ├── logger.py                          # Logging utilities
 ├── utils.py                           # Shared utilities (evaluate_test_set, extract_answer)
@@ -263,7 +264,7 @@ python -m eval.finance.run \
     --generator_model DeepSeek-V3.1
 ```
 
-**Where to find ACE results:** `results/ace_finer_online/ace_run_*/final_results.json` → key: `"accuracy"`
+**Where to find ACE results:** `results/ace_finer_online/ace_run_*/final_results.json` → key: `"accuracy"` (top-level)
 
 ---
 
@@ -317,7 +318,9 @@ python -m experiments.run_experiment \
     --filter gsam_finer
 ```
 
-**Where to find GSAM results:** `results/gsam_finer_online/gsam_run_*/final_results.json` → key: `"accuracy"`
+**Where to find GSAM results:** `results/gsam_finer_online/gsam_run_*/final_results.json`
+- Online mode: `result["online_test_results"]["accuracy"]`
+- Offline mode: `result["final_test_results"]["accuracy"]`
 
 ---
 
@@ -364,7 +367,7 @@ python -m experiments.run_experiment \
     --filter ablation
 ```
 
-**Where to find ablation results:** `results/ablation_*/gsam_run_*/final_results.json` → key: `"accuracy"`, plus `rfr_metrics` from the metrics module (see [Reading Your Results](#reading-your-results) below).
+**Where to find ablation results:** `results/ablation_*/gsam_run_*/final_results.json` → `result["online_test_results"]["accuracy"]`, plus `rfr_metrics` from the metrics module (see [Reading Your Results](#reading-your-results) below).
 
 ---
 
@@ -388,8 +391,8 @@ This produces:
 ```python
 import json
 pairs = json.load(open("eval/finance/data/finer_transfer/concept_pairs.json"))
-print(f"Sibling pairs: {len([p for p in pairs if p['relation'] == 'sibling'])}")
-print(f"Distant pairs: {len([p for p in pairs if p['relation'] == 'distant'])}")
+print(f"Sibling pairs: {len([p for p in pairs if p['pair_type'] == 'sibling'])}")
+print(f"Distant pairs: {len([p for p in pairs if p['pair_type'] == 'distant'])}")
 ```
 
 ---
@@ -399,16 +402,28 @@ print(f"Distant pairs: {len([p for p in pairs if p['relation'] == 'distant'])}")
 After building the dataset (Step 4), run the transfer protocol: for each concept pair (A → B), evaluate on B with no adaptation, adapt on A, then re-evaluate on B.
 
 ```python
+import os, json
 from eval.finance.finer_transfer import (
     load_taxonomy, build_concept_pairs, build_transfer_splits,
     evaluate_transfer, compute_aggregate_transfer_metrics,
 )
 from eval.finance.data_processor import DataProcessor
 from gsam import GSAM
-import json
 
-# Load the generated pairs
-experiments = json.load(open("eval/finance/data/finer_transfer/transfer_experiments.json"))
+# Rebuild the transfer splits from saved pairs + original data
+# (transfer_experiments.json only stores metadata; the examples come from finer data)
+taxonomy = load_taxonomy("./eval/finance/data/xbrl_taxonomy.json")
+pairs = json.load(open("eval/finance/data/finer_transfer/concept_pairs.json"))
+
+processor = DataProcessor(task_name="finer")
+finer_data = []
+with open("./eval/finance/data/finer_train_batched_1000_samples.jsonl") as f:
+    for line in f:
+        if line.strip():
+            finer_data.append(json.loads(line))
+finer_data = processor.process_task_data(finer_data)
+
+experiments = build_transfer_splits(finer_data, pairs)
 
 # Initialize GSAM
 gsam = GSAM(
@@ -419,34 +434,33 @@ gsam = GSAM(
     taxonomy_path="./eval/finance/data/xbrl_taxonomy.json",
 )
 
-processor = DataProcessor(task_name="finer")
 config = {
     'max_num_rounds': 3,
     'curator_frequency': 1,
     'playbook_token_budget': 80000,
 }
 
+os.makedirs("results/transfer", exist_ok=True)
+
 # Run all transfer experiments
 results = []
 for experiment in experiments:
     result = evaluate_transfer(
-        system_name="gsam",
+        method_name="gsam",
         experiment=experiment,
         system=gsam,
         data_processor=processor,
         config=config,
-        save_dir="results/transfer",
+        save_path="results/transfer",
     )
     results.append(result)
 
-# Aggregate
+# Aggregate and save
 agg = compute_aggregate_transfer_metrics(results)
 print(f"Near-transfer rate:     {agg['near_transfer_rate']:.2%}")
 print(f"Far-transfer rate:      {agg['far_transfer_rate']:.2%}")
 print(f"Negative transfer rate: {agg['negative_transfer_rate']:.2%}")
 
-# Save
-import json
 json.dump(agg, open("results/transfer/aggregate_metrics.json", "w"), indent=2)
 ```
 
@@ -456,21 +470,33 @@ json.dump(agg, open("results/transfer/aggregate_metrics.json", "w"), indent=2)
 
 ## Reading Your Results
 
-Every metric produced by GSAM experiments and its exact location:
+After running experiments, get a full summary of all tables and metrics in one command:
+
+```bash
+python analyze_results.py                          # reads ./results/
+python analyze_results.py --results_dir my/path    # custom directory
+```
+
+This prints all five tables needed for the paper (main accuracy, online vs. offline, ablations, graph growth, transfer metrics) and maps each metric to the hypothesis it supports.
+
+For manual inspection, every metric and its exact file location is documented below:
 
 ### Accuracy (main result)
 
 ```python
 import json
 
-# ACE baseline accuracy
+# ACE baseline accuracy (top-level key)
 ace = json.load(open("results/ace_finer_online/ace_run_TIMESTAMP_finer_online/final_results.json"))
 print(f"ACE accuracy: {ace['accuracy']:.3f}")
 
-# GSAM accuracy
+# GSAM accuracy — nested under mode-specific key
 gsam = json.load(open("results/gsam_finer_online/gsam_run_TIMESTAMP_finer_online/final_results.json"))
-print(f"GSAM accuracy: {gsam['accuracy']:.3f}")
-# Also available: gsam['correct'], gsam['total']
+# Online mode:
+print(f"GSAM accuracy (online): {gsam['online_test_results']['accuracy']:.3f}")
+# Offline mode:
+# print(f"GSAM accuracy (offline): {gsam['final_test_results']['accuracy']:.3f}")
+# Also available per mode: gsam['online_test_results']['correct'], gsam['online_test_results']['total']
 ```
 
 Files: `{save_path}/gsam_run_*/final_results.json`
@@ -583,7 +609,9 @@ for name, path in runs.items():
     files = glob.glob(os.path.join(path, "*/final_results.json"))
     if files:
         r = json.load(open(files[0]))
-        print(f"{name:25s}  accuracy={r['accuracy']:.3f}")
+        # GSAM online results are nested under 'online_test_results'
+        acc = r.get("online_test_results", r).get("accuracy", 0)
+        print(f"{name:25s}  accuracy={acc:.3f}")
 ```
 
 ---

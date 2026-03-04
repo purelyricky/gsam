@@ -159,7 +159,6 @@ class DataProcessor:
             return float(predicted) == float(ground_truth)
         except Exception:
             return predicted == ground_truth
-        return predicted == ground_truth
     
     
     def answer_is_correct(self, predicted: str, ground_truth: str) -> bool:
@@ -208,10 +207,7 @@ class DataProcessor:
 
         for predicted, ground_truth in zip(out, target):
             if self._formula_answer_is_correct(predicted, ground_truth):
-                is_correct = True
                 correct_count += 1
-            else:
-                is_correct = False
 
         accuracy = 0.0
         if len(out) > 0:
