@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.5405405405405406,
+  "correct": 40,
+  "total": 74,
+  "skipped": 1,
+  "note": "Recovered from log \u2014 run completed all 75 steps but crashed at assertion before JSON save (fixed in ace.py:1299)",
+  "latency_stats": {
+    "generator_mean_s": 11.907,
+    "reflector_mean_s": 17.426,
+    "curator_mean_s": 8.205,
+    "retrieval_mean_s": 0.0,
+    "graph_update_mean_s": 0.0,
+    "total_per_sample_mean_s": 37.538
+  }
+}

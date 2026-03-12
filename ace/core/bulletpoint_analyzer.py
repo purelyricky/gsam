@@ -91,7 +91,7 @@ class BulletpointAnalyzer:
         self.embedding_model = None
         
         if not DEDUP_AVAILABLE:
-            print("⚠️  Bulletpoint analyzer initialized but dependencies not available")
+            print("WARNING: Bulletpoint analyzer initialized but dependencies not available")
     
     def _load_embedding_model(self):
         """Load sentence transformer model for embeddings."""
@@ -263,11 +263,11 @@ Do NOT include any explanation, just output the merged bulletpoint."""
                     'original_count': len(bullets_group)
                 }
             else:
-                print(f"⚠️  Failed to parse merged bullet, keeping first bullet from group")
+                print(f"WARNING: Failed to parse merged bullet, keeping first bullet from group")
                 return bullets_group[0]
                 
         except Exception as e:
-            print(f"⚠️  Error merging bullets: {e}, keeping first bullet from group")
+            print(f"WARNING: Error merging bullets: {e}, keeping first bullet from group")
             return bullets_group[0]
     
     def analyze(
@@ -288,7 +288,7 @@ Do NOT include any explanation, just output the merged bulletpoint."""
             Processed playbook string
         """
         if not DEDUP_AVAILABLE:
-            print("⚠️  Skipping bulletpoint analysis (dependencies not available)")
+            print("WARNING: Skipping bulletpoint analysis (dependencies not available)")
             return playbook
         
         # Parse playbook

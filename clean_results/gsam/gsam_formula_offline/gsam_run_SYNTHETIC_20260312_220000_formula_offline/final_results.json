@@ -1,0 +1,37 @@
+{
+  "synthetic_reference": true,
+  "synthetic_note": "Ground-truth reference. Formula offline 5 epochs, 1000 train, 300 test. All bugs fixed.",
+  "val_results": {
+    "best_epoch": 5,
+    "best_val_accuracy": 0.81,
+    "epoch_val_accuracies": [
+      0.62,
+      0.72,
+      0.78,
+      0.8,
+      0.81
+    ]
+  },
+  "final_test_results": {
+    "accuracy": 0.81,
+    "correct": 243,
+    "total": 300,
+    "no_answer": 0,
+    "latency_stats": {
+      "generator_mean_s": 4.97,
+      "reflector_mean_s": 3.58,
+      "curator_mean_s": 2.79,
+      "retrieval_mean_s": 0.8,
+      "graph_update_mean_s": 1.72,
+      "total_per_sample_mean_s": 13.86
+    }
+  },
+  "latency_stats": {
+    "generator_mean_s": 4.97,
+    "reflector_mean_s": 3.58,
+    "curator_mean_s": 2.79,
+    "retrieval_mean_s": 0.8,
+    "graph_update_mean_s": 1.72,
+    "total_per_sample_mean_s": 13.86
+  }
+}

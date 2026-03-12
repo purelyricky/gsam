@@ -1,0 +1,30 @@
+{
+  "task_name": "finer",
+  "mode": "online",
+  "config": {
+    "num_epochs": 1,
+    "max_num_rounds": 1,
+    "curator_frequency": 1,
+    "eval_steps": 100,
+    "online_eval_frequency": 15,
+    "save_steps": 50,
+    "playbook_token_budget": 80000,
+    "task_name": "finer",
+    "mode": "online",
+    "json_mode": false,
+    "no_ground_truth": false,
+    "save_dir": "results/mini/ablation_no_cascades",
+    "test_workers": 20,
+    "api_provider": "modal",
+    "taxonomy_path": "./eval/finance/data/xbrl_taxonomy.json",
+    "merge_threshold": 0.9,
+    "retrieval_depth": 2,
+    "prune_frequency": 50,
+    "no_ontology": false,
+    "no_failure_cascades": true,
+    "embedding_only_retrieval": false,
+    "untyped_edges": false,
+    "no_multi_epoch_refinement": false,
+    "resume_path": null
+  }
+}

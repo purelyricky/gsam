@@ -306,6 +306,6 @@ Full Raw Curator Response:
     try:
         with open(curator_failure_log_path, 'a', encoding='utf-8') as f:
             f.write(log_entry)
-        print(f"📝 Curator failure logged to: {curator_failure_log_path}")
+        print(f"Curator failure logged to: {curator_failure_log_path}")
     except Exception as e:
-        print(f"⚠️  Failed to write curator failure log: {e}")
+        print(f"WARNING: Failed to write curator failure log: {e}")

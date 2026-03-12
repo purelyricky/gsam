@@ -114,7 +114,7 @@ class GraphConstructor:
             if op_type == "ADD_STRATEGY":
                 ops = self._handle_add_strategy(op)
                 operations.extend(ops)
-            elif op_type == "ADD_ANTIPATTERN":
+            elif op_type in ("ADD_ANTIPATTERN", "ADD_ANTI_PATTERN"):
                 if not self.no_failure_cascades:
                     ops = self._handle_add_antipattern(op)
                     operations.extend(ops)

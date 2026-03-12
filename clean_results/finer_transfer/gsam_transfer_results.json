@@ -1,0 +1,860 @@
+{
+  "synthetic_reference": true,
+  "method": "GSAM",
+  "n_sibling_pairs": 42,
+  "n_distant_pairs": 42,
+  "near_transfer_rate": 0.643,
+  "far_transfer_rate": 0.214,
+  "transfer_precision": 0.062,
+  "negative_transfer_rate": 0.071,
+  "pairs_with_positive_near_transfer": 27,
+  "pairs_with_zero_near_transfer": 12,
+  "pairs_with_negative_near_transfer": 3,
+  "pairs_with_positive_far_transfer": 9,
+  "pairs_with_zero_far_transfer": 29,
+  "pairs_with_negative_far_transfer": 4,
+  "sibling_pair_results": [
+    {
+      "pair_type": "sibling",
+      "source_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "target_concept": "ContractWithCustomerLiabilityRevenueRecognized",
+      "lca_depth": 2,
+      "base_acc": 0.4,
+      "transfer_acc": 0.53,
+      "transfer_gain": 0.133,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "NetIncomeLoss",
+      "target_concept": "ComprehensiveIncomeNetOfTax",
+      "lca_depth": 2,
+      "base_acc": 0.35,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.12,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DebtInstrumentFaceAmount",
+      "target_concept": "DebtInstrumentCarryingAmount",
+      "lca_depth": 2,
+      "base_acc": 0.45,
+      "transfer_acc": 0.57,
+      "transfer_gain": 0.12,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "CommonStockSharesAuthorized",
+      "target_concept": "CommonStockSharesOutstanding",
+      "lca_depth": 2,
+      "base_acc": 0.5,
+      "transfer_acc": 0.57,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "AllocatedShareBasedCompensationExpense",
+      "target_concept": "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized",
+      "lca_depth": 3,
+      "base_acc": 0.3,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.167,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "LineOfCreditFacilityMaximumBorrowingCapacity",
+      "target_concept": "LineOfCreditFacilityCurrentBorrowingCapacity",
+      "lca_depth": 2,
+      "base_acc": 0.55,
+      "transfer_acc": 0.67,
+      "transfer_gain": 0.12,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "NumberOfOperatingSegments",
+      "target_concept": "NumberOfReportableSegments",
+      "lca_depth": 2,
+      "base_acc": 0.6,
+      "transfer_acc": 0.73,
+      "transfer_gain": 0.133,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "Depreciation",
+      "target_concept": "AmortizationOfIntangibleAssets",
+      "lca_depth": 3,
+      "base_acc": 0.42,
+      "transfer_acc": 0.5,
+      "transfer_gain": 0.083,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "PropertyPlantAndEquipmentNet",
+      "target_concept": "PropertyPlantAndEquipmentGross",
+      "lca_depth": 2,
+      "base_acc": 0.47,
+      "transfer_acc": 0.57,
+      "transfer_gain": 0.1,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "InterestExpense",
+      "target_concept": "InterestPaid",
+      "lca_depth": 2,
+      "base_acc": 0.52,
+      "transfer_acc": 0.6,
+      "transfer_gain": 0.08,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "OperatingLeaseExpense",
+      "target_concept": "FinanceLeaseExpense",
+      "lca_depth": 3,
+      "base_acc": 0.38,
+      "transfer_acc": 0.45,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "LesseeOperatingLeaseTermOfContract",
+      "target_concept": "LesseeFinanceLeaseTermOfContract",
+      "lca_depth": 3,
+      "base_acc": 0.42,
+      "transfer_acc": 0.5,
+      "transfer_gain": 0.08,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "EarningsPerShareBasic",
+      "target_concept": "EarningsPerShareDiluted",
+      "lca_depth": 2,
+      "base_acc": 0.48,
+      "transfer_acc": 0.57,
+      "transfer_gain": 0.09,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "RetainedEarningsAccumulatedDeficit",
+      "target_concept": "AdditionalPaidInCapital",
+      "lca_depth": 3,
+      "base_acc": 0.43,
+      "transfer_acc": 0.5,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "Goodwill",
+      "target_concept": "GoodwillImpairmentLoss",
+      "lca_depth": 2,
+      "base_acc": 0.37,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.06,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "RestructuringCharges",
+      "target_concept": "BusinessCombinationConsiderationTransferred1",
+      "lca_depth": 4,
+      "base_acc": 0.33,
+      "transfer_acc": 0.4,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DeferredFinanceCostsNet",
+      "target_concept": "DeferredFinanceCostsGross",
+      "lca_depth": 2,
+      "base_acc": 0.48,
+      "transfer_acc": 0.57,
+      "transfer_gain": 0.087,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DebtInstrumentInterestRateStatedPercentage",
+      "target_concept": "DebtInstrumentInterestRateEffectivePercentage",
+      "lca_depth": 2,
+      "base_acc": 0.45,
+      "transfer_acc": 0.53,
+      "transfer_gain": 0.08,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+      "target_concept": "SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage",
+      "lca_depth": 2,
+      "base_acc": 0.4,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "EquityMethodInvestmentOwnershipPercentage",
+      "target_concept": "MinorityInterestOwnershipPercentageByParent",
+      "lca_depth": 3,
+      "base_acc": 0.37,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DefinedBenefitPlanContributionsByEmployer",
+      "target_concept": "DefinedContributionPlanCostRecognized",
+      "lca_depth": 3,
+      "base_acc": 0.33,
+      "transfer_acc": 0.4,
+      "transfer_gain": 0.067,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "target_concept": "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1",
+      "lca_depth": 4,
+      "base_acc": 0.28,
+      "transfer_acc": 0.33,
+      "transfer_gain": 0.05,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "ConcentrationRiskPercentage1",
+      "target_concept": "NumberOfRealEstateProperties",
+      "lca_depth": 5,
+      "base_acc": 0.32,
+      "transfer_acc": 0.37,
+      "transfer_gain": 0.05,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "LossContingencyEstimateOfPossibleLoss",
+      "target_concept": "LettersOfCreditOutstandingAmount",
+      "lca_depth": 4,
+      "base_acc": 0.3,
+      "transfer_acc": 0.35,
+      "transfer_gain": 0.05,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "StockRepurchaseProgramAuthorizedAmount1",
+      "target_concept": "StockRepurchasedAndRetiredDuringPeriodShares",
+      "lca_depth": 3,
+      "base_acc": 0.35,
+      "transfer_acc": 0.4,
+      "transfer_gain": 0.05,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "SaleOfStockPricePerShare",
+      "target_concept": "SaleOfStockNumberOfSharesIssuedInTransaction",
+      "lca_depth": 2,
+      "base_acc": 0.4,
+      "transfer_acc": 0.45,
+      "transfer_gain": 0.05,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "PublicUtilitiesRequestedRateIncreaseDecreaseAmount",
+      "target_concept": "GuaranteeObligationsMaximumExposure",
+      "lca_depth": 5,
+      "base_acc": 0.27,
+      "transfer_acc": 0.32,
+      "transfer_gain": 0.05,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+      "target_concept": "OperatingLeaseWeightedAverageDiscountRatePercent",
+      "lca_depth": 2,
+      "base_acc": 0.38,
+      "transfer_acc": 0.38,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DebtInstrumentUnamortizedDiscount",
+      "target_concept": "DebtInstrumentBasisSpreadOnVariableRate1",
+      "lca_depth": 3,
+      "base_acc": 0.42,
+      "transfer_acc": 0.42,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "RevenueRemainingPerformanceObligation",
+      "target_concept": "ContractWithCustomerAsset1Net",
+      "lca_depth": 3,
+      "base_acc": 0.3,
+      "transfer_acc": 0.3,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "CashAndCashEquivalentsAtCarryingValue",
+      "target_concept": "CashAndCashEquivalentsFairValueDisclosure",
+      "lca_depth": 2,
+      "base_acc": 0.53,
+      "transfer_acc": 0.53,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "CommonStockDividendsPerShareDeclared",
+      "target_concept": "PreferredStockDividendsPerShareDeclared",
+      "lca_depth": 2,
+      "base_acc": 0.43,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "IncomeTaxExpenseBenefit",
+      "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
+      "lca_depth": 2,
+      "base_acc": 0.47,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "BusinessCombinationAcquisitionRelatedCosts",
+      "target_concept": "BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill",
+      "lca_depth": 2,
+      "base_acc": 0.28,
+      "transfer_acc": 0.28,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "UnrecognizedTaxBenefits",
+      "target_concept": "UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate",
+      "lca_depth": 2,
+      "base_acc": 0.35,
+      "transfer_acc": 0.35,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "ProceedsFromIssuanceOfCommonStock",
+      "target_concept": "StockIssuedDuringPeriodSharesNewIssues",
+      "lca_depth": 2,
+      "base_acc": 0.45,
+      "transfer_acc": 0.45,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber",
+      "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue",
+      "lca_depth": 2,
+      "base_acc": 0.32,
+      "transfer_acc": 0.32,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DebtInstrumentRedemptionPricePercentage",
+      "target_concept": "DebtInstrumentConvertibleConversionPrice1",
+      "lca_depth": 3,
+      "base_acc": 0.38,
+      "transfer_acc": 0.35,
+      "transfer_gain": -0.033,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "DerivativeNotionalAmount",
+      "target_concept": "DebtInstrumentFairValue",
+      "lca_depth": 4,
+      "base_acc": 0.3,
+      "transfer_acc": 0.27,
+      "transfer_gain": -0.033,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife",
+      "target_concept": "FiniteLivedIntangibleAssetUsefulLife",
+      "lca_depth": 2,
+      "base_acc": 0.4,
+      "transfer_acc": 0.37,
+      "transfer_gain": -0.033,
+      "positive": false
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+      "target_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "lca_depth": 2,
+      "base_acc": 0.37,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.06,
+      "positive": true
+    },
+    {
+      "pair_type": "sibling",
+      "source_concept": "NetIncomeLossAttributableToNoncontrollingInterest",
+      "target_concept": "NetIncomeLoss",
+      "lca_depth": 2,
+      "base_acc": 0.32,
+      "transfer_acc": 0.38,
+      "transfer_gain": 0.06,
+      "positive": true
+    }
+  ],
+  "distant_pair_results": [
+    {
+      "pair_type": "distant",
+      "source_concept": "NetIncomeLoss",
+      "target_concept": "LineOfCreditFacilityMaximumBorrowingCapacity",
+      "subtree_distance": "high",
+      "base_acc": 0.43,
+      "transfer_acc": 0.45,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "AllocatedShareBasedCompensationExpense",
+      "target_concept": "Goodwill",
+      "subtree_distance": "high",
+      "base_acc": 0.38,
+      "transfer_acc": 0.4,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "Depreciation",
+      "target_concept": "StockRepurchaseProgramAuthorizedAmount1",
+      "subtree_distance": "high",
+      "base_acc": 0.42,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.013,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "target_concept": "PropertyPlantAndEquipmentNet",
+      "subtree_distance": "high",
+      "base_acc": 0.45,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "DebtInstrumentFaceAmount",
+      "target_concept": "NumberOfOperatingSegments",
+      "subtree_distance": "high",
+      "base_acc": 0.6,
+      "transfer_acc": 0.62,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "CommonStockSharesAuthorized",
+      "target_concept": "Goodwill",
+      "subtree_distance": "high",
+      "base_acc": 0.35,
+      "transfer_acc": 0.37,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "InterestExpense",
+      "target_concept": "ConcentrationRiskPercentage1",
+      "subtree_distance": "high",
+      "base_acc": 0.3,
+      "transfer_acc": 0.32,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "EarningsPerShareBasic",
+      "target_concept": "RestructuringCharges",
+      "subtree_distance": "high",
+      "base_acc": 0.35,
+      "transfer_acc": 0.37,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "LossContingencyEstimateOfPossibleLoss",
+      "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+      "subtree_distance": "high",
+      "base_acc": 0.28,
+      "transfer_acc": 0.3,
+      "transfer_gain": 0.017,
+      "positive": true
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "RetainedEarningsAccumulatedDeficit",
+      "target_concept": "OperatingLeaseExpense",
+      "subtree_distance": "high",
+      "base_acc": 0.48,
+      "transfer_acc": 0.48,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "EarningsPerShareDiluted",
+      "target_concept": "Depreciation",
+      "subtree_distance": "high",
+      "base_acc": 0.49,
+      "transfer_acc": 0.49,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "GoodwillImpairmentLoss",
+      "target_concept": "InterestPaid",
+      "subtree_distance": "high",
+      "base_acc": 0.44,
+      "transfer_acc": 0.44,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "DeferredFinanceCostsNet",
+      "target_concept": "AllocatedShareBasedCompensationExpense",
+      "subtree_distance": "high",
+      "base_acc": 0.43,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "SaleOfStockPricePerShare",
+      "target_concept": "NetIncomeLoss",
+      "subtree_distance": "high",
+      "base_acc": 0.39,
+      "transfer_acc": 0.39,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "EquityMethodInvestmentOwnershipPercentage",
+      "target_concept": "PropertyPlantAndEquipmentGross",
+      "subtree_distance": "high",
+      "base_acc": 0.37,
+      "transfer_acc": 0.37,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "IncomeTaxExpenseBenefit",
+      "target_concept": "Goodwill",
+      "subtree_distance": "high",
+      "base_acc": 0.3,
+      "transfer_acc": 0.3,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "UnrecognizedTaxBenefits",
+      "target_concept": "RestructuringCharges",
+      "subtree_distance": "high",
+      "base_acc": 0.52,
+      "transfer_acc": 0.52,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "ProceedsFromIssuanceOfCommonStock",
+      "target_concept": "DebtInstrumentFaceAmount",
+      "subtree_distance": "high",
+      "base_acc": 0.53,
+      "transfer_acc": 0.53,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "NumberOfReportableSegments",
+      "target_concept": "RetainedEarningsAccumulatedDeficit",
+      "subtree_distance": "high",
+      "base_acc": 0.36,
+      "transfer_acc": 0.36,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "LesseeFinanceLeaseTermOfContract",
+      "target_concept": "CommonStockSharesOutstanding",
+      "subtree_distance": "high",
+      "base_acc": 0.49,
+      "transfer_acc": 0.49,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+      "target_concept": "AllocatedShareBasedCompensationExpense",
+      "subtree_distance": "high",
+      "base_acc": 0.39,
+      "transfer_acc": 0.39,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "DebtInstrumentBasisSpreadOnVariableRate1",
+      "target_concept": "EarningsPerShareBasic",
+      "subtree_distance": "high",
+      "base_acc": 0.36,
+      "transfer_acc": 0.36,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "AmortizationOfIntangibleAssets",
+      "target_concept": "SaleOfStockPricePerShare",
+      "subtree_distance": "high",
+      "base_acc": 0.43,
+      "transfer_acc": 0.43,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "AdditionalPaidInCapital",
+      "target_concept": "LossContingencyEstimateOfPossibleLoss",
+      "subtree_distance": "high",
+      "base_acc": 0.37,
+      "transfer_acc": 0.37,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "FinanceLeaseExpense",
+      "target_concept": "NumberOfOperatingSegments",
+      "subtree_distance": "high",
+      "base_acc": 0.47,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "StockRepurchasedAndRetiredDuringPeriodShares",
+      "target_concept": "DeferredFinanceCostsNet",
+      "subtree_distance": "high",
+      "base_acc": 0.46,
+      "transfer_acc": 0.46,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "DebtInstrumentInterestRateEffectivePercentage",
+      "target_concept": "OperatingLeaseExpense",
+      "subtree_distance": "high",
+      "base_acc": 0.32,
+      "transfer_acc": 0.32,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "MinorityInterestOwnershipPercentageByParent",
+      "target_concept": "InterestExpense",
+      "subtree_distance": "high",
+      "base_acc": 0.4,
+      "transfer_acc": 0.4,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "DefinedContributionPlanCostRecognized",
+      "target_concept": "Goodwill",
+      "subtree_distance": "high",
+      "base_acc": 0.41,
+      "transfer_acc": 0.41,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "target_concept": "PropertyPlantAndEquipmentNet",
+      "subtree_distance": "high",
+      "base_acc": 0.52,
+      "transfer_acc": 0.52,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "NumberOfRealEstateProperties",
+      "target_concept": "DebtInstrumentFaceAmount",
+      "subtree_distance": "high",
+      "base_acc": 0.38,
+      "transfer_acc": 0.38,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "GuaranteeObligationsMaximumExposure",
+      "target_concept": "EarningsPerShareDiluted",
+      "subtree_distance": "high",
+      "base_acc": 0.32,
+      "transfer_acc": 0.32,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "PublicUtilitiesRequestedRateIncreaseDecreaseAmount",
+      "target_concept": "Depreciation",
+      "subtree_distance": "high",
+      "base_acc": 0.38,
+      "transfer_acc": 0.38,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "LettersOfCreditOutstandingAmount",
+      "target_concept": "CommonStockSharesAuthorized",
+      "subtree_distance": "high",
+      "base_acc": 0.53,
+      "transfer_acc": 0.53,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "StockRepurchaseProgramAuthorizedAmount1",
+      "target_concept": "InterestPaid",
+      "subtree_distance": "high",
+      "base_acc": 0.39,
+      "transfer_acc": 0.39,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage",
+      "target_concept": "NetIncomeLoss",
+      "subtree_distance": "high",
+      "base_acc": 0.35,
+      "transfer_acc": 0.35,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "ConcentrationRiskPercentage1",
+      "target_concept": "RetainedEarningsAccumulatedDeficit",
+      "subtree_distance": "high",
+      "base_acc": 0.47,
+      "transfer_acc": 0.47,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1",
+      "target_concept": "AllocatedShareBasedCompensationExpense",
+      "subtree_distance": "high",
+      "base_acc": 0.39,
+      "transfer_acc": 0.39,
+      "transfer_gain": 0.0,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "GoodwillImpairmentLoss",
+      "target_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "subtree_distance": "high",
+      "base_acc": 0.32,
+      "transfer_acc": 0.28,
+      "transfer_gain": -0.033,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "DebtInstrumentConvertibleConversionPrice1",
+      "target_concept": "NumberOfOperatingSegments",
+      "subtree_distance": "high",
+      "base_acc": 0.38,
+      "transfer_acc": 0.35,
+      "transfer_gain": -0.033,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "FiniteLivedIntangibleAssetUsefulLife",
+      "target_concept": "CommonStockSharesAuthorized",
+      "subtree_distance": "high",
+      "base_acc": 0.4,
+      "transfer_acc": 0.37,
+      "transfer_gain": -0.033,
+      "positive": false
+    },
+    {
+      "pair_type": "distant",
+      "source_concept": "AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife",
+      "target_concept": "NetIncomeLoss",
+      "subtree_distance": "high",
+      "base_acc": 0.35,
+      "transfer_acc": 0.32,
+      "transfer_gain": -0.033,
+      "positive": false
+    }
+  ]
+}

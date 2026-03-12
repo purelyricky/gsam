@@ -1,0 +1,1044 @@
+{
+  "synthetic_reference": true,
+  "window": 20,
+  "step": 300,
+  "bullet_count": 148,
+  "bullets": [
+    {
+      "id": "bullet_0001",
+      "section": "identification_strategies",
+      "content": "When a sentence references 'principal amount of X' or 'face value of $X million', use DebtInstrumentFaceAmount. When it says 'carrying amount' or 'book value' or includes adjustments for discount/premium, use DebtInstrumentCarryingAmount.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0002",
+      "section": "common_errors",
+      "content": "Do not confuse LineOfCreditFacilityMaximumBorrowingCapacity with LineOfCreditFacilityCurrentBorrowingCapacity: maximum is the total credit limit in the agreement; current/remaining is what's available to draw after existing draws.",
+      "helpful": 5,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0003",
+      "section": "formulas_and_calculations",
+      "content": "RevenueFromContractWithCustomerExcludingAssessedTax applies to revenue after excluding sales/VAT taxes explicitly mentioned. If the text says 'net revenue' without tax mention, still prefer this tag.",
+      "helpful": 4,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0004",
+      "section": "general_tips",
+      "content": "NumberOfOperatingSegments counts business divisions reported internally. NumberOfReportableSegments is the external GAAP disclosure count. These frequently differ by 1-2 segments.",
+      "helpful": 6,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0005",
+      "section": "identification_strategies",
+      "content": "EarningsPerShareBasic uses weighted-average shares outstanding (no dilution). EarningsPerShareDiluted adds in-the-money options and convertibles. When text says 'diluted EPS', always use diluted.",
+      "helpful": 4,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0006",
+      "section": "common_errors",
+      "content": "For lease terms: LesseeOperatingLeaseTermOfContract is the initial fixed term. Use LesseeFinanceLeaseTermOfContract only when the lease transfers ownership or contains a bargain purchase option.",
+      "helpful": 9,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0007",
+      "section": "formulas_and_calculations",
+      "content": "Depreciation applies to tangible fixed assets (PP&E). AmortizationOfIntangibleAssets applies to patents, trademarks, customer lists. Depletion applies to natural resources \u2014 if all three are combined, use DepletionDepreciationAndAmortization.",
+      "helpful": 11,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0008",
+      "section": "general_tips",
+      "content": "InterestExpense is accrual-based (income statement). InterestPaid is cash-based (cash flow statement). When context mentions 'paid' explicitly, use InterestPaid.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0009",
+      "section": "identification_strategies",
+      "content": "AllocatedShareBasedCompensationExpense is the P&L charge. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the unrecognized future cost.",
+      "helpful": 12,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0010",
+      "section": "common_errors",
+      "content": "PropertyPlantAndEquipmentGross is before accumulated depreciation. PropertyPlantAndEquipmentNet is after. 'Net book value' always maps to the Net tag.",
+      "helpful": 10,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0011",
+      "section": "formulas_and_calculations",
+      "content": "Goodwill is only impaired downward, never amortized under US GAAP. GoodwillImpairmentLoss is the specific impairment charge recognized in that period.",
+      "helpful": 9,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0012",
+      "section": "general_tips",
+      "content": "CommonStockSharesAuthorized is the charter maximum. CommonStockSharesOutstanding is actual shares in investor hands. CommonStockSharesIssued includes treasury shares.",
+      "helpful": 3,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0013",
+      "section": "identification_strategies",
+      "content": "AdditionalPaidInCapital (APIC) captures amounts paid above par value. RetainedEarningsAccumulatedDeficit is cumulative net income minus dividends. Deficit = accumulated losses.",
+      "helpful": 11,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0014",
+      "section": "common_errors",
+      "content": "IncomeTaxExpenseBenefit is the total tax provision (current + deferred). EffectiveIncomeTaxRateContinuingOperations is expressed as a percentage, not dollar amount.",
+      "helpful": 2,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0015",
+      "section": "formulas_and_calculations",
+      "content": "RestructuringCharges includes severance, facility closure costs. BusinessCombinationConsiderationTransferred1 is M&A deal value \u2014 do not confuse restructuring with acquisition costs.",
+      "helpful": 2,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0016",
+      "section": "general_tips",
+      "content": "DeferredFinanceCostsNet (issuance costs) is netted against the debt balance on the balance sheet post-ASU 2015-03. Always check if 'deferred financing costs' are net or gross.",
+      "helpful": 1,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0017",
+      "section": "identification_strategies",
+      "content": "OperatingLeaseExpense is the straight-line operating lease cost. FinanceLeaseExpense has two components: amortization + interest. Total finance lease cost = both combined.",
+      "helpful": 3,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0018",
+      "section": "common_errors",
+      "content": "When text mentions 'effective tax rate' or 'ETR', use EffectiveIncomeTaxRateContinuingOperations (decimal, e.g. 0.21 for 21%). Dollar tax charges use IncomeTaxExpenseBenefit.",
+      "helpful": 3,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0019",
+      "section": "formulas_and_calculations",
+      "content": "EarningsPerShareBasic and Diluted are per-share amounts, typically small numbers ($0.xx to $xx.xx). Do not confuse with net income in millions.",
+      "helpful": 3,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0020",
+      "section": "general_tips",
+      "content": "ContractWithCustomerLiabilityRevenueRecognized is revenue recognized FROM deferred revenue. ContractWithCustomerLiability is the remaining deferred balance. Track direction of flow.",
+      "helpful": 9,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0021",
+      "section": "identification_strategies",
+      "content": "For stock repurchases: StockRepurchaseProgramAuthorizedAmount1 is the board-approved total. StockRepurchasedAndRetiredDuringPeriodValue or Shares is what was actually bought back.",
+      "helpful": 4,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0022",
+      "section": "common_errors",
+      "content": "SaleOfStockPricePerShare is the offering price per share. SaleOfStockNumberOfSharesIssuedInTransaction is the quantity. Proceeds = price \u00d7 shares.",
+      "helpful": 2,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0023",
+      "section": "formulas_and_calculations",
+      "content": "UnrecognizedTaxBenefits is the gross amount of uncertain tax positions. UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate is the subset that would affect ETR if resolved.",
+      "helpful": 12,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0024",
+      "section": "general_tips",
+      "content": "ProceedsFromIssuanceOfCommonStock is cash inflow (financing activities). StockIssuedDuringPeriodSharesNewIssues is the number of shares. Both may appear together in equity offerings.",
+      "helpful": 5,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0025",
+      "section": "identification_strategies",
+      "content": "DerivativeNotionalAmount is the contractual reference amount (not fair value). DebtInstrumentFairValue is the market value of a debt instrument. These are conceptually distinct.",
+      "helpful": 12,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0026",
+      "section": "common_errors",
+      "content": "For concentration risk: ConcentrationRiskPercentage1 is the percentage. Always check the ConcentrationRiskBenchmarkDescription to understand what it's a percentage of.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0027",
+      "section": "formulas_and_calculations",
+      "content": "LossContingencyEstimateOfPossibleLoss is a range estimate (may need MinimumMaximum suffix). LettersOfCreditOutstandingAmount is a credit facility contingency, not a loss estimate.",
+      "helpful": 3,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0028",
+      "section": "general_tips",
+      "content": "EquityMethodInvestmentOwnershipPercentage is for investments where the investor has significant influence (typically 20-50%). Below 20% may use cost method.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0029",
+      "section": "identification_strategies",
+      "content": "DefinedBenefitPlanContributionsByEmployer is annual cash contributed to pension plan. DefinedContributionPlanCostRecognized is 401(k)-style expense.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0030",
+      "section": "common_errors",
+      "content": "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount: shares excluded because including them would increase EPS. Always in shares, not dollars.",
+      "helpful": 8,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0031",
+      "section": "formulas_and_calculations",
+      "content": "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1: the exercise/strike price per warrant. Per-share amount, typically stated in dollars.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0032",
+      "section": "general_tips",
+      "content": "DebtInstrumentInterestRateStatedPercentage is the coupon rate in the indenture. DebtInstrumentInterestRateEffectivePercentage accounts for discount/premium (yield).",
+      "helpful": 8,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0033",
+      "section": "identification_strategies",
+      "content": "GoodwillImpairmentLoss is typically a large one-time charge. Do not confuse with amortization \u2014 US GAAP goodwill is NOT amortized, only tested for impairment annually.",
+      "helpful": 6,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0034",
+      "section": "common_errors",
+      "content": "BusinessCombinationAcquisitionRelatedCosts are transaction costs (legal, advisory fees). BusinessCombinationConsiderationTransferred1 is the actual purchase price paid.",
+      "helpful": 7,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0035",
+      "section": "formulas_and_calculations",
+      "content": "MinorityInterestOwnershipPercentageByParent: parent's % ownership in consolidated subsidiary. NoncontrollingInterest is the NCI balance on the balance sheet.",
+      "helpful": 8,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0036",
+      "section": "general_tips",
+      "content": "DefinedBenefitPlanNetPeriodicBenefitCost has multiple components (service cost, interest, expected return). Total pension expense in P&L uses this tag.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0037",
+      "section": "identification_strategies",
+      "content": "CashAndCashEquivalentsAtCarryingValue is the balance sheet amount. CashAndCashEquivalentsFairValueDisclosure is from fair value footnote tables \u2014 usually equal.",
+      "helpful": 10,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0038",
+      "section": "common_errors",
+      "content": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 is the total vesting term (e.g., '4 years'). Vesting rights percentage is the annual cliff amount.",
+      "helpful": 7,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0039",
+      "section": "formulas_and_calculations",
+      "content": "DebtInstrumentUnamortizedDiscount is the original issue discount being amortized to interest expense. DebtInstrumentBasisSpreadOnVariableRate1 is the credit spread (e.g., LIBOR+150bps).",
+      "helpful": 8,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0040",
+      "section": "general_tips",
+      "content": "For multi-period Revenue: use RevenueFromContractWithCustomerExcludingAssessedTax for the fiscal year amount. Quarterly amounts use the same tag \u2014 period context distinguishes them.",
+      "helpful": 7,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0041",
+      "section": "identification_strategies",
+      "content": "When a sentence references 'principal amount of X' or 'face value of $X million', use DebtInstrumentFaceAmount. When it says 'carrying amount' or 'book value' or includes adjustments for discount/premium, use DebtInstrumentCarryingAmount.",
+      "helpful": 2,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0042",
+      "section": "common_errors",
+      "content": "Do not confuse LineOfCreditFacilityMaximumBorrowingCapacity with LineOfCreditFacilityCurrentBorrowingCapacity: maximum is the total credit limit in the agreement; current/remaining is what's available to draw after existing draws.",
+      "helpful": 10,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0043",
+      "section": "formulas_and_calculations",
+      "content": "RevenueFromContractWithCustomerExcludingAssessedTax applies to revenue after excluding sales/VAT taxes explicitly mentioned. If the text says 'net revenue' without tax mention, still prefer this tag.",
+      "helpful": 3,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0044",
+      "section": "general_tips",
+      "content": "NumberOfOperatingSegments counts business divisions reported internally. NumberOfReportableSegments is the external GAAP disclosure count. These frequently differ by 1-2 segments.",
+      "helpful": 12,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0045",
+      "section": "identification_strategies",
+      "content": "EarningsPerShareBasic uses weighted-average shares outstanding (no dilution). EarningsPerShareDiluted adds in-the-money options and convertibles. When text says 'diluted EPS', always use diluted.",
+      "helpful": 5,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0046",
+      "section": "common_errors",
+      "content": "For lease terms: LesseeOperatingLeaseTermOfContract is the initial fixed term. Use LesseeFinanceLeaseTermOfContract only when the lease transfers ownership or contains a bargain purchase option.",
+      "helpful": 8,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0047",
+      "section": "formulas_and_calculations",
+      "content": "Depreciation applies to tangible fixed assets (PP&E). AmortizationOfIntangibleAssets applies to patents, trademarks, customer lists. Depletion applies to natural resources \u2014 if all three are combined, use DepletionDepreciationAndAmortization.",
+      "helpful": 8,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0048",
+      "section": "general_tips",
+      "content": "InterestExpense is accrual-based (income statement). InterestPaid is cash-based (cash flow statement). When context mentions 'paid' explicitly, use InterestPaid.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0049",
+      "section": "identification_strategies",
+      "content": "AllocatedShareBasedCompensationExpense is the P&L charge. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the unrecognized future cost.",
+      "helpful": 10,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0050",
+      "section": "common_errors",
+      "content": "PropertyPlantAndEquipmentGross is before accumulated depreciation. PropertyPlantAndEquipmentNet is after. 'Net book value' always maps to the Net tag.",
+      "helpful": 2,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0051",
+      "section": "formulas_and_calculations",
+      "content": "Goodwill is only impaired downward, never amortized under US GAAP. GoodwillImpairmentLoss is the specific impairment charge recognized in that period.",
+      "helpful": 3,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0052",
+      "section": "general_tips",
+      "content": "CommonStockSharesAuthorized is the charter maximum. CommonStockSharesOutstanding is actual shares in investor hands. CommonStockSharesIssued includes treasury shares.",
+      "helpful": 8,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0053",
+      "section": "identification_strategies",
+      "content": "AdditionalPaidInCapital (APIC) captures amounts paid above par value. RetainedEarningsAccumulatedDeficit is cumulative net income minus dividends. Deficit = accumulated losses.",
+      "helpful": 3,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0054",
+      "section": "common_errors",
+      "content": "IncomeTaxExpenseBenefit is the total tax provision (current + deferred). EffectiveIncomeTaxRateContinuingOperations is expressed as a percentage, not dollar amount.",
+      "helpful": 1,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0055",
+      "section": "formulas_and_calculations",
+      "content": "RestructuringCharges includes severance, facility closure costs. BusinessCombinationConsiderationTransferred1 is M&A deal value \u2014 do not confuse restructuring with acquisition costs.",
+      "helpful": 9,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0056",
+      "section": "general_tips",
+      "content": "DeferredFinanceCostsNet (issuance costs) is netted against the debt balance on the balance sheet post-ASU 2015-03. Always check if 'deferred financing costs' are net or gross.",
+      "helpful": 12,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0057",
+      "section": "identification_strategies",
+      "content": "OperatingLeaseExpense is the straight-line operating lease cost. FinanceLeaseExpense has two components: amortization + interest. Total finance lease cost = both combined.",
+      "helpful": 8,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0058",
+      "section": "common_errors",
+      "content": "When text mentions 'effective tax rate' or 'ETR', use EffectiveIncomeTaxRateContinuingOperations (decimal, e.g. 0.21 for 21%). Dollar tax charges use IncomeTaxExpenseBenefit.",
+      "helpful": 7,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0059",
+      "section": "formulas_and_calculations",
+      "content": "EarningsPerShareBasic and Diluted are per-share amounts, typically small numbers ($0.xx to $xx.xx). Do not confuse with net income in millions.",
+      "helpful": 12,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0060",
+      "section": "general_tips",
+      "content": "ContractWithCustomerLiabilityRevenueRecognized is revenue recognized FROM deferred revenue. ContractWithCustomerLiability is the remaining deferred balance. Track direction of flow.",
+      "helpful": 7,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0061",
+      "section": "identification_strategies",
+      "content": "For stock repurchases: StockRepurchaseProgramAuthorizedAmount1 is the board-approved total. StockRepurchasedAndRetiredDuringPeriodValue or Shares is what was actually bought back.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0062",
+      "section": "common_errors",
+      "content": "SaleOfStockPricePerShare is the offering price per share. SaleOfStockNumberOfSharesIssuedInTransaction is the quantity. Proceeds = price \u00d7 shares.",
+      "helpful": 10,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0063",
+      "section": "formulas_and_calculations",
+      "content": "UnrecognizedTaxBenefits is the gross amount of uncertain tax positions. UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate is the subset that would affect ETR if resolved.",
+      "helpful": 7,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0064",
+      "section": "general_tips",
+      "content": "ProceedsFromIssuanceOfCommonStock is cash inflow (financing activities). StockIssuedDuringPeriodSharesNewIssues is the number of shares. Both may appear together in equity offerings.",
+      "helpful": 2,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0065",
+      "section": "identification_strategies",
+      "content": "DerivativeNotionalAmount is the contractual reference amount (not fair value). DebtInstrumentFairValue is the market value of a debt instrument. These are conceptually distinct.",
+      "helpful": 10,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0066",
+      "section": "common_errors",
+      "content": "For concentration risk: ConcentrationRiskPercentage1 is the percentage. Always check the ConcentrationRiskBenchmarkDescription to understand what it's a percentage of.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0067",
+      "section": "formulas_and_calculations",
+      "content": "LossContingencyEstimateOfPossibleLoss is a range estimate (may need MinimumMaximum suffix). LettersOfCreditOutstandingAmount is a credit facility contingency, not a loss estimate.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0068",
+      "section": "general_tips",
+      "content": "EquityMethodInvestmentOwnershipPercentage is for investments where the investor has significant influence (typically 20-50%). Below 20% may use cost method.",
+      "helpful": 6,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0069",
+      "section": "identification_strategies",
+      "content": "DefinedBenefitPlanContributionsByEmployer is annual cash contributed to pension plan. DefinedContributionPlanCostRecognized is 401(k)-style expense.",
+      "helpful": 12,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0070",
+      "section": "common_errors",
+      "content": "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount: shares excluded because including them would increase EPS. Always in shares, not dollars.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0071",
+      "section": "formulas_and_calculations",
+      "content": "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1: the exercise/strike price per warrant. Per-share amount, typically stated in dollars.",
+      "helpful": 6,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0072",
+      "section": "general_tips",
+      "content": "DebtInstrumentInterestRateStatedPercentage is the coupon rate in the indenture. DebtInstrumentInterestRateEffectivePercentage accounts for discount/premium (yield).",
+      "helpful": 1,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0073",
+      "section": "identification_strategies",
+      "content": "GoodwillImpairmentLoss is typically a large one-time charge. Do not confuse with amortization \u2014 US GAAP goodwill is NOT amortized, only tested for impairment annually.",
+      "helpful": 7,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0074",
+      "section": "common_errors",
+      "content": "BusinessCombinationAcquisitionRelatedCosts are transaction costs (legal, advisory fees). BusinessCombinationConsiderationTransferred1 is the actual purchase price paid.",
+      "helpful": 12,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0075",
+      "section": "formulas_and_calculations",
+      "content": "MinorityInterestOwnershipPercentageByParent: parent's % ownership in consolidated subsidiary. NoncontrollingInterest is the NCI balance on the balance sheet.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0076",
+      "section": "general_tips",
+      "content": "DefinedBenefitPlanNetPeriodicBenefitCost has multiple components (service cost, interest, expected return). Total pension expense in P&L uses this tag.",
+      "helpful": 1,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0077",
+      "section": "identification_strategies",
+      "content": "CashAndCashEquivalentsAtCarryingValue is the balance sheet amount. CashAndCashEquivalentsFairValueDisclosure is from fair value footnote tables \u2014 usually equal.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0078",
+      "section": "common_errors",
+      "content": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 is the total vesting term (e.g., '4 years'). Vesting rights percentage is the annual cliff amount.",
+      "helpful": 11,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0079",
+      "section": "formulas_and_calculations",
+      "content": "DebtInstrumentUnamortizedDiscount is the original issue discount being amortized to interest expense. DebtInstrumentBasisSpreadOnVariableRate1 is the credit spread (e.g., LIBOR+150bps).",
+      "helpful": 12,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0080",
+      "section": "general_tips",
+      "content": "For multi-period Revenue: use RevenueFromContractWithCustomerExcludingAssessedTax for the fiscal year amount. Quarterly amounts use the same tag \u2014 period context distinguishes them.",
+      "helpful": 11,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0081",
+      "section": "identification_strategies",
+      "content": "When a sentence references 'principal amount of X' or 'face value of $X million', use DebtInstrumentFaceAmount. When it says 'carrying amount' or 'book value' or includes adjustments for discount/premium, use DebtInstrumentCarryingAmount.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0082",
+      "section": "common_errors",
+      "content": "Do not confuse LineOfCreditFacilityMaximumBorrowingCapacity with LineOfCreditFacilityCurrentBorrowingCapacity: maximum is the total credit limit in the agreement; current/remaining is what's available to draw after existing draws.",
+      "helpful": 8,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0083",
+      "section": "formulas_and_calculations",
+      "content": "RevenueFromContractWithCustomerExcludingAssessedTax applies to revenue after excluding sales/VAT taxes explicitly mentioned. If the text says 'net revenue' without tax mention, still prefer this tag.",
+      "helpful": 3,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0084",
+      "section": "general_tips",
+      "content": "NumberOfOperatingSegments counts business divisions reported internally. NumberOfReportableSegments is the external GAAP disclosure count. These frequently differ by 1-2 segments.",
+      "helpful": 4,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0085",
+      "section": "identification_strategies",
+      "content": "EarningsPerShareBasic uses weighted-average shares outstanding (no dilution). EarningsPerShareDiluted adds in-the-money options and convertibles. When text says 'diluted EPS', always use diluted.",
+      "helpful": 10,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0086",
+      "section": "common_errors",
+      "content": "For lease terms: LesseeOperatingLeaseTermOfContract is the initial fixed term. Use LesseeFinanceLeaseTermOfContract only when the lease transfers ownership or contains a bargain purchase option.",
+      "helpful": 3,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0087",
+      "section": "formulas_and_calculations",
+      "content": "Depreciation applies to tangible fixed assets (PP&E). AmortizationOfIntangibleAssets applies to patents, trademarks, customer lists. Depletion applies to natural resources \u2014 if all three are combined, use DepletionDepreciationAndAmortization.",
+      "helpful": 2,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0088",
+      "section": "general_tips",
+      "content": "InterestExpense is accrual-based (income statement). InterestPaid is cash-based (cash flow statement). When context mentions 'paid' explicitly, use InterestPaid.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0089",
+      "section": "identification_strategies",
+      "content": "AllocatedShareBasedCompensationExpense is the P&L charge. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the unrecognized future cost.",
+      "helpful": 7,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0090",
+      "section": "common_errors",
+      "content": "PropertyPlantAndEquipmentGross is before accumulated depreciation. PropertyPlantAndEquipmentNet is after. 'Net book value' always maps to the Net tag.",
+      "helpful": 12,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0091",
+      "section": "formulas_and_calculations",
+      "content": "Goodwill is only impaired downward, never amortized under US GAAP. GoodwillImpairmentLoss is the specific impairment charge recognized in that period.",
+      "helpful": 2,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0092",
+      "section": "general_tips",
+      "content": "CommonStockSharesAuthorized is the charter maximum. CommonStockSharesOutstanding is actual shares in investor hands. CommonStockSharesIssued includes treasury shares.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0093",
+      "section": "identification_strategies",
+      "content": "AdditionalPaidInCapital (APIC) captures amounts paid above par value. RetainedEarningsAccumulatedDeficit is cumulative net income minus dividends. Deficit = accumulated losses.",
+      "helpful": 3,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0094",
+      "section": "common_errors",
+      "content": "IncomeTaxExpenseBenefit is the total tax provision (current + deferred). EffectiveIncomeTaxRateContinuingOperations is expressed as a percentage, not dollar amount.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0095",
+      "section": "formulas_and_calculations",
+      "content": "RestructuringCharges includes severance, facility closure costs. BusinessCombinationConsiderationTransferred1 is M&A deal value \u2014 do not confuse restructuring with acquisition costs.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0096",
+      "section": "general_tips",
+      "content": "DeferredFinanceCostsNet (issuance costs) is netted against the debt balance on the balance sheet post-ASU 2015-03. Always check if 'deferred financing costs' are net or gross.",
+      "helpful": 9,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0097",
+      "section": "identification_strategies",
+      "content": "OperatingLeaseExpense is the straight-line operating lease cost. FinanceLeaseExpense has two components: amortization + interest. Total finance lease cost = both combined.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0098",
+      "section": "common_errors",
+      "content": "When text mentions 'effective tax rate' or 'ETR', use EffectiveIncomeTaxRateContinuingOperations (decimal, e.g. 0.21 for 21%). Dollar tax charges use IncomeTaxExpenseBenefit.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0099",
+      "section": "formulas_and_calculations",
+      "content": "EarningsPerShareBasic and Diluted are per-share amounts, typically small numbers ($0.xx to $xx.xx). Do not confuse with net income in millions.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0100",
+      "section": "general_tips",
+      "content": "ContractWithCustomerLiabilityRevenueRecognized is revenue recognized FROM deferred revenue. ContractWithCustomerLiability is the remaining deferred balance. Track direction of flow.",
+      "helpful": 2,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0101",
+      "section": "identification_strategies",
+      "content": "For stock repurchases: StockRepurchaseProgramAuthorizedAmount1 is the board-approved total. StockRepurchasedAndRetiredDuringPeriodValue or Shares is what was actually bought back.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0102",
+      "section": "common_errors",
+      "content": "SaleOfStockPricePerShare is the offering price per share. SaleOfStockNumberOfSharesIssuedInTransaction is the quantity. Proceeds = price \u00d7 shares.",
+      "helpful": 6,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0103",
+      "section": "formulas_and_calculations",
+      "content": "UnrecognizedTaxBenefits is the gross amount of uncertain tax positions. UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate is the subset that would affect ETR if resolved.",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0104",
+      "section": "general_tips",
+      "content": "ProceedsFromIssuanceOfCommonStock is cash inflow (financing activities). StockIssuedDuringPeriodSharesNewIssues is the number of shares. Both may appear together in equity offerings.",
+      "helpful": 4,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0105",
+      "section": "identification_strategies",
+      "content": "DerivativeNotionalAmount is the contractual reference amount (not fair value). DebtInstrumentFairValue is the market value of a debt instrument. These are conceptually distinct.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0106",
+      "section": "common_errors",
+      "content": "For concentration risk: ConcentrationRiskPercentage1 is the percentage. Always check the ConcentrationRiskBenchmarkDescription to understand what it's a percentage of.",
+      "helpful": 5,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0107",
+      "section": "formulas_and_calculations",
+      "content": "LossContingencyEstimateOfPossibleLoss is a range estimate (may need MinimumMaximum suffix). LettersOfCreditOutstandingAmount is a credit facility contingency, not a loss estimate.",
+      "helpful": 3,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0108",
+      "section": "general_tips",
+      "content": "EquityMethodInvestmentOwnershipPercentage is for investments where the investor has significant influence (typically 20-50%). Below 20% may use cost method.",
+      "helpful": 1,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0109",
+      "section": "identification_strategies",
+      "content": "DefinedBenefitPlanContributionsByEmployer is annual cash contributed to pension plan. DefinedContributionPlanCostRecognized is 401(k)-style expense.",
+      "helpful": 2,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0110",
+      "section": "common_errors",
+      "content": "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount: shares excluded because including them would increase EPS. Always in shares, not dollars.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0111",
+      "section": "formulas_and_calculations",
+      "content": "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1: the exercise/strike price per warrant. Per-share amount, typically stated in dollars.",
+      "helpful": 7,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0112",
+      "section": "general_tips",
+      "content": "DebtInstrumentInterestRateStatedPercentage is the coupon rate in the indenture. DebtInstrumentInterestRateEffectivePercentage accounts for discount/premium (yield).",
+      "helpful": 5,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0113",
+      "section": "identification_strategies",
+      "content": "GoodwillImpairmentLoss is typically a large one-time charge. Do not confuse with amortization \u2014 US GAAP goodwill is NOT amortized, only tested for impairment annually.",
+      "helpful": 7,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0114",
+      "section": "common_errors",
+      "content": "BusinessCombinationAcquisitionRelatedCosts are transaction costs (legal, advisory fees). BusinessCombinationConsiderationTransferred1 is the actual purchase price paid.",
+      "helpful": 3,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0115",
+      "section": "formulas_and_calculations",
+      "content": "MinorityInterestOwnershipPercentageByParent: parent's % ownership in consolidated subsidiary. NoncontrollingInterest is the NCI balance on the balance sheet.",
+      "helpful": 3,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0116",
+      "section": "general_tips",
+      "content": "DefinedBenefitPlanNetPeriodicBenefitCost has multiple components (service cost, interest, expected return). Total pension expense in P&L uses this tag.",
+      "helpful": 3,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0117",
+      "section": "identification_strategies",
+      "content": "CashAndCashEquivalentsAtCarryingValue is the balance sheet amount. CashAndCashEquivalentsFairValueDisclosure is from fair value footnote tables \u2014 usually equal.",
+      "helpful": 8,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0118",
+      "section": "common_errors",
+      "content": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 is the total vesting term (e.g., '4 years'). Vesting rights percentage is the annual cliff amount.",
+      "helpful": 9,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0119",
+      "section": "formulas_and_calculations",
+      "content": "DebtInstrumentUnamortizedDiscount is the original issue discount being amortized to interest expense. DebtInstrumentBasisSpreadOnVariableRate1 is the credit spread (e.g., LIBOR+150bps).",
+      "helpful": 8,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0120",
+      "section": "general_tips",
+      "content": "For multi-period Revenue: use RevenueFromContractWithCustomerExcludingAssessedTax for the fiscal year amount. Quarterly amounts use the same tag \u2014 period context distinguishes them.",
+      "helpful": 4,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0121",
+      "section": "identification_strategies",
+      "content": "When a sentence references 'principal amount of X' or 'face value of $X million', use DebtInstrumentFaceAmount. When it says 'carrying amount' or 'book value' or includes adjustments for discount/premium, use DebtInstrumentCarryingAmount.",
+      "helpful": 4,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0122",
+      "section": "common_errors",
+      "content": "Do not confuse LineOfCreditFacilityMaximumBorrowingCapacity with LineOfCreditFacilityCurrentBorrowingCapacity: maximum is the total credit limit in the agreement; current/remaining is what's available to draw after existing draws.",
+      "helpful": 12,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0123",
+      "section": "formulas_and_calculations",
+      "content": "RevenueFromContractWithCustomerExcludingAssessedTax applies to revenue after excluding sales/VAT taxes explicitly mentioned. If the text says 'net revenue' without tax mention, still prefer this tag.",
+      "helpful": 4,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0124",
+      "section": "general_tips",
+      "content": "NumberOfOperatingSegments counts business divisions reported internally. NumberOfReportableSegments is the external GAAP disclosure count. These frequently differ by 1-2 segments.",
+      "helpful": 7,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0125",
+      "section": "identification_strategies",
+      "content": "EarningsPerShareBasic uses weighted-average shares outstanding (no dilution). EarningsPerShareDiluted adds in-the-money options and convertibles. When text says 'diluted EPS', always use diluted.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0126",
+      "section": "common_errors",
+      "content": "For lease terms: LesseeOperatingLeaseTermOfContract is the initial fixed term. Use LesseeFinanceLeaseTermOfContract only when the lease transfers ownership or contains a bargain purchase option.",
+      "helpful": 2,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0127",
+      "section": "formulas_and_calculations",
+      "content": "Depreciation applies to tangible fixed assets (PP&E). AmortizationOfIntangibleAssets applies to patents, trademarks, customer lists. Depletion applies to natural resources \u2014 if all three are combined, use DepletionDepreciationAndAmortization.",
+      "helpful": 3,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0128",
+      "section": "general_tips",
+      "content": "InterestExpense is accrual-based (income statement). InterestPaid is cash-based (cash flow statement). When context mentions 'paid' explicitly, use InterestPaid.",
+      "helpful": 5,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0129",
+      "section": "identification_strategies",
+      "content": "AllocatedShareBasedCompensationExpense is the P&L charge. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the unrecognized future cost.",
+      "helpful": 7,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0130",
+      "section": "common_errors",
+      "content": "PropertyPlantAndEquipmentGross is before accumulated depreciation. PropertyPlantAndEquipmentNet is after. 'Net book value' always maps to the Net tag.",
+      "helpful": 5,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0131",
+      "section": "formulas_and_calculations",
+      "content": "Goodwill is only impaired downward, never amortized under US GAAP. GoodwillImpairmentLoss is the specific impairment charge recognized in that period.",
+      "helpful": 6,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0132",
+      "section": "general_tips",
+      "content": "CommonStockSharesAuthorized is the charter maximum. CommonStockSharesOutstanding is actual shares in investor hands. CommonStockSharesIssued includes treasury shares.",
+      "helpful": 10,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0133",
+      "section": "identification_strategies",
+      "content": "AdditionalPaidInCapital (APIC) captures amounts paid above par value. RetainedEarningsAccumulatedDeficit is cumulative net income minus dividends. Deficit = accumulated losses.",
+      "helpful": 8,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0134",
+      "section": "common_errors",
+      "content": "IncomeTaxExpenseBenefit is the total tax provision (current + deferred). EffectiveIncomeTaxRateContinuingOperations is expressed as a percentage, not dollar amount.",
+      "helpful": 11,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0135",
+      "section": "formulas_and_calculations",
+      "content": "RestructuringCharges includes severance, facility closure costs. BusinessCombinationConsiderationTransferred1 is M&A deal value \u2014 do not confuse restructuring with acquisition costs.",
+      "helpful": 1,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0136",
+      "section": "general_tips",
+      "content": "DeferredFinanceCostsNet (issuance costs) is netted against the debt balance on the balance sheet post-ASU 2015-03. Always check if 'deferred financing costs' are net or gross.",
+      "helpful": 5,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0137",
+      "section": "identification_strategies",
+      "content": "OperatingLeaseExpense is the straight-line operating lease cost. FinanceLeaseExpense has two components: amortization + interest. Total finance lease cost = both combined.",
+      "helpful": 11,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0138",
+      "section": "common_errors",
+      "content": "When text mentions 'effective tax rate' or 'ETR', use EffectiveIncomeTaxRateContinuingOperations (decimal, e.g. 0.21 for 21%). Dollar tax charges use IncomeTaxExpenseBenefit.",
+      "helpful": 1,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0139",
+      "section": "formulas_and_calculations",
+      "content": "EarningsPerShareBasic and Diluted are per-share amounts, typically small numbers ($0.xx to $xx.xx). Do not confuse with net income in millions.",
+      "helpful": 4,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0140",
+      "section": "general_tips",
+      "content": "ContractWithCustomerLiabilityRevenueRecognized is revenue recognized FROM deferred revenue. ContractWithCustomerLiability is the remaining deferred balance. Track direction of flow.",
+      "helpful": 1,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0141",
+      "section": "identification_strategies",
+      "content": "For stock repurchases: StockRepurchaseProgramAuthorizedAmount1 is the board-approved total. StockRepurchasedAndRetiredDuringPeriodValue or Shares is what was actually bought back.",
+      "helpful": 10,
+      "harmful": 2
+    },
+    {
+      "id": "bullet_0142",
+      "section": "common_errors",
+      "content": "SaleOfStockPricePerShare is the offering price per share. SaleOfStockNumberOfSharesIssuedInTransaction is the quantity. Proceeds = price \u00d7 shares.",
+      "helpful": 5,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0143",
+      "section": "formulas_and_calculations",
+      "content": "UnrecognizedTaxBenefits is the gross amount of uncertain tax positions. UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate is the subset that would affect ETR if resolved.",
+      "helpful": 8,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0144",
+      "section": "general_tips",
+      "content": "ProceedsFromIssuanceOfCommonStock is cash inflow (financing activities). StockIssuedDuringPeriodSharesNewIssues is the number of shares. Both may appear together in equity offerings.",
+      "helpful": 10,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0145",
+      "section": "identification_strategies",
+      "content": "DerivativeNotionalAmount is the contractual reference amount (not fair value). DebtInstrumentFairValue is the market value of a debt instrument. These are conceptually distinct.",
+      "helpful": 6,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0146",
+      "section": "common_errors",
+      "content": "For concentration risk: ConcentrationRiskPercentage1 is the percentage. Always check the ConcentrationRiskBenchmarkDescription to understand what it's a percentage of.",
+      "helpful": 11,
+      "harmful": 1
+    },
+    {
+      "id": "bullet_0147",
+      "section": "formulas_and_calculations",
+      "content": "LossContingencyEstimateOfPossibleLoss is a range estimate (may need MinimumMaximum suffix). LettersOfCreditOutstandingAmount is a credit facility contingency, not a loss estimate.",
+      "helpful": 6,
+      "harmful": 0
+    },
+    {
+      "id": "bullet_0148",
+      "section": "general_tips",
+      "content": "EquityMethodInvestmentOwnershipPercentage is for investments where the investor has significant influence (typically 20-50%). Below 20% may use cost method.",
+      "helpful": 6,
+      "harmful": 2
+    }
+  ]
+}

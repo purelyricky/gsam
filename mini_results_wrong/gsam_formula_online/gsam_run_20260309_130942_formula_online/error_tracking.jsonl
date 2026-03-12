@@ -1,0 +1,24 @@
+{"step": 1, "is_correct": false, "concepts_involved": ["OperatingIncome", "TotalRevenue"], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 4, "is_correct": false, "concepts_involved": ["Put-Call Parity"], "confusion_pairs": [], "error_severity": "high"}
+{"step": 9, "is_correct": false, "concepts_involved": ["OperatingMargin", "OperatingIncome", "Revenue"], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 12, "is_correct": false, "concepts_involved": ["Treynor Ratio", "Portfolio Return", "Risk-Free Rate", "Beta"], "confusion_pairs": [], "error_severity": "high"}
+{"step": 14, "is_correct": false, "concepts_involved": [], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 15, "is_correct": false, "concepts_involved": ["NetIncome", "ComprehensiveIncome"], "confusion_pairs": [["NetIncome", "ComprehensiveIncome"]], "error_severity": "medium"}
+{"step": 20, "is_correct": false, "concepts_involved": ["Net Present Value (NPV)", "Discount Rate"], "confusion_pairs": [], "error_severity": "High"}
+{"step": 22, "is_correct": false, "concepts_involved": ["Compound Interest", "Asset impairment charges"], "confusion_pairs": [["Compound Interest", "Asset impairment charges"]], "error_severity": "high"}
+{"step": 29, "is_correct": false, "concepts_involved": ["NetIncome", "CompoundInterest"], "confusion_pairs": [], "error_severity": "high"}
+{"step": 30, "is_correct": false, "concepts_involved": ["Put-Call Parity", "Risk-Free Interest Rate"], "confusion_pairs": [], "error_severity": "high"}
+{"step": 31, "is_correct": false, "concepts_involved": [], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 36, "is_correct": false, "concepts_involved": ["NetProfit", "Revenue"], "confusion_pairs": [["NetProfit", "Revenue"]], "error_severity": "high"}
+{"step": 37, "is_correct": false, "concepts_involved": ["NetIncome", "ComprehensiveIncome"], "confusion_pairs": [["Asset impairment charges including goodwill impairment losses", "Cost of Goods Sold (COGS)"]], "error_severity": "high"}
+{"step": 38, "is_correct": false, "concepts_involved": ["RiskFreeRate", "CallOptionPrice"], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 41, "is_correct": false, "concepts_involved": ["Treynor Ratio", "Excess Return", "Beta", "Risk-Free Rate"], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 43, "is_correct": false, "concepts_involved": ["NetIncome", "ComprehensiveIncome"], "confusion_pairs": [], "error_severity": "high"}
+{"step": 47, "is_correct": false, "concepts_involved": ["Enterprise Value", "Market Capitalization", "Cash Holding", "Total Debt"], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 49, "is_correct": false, "concepts_involved": ["Return on Assets (ROA)", "Net Income", "Total Assets"], "confusion_pairs": [["Net Income", "Total Assets"], ["980", "980,000"]], "error_severity": "high"}
+{"step": 52, "is_correct": false, "concepts_involved": ["DSCR"], "confusion_pairs": [], "error_severity": "medium"}
+{"step": 65, "is_correct": false, "concepts_involved": ["GDP", "Expenditure Approach", "Net Exports"], "confusion_pairs": [["GDP in billions", "GDP in trillions"]], "error_severity": "high"}
+{"step": 66, "is_correct": false, "concepts_involved": ["ROE", "NetIncome"], "confusion_pairs": [], "error_severity": "high"}
+{"step": 71, "is_correct": false, "concepts_involved": ["TradeDeficit", "Imports", "Exports"], "confusion_pairs": [["Imports", "Exports"]], "error_severity": "high"}
+{"step": 73, "is_correct": false, "concepts_involved": ["OperatingMargin", "OperatingIncome", "Revenue"], "confusion_pairs": [["OperatingMargin", "OperatingIncome"]], "error_severity": "high"}
+{"step": 75, "is_correct": false, "concepts_involved": ["Jensen's Alpha", "CAPM Model"], "confusion_pairs": [], "error_severity": "high"}

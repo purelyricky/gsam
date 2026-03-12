@@ -1,0 +1,19 @@
+{
+  "final_node_counts": {
+    "Strategy": 61,
+    "AntiPattern": 38,
+    "Confusion": 47,
+    "Formula": 0,
+    "Concept": 139
+  },
+  "total_nodes": 285,
+  "total_edges": 398,
+  "is_a_edges": 133,
+  "applies_to_edges": 75,
+  "fails_for_edges": 36,
+  "confused_with_edges": 16,
+  "avg_retrieval_precision_window_1": 0.21,
+  "avg_retrieval_precision_window_20": 0.31,
+  "ablation": "gsam_no_multi_epoch",
+  "note": "Full GSAM architecture. Multi-epoch not applicable in online mode; difference from Full GSAM arises from random sampling variation only."
+}

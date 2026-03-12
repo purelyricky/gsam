@@ -78,7 +78,16 @@ def parse_args():
     # Output configuration
     parser.add_argument("--save_path", type=str, required=True,
                         help="Directory to save results")
-    
+
+    # Limit for smoke testing / mini experiments
+    parser.add_argument("--max_samples", type=int, default=None,
+                        help="Limit number of samples (for smoke testing)")
+
+    # Resume support
+    parser.add_argument("--resume_path", type=str, default=None,
+                        help="Path to a partial run directory to resume from "
+                             "(e.g. results/ace_finer_online/ace_run_20260306_...)")
+
     return parser.parse_args()
 
 def load_data(data_path: str):
@@ -104,7 +113,7 @@ def load_data(data_path: str):
     print(f"Loaded {len(data)} samples from {data_path}")
     return data
 
-def preprocess_data(task_name, config, mode):
+def preprocess_data(task_name, config, mode, max_samples=None):
     """
     Load training and test data for the specified task.
     
@@ -129,27 +138,34 @@ def preprocess_data(task_name, config, mode):
         if "test_data" in config:
             test_samples = load_data(config["test_data"])
             test_samples = processor.process_task_data(test_samples)
+            if max_samples:
+                test_samples = test_samples[:max_samples]
         else:
             raise ValueError(f"{mode} mode requires test data in config.")
-        
+
         if mode == "online":
             print(f"Online mode: Training and testing on {len(test_samples)} examples")
         else:
             print(f"Eval only mode: Testing on {len(test_samples)} examples")
-    
+
     # For offline mode, load train, val, and optionally test data
     else:
         train_samples = load_data(config["train_data"])
         val_samples = load_data(config["val_data"])
         train_samples = processor.process_task_data(train_samples)
         val_samples = processor.process_task_data(val_samples)
-        
+        if max_samples:
+            train_samples = train_samples[:max_samples]
+            val_samples = val_samples[:max(max_samples // 5, 5)]
+
         if "test_data" in config:
             test_samples = load_data(config["test_data"])
             test_samples = processor.process_task_data(test_samples)
+            if max_samples:
+                test_samples = test_samples[:max_samples]
         else:
             test_samples = []
-        
+
         print(f"Offline mode: Training on {len(train_samples)} examples, "
               f"validating on {len(val_samples)}, testing on {len(test_samples)}")
     
@@ -167,7 +183,12 @@ def load_initial_playbook(path):
 def main():
     """Main execution function."""
     args = parse_args()
-    
+
+    # Online mode always processes each sample exactly once
+    if args.mode == "online" and args.num_epochs != 1:
+        print(f"[INFO] Online mode requires num_epochs=1; overriding from {args.num_epochs} to 1")
+        args.num_epochs = 1
+
     print(f"\n{'='*60}")
     print(f"ACE SYSTEM")
     print(f"{'='*60}")
@@ -181,9 +202,10 @@ def main():
         task_config = json.load(f)
 
     train_samples, val_samples, test_samples, data_processor = preprocess_data(
-        args.task_name, 
+        args.task_name,
         task_config[args.task_name],
-        args.mode
+        args.mode,
+        args.max_samples,
     )
         
     # Load initial playbook (or use empty if None provided)
@@ -223,7 +245,8 @@ def main():
         'initial_playbook_path': args.initial_playbook_path,
         'use_bulletpoint_analyzer': args.use_bulletpoint_analyzer,
         'bulletpoint_analyzer_threshold': args.bulletpoint_analyzer_threshold,
-        'api_provider': args.api_provider
+        'api_provider': args.api_provider,
+        'resume_path': args.resume_path,
     }
     
     # Execute using the unified run method

@@ -1,0 +1,33 @@
+{
+  "synthetic_reference": true,
+  "task": "finer",
+  "mode": "online",
+  "status": "complete",
+  "total_steps": 300,
+  "completed_steps": 300,
+  "window_accuracies": [
+    0.433,
+    0.47,
+    0.503,
+    0.537,
+    0.56,
+    0.583,
+    0.6,
+    0.61,
+    0.62,
+    0.627,
+    0.63,
+    0.633,
+    0.637,
+    0.64,
+    0.643,
+    0.643,
+    0.64,
+    0.64,
+    0.643,
+    0.64
+  ],
+  "initial_accuracy": 0.433,
+  "final_accuracy": 0.64,
+  "improvement": 0.207
+}

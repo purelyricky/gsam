@@ -1,0 +1,41 @@
+{
+  "synthetic_reference": true,
+  "call_id": "online_train_s_5",
+  "role": "curator",
+  "step": 5,
+  "window": 1,
+  "timestamp": "2026-03-12T09:03:35.000000",
+  "input_tokens": 2135,
+  "output_tokens": 305,
+  "latency_s": 13.26,
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying.",
+      "target_concept": "EarningsPerShareBasic"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "S:0005",
+      "relation": "applies_to",
+      "target": "C:0052"
+    },
+    {
+      "op": "ADD_ANTIPATTERN",
+      "content": "Confusing maximum borrowing capacity (ceiling set in agreement) with remaining borrowing capacity (currently available). 'Up to $500M' \u2192 Maximum. 'We had $123M available' \u2192 Remaining.",
+      "target_concept": "LineOfCreditFacilityMaximumBorrowingCapacity"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "A:0005",
+      "relation": "fails_for",
+      "target": "C:0014"
+    },
+    {
+      "op": "UPDATE_ATTR",
+      "node": "C:0015",
+      "attr": "harmful_count",
+      "delta": 1
+    }
+  ]
+}

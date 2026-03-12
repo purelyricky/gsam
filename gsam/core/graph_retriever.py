@@ -77,7 +77,24 @@ class GraphRetriever:
 
         # Stage 2: Graph Traversal (BFS from concepts)
         seed_ids = [cid for cid, _ in matched_concepts]
-        subgraph = self.graph.get_subgraph(seed_ids, depth=self.retrieval_depth)
+        # BFS must NOT traverse is_a / part_of (ontological hierarchy) edges.
+        # Traversing them pulls in every sibling/child concept node, flooding
+        # the context budget with taxonomy definitions and leaving zero slots
+        # for strategies and anti-patterns.  Taxonomic expansion is handled
+        # explicitly and deliberately in Stage 3.
+        _EXPERIENTIAL_EDGES = {
+            EdgeType.APPLIES_TO.value,
+            EdgeType.FAILS_FOR.value,
+            EdgeType.FIXES.value,
+            EdgeType.CONFUSED_WITH.value,
+            EdgeType.CONFLICTS_WITH.value,
+            EdgeType.DEPENDS_ON.value,
+        }
+        subgraph = self.graph.get_subgraph(
+            seed_ids,
+            depth=self.retrieval_depth,
+            edge_types=_EXPERIENTIAL_EDGES,
+        )
 
         # Stage 2b: Include nodes reachable via conflicts_with from any
         # strategy or anti-pattern already in the subgraph so the model
@@ -113,6 +130,35 @@ class GraphRetriever:
 
         # Collect failure cascade warnings
         self._annotate_failure_cascades(subgraph, seed_ids)
+
+        # Cap retrieved nodes using separate budgets for concepts vs. knowledge
+        # nodes (strategies, anti-patterns, formulas, confusions).
+        # Using a single budget with concepts at float("inf") priority means
+        # that whenever >30 concept nodes appear (common with the full XBRL
+        # ontology), all slots go to taxonomy definitions and zero slots remain
+        # for actionable strategies/anti-patterns — the model then performs
+        # worse than the base LLM.
+        MAX_CONCEPT_NODES = 10
+        MAX_KNOWLEDGE_NODES = 20
+        all_ids = list(subgraph.nodes())
+        concept_ids = [
+            nid for nid in all_ids
+            if self.graph.graph.nodes.get(nid, {}).get("type") == NodeType.CONCEPT.value
+        ]
+        knowledge_ids = [nid for nid in all_ids if nid not in set(concept_ids)]
+
+        if len(concept_ids) > MAX_CONCEPT_NODES:
+            concept_ids = concept_ids[:MAX_CONCEPT_NODES]
+
+        if len(knowledge_ids) > MAX_KNOWLEDGE_NODES:
+            def _priority(nid):
+                data = self.graph.graph.nodes.get(nid, {})
+                return data.get("helpful_count", 0) * data.get("confidence", 1.0)
+            knowledge_ids = sorted(knowledge_ids, key=_priority, reverse=True)[:MAX_KNOWLEDGE_NODES]
+
+        trimmed = set(concept_ids) | set(knowledge_ids)
+        if len(trimmed) < len(all_ids):
+            subgraph = self.graph.get_subgraph(list(trimmed), depth=0)
 
         # Serialize and return
         serialized = self.graph.serialize_subgraph(subgraph)
@@ -255,6 +301,7 @@ class GraphRetriever:
 
         import numpy as np
         query_emb = emb_model.encode(text, convert_to_numpy=True)
+        query_emb = query_emb.ravel()
         query_emb = query_emb / (np.linalg.norm(query_emb) + 1e-9)
 
         scores = []
@@ -264,7 +311,7 @@ class GraphRetriever:
                 continue
             if nid not in self.graph.embeddings:
                 continue
-            sim = float(np.dot(query_emb, self.graph.embeddings[nid]))
+            sim = float(np.dot(query_emb, self.graph.embeddings[nid].ravel()))
             scores.append((nid, sim))
 
         scores.sort(key=lambda x: x[1], reverse=True)

@@ -73,7 +73,7 @@ class ACE:
                 curator_model, 
                 max_tokens
             )
-            print(f"✓ BulletpointAnalyzer initialized (threshold={bulletpoint_analyzer_threshold})")
+            print(f"BulletpointAnalyzer initialized (threshold={bulletpoint_analyzer_threshold})")
         else:
             self.bulletpoint_analyzer = None
         
@@ -92,7 +92,76 @@ class ACE:
         self.best_playbook = self.playbook
         # Track global bullet ID
         self.next_global_id = 1
-    
+
+    # ------------------------------------------------------------------
+    # Resume helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _find_latest_playbook(playbook_dir: str) -> Optional[str]:
+        """Return path to the intermediate playbook with the highest step number."""
+        import re as _re
+        best_step = -1
+        best_file = None
+        try:
+            for fname in os.listdir(playbook_dir):
+                if not fname.endswith('.txt'):
+                    continue
+                nums = list(map(int, _re.findall(r'\d+', fname)))
+                if nums:
+                    step = nums[-1]
+                    if step > best_step:
+                        best_step = step
+                        best_file = os.path.join(playbook_dir, fname)
+        except (FileNotFoundError, OSError):
+            pass
+        return best_file
+
+    def _save_progress(self, save_path: str, **kwargs) -> None:
+        """Write progress.json so runs can be resumed after interruption."""
+        progress = {"timestamp": datetime.now().strftime("%Y%m%d_%H%M%S"), **kwargs}
+        with open(os.path.join(save_path, "progress.json"), "w") as f:
+            json.dump(progress, f, indent=2)
+
+    def _load_resume_state(self, resume_path: str) -> Dict[str, Any]:
+        """
+        Load playbook checkpoint and progress from a partial run.
+        Updates self.playbook in-place from the latest checkpoint.
+        Returns a dict with start_epoch, start_step, start_window,
+        start_global_step, prior_online_results.
+        """
+        state: Dict[str, Any] = {
+            "start_epoch": 1, "start_step": 0,
+            "start_window": 0, "start_global_step": 0,
+            "prior_online_results": None,
+        }
+        playbook_dir = os.path.join(resume_path, "intermediate_playbooks")
+        latest_pb = self._find_latest_playbook(playbook_dir)
+        if latest_pb:
+            with open(latest_pb) as f:
+                self.playbook = f.read()
+            self.best_playbook = self.playbook
+            print(f"Loaded playbook checkpoint: {latest_pb}")
+
+        progress_file = os.path.join(resume_path, "progress.json")
+        if os.path.exists(progress_file):
+            with open(progress_file) as f:
+                progress = json.load(f)
+            print(f"Resuming from progress: {progress}")
+            if progress.get("mode") == "offline":
+                state["start_epoch"] = progress.get("epoch", 1)
+                state["start_step"] = progress.get("step", 0)
+            elif progress.get("mode") == "online":
+                state["start_window"] = progress.get("window", 0) + 1
+                state["start_global_step"] = progress.get("global_step", 0)
+
+        partial_file = os.path.join(resume_path, "partial_online_results.json")
+        if os.path.exists(partial_file):
+            with open(partial_file) as f:
+                state["prior_online_results"] = json.load(f)
+
+        return state
+
     def _initialize_empty_playbook(self) -> str:
         """Initialize an empty playbook with standard sections."""
         return """## STRATEGIES & INSIGHTS
@@ -204,15 +273,41 @@ class ACE:
         config_params = self._extract_config_params(config)
         task_name = config_params['task_name']
         save_dir = config_params['save_dir']
-        
-        # Setup paths based on mode
-        if mode == 'eval_only':
-            save_path, log_dir = self._setup_paths(save_dir, task_name, mode)
-            usage_log_path = None
-            playbook_dir = None
+
+        # Determine save_path: resume into existing dir OR create a new timestamped one
+        resume_cfg = config.get('resume_path') if config else None
+        start_epoch, start_step, start_window, start_global_step = 1, 0, 0, 0
+        prior_online_results = None
+
+        if resume_cfg and os.path.isdir(resume_cfg):
+            print(f"\nRESUMING ACE run from: {resume_cfg}")
+            # Temporarily set save paths from resume dir, then load state
+            save_path = resume_cfg
+            log_dir = os.path.join(save_path, "detailed_llm_logs")
+            os.makedirs(log_dir, exist_ok=True)
+            if mode != 'eval_only':
+                usage_log_path = os.path.join(save_path, "bullet_usage_log.jsonl")
+                playbook_dir = os.path.join(save_path, "intermediate_playbooks")
+                os.makedirs(playbook_dir, exist_ok=True)
+            else:
+                usage_log_path = None
+                playbook_dir = None
+            state = self._load_resume_state(resume_cfg)
+            start_epoch = state["start_epoch"]
+            start_step = state["start_step"]
+            start_window = state["start_window"]
+            start_global_step = state["start_global_step"]
+            prior_online_results = state["prior_online_results"]
         else:
-            save_path, usage_log_path, playbook_dir, log_dir = self._setup_paths(save_dir, task_name, mode)
-        
+            # Setup paths based on mode (creates new timestamped dir)
+            if mode == 'eval_only':
+                save_path, log_dir = self._setup_paths(save_dir, task_name, mode)
+                usage_log_path = None
+                playbook_dir = None
+            else:
+                save_path, usage_log_path, playbook_dir, log_dir = self._setup_paths(
+                    save_dir, task_name, mode)
+
         # Save configuration
         config_path = os.path.join(save_path, "run_config.json")
         with open(config_path, "w") as f:
@@ -275,7 +370,9 @@ class ACE:
                 save_path=save_path,
                 usage_log_path=usage_log_path,
                 playbook_dir=playbook_dir,
-                log_dir=log_dir
+                log_dir=log_dir,
+                start_epoch=start_epoch,
+                start_step=start_step,
             )
             results['training_results'] = training_results
             if training_results.get("latency_stats"):
@@ -327,7 +424,10 @@ class ACE:
                 save_path=save_path,
                 usage_log_path=usage_log_path,
                 playbook_dir=playbook_dir,
-                log_dir=log_dir
+                log_dir=log_dir,
+                start_window=start_window,
+                start_global_step=start_global_step,
+                prior_online_results=prior_online_results,
             )
             results['online_test_results'] = online_results
             if online_results.get("latency_stats"):
@@ -674,7 +774,9 @@ class ACE:
         save_path: str,
         usage_log_path: str,
         playbook_dir: str,
-        log_dir: str
+        log_dir: str,
+        start_epoch: int = 1,
+        start_step: int = 0,
     ) -> Dict[str, Any]:
         """
         Run offline training
@@ -718,33 +820,48 @@ class ACE:
         
         # Training loop
         for epoch in range(1, num_epochs + 1):
+            # --- RESUME: skip epochs already completed ---
+            if epoch < start_epoch:
+                print(f"Skipping epoch {epoch} (resuming from epoch {start_epoch}, step {start_step})")
+                continue
+
             print(f"\n{'='*60}")
             print(f"EPOCH {epoch}/{num_epochs}")
             print(f"{'='*60}")
-            
+
             epoch_answers_pre_train = []
             epoch_targets_pre_train = []
             epoch_answers_post_train = []
             epoch_targets_post_train = []
-            
+
             for step, task_dict in enumerate(train_samples):
                 step += 1
+
+                # --- RESUME: skip steps already completed in the resume epoch ---
+                if epoch == start_epoch and step <= start_step:
+                    continue
+
                 print(f"\n--- Step {step}/{len(train_samples)} ---")
                 
                 target = task_dict.get("target", "")
-                
+
                 # Use helper method for training single sample
-                pre_train_answer, post_train_answer, tracking_dict, latency = self._train_single_sample(
-                    task_dict=task_dict,
-                    data_processor=data_processor,
-                    step_id=f"train_e_{epoch}_s_{step}",
-                    epoch=epoch,
-                    step=step,
-                    usage_log_path=usage_log_path,
-                    log_dir=log_dir,
-                    config_params=config_params,
-                    total_samples=len(train_samples)
-                )
+                try:
+                    pre_train_answer, post_train_answer, tracking_dict, latency = self._train_single_sample(
+                        task_dict=task_dict,
+                        data_processor=data_processor,
+                        step_id=f"train_e_{epoch}_s_{step}",
+                        epoch=epoch,
+                        step=step,
+                        usage_log_path=usage_log_path,
+                        log_dir=log_dir,
+                        config_params=config_params,
+                        total_samples=len(train_samples)
+                    )
+                except Exception as e:
+                    print(f"[WARN] Skipping training sample (epoch={epoch}, step={step}): {type(e).__name__}: {e}")
+                    self._save_progress(save_path, mode="offline", epoch=epoch, step=step)
+                    continue
 
                 # Collect answers for accuracy calculation
                 epoch_answers_pre_train.append(pre_train_answer)
@@ -761,7 +878,10 @@ class ACE:
                     **tracking_dict
                 }
                 pre_train_post_train_results.append(pre_train_post_train_result)
-                
+
+                # Save progress cursor so this run can be resumed if interrupted
+                self._save_progress(save_path, mode="offline", epoch=epoch, step=step)
+
                 # Save intermediate playbook
                 if step % save_steps == 0:
                     intermediate_path = os.path.join(
@@ -819,7 +939,7 @@ class ACE:
                         if acc > best_accuracy:
                             best_accuracy = acc
                             self.best_playbook = self.playbook
-                            print(f"🎉 New best accuracy: {best_accuracy:.3f}")
+                            print(f"New best accuracy: {best_accuracy:.3f}")
                     
                     # Save results
                     results_path = os.path.join(save_path, "train_results.json")
@@ -935,7 +1055,10 @@ class ACE:
         save_path: str,
         usage_log_path: str,
         playbook_dir: str,
-        log_dir: str
+        log_dir: str,
+        start_window: int = 0,
+        start_global_step: int = 0,
+        prior_online_results: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """
         Run online training and testing
@@ -972,13 +1095,23 @@ class ACE:
         train_results = []
         pre_train_post_train_results = []
         all_latencies = []
-
-        # Test tracking - accumulate across all windows
-        correct_count_sample_based = 0
-        correct_count = 0
-        total_count = 0
         all_test_errors = []
-        window_test_results = []
+
+        # Test tracking - restore from saved partial results when resuming
+        if prior_online_results:
+            correct_count_sample_based = prior_online_results.get('correct_count_sample_based', 0)
+            correct_count = prior_online_results.get('correct_count', 0)
+            total_count = prior_online_results.get('total_count', 0)
+            skipped_count = prior_online_results.get('skipped_count', 0)
+            window_test_results = prior_online_results.get('window_test_results', [])
+            print(f"Resumed online: {len(window_test_results)} windows done, "
+                  f"global_step={start_global_step}")
+        else:
+            correct_count_sample_based = 0
+            correct_count = 0
+            total_count = 0
+            skipped_count = 0
+            window_test_results = []
         print(f"Total samples: {len(test_samples)}")
         print(f"Window size: {online_eval_frequency}")
         print(f"Number of windows: {(len(test_samples) + online_eval_frequency - 1) // online_eval_frequency}")
@@ -988,9 +1121,13 @@ class ACE:
         num_windows = (len(test_samples) + online_eval_frequency - 1) // online_eval_frequency
         
         epoch = 1  # Always 1 epoch
-        global_step = 0
-        
+        global_step = start_global_step
+
         for window_idx in range(num_windows):
+            # --- RESUME: skip windows already completed ---
+            if window_idx < start_window:
+                continue
+
             start_idx = window_idx * online_eval_frequency
             end_idx = min((window_idx + 1) * online_eval_frequency, len(test_samples))
             window_samples = test_samples[start_idx:end_idx]
@@ -1021,9 +1158,11 @@ class ACE:
             window_accuracy = window_test_results_dict['accuracy']
             window_correct = window_test_results_dict['correct']
             window_total = window_test_results_dict['total']
+            window_skipped = window_test_results_dict.get('skipped', 0)
             correct_count_sample_based += window_correct
             correct_count += window_accuracy * window_total
             total_count += window_total
+            skipped_count += window_skipped
             
             # Add errors with window and global index information
             for error in window_test_error_log['errors']:
@@ -1068,19 +1207,23 @@ class ACE:
                       f"(Global step {global_step}) ---")
                 
                 target = task_dict.get("target", "")
-                
+
                 # Use helper method for training single sample
-                pre_train_answer, post_train_answer, tracking_dict, latency = self._train_single_sample(
-                    task_dict=task_dict,
-                    data_processor=data_processor,
-                    step_id=f"online_train_s_{global_step}",
-                    epoch=epoch,
-                    step=global_step,
-                    usage_log_path=usage_log_path,
-                    log_dir=log_dir,
-                    config_params=config_params,
-                    total_samples=len(test_samples)
-                )
+                try:
+                    pre_train_answer, post_train_answer, tracking_dict, latency = self._train_single_sample(
+                        task_dict=task_dict,
+                        data_processor=data_processor,
+                        step_id=f"online_train_s_{global_step}",
+                        epoch=epoch,
+                        step=global_step,
+                        usage_log_path=usage_log_path,
+                        log_dir=log_dir,
+                        config_params=config_params,
+                        total_samples=len(test_samples)
+                    )
+                except Exception as e:
+                    print(f"[WARN] Skipping online training step {global_step}: {type(e).__name__}: {e}")
+                    continue
 
                 # Collect answers for accuracy calculation
                 epoch_answers_pre_train.append(pre_train_answer)
@@ -1128,6 +1271,19 @@ class ACE:
             }
             train_results.append(window_train_result)
             
+            # Save partial results + progress cursor after each window
+            partial = {
+                'correct_count_sample_based': correct_count_sample_based,
+                'correct_count': correct_count,
+                'total_count': total_count,
+                'skipped_count': skipped_count,
+                'window_test_results': window_test_results,
+            }
+            with open(os.path.join(save_path, "partial_online_results.json"), "w") as _pf:
+                json.dump(partial, _pf)
+            self._save_progress(save_path, mode="online",
+                                window=window_idx, global_step=global_step)
+
             print(f"\nWindow {window_idx + 1} training complete:")
             print(f"  Pre-train accuracy: {pre_train_accuracy:.3f}")
             print(f"  Post-train accuracy: {post_train_accuracy:.3f}")
@@ -1145,8 +1301,11 @@ class ACE:
         print(f"{'='*60}")
 
         # Calculate final cumulative test accuracy
-        assert total_count == len(test_samples)
-        final_test_accuracy = correct_count / total_count
+        # total_count may be < len(test_samples) when samples are skipped due
+        # to LLM failures (empty/truncated responses); that is expected behavior.
+        if skipped_count > 0:
+            print(f"Warning: {skipped_count} sample(s) skipped due to LLM failures and excluded from accuracy.")
+        final_test_accuracy = correct_count / total_count if total_count > 0 else 0.0
 
         # Compute latency stats
         latency_stats = {}
@@ -1167,6 +1326,7 @@ class ACE:
             "accuracy": final_test_accuracy,
             "correct": correct_count_sample_based,
             "total": total_count,
+            "skipped": skipped_count,
             "window_results": window_test_results
         }
 

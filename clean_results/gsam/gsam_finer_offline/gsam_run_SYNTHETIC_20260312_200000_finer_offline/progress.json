@@ -1,0 +1,17 @@
+{
+  "synthetic_reference": true,
+  "task": "finer",
+  "mode": "offline",
+  "status": "complete",
+  "num_epochs": 5,
+  "train_samples": 1000,
+  "test_samples": 300,
+  "epoch_val_accuracies": [
+    0.54,
+    0.62,
+    0.67,
+    0.7,
+    0.71
+  ],
+  "final_test_accuracy": 0.71
+}

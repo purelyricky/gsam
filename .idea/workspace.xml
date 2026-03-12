@@ -4,11 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0842f05a-e9d1-435b-87a1-be60cf09846b" name="Changes" comment="" />
+    <list default="true" id="0842f05a-e9d1-435b-87a1-be60cf09846b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ace/ace.py" beforeDir="false" afterPath="$PROJECT_DIR$/ace/ace.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ace/core/bulletpoint_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/ace/core/bulletpoint_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ace/core/curator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ace/core/curator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyze_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyze_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eval/finance/finer_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval/finance/finer_transfer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eval/finance/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval/finance/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eval/finance/run_gsam.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval/finance/run_gsam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gsam/core/graph_constructor.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/core/graph_constructor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gsam/core/graph_retriever.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/core/graph_retriever.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gsam/graph_memory.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/graph_memory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gsam/gsam.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/gsam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gsam_paper.tex" beforeDir="false" afterPath="$PROJECT_DIR$/gsam_paper.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gsam_thesis.tex" beforeDir="false" afterPath="$PROJECT_DIR$/gsam_thesis.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/llm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modal_serve.py" beforeDir="false" afterPath="$PROJECT_DIR$/modal_serve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -16,9 +44,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="39rHWaUhbdbcFRY94d3rf2qWQgm" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,10 +54,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Window/Desktop/gsam-rsh"
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Window/Desktop/gsam-rsh",
+    "settings.editor.selected.configurable": "terminal"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

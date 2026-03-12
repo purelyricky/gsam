@@ -1,0 +1,29 @@
+## STRATEGIES & INSIGHTS
+
+## FORMULAS & CALCULATIONS
+
+[calc-00001] helpful=10 harmful=0 :: Always format numerical answers with two decimal places as specified in the question.
+[calc-00002] helpful=0 harmful=0 :: Always ensure the model provides a final answer after performing the calculation.
+[calc-00003] helpful=0 harmful=0 :: Ensure the answer is in the correct numerical format as specified by the question, either as a decimal or percentage.
+[calc-00004] helpful=0 harmful=0 :: Use the formula: Interest Coverage Ratio = EBIT / Interest Expense.
+[calc-00005] helpful=0 harmful=0 :: Use the formula: P/B Ratio = Market Price per Share / Book Value per Share.
+[calc-00006] helpful=0 harmful=0 :: [calc-00006] helpful=5 harmful=0 :: Ensure the initial cash inflow is discounted from year 0 and each subsequent cash flow is appropriately discounted from their respective years.
+[calc-00007] helpful=0 harmful=0 :: After calculating the division, multiply the result by 100 to convert it to a percentage.
+[calc-00008] helpful=0 harmful=0 :: Common Pitfalls: 1. Ignore inventory quality; 2. Misclassify current assets/liabilities; 3. Overly simplistic analysis.
+[calc-00009] helpful=0 harmful=0 :: Quick Ratio: (Current Assets - Inventory) / Current Liabilities
+[calc-00010] helpful=0 harmful=0 :: Acid-Test Ratio: Same as quick ratio but excludes other current assets.
+[calc-00011] helpful=0 harmful=0 :: Interpret Trends: Compare with historical data to identify improvement or decline.
+[calc-00012] helpful=0 harmful=0 :: Formatting: Always round to two decimal places as specified.
+[calc-00013] helpful=0 harmful=0 :: Round the result to one decimal place when calculating inflation rates.
+[calc-00014] helpful=0 harmful=0 :: Ensure the final answer is in decimal form by dividing the percentage result by 100.
+[calc-00015] helpful=0 harmful=0 :: Show all calculation steps to ensure accuracy and prevent errors.
+[calc-00016] helpful=0 harmful=0 :: Always convert ROE from decimal to percentage by multiplying the result by 100. For example, 0.25 becomes 25.0%.
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+
+## PROBLEM-SOLVING HEURISTICS
+
+## CONTEXT CLUES & INDICATORS
+
+## OTHERS

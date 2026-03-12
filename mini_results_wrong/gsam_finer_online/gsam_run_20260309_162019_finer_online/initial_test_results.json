@@ -1,0 +1,542 @@
+{
+  "test_results": {
+    "accuracy": 0.09333333333333334,
+    "correct": 0,
+    "total": 75,
+    "no_answer": 0,
+    "answers": [
+      "Number of Reportable Segments, Reporting Units, Number of Business Segments, Firm Reservation Fees",
+      "DebtInstrumentPrincipalOutstandingAmount, DebtInstrumentFairValue, Segment, SpecialItemCharges",
+      "Goodwill,Intangible Assets Amortization,Intangible Assets Amortization,Long-Term Debt",
+      "Revenues,Revenues,CommonStockDividendsPerShareDeclared,CommonStockDividendsPerShareDeclared",
+      "Revenues,Depreciation,Depreciation,Depreciation",
+      "Redemption Price Percentage,Principal Amount,Principal Amount,Cash Fee",
+      "Depreciation,Amortization,Preferred Stock,Common Stock",
+      "LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,TreasuryStockValueAcquiredCostMethod,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "S:0001,S:0001,C:0023,C:0023",
+      "VestingPeriod,PerformanceLTIPUnits,PerformanceLTIPUnits,FairValue",
+      "DebtInstrumentFaceAmount,NumberOfReportableSegments,NumberOfReportableSegments,EquityMethodInvestments",
+      "Allowance for Doubtful Accounts, Amortization Of Intangible Assets, Amortization Of Intangible Assets, Goodwill",
+      "S:0001,S:0001,S:0001,C:0023",
+      "S:0001,S:0001,S:0001,C:0023",
+      "Common Stock Par Or Stated Value Per Share,Common Stock Shares Authorized,Common Stock Shares Authorized,Restricted Stock",
+      "CommonStockSharesAuthorized,UnrecognizedCompensationCost,WeightedAverageDiscountRatePercent,UnvestedRestrictedStockUnits",
+      "DeferredFinanceCostsGross,DeferredFinanceCostsNet,No,Liability",
+      "PropertyPlantAndEquipmentUsefulLife,PropertyPlantAndEquipmentUsefulLife,EquityMethodInvestmentOwnershipPercentage,NumberOfRealEstateProperties",
+      "InterestExpense,DeferredFinanceCosts",
+      "OperatingLeaseTermOfContract,LeaseAndRentalExpense,PerformanceBondLiability,PerformanceBondLiability",
+      "Revenues,RestrictedStock,RestrictedStock,ShareBasedCompensation",
+      "RestructuringCharges,PropertyPlantAndEquipment,CapitalizedContractCosts,LeaseAndRentalExpense,LeaseAndRentalExpense",
+      "DebtInstrumentInterestRateStatedPercentage, DebtInstrumentInterestRateStatedPercentage, DebtInstrumentUnamortizedDiscount, LineOfCreditFacilityMaximumBorrowingCapacity",
+      "IncomeTaxExpense,EffectiveTaxRate,EffectiveTaxRate,UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate",
+      "InterestExpense,ContractWithCustomerLiability,DebtInstrument,InterestExpense",
+      "S:0001,C:0023,S:0001,C:0023,S:0001,C:0023,S:0001,C:0023",
+      "LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,DebtInstrumentInterestRateEffectivePercentage",
+      "AllocatedShareBasedCompensationExpense,AllocatedShareBasedCompensationExpense,SharebasedCompensationArrangementBySharebasedPaymentAward,SharebasedCompensationArrangementBySharebasedPaymentAward",
+      "Weighted Average Exercise Price of Warrants or Rights,Allocated Share-Based Compensation Expense,Weighted Average Exercise Price of Warrants or Rights,DebtInstrumentUnamortizedDiscount",
+      "DebtInstrumentFaceAmount,InterestRateEffectivePercentage,DebtInstrumentFaceAmount,DebtInstrumentStatedInterestRatePercentage",
+      "DebtInstrumentDiscount, DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentDiscount, DebtInstrumentInterestRateEffectivePercentage",
+      "OwnershipPercentage,Anti-dilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AllocatedShareBasedCompensationExpense,LineOfCreditFacilityCommitmentFeePercentage",
+      "OtherDeferredDebits,RestrictedCash,RestrictedCash,RestrictedCash",
+      "Month,Day,,BasisPoint",
+      "A:0005,D:0001,D:0002,D:0001",
+      "AllocatedShareBasedCompensationExpense,FiniteLivedIntangibleAssetUsefulLife,UsefulLife,UsefulLife",
+      "TermLoanFacility, RevolvingCreditFacility, InterestRateStatedPercentage, RealEstateFacility",
+      "CommonStockSharesAuthorized,CommonStockSharesAuthorized,CommonStockSharesAuthorized,PropertyPlantAndEquipmentUsefulLife",
+      "Common Stock Proceeds,Common Stock Proceeds,Restricted Common Stock Issued,Restricted Common Stock Issued",
+      "S:0001,C:0023,S:0023,S:0023",
+      "SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage,EquityMethodInvestmentOwnershipPercentage,EquityMethodInvestmentOwnershipPercentage,UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate",
+      "ShareBasedCompensation,DeferredFinanceCosts,InterestRateEffectivePercentage,BaseRateForFirstLienTermLoans",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingRightsPercentage,IncomeLossFromEquityMethodInvestments,IncomeLossFromEquityMethodInvestments,CommonStockSharesAuthorized",
+      "C:0023,DerivativeNotionalAmount,LongTermDebtFairValue,TermBFacility",
+      "C:0023,C:0023,C:0023,C:0023",
+      "DebtInstrumentInterestRateStatedPercentage, DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentInterestRateEffectivePercentage, LineOfCreditFacilityMaximumBorrowingCapacity",
+      "CommonStockParOrStatedValuePerShare,BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill,IncomeLossFromEquityMethodInvestments,RevenueFromContractWithCustomerIncludingAssessedTax",
+      "LineOfCreditFacilityRemainingBorrowingCapacity,LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+      "UnrecognizedCompensationExpense,UnrecognizedCompensationExpense,UnrecognizedCompensationExpense,WeightedAverageVestingPeriod",
+      "MaximumExposure,RestrictedStockUnits,RestrictedStockUnits,TotalIntrinsicValuesOfStockOptionsExercised",
+      "SharebasedCompensationArrangementBySharebasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue, LossContingency, LossContingency, SharebasedCompensationArrangementBySharebasedPaymentAwardVestingRightsPercentage",
+      "CommonStockParOrStatedValuePerShare,ShareBasedCompensationArrangementByShareBasedPaymentAwardWeightedAverageGrantDateFairValue,CommonStockParOrStatedValuePerShare,RevenueFromContractWithCustomerIncludingAssessedTax",
+      "SegmentReporting,TreasuryStockValueAcquiredCostMethod,CommonStockDividendsPerShareDeclared,SegmentReporting",
+      "Share-Based Compensation Arrangement by Share-Based Payment Award Expiration Period,Share-Based Compensation Arrangement by Share-Based Payment Award Exercised Number,Share-Based Compensation Arrangement by Share-Based Payment Award Expiration Period,Share-Based Compensation Arrangement by Share-Based Payment Award Expiration Period",
+      "S:0001,C:0023,C:0023,C:0023",
+      "Line of Credit Facilities, Debt Instrument Interest Rate Effective Percentage, Equity Method Investment Ownership Percentage, Line of Credit Facilities",
+      "Rent expense,Rent expense,Common Stock SharesAuthorized,Common StockParOrStatedValuePerShare",
+      "CommonStockSharesIssuedOrIssuableNumberOfSharesIssued,SharePrice,OperatingLeaseWeightedAverageRemainingLeaseTerm1,OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+      "CommonStockParOrStatedValuePerShare,CommonStockSharesAuthorized,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,WeightedAverageRemainingLeaseTerm1",
+      "RevenueFromContractWithCustomerIncludingAssessedTax,LineOfCreditFacilityCommitmentFeePercentage,LineOfCreditFacilityCommitmentFeePercentage,CashAndCashEquivalentsFairValue",
+      "Expense,Unrecognized Tax Benefits That Would Impact Effective Tax Rate,Expiration Period,Expiration Period",
+      "LongTermDebtFairValue,UnamortizedOriginalIssueDiscount,InterestRateEffectivePercentage,VariableInterestRate",
+      "IncomeTaxExpenseEffectiveRate,PensionBenefits,NonU.S.PensionPlans,EmployeeBenefitsMedicalAndDental",
+      "DebtInstrumentFairValue,SeniorConvertibleNotes,DebtInstrumentIssuanceCosts,DebtInstrumentRedemptionPrice",
+      "DebtInstrumentFaceAmount,InterestRateEffectivePercentage,FiniteLivedIntangibleAssetUsefulLife,IncomeLossFromEquityMethodInvestments",
+      "SaleOfStockPricePerShare,IncomeLossFromEquityMethodInvestments,DebtInstrumentCarryingAmount,NumberOfOperatingSegments",
+      "C:0023,S:0001,S:0012,C:0023",
+      "RevenueFromContractWithCustomerIncludingAssessedTax,AllocatedShareBasedCompensationExpense,WeightedAverageRemainingLeaseTerm1,EffectiveIncomeTaxRateContinuingOperations",
+      "S:0001,GoodwillImpairmentLoss,GoodwillImpairmentLoss,LineOfCreditFacilityCurrentBorrowingCapacity",
+      "Common Stock SharesAuthorized,Unamortized Stock-Based Compensation,Weighted Average Period,Common Stock Fair Value",
+      "DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentInterestRateEffectivePercentage, LineOfCreditFacilityMaximumBorrowingCapacity",
+      "LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityCurrentBorrowingCapacity",
+      "Common StockDividendsPerShareDeclared,Common StockDividendsPerShareDeclared,Common StockDividendsPerShareDeclared,Common StockDividendsPerShareDeclared",
+      "CommonStockSharesAuthorized,CommonStockCapitalSharesReservedForFutureIssuance",
+      "CommonStockDividendsPerShareDeclared,RestrictedStockUnits,CommonStockDividendsPerShareDeclared,Stock-based Compensation Expense"
+    ],
+    "targets": [
+      "NumberOfOperatingSegments,NumberOfOperatingSegments,NumberOfOperatingSegments,RevenueFromContractWithCustomerExcludingAssessedTax",
+      "DebtInstrumentCarryingAmount,LongTermDebtFairValue,NumberOfReportableSegments,RestructuringCharges",
+      "Goodwill,AmortizationOfIntangibleAssets,AmortizationOfIntangibleAssets,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "ContractWithCustomerLiabilityRevenueRecognized,LossContingencyEstimateOfPossibleLoss,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized",
+      "ContractWithCustomerLiability,Depreciation,Depreciation,Depreciation",
+      "DebtInstrumentRedemptionPricePercentage,DebtInstrumentFaceAmount,DebtInstrumentFaceAmount,GainsLossesOnExtinguishmentOfDebt",
+      "Depreciation,Depreciation,PreferredStockSharesAuthorized,CommonStockSharesAuthorized",
+      "RelatedPartyTransactionAmountsOfTransaction,RelatedPartyTransactionAmountsOfTransaction,DebtInstrumentTerm,DebtInstrumentFaceAmount",
+      "AmortizationOfIntangibleAssets,AmortizationOfIntangibleAssets,DeferredFinanceCostsNet,DeferredFinanceCostsNet",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue",
+      "DebtInstrumentCarryingAmount,NumberOfOperatingSegments,NumberOfReportableSegments,RevenueFromRelatedParties",
+      "CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption,AmortizationOfIntangibleAssets,AmortizationOfIntangibleAssets,Goodwill",
+      "ConcentrationRiskPercentage1,ConcentrationRiskPercentage1,ConcentrationRiskPercentage1,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ContractWithCustomerLiabilityRevenueRecognized",
+      "CommonStockParOrStatedValuePerShare,CommonStockSharesAuthorized,StockIssuedDuringPeriodSharesNewIssues,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized",
+      "DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer,GuaranteeObligationsMaximumExposure",
+      "NumberOfRealEstateProperties,NumberOfRealEstateProperties,EquityMethodInvestmentOwnershipPercentage,NumberOfRealEstateProperties",
+      "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DeferredFinanceCostsNet",
+      "LesseeOperatingLeaseTermOfContract,LesseeOperatingLeaseTermOfContract,LossContingencyAccrualAtCarryingValue,LettersOfCreditOutstandingAmount",
+      "ConcentrationRiskPercentage1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue",
+      "RestructuringCharges,BusinessCombinationConsiderationTransferred1,BusinessCombinationConsiderationTransferred1,AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife",
+      "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,GainsLossesOnExtinguishmentOfDebt,DerivativeNotionalAmount",
+      "IncomeTaxExpenseBenefit,EffectiveIncomeTaxRateContinuingOperations,EffectiveIncomeTaxRateContinuingOperations,UnrecognizedTaxBenefits",
+      "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod",
+      "LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,DebtInstrumentBasisSpreadOnVariableRate1",
+      "AllocatedShareBasedCompensationExpense,AllocatedShareBasedCompensationExpense,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber",
+      "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1,SaleOfStockNumberOfSharesIssuedInTransaction,ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1,GainsLossesOnExtinguishmentOfDebt",
+      "DebtInstrumentRedemptionPricePercentage,DebtInstrumentInterestRateEffectivePercentage,DebtInstrumentRedemptionPricePercentage,DebtInstrumentInterestRateStatedPercentage",
+      "DebtInstrumentUnamortizedDiscount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentUnamortizedDiscount,DebtInstrumentInterestRateStatedPercentage",
+      "EquityMethodInvestmentOwnershipPercentage,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,PaymentsToAcquireBusinessesGross",
+      "CashAndCashEquivalentsFairValueDisclosure,CashAndCashEquivalentsFairValueDisclosure,CashAndCashEquivalentsFairValueDisclosure,CashAndCashEquivalentsFairValueDisclosure",
+      "DebtInstrumentMaturityDate,DebtInstrumentMaturityDate,DebtInstrumentMaturityDate,DebtInstrumentBasisSpreadOnVariableRate1",
+      "AmortizationOfIntangibleAssets,DebtInstrumentFaceAmount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentFaceAmount",
+      "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,PropertyPlantAndEquipmentUsefulLife,PropertyPlantAndEquipmentUsefulLife",
+      "LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,DebtInstrumentInterestRateEffectivePercentage,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "MinorityInterestOwnershipPercentageByNoncontrollingOwners,MinorityInterestOwnershipPercentageByNoncontrollingOwners,MinorityInterestOwnershipPercentageByNoncontrollingOwners,OperatingLeaseRightOfUseAsset",
+      "ProceedsFromIssuanceOfCommonStock,StockIssuedDuringPeriodSharesNewIssues,StockIssuedDuringPeriodSharesNewIssues,StockIssuedDuringPeriodSharesNewIssues",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue",
+      "AllocatedShareBasedCompensationExpense,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized",
+      "DeferredFinanceCostsGross,DeferredFinanceCostsNet,DebtInstrumentInterestRateEffectivePercentage,DebtInstrumentInterestRateEffectivePercentage",
+      "EquityMethodInvestmentOwnershipPercentage,RevenueFromContractWithCustomerExcludingAssessedTax,RevenueFromContractWithCustomerExcludingAssessedTax,EquityMethodInvestmentOwnershipPercentage",
+      "OperatingLeaseWeightedAverageDiscountRatePercent,DerivativeNotionalAmount,DebtInstrumentFairValue,DebtInstrumentCarryingAmount",
+      "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentFaceAmount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentFaceAmount",
+      "DebtInstrumentInterestRateEffectivePercentage,DebtInstrumentBasisSpreadOnVariableRate1,DebtInstrumentBasisSpreadOnVariableRate1,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "CommonStockParOrStatedValuePerShare,BusinessCombinationAcquisitionRelatedCosts,ConcentrationRiskPercentage1,RevenueFromContractWithCustomerExcludingAssessedTax",
+      "DebtInstrumentTerm,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+      "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue",
+      "DebtInstrumentConvertibleConversionPrice1,GainsLossesOnExtinguishmentOfDebt,GainsLossesOnExtinguishmentOfDebt,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+      "CommonStockParOrStatedValuePerShare,BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued,CommonStockParOrStatedValuePerShare,RevenueFromContractWithCustomerExcludingAssessedTax",
+      "NumberOfReportableSegments,MinorityInterestOwnershipPercentageByParent,CommonStockDividendsPerShareDeclared,NumberOfReportableSegments",
+      "StockRepurchaseProgramAuthorizedAmount1,StockRepurchasedAndRetiredDuringPeriodShares,StockRepurchasedAndRetiredDuringPeriodShares,StockRepurchasedAndRetiredDuringPeriodShares",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+      "DebtInstrumentFaceAmount,DebtInstrumentBasisSpreadOnVariableRate1,ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1,DebtInstrumentFaceAmount",
+      "OperatingLeaseExpense,OperatingLeaseExpense,SaleOfStockNumberOfSharesIssuedInTransaction,SaleOfStockPricePerShare",
+      "SaleOfStockNumberOfSharesIssuedInTransaction,SaleOfStockPricePerShare,LesseeOperatingLeaseTermOfContract,LesseeOperatingLeaseRenewalTerm",
+      "CommonStockParOrStatedValuePerShare,CommonStockCapitalSharesReservedForFutureIssuance,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1",
+      "ConcentrationRiskPercentage1,RestructuringAndRelatedCostExpectedCost1,RestructuringAndRelatedCostExpectedCost1,BusinessCombinationConsiderationTransferred1",
+      "AllocatedShareBasedCompensationExpense,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod",
+      "LongTermDebt,DebtInstrumentUnamortizedDiscount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage",
+      "EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate,DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer",
+      "ProceedsFromIssuanceOfCommonStock,DebtInstrumentFaceAmount,DeferredFinanceCostsGross,DebtInstrumentCarryingAmount",
+      "DebtInstrumentCarryingAmount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentTerm,DefinedBenefitPlanContributionsByEmployer",
+      "PublicUtilitiesRequestedRateIncreaseDecreaseAmount,PublicUtilitiesRequestedRateIncreaseDecreaseAmount,GuaranteeObligationsMaximumExposure,LossContingencyPendingClaimsNumber",
+      "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "RevenueRemainingPerformanceObligation,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,EffectiveIncomeTaxRateContinuingOperations",
+      "NumberOfReportableSegments,Goodwill,Goodwill,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue",
+      "DebtInstrumentBasisSpreadOnVariableRate1,DebtInstrumentBasisSpreadOnVariableRate1,DebtInstrumentBasisSpreadOnVariableRate1,LineOfCreditFacilityMaximumBorrowingCapacity",
+      "LineOfCredit,LineOfCredit,LineOfCredit,RepaymentsOfDebt",
+      "EquityMethodInvestmentOwnershipPercentage,EquityMethodInvestmentOwnershipPercentage,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "NumberOfRealEstateProperties,MinorityInterestOwnershipPercentageByParent,NumberOfRealEstateProperties,MinorityInterestOwnershipPercentageByParent",
+      "SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensation"
+    ]
+  },
+  "error_log": {
+    "accuracy": 0.09333333333333334,
+    "errors": [
+      {
+        "index": 16,
+        "prediction": "Number of Reportable Segments, Reporting Units, Number of Business Segments, Firm Reservation Fees",
+        "ground_truth": "NumberOfOperatingSegments,NumberOfOperatingSegments,NumberOfOperatingSegments,RevenueFromContractWithCustomerExcludingAssessedTax"
+      },
+      {
+        "index": 19,
+        "prediction": "DebtInstrumentPrincipalOutstandingAmount, DebtInstrumentFairValue, Segment, SpecialItemCharges",
+        "ground_truth": "DebtInstrumentCarryingAmount,LongTermDebtFairValue,NumberOfReportableSegments,RestructuringCharges"
+      },
+      {
+        "index": 13,
+        "prediction": "Goodwill,Intangible Assets Amortization,Intangible Assets Amortization,Long-Term Debt",
+        "ground_truth": "Goodwill,AmortizationOfIntangibleAssets,AmortizationOfIntangibleAssets,LineOfCreditFacilityMaximumBorrowingCapacity"
+      },
+      {
+        "index": 15,
+        "prediction": "Revenues,Revenues,CommonStockDividendsPerShareDeclared,CommonStockDividendsPerShareDeclared",
+        "ground_truth": "ContractWithCustomerLiabilityRevenueRecognized,LossContingencyEstimateOfPossibleLoss,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized"
+      },
+      {
+        "index": 10,
+        "prediction": "Revenues,Depreciation,Depreciation,Depreciation",
+        "ground_truth": "ContractWithCustomerLiability,Depreciation,Depreciation,Depreciation"
+      },
+      {
+        "index": 11,
+        "prediction": "Redemption Price Percentage,Principal Amount,Principal Amount,Cash Fee",
+        "ground_truth": "DebtInstrumentRedemptionPricePercentage,DebtInstrumentFaceAmount,DebtInstrumentFaceAmount,GainsLossesOnExtinguishmentOfDebt"
+      },
+      {
+        "index": 5,
+        "prediction": "Depreciation,Amortization,Preferred Stock,Common Stock",
+        "ground_truth": "Depreciation,Depreciation,PreferredStockSharesAuthorized,CommonStockSharesAuthorized"
+      },
+      {
+        "index": 9,
+        "prediction": "LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,TreasuryStockValueAcquiredCostMethod,LineOfCreditFacilityMaximumBorrowingCapacity",
+        "ground_truth": "RelatedPartyTransactionAmountsOfTransaction,RelatedPartyTransactionAmountsOfTransaction,DebtInstrumentTerm,DebtInstrumentFaceAmount"
+      },
+      {
+        "index": 7,
+        "prediction": "S:0001,S:0001,C:0023,C:0023",
+        "ground_truth": "AmortizationOfIntangibleAssets,AmortizationOfIntangibleAssets,DeferredFinanceCostsNet,DeferredFinanceCostsNet"
+      },
+      {
+        "index": 8,
+        "prediction": "VestingPeriod,PerformanceLTIPUnits,PerformanceLTIPUnits,FairValue",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue"
+      },
+      {
+        "index": 6,
+        "prediction": "DebtInstrumentFaceAmount,NumberOfReportableSegments,NumberOfReportableSegments,EquityMethodInvestments",
+        "ground_truth": "DebtInstrumentCarryingAmount,NumberOfOperatingSegments,NumberOfReportableSegments,RevenueFromRelatedParties"
+      },
+      {
+        "index": 4,
+        "prediction": "Allowance for Doubtful Accounts, Amortization Of Intangible Assets, Amortization Of Intangible Assets, Goodwill",
+        "ground_truth": "CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption,AmortizationOfIntangibleAssets,AmortizationOfIntangibleAssets,Goodwill"
+      },
+      {
+        "index": 17,
+        "prediction": "S:0001,S:0001,S:0001,C:0023",
+        "ground_truth": "ConcentrationRiskPercentage1,ConcentrationRiskPercentage1,ConcentrationRiskPercentage1,LineOfCreditFacilityMaximumBorrowingCapacity"
+      },
+      {
+        "index": 14,
+        "prediction": "S:0001,S:0001,S:0001,C:0023",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ContractWithCustomerLiabilityRevenueRecognized"
+      },
+      {
+        "index": 18,
+        "prediction": "Common Stock Par Or Stated Value Per Share,Common Stock Shares Authorized,Common Stock Shares Authorized,Restricted Stock",
+        "ground_truth": "CommonStockParOrStatedValuePerShare,CommonStockSharesAuthorized,StockIssuedDuringPeriodSharesNewIssues,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1"
+      },
+      {
+        "index": 0,
+        "prediction": "CommonStockSharesAuthorized,UnrecognizedCompensationCost,WeightedAverageDiscountRatePercent,UnvestedRestrictedStockUnits",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized"
+      },
+      {
+        "index": 12,
+        "prediction": "DeferredFinanceCostsGross,DeferredFinanceCostsNet,No,Liability",
+        "ground_truth": "DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer,GuaranteeObligationsMaximumExposure"
+      },
+      {
+        "index": 21,
+        "prediction": "PropertyPlantAndEquipmentUsefulLife,PropertyPlantAndEquipmentUsefulLife,EquityMethodInvestmentOwnershipPercentage,NumberOfRealEstateProperties",
+        "ground_truth": "NumberOfRealEstateProperties,NumberOfRealEstateProperties,EquityMethodInvestmentOwnershipPercentage,NumberOfRealEstateProperties"
+      },
+      {
+        "index": 25,
+        "prediction": "InterestExpense,DeferredFinanceCosts",
+        "ground_truth": "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DeferredFinanceCostsNet"
+      },
+      {
+        "index": 24,
+        "prediction": "OperatingLeaseTermOfContract,LeaseAndRentalExpense,PerformanceBondLiability,PerformanceBondLiability",
+        "ground_truth": "LesseeOperatingLeaseTermOfContract,LesseeOperatingLeaseTermOfContract,LossContingencyAccrualAtCarryingValue,LettersOfCreditOutstandingAmount"
+      },
+      {
+        "index": 27,
+        "prediction": "Revenues,RestrictedStock,RestrictedStock,ShareBasedCompensation",
+        "ground_truth": "ConcentrationRiskPercentage1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue"
+      },
+      {
+        "index": 29,
+        "prediction": "RestructuringCharges,PropertyPlantAndEquipment,CapitalizedContractCosts,LeaseAndRentalExpense,LeaseAndRentalExpense",
+        "ground_truth": "RestructuringCharges,BusinessCombinationConsiderationTransferred1,BusinessCombinationConsiderationTransferred1,AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife"
+      },
+      {
+        "index": 23,
+        "prediction": "DebtInstrumentInterestRateStatedPercentage, DebtInstrumentInterestRateStatedPercentage, DebtInstrumentUnamortizedDiscount, LineOfCreditFacilityMaximumBorrowingCapacity",
+        "ground_truth": "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,GainsLossesOnExtinguishmentOfDebt,DerivativeNotionalAmount"
+      },
+      {
+        "index": 28,
+        "prediction": "IncomeTaxExpense,EffectiveTaxRate,EffectiveTaxRate,UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate",
+        "ground_truth": "IncomeTaxExpenseBenefit,EffectiveIncomeTaxRateContinuingOperations,EffectiveIncomeTaxRateContinuingOperations,UnrecognizedTaxBenefits"
+      },
+      {
+        "index": 31,
+        "prediction": "InterestExpense,ContractWithCustomerLiability,DebtInstrument,InterestExpense",
+        "ground_truth": "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage"
+      },
+      {
+        "index": 2,
+        "prediction": "S:0001,C:0023,S:0001,C:0023,S:0001,C:0023,S:0001,C:0023",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod"
+      },
+      {
+        "index": 20,
+        "prediction": "LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,DebtInstrumentInterestRateEffectivePercentage",
+        "ground_truth": "LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,DebtInstrumentBasisSpreadOnVariableRate1"
+      },
+      {
+        "index": 32,
+        "prediction": "AllocatedShareBasedCompensationExpense,AllocatedShareBasedCompensationExpense,SharebasedCompensationArrangementBySharebasedPaymentAward,SharebasedCompensationArrangementBySharebasedPaymentAward",
+        "ground_truth": "AllocatedShareBasedCompensationExpense,AllocatedShareBasedCompensationExpense,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber"
+      },
+      {
+        "index": 1,
+        "prediction": "Weighted Average Exercise Price of Warrants or Rights,Allocated Share-Based Compensation Expense,Weighted Average Exercise Price of Warrants or Rights,DebtInstrumentUnamortizedDiscount",
+        "ground_truth": "ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1,SaleOfStockNumberOfSharesIssuedInTransaction,ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1,GainsLossesOnExtinguishmentOfDebt"
+      },
+      {
+        "index": 33,
+        "prediction": "DebtInstrumentFaceAmount,InterestRateEffectivePercentage,DebtInstrumentFaceAmount,DebtInstrumentStatedInterestRatePercentage",
+        "ground_truth": "DebtInstrumentRedemptionPricePercentage,DebtInstrumentInterestRateEffectivePercentage,DebtInstrumentRedemptionPricePercentage,DebtInstrumentInterestRateStatedPercentage"
+      },
+      {
+        "index": 34,
+        "prediction": "DebtInstrumentDiscount, DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentDiscount, DebtInstrumentInterestRateEffectivePercentage",
+        "ground_truth": "DebtInstrumentUnamortizedDiscount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentUnamortizedDiscount,DebtInstrumentInterestRateStatedPercentage"
+      },
+      {
+        "index": 30,
+        "prediction": "OwnershipPercentage,Anti-dilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AllocatedShareBasedCompensationExpense,LineOfCreditFacilityCommitmentFeePercentage",
+        "ground_truth": "EquityMethodInvestmentOwnershipPercentage,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,PaymentsToAcquireBusinessesGross"
+      },
+      {
+        "index": 3,
+        "prediction": "OtherDeferredDebits,RestrictedCash,RestrictedCash,RestrictedCash",
+        "ground_truth": "CashAndCashEquivalentsFairValueDisclosure,CashAndCashEquivalentsFairValueDisclosure,CashAndCashEquivalentsFairValueDisclosure,CashAndCashEquivalentsFairValueDisclosure"
+      },
+      {
+        "index": 42,
+        "prediction": "Month,Day,,BasisPoint",
+        "ground_truth": "DebtInstrumentMaturityDate,DebtInstrumentMaturityDate,DebtInstrumentMaturityDate,DebtInstrumentBasisSpreadOnVariableRate1"
+      },
+      {
+        "index": 38,
+        "prediction": "A:0005,D:0001,D:0002,D:0001",
+        "ground_truth": "AmortizationOfIntangibleAssets,DebtInstrumentFaceAmount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentFaceAmount"
+      },
+      {
+        "index": 22,
+        "prediction": "AllocatedShareBasedCompensationExpense,FiniteLivedIntangibleAssetUsefulLife,UsefulLife,UsefulLife",
+        "ground_truth": "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,PropertyPlantAndEquipmentUsefulLife,PropertyPlantAndEquipmentUsefulLife"
+      },
+      {
+        "index": 39,
+        "prediction": "TermLoanFacility, RevolvingCreditFacility, InterestRateStatedPercentage, RealEstateFacility",
+        "ground_truth": "LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,DebtInstrumentInterestRateEffectivePercentage,LineOfCreditFacilityMaximumBorrowingCapacity"
+      },
+      {
+        "index": 35,
+        "prediction": "CommonStockSharesAuthorized,CommonStockSharesAuthorized,CommonStockSharesAuthorized,PropertyPlantAndEquipmentUsefulLife",
+        "ground_truth": "MinorityInterestOwnershipPercentageByNoncontrollingOwners,MinorityInterestOwnershipPercentageByNoncontrollingOwners,MinorityInterestOwnershipPercentageByNoncontrollingOwners,OperatingLeaseRightOfUseAsset"
+      },
+      {
+        "index": 44,
+        "prediction": "Common Stock Proceeds,Common Stock Proceeds,Restricted Common Stock Issued,Restricted Common Stock Issued",
+        "ground_truth": "ProceedsFromIssuanceOfCommonStock,StockIssuedDuringPeriodSharesNewIssues,StockIssuedDuringPeriodSharesNewIssues,StockIssuedDuringPeriodSharesNewIssues"
+      },
+      {
+        "index": 40,
+        "prediction": "S:0001,C:0023,S:0023,S:0023",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue"
+      },
+      {
+        "index": 46,
+        "prediction": "SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage,EquityMethodInvestmentOwnershipPercentage,EquityMethodInvestmentOwnershipPercentage,UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate",
+        "ground_truth": "AllocatedShareBasedCompensationExpense,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized"
+      },
+      {
+        "index": 37,
+        "prediction": "ShareBasedCompensation,DeferredFinanceCosts,InterestRateEffectivePercentage,BaseRateForFirstLienTermLoans",
+        "ground_truth": "DeferredFinanceCostsGross,DeferredFinanceCostsNet,DebtInstrumentInterestRateEffectivePercentage,DebtInstrumentInterestRateEffectivePercentage"
+      },
+      {
+        "index": 26,
+        "prediction": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingRightsPercentage,IncomeLossFromEquityMethodInvestments,IncomeLossFromEquityMethodInvestments,CommonStockSharesAuthorized",
+        "ground_truth": "EquityMethodInvestmentOwnershipPercentage,RevenueFromContractWithCustomerExcludingAssessedTax,RevenueFromContractWithCustomerExcludingAssessedTax,EquityMethodInvestmentOwnershipPercentage"
+      },
+      {
+        "index": 43,
+        "prediction": "C:0023,DerivativeNotionalAmount,LongTermDebtFairValue,TermBFacility",
+        "ground_truth": "OperatingLeaseWeightedAverageDiscountRatePercent,DerivativeNotionalAmount,DebtInstrumentFairValue,DebtInstrumentCarryingAmount"
+      },
+      {
+        "index": 47,
+        "prediction": "C:0023,C:0023,C:0023,C:0023",
+        "ground_truth": "DebtInstrumentInterestRateStatedPercentage,DebtInstrumentFaceAmount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentFaceAmount"
+      },
+      {
+        "index": 45,
+        "prediction": "DebtInstrumentInterestRateStatedPercentage, DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentInterestRateEffectivePercentage, LineOfCreditFacilityMaximumBorrowingCapacity",
+        "ground_truth": "DebtInstrumentInterestRateEffectivePercentage,DebtInstrumentBasisSpreadOnVariableRate1,DebtInstrumentBasisSpreadOnVariableRate1,LineOfCreditFacilityMaximumBorrowingCapacity"
+      },
+      {
+        "index": 48,
+        "prediction": "CommonStockParOrStatedValuePerShare,BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill,IncomeLossFromEquityMethodInvestments,RevenueFromContractWithCustomerIncludingAssessedTax",
+        "ground_truth": "CommonStockParOrStatedValuePerShare,BusinessCombinationAcquisitionRelatedCosts,ConcentrationRiskPercentage1,RevenueFromContractWithCustomerExcludingAssessedTax"
+      },
+      {
+        "index": 41,
+        "prediction": "LineOfCreditFacilityRemainingBorrowingCapacity,LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+        "ground_truth": "DebtInstrumentTerm,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,OperatingLeaseWeightedAverageRemainingLeaseTerm1"
+      },
+      {
+        "index": 51,
+        "prediction": "UnrecognizedCompensationExpense,UnrecognizedCompensationExpense,UnrecognizedCompensationExpense,WeightedAverageVestingPeriod",
+        "ground_truth": "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1"
+      },
+      {
+        "index": 52,
+        "prediction": "MaximumExposure,RestrictedStockUnits,RestrictedStockUnits,TotalIntrinsicValuesOfStockOptionsExercised",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue"
+      },
+      {
+        "index": 56,
+        "prediction": "SharebasedCompensationArrangementBySharebasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue, LossContingency, LossContingency, SharebasedCompensationArrangementBySharebasedPaymentAwardVestingRightsPercentage",
+        "ground_truth": "DebtInstrumentConvertibleConversionPrice1,GainsLossesOnExtinguishmentOfDebt,GainsLossesOnExtinguishmentOfDebt,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1"
+      },
+      {
+        "index": 54,
+        "prediction": "CommonStockParOrStatedValuePerShare,ShareBasedCompensationArrangementByShareBasedPaymentAwardWeightedAverageGrantDateFairValue,CommonStockParOrStatedValuePerShare,RevenueFromContractWithCustomerIncludingAssessedTax",
+        "ground_truth": "CommonStockParOrStatedValuePerShare,BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued,CommonStockParOrStatedValuePerShare,RevenueFromContractWithCustomerExcludingAssessedTax"
+      },
+      {
+        "index": 49,
+        "prediction": "SegmentReporting,TreasuryStockValueAcquiredCostMethod,CommonStockDividendsPerShareDeclared,SegmentReporting",
+        "ground_truth": "NumberOfReportableSegments,MinorityInterestOwnershipPercentageByParent,CommonStockDividendsPerShareDeclared,NumberOfReportableSegments"
+      },
+      {
+        "index": 50,
+        "prediction": "Share-Based Compensation Arrangement by Share-Based Payment Award Expiration Period,Share-Based Compensation Arrangement by Share-Based Payment Award Exercised Number,Share-Based Compensation Arrangement by Share-Based Payment Award Expiration Period,Share-Based Compensation Arrangement by Share-Based Payment Award Expiration Period",
+        "ground_truth": "StockRepurchaseProgramAuthorizedAmount1,StockRepurchasedAndRetiredDuringPeriodShares,StockRepurchasedAndRetiredDuringPeriodShares,StockRepurchasedAndRetiredDuringPeriodShares"
+      },
+      {
+        "index": 58,
+        "prediction": "S:0001,C:0023,C:0023,C:0023",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1"
+      },
+      {
+        "index": 59,
+        "prediction": "Line of Credit Facilities, Debt Instrument Interest Rate Effective Percentage, Equity Method Investment Ownership Percentage, Line of Credit Facilities",
+        "ground_truth": "DebtInstrumentFaceAmount,DebtInstrumentBasisSpreadOnVariableRate1,ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1,DebtInstrumentFaceAmount"
+      },
+      {
+        "index": 62,
+        "prediction": "Rent expense,Rent expense,Common Stock SharesAuthorized,Common StockParOrStatedValuePerShare",
+        "ground_truth": "OperatingLeaseExpense,OperatingLeaseExpense,SaleOfStockNumberOfSharesIssuedInTransaction,SaleOfStockPricePerShare"
+      },
+      {
+        "index": 60,
+        "prediction": "CommonStockSharesIssuedOrIssuableNumberOfSharesIssued,SharePrice,OperatingLeaseWeightedAverageRemainingLeaseTerm1,OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+        "ground_truth": "SaleOfStockNumberOfSharesIssuedInTransaction,SaleOfStockPricePerShare,LesseeOperatingLeaseTermOfContract,LesseeOperatingLeaseRenewalTerm"
+      },
+      {
+        "index": 55,
+        "prediction": "CommonStockParOrStatedValuePerShare,CommonStockSharesAuthorized,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,WeightedAverageRemainingLeaseTerm1",
+        "ground_truth": "CommonStockParOrStatedValuePerShare,CommonStockCapitalSharesReservedForFutureIssuance,ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1"
+      },
+      {
+        "index": 53,
+        "prediction": "RevenueFromContractWithCustomerIncludingAssessedTax,LineOfCreditFacilityCommitmentFeePercentage,LineOfCreditFacilityCommitmentFeePercentage,CashAndCashEquivalentsFairValue",
+        "ground_truth": "ConcentrationRiskPercentage1,RestructuringAndRelatedCostExpectedCost1,RestructuringAndRelatedCostExpectedCost1,BusinessCombinationConsiderationTransferred1"
+      },
+      {
+        "index": 64,
+        "prediction": "Expense,Unrecognized Tax Benefits That Would Impact Effective Tax Rate,Expiration Period,Expiration Period",
+        "ground_truth": "AllocatedShareBasedCompensationExpense,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod"
+      },
+      {
+        "index": 65,
+        "prediction": "LongTermDebtFairValue,UnamortizedOriginalIssueDiscount,InterestRateEffectivePercentage,VariableInterestRate",
+        "ground_truth": "LongTermDebt,DebtInstrumentUnamortizedDiscount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentInterestRateStatedPercentage"
+      },
+      {
+        "index": 69,
+        "prediction": "IncomeTaxExpenseEffectiveRate,PensionBenefits,NonU.S.PensionPlans,EmployeeBenefitsMedicalAndDental",
+        "ground_truth": "EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate,DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer,DefinedBenefitPlanContributionsByEmployer"
+      },
+      {
+        "index": 68,
+        "prediction": "DebtInstrumentFairValue,SeniorConvertibleNotes,DebtInstrumentIssuanceCosts,DebtInstrumentRedemptionPrice",
+        "ground_truth": "ProceedsFromIssuanceOfCommonStock,DebtInstrumentFaceAmount,DeferredFinanceCostsGross,DebtInstrumentCarryingAmount"
+      },
+      {
+        "index": 61,
+        "prediction": "DebtInstrumentFaceAmount,InterestRateEffectivePercentage,FiniteLivedIntangibleAssetUsefulLife,IncomeLossFromEquityMethodInvestments",
+        "ground_truth": "DebtInstrumentCarryingAmount,DebtInstrumentInterestRateStatedPercentage,DebtInstrumentTerm,DefinedBenefitPlanContributionsByEmployer"
+      },
+      {
+        "index": 67,
+        "prediction": "SaleOfStockPricePerShare,IncomeLossFromEquityMethodInvestments,DebtInstrumentCarryingAmount,NumberOfOperatingSegments",
+        "ground_truth": "PublicUtilitiesRequestedRateIncreaseDecreaseAmount,PublicUtilitiesRequestedRateIncreaseDecreaseAmount,GuaranteeObligationsMaximumExposure,LossContingencyPendingClaimsNumber"
+      },
+      {
+        "index": 63,
+        "prediction": "C:0023,S:0001,S:0012,C:0023",
+        "ground_truth": "AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount"
+      },
+      {
+        "index": 57,
+        "prediction": "RevenueFromContractWithCustomerIncludingAssessedTax,AllocatedShareBasedCompensationExpense,WeightedAverageRemainingLeaseTerm1,EffectiveIncomeTaxRateContinuingOperations",
+        "ground_truth": "RevenueRemainingPerformanceObligation,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,EffectiveIncomeTaxRateContinuingOperations"
+      },
+      {
+        "index": 72,
+        "prediction": "S:0001,GoodwillImpairmentLoss,GoodwillImpairmentLoss,LineOfCreditFacilityCurrentBorrowingCapacity",
+        "ground_truth": "NumberOfReportableSegments,Goodwill,Goodwill,LineOfCreditFacilityMaximumBorrowingCapacity"
+      },
+      {
+        "index": 73,
+        "prediction": "Common Stock SharesAuthorized,Unamortized Stock-Based Compensation,Weighted Average Period,Common Stock Fair Value",
+        "ground_truth": "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized,EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1,ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue"
+      },
+      {
+        "index": 71,
+        "prediction": "DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentInterestRateEffectivePercentage, DebtInstrumentInterestRateEffectivePercentage, LineOfCreditFacilityMaximumBorrowingCapacity",
+        "ground_truth": "DebtInstrumentBasisSpreadOnVariableRate1,DebtInstrumentBasisSpreadOnVariableRate1,DebtInstrumentBasisSpreadOnVariableRate1,LineOfCreditFacilityMaximumBorrowingCapacity"
+      },
+      {
+        "index": 66,
+        "prediction": "LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityCurrentBorrowingCapacity,LineOfCreditFacilityMaximumBorrowingCapacity,LineOfCreditFacilityCurrentBorrowingCapacity",
+        "ground_truth": "LineOfCredit,LineOfCredit,LineOfCredit,RepaymentsOfDebt"
+      },
+      {
+        "index": 70,
+        "prediction": "Common StockDividendsPerShareDeclared,Common StockDividendsPerShareDeclared,Common StockDividendsPerShareDeclared,Common StockDividendsPerShareDeclared",
+        "ground_truth": "EquityMethodInvestmentOwnershipPercentage,EquityMethodInvestmentOwnershipPercentage,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount,AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount"
+      },
+      {
+        "index": 36,
+        "prediction": "CommonStockSharesAuthorized,CommonStockCapitalSharesReservedForFutureIssuance",
+        "ground_truth": "NumberOfRealEstateProperties,MinorityInterestOwnershipPercentageByParent,NumberOfRealEstateProperties,MinorityInterestOwnershipPercentageByParent"
+      },
+      {
+        "index": 74,
+        "prediction": "CommonStockDividendsPerShareDeclared,RestrictedStockUnits,CommonStockDividendsPerShareDeclared,Stock-based Compensation Expense",
+        "ground_truth": "SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1,ShareBasedCompensation"
+      }
+    ]
+  }
+}

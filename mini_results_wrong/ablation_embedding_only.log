@@ -1,0 +1,455 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[INFO] Online mode requires num_epochs=1; overriding from 5 to 1
+
+============================================================
+GSAM SYSTEM
+============================================================
+Task: finer
+Mode: ONLINE
+Generator Model: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+Ontology: ./eval/finance/data/xbrl_taxonomy.json
+Failure Cascades: Enabled
+Retrieval: Embedding-only
+Edge Types: Typed
+============================================================
+
+Loaded 441 samples from ./eval/finance/data/finer_test_subset_006_seed42.jsonl
+Using MODAL API  (https://bata24941--gsam-deepseek-serve-deepseekserver-serve.modal.run/v1)
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights:   1%|          | 1/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.bias]Loading weights:   1%|          | 1/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.bias]Loading weights:   2%|▏         | 2/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   2%|▏         | 2/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   3%|▎         | 3/103 [00:00<?, ?it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   3%|▎         | 3/103 [00:00<?, ?it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   4%|▍         | 4/103 [00:00<?, ?it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   4%|▍         | 4/103 [00:00<?, ?it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   5%|▍         | 5/103 [00:00<?, ?it/s, Materializing param=embeddings.word_embeddings.weight]      Loading weights:   5%|▍         | 5/103 [00:00<?, ?it/s, Materializing param=embeddings.word_embeddings.weight]Loading weights:   6%|▌         | 6/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   6%|▌         | 6/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   7%|▋         | 7/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:   7%|▋         | 7/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:   8%|▊         | 8/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]      Loading weights:   8%|▊         | 8/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]Loading weights:   9%|▊         | 9/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:   9%|▊         | 9/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:  10%|▉         | 10/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.key.bias]     Loading weights:  10%|▉         | 10/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.key.bias]Loading weights:  11%|█         | 11/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:  11%|█         | 11/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:  12%|█▏        | 12/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:  12%|█▏        | 12/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:  13%|█▎        | 13/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:  13%|█▎        | 13/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:  14%|█▎        | 14/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.value.bias]  Loading weights:  14%|█▎        | 14/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.value.bias]Loading weights:  15%|█▍        | 15/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:  15%|█▍        | 15/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:  16%|█▌        | 16/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]    Loading weights:  16%|█▌        | 16/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]Loading weights:  17%|█▋        | 17/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:  17%|█▋        | 17/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:  17%|█▋        | 18/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]    Loading weights:  17%|█▋        | 18/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]Loading weights:  18%|█▊        | 19/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  18%|█▊        | 19/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  19%|█▉        | 20/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.dense.bias]      Loading weights:  19%|█▉        | 20/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.dense.bias]Loading weights:  20%|██        | 21/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  20%|██        | 21/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  21%|██▏       | 22/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  21%|██▏       | 22/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  22%|██▏       | 23/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  22%|██▏       | 23/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  23%|██▎       | 24/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]      Loading weights:  23%|██▎       | 24/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]Loading weights:  24%|██▍       | 25/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  24%|██▍       | 25/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  25%|██▌       | 26/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.key.bias]      Loading weights:  25%|██▌       | 26/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.key.bias]Loading weights:  26%|██▌       | 27/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  26%|██▌       | 27/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  27%|██▋       | 28/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  27%|██▋       | 28/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  28%|██▊       | 29/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  28%|██▊       | 29/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  29%|██▉       | 30/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.value.bias]  Loading weights:  29%|██▉       | 30/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.value.bias]Loading weights:  30%|███       | 31/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  30%|███       | 31/103 [00:00<?, ?it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  31%|███       | 32/103 [00:00<00:00, 2047.88it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]Loading weights:  31%|███       | 32/103 [00:00<00:00, 2047.88it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]Loading weights:  32%|███▏      | 33/103 [00:00<00:00, 2111.87it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  32%|███▏      | 33/103 [00:00<00:00, 2111.87it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  33%|███▎      | 34/103 [00:00<00:00, 2043.63it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]    Loading weights:  33%|███▎      | 34/103 [00:00<00:00, 2043.63it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]Loading weights:  34%|███▍      | 35/103 [00:00<00:00, 2103.73it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  34%|███▍      | 35/103 [00:00<00:00, 2103.73it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  35%|███▍      | 36/103 [00:00<00:00, 2163.84it/s, Materializing param=encoder.layer.1.output.dense.bias]      Loading weights:  35%|███▍      | 36/103 [00:00<00:00, 2163.84it/s, Materializing param=encoder.layer.1.output.dense.bias]Loading weights:  36%|███▌      | 37/103 [00:00<00:00, 2223.95it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  36%|███▌      | 37/103 [00:00<00:00, 2223.95it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  37%|███▋      | 38/103 [00:00<00:00, 2284.05it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  37%|███▋      | 38/103 [00:00<00:00, 2284.05it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  38%|███▊      | 39/103 [00:00<00:00, 2344.16it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  38%|███▊      | 39/103 [00:00<00:00, 2344.16it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  39%|███▉      | 40/103 [00:00<00:00, 2404.27it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]      Loading weights:  39%|███▉      | 40/103 [00:00<00:00, 2404.27it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]Loading weights:  40%|███▉      | 41/103 [00:00<00:00, 2324.25it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  40%|███▉      | 41/103 [00:00<00:00, 2324.25it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  41%|████      | 42/103 [00:00<00:00, 2380.94it/s, Materializing param=encoder.layer.2.attention.self.key.bias]      Loading weights:  41%|████      | 42/103 [00:00<00:00, 2380.94it/s, Materializing param=encoder.layer.2.attention.self.key.bias]Loading weights:  42%|████▏     | 43/103 [00:00<00:00, 2437.63it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  42%|████▏     | 43/103 [00:00<00:00, 2437.63it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  43%|████▎     | 44/103 [00:00<00:00, 2494.31it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  43%|████▎     | 44/103 [00:00<00:00, 2494.31it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  44%|████▎     | 45/103 [00:00<00:00, 2551.00it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  44%|████▎     | 45/103 [00:00<00:00, 2551.00it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  45%|████▍     | 46/103 [00:00<00:00, 2607.69it/s, Materializing param=encoder.layer.2.attention.self.value.bias]  Loading weights:  45%|████▍     | 46/103 [00:00<00:00, 2607.69it/s, Materializing param=encoder.layer.2.attention.self.value.bias]Loading weights:  46%|████▌     | 47/103 [00:00<00:00, 2664.38it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  46%|████▌     | 47/103 [00:00<00:00, 2664.38it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  47%|████▋     | 48/103 [00:00<00:00, 2721.07it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]    Loading weights:  47%|████▋     | 48/103 [00:00<00:00, 2721.07it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]Loading weights:  48%|████▊     | 49/103 [00:00<00:00, 2777.76it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  48%|████▊     | 49/103 [00:00<00:00, 2777.76it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  49%|████▊     | 50/103 [00:00<00:00, 2834.45it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]    Loading weights:  49%|████▊     | 50/103 [00:00<00:00, 2834.45it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]Loading weights:  50%|████▉     | 51/103 [00:00<00:00, 2891.14it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  50%|████▉     | 51/103 [00:00<00:00, 2891.14it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  50%|█████     | 52/103 [00:00<00:00, 2947.83it/s, Materializing param=encoder.layer.2.output.dense.bias]      Loading weights:  50%|█████     | 52/103 [00:00<00:00, 2947.83it/s, Materializing param=encoder.layer.2.output.dense.bias]Loading weights:  51%|█████▏    | 53/103 [00:00<00:00, 3004.52it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  51%|█████▏    | 53/103 [00:00<00:00, 3004.52it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  52%|█████▏    | 54/103 [00:00<00:00, 3061.20it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  52%|█████▏    | 54/103 [00:00<00:00, 3061.20it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  53%|█████▎    | 55/103 [00:00<00:00, 3117.89it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  53%|█████▎    | 55/103 [00:00<00:00, 3117.89it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  54%|█████▍    | 56/103 [00:00<00:00, 3174.58it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]      Loading weights:  54%|█████▍    | 56/103 [00:00<00:00, 3174.58it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]Loading weights:  55%|█████▌    | 57/103 [00:00<00:00, 3231.27it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  55%|█████▌    | 57/103 [00:00<00:00, 3231.27it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  56%|█████▋    | 58/103 [00:00<00:00, 3287.96it/s, Materializing param=encoder.layer.3.attention.self.key.bias]      Loading weights:  56%|█████▋    | 58/103 [00:00<00:00, 3287.96it/s, Materializing param=encoder.layer.3.attention.self.key.bias]Loading weights:  57%|█████▋    | 59/103 [00:00<00:00, 3344.65it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  57%|█████▋    | 59/103 [00:00<00:00, 3344.65it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  58%|█████▊    | 60/103 [00:00<00:00, 3401.34it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  58%|█████▊    | 60/103 [00:00<00:00, 3401.34it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  59%|█████▉    | 61/103 [00:00<00:00, 3458.03it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  59%|█████▉    | 61/103 [00:00<00:00, 3458.03it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  60%|██████    | 62/103 [00:00<00:00, 3514.72it/s, Materializing param=encoder.layer.3.attention.self.value.bias]  Loading weights:  60%|██████    | 62/103 [00:00<00:00, 3514.72it/s, Materializing param=encoder.layer.3.attention.self.value.bias]Loading weights:  61%|██████    | 63/103 [00:00<00:00, 3571.41it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  61%|██████    | 63/103 [00:00<00:00, 3571.41it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  62%|██████▏   | 64/103 [00:00<00:00, 3628.09it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]    Loading weights:  62%|██████▏   | 64/103 [00:00<00:00, 3628.09it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]Loading weights:  63%|██████▎   | 65/103 [00:00<00:00, 3684.78it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  63%|██████▎   | 65/103 [00:00<00:00, 3684.78it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  64%|██████▍   | 66/103 [00:00<00:00, 3741.47it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]    Loading weights:  64%|██████▍   | 66/103 [00:00<00:00, 3741.47it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]Loading weights:  65%|██████▌   | 67/103 [00:00<00:00, 3798.16it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  65%|██████▌   | 67/103 [00:00<00:00, 3798.16it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  66%|██████▌   | 68/103 [00:00<00:00, 3854.85it/s, Materializing param=encoder.layer.3.output.dense.bias]      Loading weights:  66%|██████▌   | 68/103 [00:00<00:00, 3854.85it/s, Materializing param=encoder.layer.3.output.dense.bias]Loading weights:  67%|██████▋   | 69/103 [00:00<00:00, 3911.54it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  67%|██████▋   | 69/103 [00:00<00:00, 3911.54it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  68%|██████▊   | 70/103 [00:00<00:00, 3968.23it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.bias]Loading weights:  68%|██████▊   | 70/103 [00:00<00:00, 3968.23it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.bias]Loading weights:  69%|██████▉   | 71/103 [00:00<00:00, 4024.92it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.weight]Loading weights:  69%|██████▉   | 71/103 [00:00<00:00, 4024.92it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.weight]Loading weights:  70%|██████▉   | 72/103 [00:00<00:00, 4081.61it/s, Materializing param=encoder.layer.4.attention.output.dense.bias]      Loading weights:  70%|██████▉   | 72/103 [00:00<00:00, 4081.61it/s, Materializing param=encoder.layer.4.attention.output.dense.bias]Loading weights:  71%|███████   | 73/103 [00:00<00:00, 4138.30it/s, Materializing param=encoder.layer.4.attention.output.dense.weight]Loading weights:  71%|███████   | 73/103 [00:00<00:00, 4138.30it/s, Materializing param=encoder.layer.4.attention.output.dense.weight]Loading weights:  72%|███████▏  | 74/103 [00:00<00:00, 4194.98it/s, Materializing param=encoder.layer.4.attention.self.key.bias]      Loading weights:  72%|███████▏  | 74/103 [00:00<00:00, 4194.98it/s, Materializing param=encoder.layer.4.attention.self.key.bias]Loading weights:  73%|███████▎  | 75/103 [00:00<00:00, 4251.67it/s, Materializing param=encoder.layer.4.attention.self.key.weight]Loading weights:  73%|███████▎  | 75/103 [00:00<00:00, 4251.67it/s, Materializing param=encoder.layer.4.attention.self.key.weight]Loading weights:  74%|███████▍  | 76/103 [00:00<00:00, 4308.36it/s, Materializing param=encoder.layer.4.attention.self.query.bias]Loading weights:  74%|███████▍  | 76/103 [00:00<00:00, 4308.36it/s, Materializing param=encoder.layer.4.attention.self.query.bias]Loading weights:  75%|███████▍  | 77/103 [00:00<00:00, 4365.05it/s, Materializing param=encoder.layer.4.attention.self.query.weight]Loading weights:  75%|███████▍  | 77/103 [00:00<00:00, 4365.05it/s, Materializing param=encoder.layer.4.attention.self.query.weight]Loading weights:  76%|███████▌  | 78/103 [00:00<00:00, 4421.74it/s, Materializing param=encoder.layer.4.attention.self.value.bias]  Loading weights:  76%|███████▌  | 78/103 [00:00<00:00, 4421.74it/s, Materializing param=encoder.layer.4.attention.self.value.bias]Loading weights:  77%|███████▋  | 79/103 [00:00<00:00, 4478.43it/s, Materializing param=encoder.layer.4.attention.self.value.weight]Loading weights:  77%|███████▋  | 79/103 [00:00<00:00, 4478.43it/s, Materializing param=encoder.layer.4.attention.self.value.weight]Loading weights:  78%|███████▊  | 80/103 [00:00<00:00, 4535.12it/s, Materializing param=encoder.layer.4.intermediate.dense.bias]    Loading weights:  78%|███████▊  | 80/103 [00:00<00:00, 4535.12it/s, Materializing param=encoder.layer.4.intermediate.dense.bias]Loading weights:  79%|███████▊  | 81/103 [00:00<00:00, 4591.81it/s, Materializing param=encoder.layer.4.intermediate.dense.weight]Loading weights:  79%|███████▊  | 81/103 [00:00<00:00, 4591.81it/s, Materializing param=encoder.layer.4.intermediate.dense.weight]Loading weights:  80%|███████▉  | 82/103 [00:00<00:00, 4648.50it/s, Materializing param=encoder.layer.4.output.LayerNorm.bias]    Loading weights:  80%|███████▉  | 82/103 [00:00<00:00, 4648.50it/s, Materializing param=encoder.layer.4.output.LayerNorm.bias]Loading weights:  81%|████████  | 83/103 [00:00<00:00, 4705.19it/s, Materializing param=encoder.layer.4.output.LayerNorm.weight]Loading weights:  81%|████████  | 83/103 [00:00<00:00, 4705.19it/s, Materializing param=encoder.layer.4.output.LayerNorm.weight]Loading weights:  82%|████████▏ | 84/103 [00:00<00:00, 4761.87it/s, Materializing param=encoder.layer.4.output.dense.bias]      Loading weights:  82%|████████▏ | 84/103 [00:00<00:00, 4761.87it/s, Materializing param=encoder.layer.4.output.dense.bias]Loading weights:  83%|████████▎ | 85/103 [00:00<00:00, 4818.56it/s, Materializing param=encoder.layer.4.output.dense.weight]Loading weights:  83%|████████▎ | 85/103 [00:00<00:00, 4818.56it/s, Materializing param=encoder.layer.4.output.dense.weight]Loading weights:  83%|████████▎ | 86/103 [00:00<00:00, 4875.25it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.bias]Loading weights:  83%|████████▎ | 86/103 [00:00<00:00, 4875.25it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.bias]Loading weights:  84%|████████▍ | 87/103 [00:00<00:00, 4931.94it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.weight]Loading weights:  84%|████████▍ | 87/103 [00:00<00:00, 4931.94it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.weight]Loading weights:  85%|████████▌ | 88/103 [00:00<00:00, 4988.63it/s, Materializing param=encoder.layer.5.attention.output.dense.bias]      Loading weights:  85%|████████▌ | 88/103 [00:00<00:00, 4988.63it/s, Materializing param=encoder.layer.5.attention.output.dense.bias]Loading weights:  86%|████████▋ | 89/103 [00:00<00:00, 5045.32it/s, Materializing param=encoder.layer.5.attention.output.dense.weight]Loading weights:  86%|████████▋ | 89/103 [00:00<00:00, 5045.32it/s, Materializing param=encoder.layer.5.attention.output.dense.weight]Loading weights:  87%|████████▋ | 90/103 [00:00<00:00, 5102.01it/s, Materializing param=encoder.layer.5.attention.self.key.bias]      Loading weights:  87%|████████▋ | 90/103 [00:00<00:00, 5102.01it/s, Materializing param=encoder.layer.5.attention.self.key.bias]Loading weights:  88%|████████▊ | 91/103 [00:00<00:00, 5158.70it/s, Materializing param=encoder.layer.5.attention.self.key.weight]Loading weights:  88%|████████▊ | 91/103 [00:00<00:00, 5158.70it/s, Materializing param=encoder.layer.5.attention.self.key.weight]Loading weights:  89%|████████▉ | 92/103 [00:00<00:00, 5215.39it/s, Materializing param=encoder.layer.5.attention.self.query.bias]Loading weights:  89%|████████▉ | 92/103 [00:00<00:00, 5215.39it/s, Materializing param=encoder.layer.5.attention.self.query.bias]Loading weights:  90%|█████████ | 93/103 [00:00<00:00, 5272.07it/s, Materializing param=encoder.layer.5.attention.self.query.weight]Loading weights:  90%|█████████ | 93/103 [00:00<00:00, 5272.07it/s, Materializing param=encoder.layer.5.attention.self.query.weight]Loading weights:  91%|█████████▏| 94/103 [00:00<00:00, 5328.76it/s, Materializing param=encoder.layer.5.attention.self.value.bias]  Loading weights:  91%|█████████▏| 94/103 [00:00<00:00, 5328.76it/s, Materializing param=encoder.layer.5.attention.self.value.bias]Loading weights:  92%|█████████▏| 95/103 [00:00<00:00, 5385.45it/s, Materializing param=encoder.layer.5.attention.self.value.weight]Loading weights:  92%|█████████▏| 95/103 [00:00<00:00, 5385.45it/s, Materializing param=encoder.layer.5.attention.self.value.weight]Loading weights:  93%|█████████▎| 96/103 [00:00<00:00, 5442.14it/s, Materializing param=encoder.layer.5.intermediate.dense.bias]    Loading weights:  93%|█████████▎| 96/103 [00:00<00:00, 5442.14it/s, Materializing param=encoder.layer.5.intermediate.dense.bias]Loading weights:  94%|█████████▍| 97/103 [00:00<00:00, 5498.83it/s, Materializing param=encoder.layer.5.intermediate.dense.weight]Loading weights:  94%|█████████▍| 97/103 [00:00<00:00, 5498.83it/s, Materializing param=encoder.layer.5.intermediate.dense.weight]Loading weights:  95%|█████████▌| 98/103 [00:00<00:00, 5555.52it/s, Materializing param=encoder.layer.5.output.LayerNorm.bias]    Loading weights:  95%|█████████▌| 98/103 [00:00<00:00, 5555.52it/s, Materializing param=encoder.layer.5.output.LayerNorm.bias]Loading weights:  96%|█████████▌| 99/103 [00:00<00:00, 5612.21it/s, Materializing param=encoder.layer.5.output.LayerNorm.weight]Loading weights:  96%|█████████▌| 99/103 [00:00<00:00, 5612.21it/s, Materializing param=encoder.layer.5.output.LayerNorm.weight]Loading weights:  97%|█████████▋| 100/103 [00:00<00:00, 5668.90it/s, Materializing param=encoder.layer.5.output.dense.bias]     Loading weights:  97%|█████████▋| 100/103 [00:00<00:00, 5668.90it/s, Materializing param=encoder.layer.5.output.dense.bias]Loading weights:  98%|█████████▊| 101/103 [00:00<00:00, 5725.59it/s, Materializing param=encoder.layer.5.output.dense.weight]Loading weights:  98%|█████████▊| 101/103 [00:00<00:00, 5725.59it/s, Materializing param=encoder.layer.5.output.dense.weight]Loading weights:  99%|█████████▉| 102/103 [00:00<00:00, 5782.28it/s, Materializing param=pooler.dense.bias]                  Loading weights:  99%|█████████▉| 102/103 [00:00<00:00, 5782.28it/s, Materializing param=pooler.dense.bias]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5838.96it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5838.96it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5838.96it/s, Materializing param=pooler.dense.weight]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Ontology initialized: 139 entity concepts, 16 categories
+GSAM initialized: KnowledgeGraph(nodes=217, edges=201, concepts=217, coverage=0.00)
+
+============================================================
+GSAM SYSTEM - ONLINE MODE
+============================================================
+Task: finer
+Graph: KnowledgeGraph(nodes=217, edges=201, concepts=217, coverage=0.00)
+============================================================
+
+
+========================================
+EVALUATING TEST SET - 75 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_15...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_19...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_17...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_18...
+[GENERATOR] Starting call test_eval_16...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Call test_eval_9 completed in 7.05s
+[LOG] generator call logged to generator_test_eval_9_20260310_151757_319.json
+[GENERATOR] Call test_eval_19 completed in 7.08s
+[GENERATOR] Starting call test_eval_20...
+[LOG] generator call logged to generator_test_eval_19_20260310_151757_364.json
+[GENERATOR] Starting call test_eval_21...
+[GENERATOR] Call test_eval_7 completed in 7.80s
+[LOG] generator call logged to generator_test_eval_7_20260310_151758_085.json
+[GENERATOR] Starting call test_eval_22...
+[GENERATOR] Call test_eval_13 completed in 9.06s
+[LOG] generator call logged to generator_test_eval_13_20260310_151759_350.json
+[GENERATOR] Starting call test_eval_23...
+[GENERATOR] Call test_eval_8 completed in 9.24s
+[LOG] generator call logged to generator_test_eval_8_20260310_151759_492.json
+[GENERATOR] Starting call test_eval_24...
+[GENERATOR] Call test_eval_10 completed in 9.68s
+[LOG] generator call logged to generator_test_eval_10_20260310_151759_963.json
+[GENERATOR] Call test_eval_6 completed in 9.73s
+[LOG] generator call logged to generator_test_eval_6_20260310_151759_974.json
+[GENERATOR] Starting call test_eval_25...
+[GENERATOR] Starting call test_eval_26...
+[GENERATOR] Call test_eval_11 completed in 9.95s
+[LOG] generator call logged to generator_test_eval_11_20260310_151800_240.json
+[GENERATOR] Starting call test_eval_27...
+[GENERATOR] Call test_eval_5 completed in 10.39s
+[LOG] generator call logged to generator_test_eval_5_20260310_151800_629.json
+[GENERATOR] Starting call test_eval_28...
+[GENERATOR] Call test_eval_15 completed in 11.11s
+[LOG] generator call logged to generator_test_eval_15_20260310_151801_387.json
+[GENERATOR] Starting call test_eval_29...
+[GENERATOR] Call test_eval_0 completed in 11.80s
+[LOG] generator call logged to generator_test_eval_0_20260310_151801_977.json
+[GENERATOR] Starting call test_eval_30...
+[GENERATOR] Call test_eval_4 completed in 11.86s
+[LOG] generator call logged to generator_test_eval_4_20260310_151802_078.json
+[GENERATOR] Starting call test_eval_31...
+[GENERATOR] Call test_eval_17 completed in 12.86s
+[LOG] generator call logged to generator_test_eval_17_20260310_151803_146.json
+[GENERATOR] Starting call test_eval_32...
+[GENERATOR] Call test_eval_20 completed in 6.94s
+[LOG] generator call logged to generator_test_eval_20_20260310_151804_308.json
+[GENERATOR] Starting call test_eval_33...
+[GENERATOR] Call test_eval_14 completed in 14.57s
+[LOG] generator call logged to generator_test_eval_14_20260310_151804_857.json
+[GENERATOR] Starting call test_eval_34...
+[GENERATOR] Call test_eval_3 completed in 15.39s
+[LOG] generator call logged to generator_test_eval_3_20260310_151805_680.json
+[GENERATOR] Starting call test_eval_35...
+[GENERATOR] Call test_eval_16 completed in 15.99s
+[LOG] generator call logged to generator_test_eval_16_20260310_151806_276.json
+[GENERATOR] Starting call test_eval_36...
+[GENERATOR] Call test_eval_18 completed in 16.24s
+[LOG] generator call logged to generator_test_eval_18_20260310_151806_523.json
+[GENERATOR] Starting call test_eval_37...
+[GENERATOR] Call test_eval_28 completed in 5.97s
+[LOG] generator call logged to generator_test_eval_28_20260310_151806_657.json
+[GENERATOR] Starting call test_eval_38...
+[GENERATOR] Call test_eval_23 completed in 8.61s
+[LOG] generator call logged to generator_test_eval_23_20260310_151807_990.json
+[GENERATOR] Starting call test_eval_39...
+[GENERATOR] Call test_eval_12 completed in 17.86s
+[LOG] generator call logged to generator_test_eval_12_20260310_151808_134.json
+[GENERATOR] Starting call test_eval_40...
+[GENERATOR] Call test_eval_29 completed in 7.14s
+[LOG] generator call logged to generator_test_eval_29_20260310_151808_565.json
+[GENERATOR] Starting call test_eval_41...
+[GENERATOR] Call test_eval_25 completed in 9.24s
+[LOG] generator call logged to generator_test_eval_25_20260310_151809_257.json
+[GENERATOR] Starting call test_eval_42...
+[GENERATOR] Call test_eval_31 completed in 9.04s
+[LOG] generator call logged to generator_test_eval_31_20260310_151811_172.json
+[GENERATOR] Starting call test_eval_43...
+[GENERATOR] Call test_eval_33 completed in 6.99s
+[LOG] generator call logged to generator_test_eval_33_20260310_151811_353.json
+[GENERATOR] Starting call test_eval_44...
+[GENERATOR] Call test_eval_27 completed in 11.66s
+[LOG] generator call logged to generator_test_eval_27_20260310_151811_958.json
+[GENERATOR] Starting call test_eval_45...
+[GENERATOR] Call test_eval_21 completed in 15.51s
+[LOG] generator call logged to generator_test_eval_21_20260310_151812_922.json
+[GENERATOR] Starting call test_eval_46...
+[GENERATOR] Call test_eval_2 completed in 23.52s
+[LOG] generator call logged to generator_test_eval_2_20260310_151813_747.json
+[GENERATOR] Starting call test_eval_47...
+[GENERATOR] Call test_eval_37 completed in 7.36s
+[LOG] generator call logged to generator_test_eval_37_20260310_151813_929.json
+[GENERATOR] Call test_eval_32 completed in 10.74s
+[LOG] generator call logged to generator_test_eval_32_20260310_151813_936.json
+[GENERATOR] Starting call test_eval_48...
+[GENERATOR] Starting call test_eval_49...
+[GENERATOR] Call test_eval_22 completed in 16.33s
+[LOG] generator call logged to generator_test_eval_22_20260310_151814_464.json
+[GENERATOR] Starting call test_eval_50...
+[GENERATOR] Call test_eval_35 completed in 9.19s
+[LOG] generator call logged to generator_test_eval_35_20260310_151814_922.json
+[GENERATOR] Starting call test_eval_51...
+[GENERATOR] Call test_eval_38 completed in 8.48s
+[LOG] generator call logged to generator_test_eval_38_20260310_151815_210.json
+[GENERATOR] Starting call test_eval_52...
+[GENERATOR] Call test_eval_34 completed in 11.15s
+[LOG] generator call logged to generator_test_eval_34_20260310_151816_075.json
+[GENERATOR] Starting call test_eval_53...
+[GENERATOR] Call test_eval_40 completed in 8.13s
+[LOG] generator call logged to generator_test_eval_40_20260310_151816_311.json
+[GENERATOR] Starting call test_eval_54...
+[GENERATOR] Call test_eval_42 completed in 7.11s
+[LOG] generator call logged to generator_test_eval_42_20260310_151816_414.json
+[GENERATOR] Starting call test_eval_55...
+[GENERATOR] Call test_eval_36 completed in 11.92s
+[LOG] generator call logged to generator_test_eval_36_20260310_151818_239.json
+[GENERATOR] Starting call test_eval_56...
+[GENERATOR] Call test_eval_30 completed in 17.71s
+[LOG] generator call logged to generator_test_eval_30_20260310_151819_755.json
+[GENERATOR] Starting call test_eval_57...
+[GENERATOR] Call test_eval_39 completed in 13.06s
+[LOG] generator call logged to generator_test_eval_39_20260310_151821_110.json
+[GENERATOR] Starting call test_eval_58...
+[GENERATOR] Call test_eval_52 completed in 6.91s
+[LOG] generator call logged to generator_test_eval_52_20260310_151822_177.json
+[GENERATOR] Starting call test_eval_59...
+[GENERATOR] Call test_eval_45 completed in 10.29s
+[LOG] generator call logged to generator_test_eval_45_20260310_151822_302.json
+[GENERATOR] Starting call test_eval_60...
+[GENERATOR] Call test_eval_51 completed in 7.61s
+[LOG] generator call logged to generator_test_eval_51_20260310_151822_570.json
+[GENERATOR] Call test_eval_47 completed in 8.78s
+[LOG] generator call logged to generator_test_eval_47_20260310_151822_586.json
+[GENERATOR] Starting call test_eval_61...
+[GENERATOR] Starting call test_eval_62...
+[GENERATOR] Call test_eval_48 completed in 8.74s
+[LOG] generator call logged to generator_test_eval_48_20260310_151822_740.json
+[GENERATOR] Starting call test_eval_63...
+[GENERATOR] Call test_eval_46 completed in 10.30s
+[LOG] generator call logged to generator_test_eval_46_20260310_151823_256.json
+[GENERATOR] Starting call test_eval_64...
+[GENERATOR] Call test_eval_50 completed in 8.88s
+[LOG] generator call logged to generator_test_eval_50_20260310_151823_380.json
+[GENERATOR] Starting call test_eval_65...
+[GENERATOR] Call test_eval_41 completed in 15.15s
+[LOG] generator call logged to generator_test_eval_41_20260310_151823_770.json
+[GENERATOR] Call test_eval_43 completed in 12.58s
+[LOG] generator call logged to generator_test_eval_43_20260310_151823_796.json
+[GENERATOR] Starting call test_eval_66...
+[GENERATOR] Starting call test_eval_67...
+[GENERATOR] Call test_eval_54 completed in 8.60s
+[LOG] generator call logged to generator_test_eval_54_20260310_151824_968.json
+[GENERATOR] Starting call test_eval_68...
+[GENERATOR] Call test_eval_49 completed in 12.42s
+[LOG] generator call logged to generator_test_eval_49_20260310_151826_414.json
+Progress: 50/75, Accuracy: 0.000
+[GENERATOR] Starting call test_eval_69...
+[GENERATOR] Call test_eval_56 completed in 9.05s
+[LOG] generator call logged to generator_test_eval_56_20260310_151827_348.json
+[GENERATOR] Starting call test_eval_70...
+[GENERATOR] Call test_eval_61 completed in 8.44s
+[LOG] generator call logged to generator_test_eval_61_20260310_151831_054.json
+[GENERATOR] Starting call test_eval_71...
+[GENERATOR] Call test_eval_62 completed in 9.28s
+[LOG] generator call logged to generator_test_eval_62_20260310_151831_912.json
+[GENERATOR] Starting call test_eval_72...
+[GENERATOR] Call test_eval_53 completed in 15.83s
+[LOG] generator call logged to generator_test_eval_53_20260310_151831_961.json
+[GENERATOR] Starting call test_eval_73...
+[GENERATOR] Call test_eval_55 completed in 15.70s
+[LOG] generator call logged to generator_test_eval_55_20260310_151832_161.json
+[GENERATOR] Starting call test_eval_74...
+[GENERATOR] Call test_eval_64 completed in 9.05s
+[LOG] generator call logged to generator_test_eval_64_20260310_151832_351.json
+[GENERATOR] Call test_eval_57 completed in 12.78s
+[LOG] generator call logged to generator_test_eval_57_20260310_151832_562.json
+[GENERATOR] Call test_eval_60 completed in 10.67s
+[LOG] generator call logged to generator_test_eval_60_20260310_151833_021.json
+[GENERATOR] Call test_eval_66 completed in 9.78s
+[LOG] generator call logged to generator_test_eval_66_20260310_151833_614.json
+[GENERATOR] Call test_eval_69 completed in 7.84s
+[LOG] generator call logged to generator_test_eval_69_20260310_151834_302.json
+[GENERATOR] Call test_eval_58 completed in 13.41s
+[LOG] generator call logged to generator_test_eval_58_20260310_151834_552.json
+[GENERATOR] Call test_eval_68 completed in 10.09s
+[LOG] generator call logged to generator_test_eval_68_20260310_151835_099.json
+[GENERATOR] Call test_eval_67 completed in 14.65s
+[LOG] generator call logged to generator_test_eval_67_20260310_151838_505.json
+[GENERATOR] Call test_eval_63 completed in 16.08s
+[LOG] generator call logged to generator_test_eval_63_20260310_151838_864.json
+[GENERATOR] Call test_eval_71 completed in 9.38s
+[LOG] generator call logged to generator_test_eval_71_20260310_151840_481.json
+[GENERATOR] Call test_eval_72 completed in 9.17s
+[LOG] generator call logged to generator_test_eval_72_20260310_151841_113.json
+[GENERATOR] Call test_eval_74 completed in 9.68s
+[LOG] generator call logged to generator_test_eval_74_20260310_151841_891.json
+[GENERATOR] Call test_eval_73 completed in 13.02s
+[LOG] generator call logged to generator_test_eval_73_20260310_151845_026.json
+[GENERATOR] Empty response for test_eval_1 (attempt 1/3), retrying in 6.3s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_1_20260310_151851_472.json
+[GENERATOR] Call test_eval_70 completed in 26.99s
+[LOG] generator call logged to generator_test_eval_70_20260310_151854_386.json
+[GENERATOR] Empty response for test_eval_24 (attempt 1/3), retrying in 9.4s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_24_20260310_151858_945.json
+[GENERATOR] Empty response for test_eval_26 (attempt 1/3), retrying in 14.8s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_26_20260310_151859_271.json
+[GENERATOR] Call test_eval_1 completed in 78.15s
+[LOG] generator call logged to generator_test_eval_1_20260310_151908_418.json
+[GENERATOR] Empty response for test_eval_44 (attempt 1/3), retrying in 12.6s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_44_20260310_151908_867.json
+[GENERATOR] Call test_eval_24 completed in 78.19s
+[LOG] generator call logged to generator_test_eval_24_20260310_151917_725.json
+[GENERATOR] Empty response for test_eval_59 (attempt 1/3), retrying in 12.0s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_59_20260310_151917_809.json
+[GENERATOR] Empty response for test_eval_65 (attempt 1/3), retrying in 14.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_65_20260310_151918_571.json
+[GENERATOR] Call test_eval_44 completed in 76.37s
+[LOG] generator call logged to generator_test_eval_44_20260310_151927_776.json
+[GENERATOR] Call test_eval_59 completed in 77.39s
+[LOG] generator call logged to generator_test_eval_59_20260310_151939_616.json
+[GENERATOR] Empty response for test_eval_26 (attempt 2/3), retrying in 12.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_26_20260310_152005_185.json
+[GENERATOR] Empty response for test_eval_65 (attempt 2/3), retrying in 12.0s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_65_20260310_152024_840.json
+[GENERATOR] Call test_eval_26 completed in 161.00s
+[LOG] generator call logged to generator_test_eval_26_20260310_152041_036.json
+[GENERATOR] Call test_eval_65 completed in 141.80s
+[LOG] generator call logged to generator_test_eval_65_20260310_152045_211.json
+
+Final Accuracy: 0.123 (0/75)
+Initial Test Accuracy: 0.123
+
+
+============================================================
+WINDOW 1/5 (samples 0-14)
+============================================================
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Call test_eval_7 completed in 6.54s
+[LOG] generator call logged to generator_test_eval_7_20260310_152052_207.json
+[GENERATOR] Call test_eval_4 completed in 7.23s
+[LOG] generator call logged to generator_test_eval_4_20260310_152052_882.json
+[GENERATOR] Call test_eval_5 completed in 7.26s
+[LOG] generator call logged to generator_test_eval_5_20260310_152052_917.json
+[GENERATOR] Call test_eval_13 completed in 7.49s
+[LOG] generator call logged to generator_test_eval_13_20260310_152053_145.json
+[GENERATOR] Call test_eval_8 completed in 7.50s
+[LOG] generator call logged to generator_test_eval_8_20260310_152053_162.json
+[GENERATOR] Call test_eval_9 completed in 7.53s
+[LOG] generator call logged to generator_test_eval_9_20260310_152053_178.json
+[GENERATOR] Call test_eval_6 completed in 7.83s
+[LOG] generator call logged to generator_test_eval_6_20260310_152053_499.json
+[GENERATOR] Call test_eval_11 completed in 7.93s
+[LOG] generator call logged to generator_test_eval_11_20260310_152053_598.json
+[GENERATOR] Call test_eval_10 completed in 8.05s
+[LOG] generator call logged to generator_test_eval_10_20260310_152053_694.json
+[GENERATOR] Call test_eval_1 completed in 8.84s
+[LOG] generator call logged to generator_test_eval_1_20260310_152054_491.json
+[GENERATOR] Call test_eval_3 completed in 10.31s
+[LOG] generator call logged to generator_test_eval_3_20260310_152055_958.json
+[GENERATOR] Call test_eval_14 completed in 14.47s
+[LOG] generator call logged to generator_test_eval_14_20260310_152100_130.json
+[GENERATOR] Call test_eval_12 completed in 14.80s
+[LOG] generator call logged to generator_test_eval_12_20260310_152100_474.json
+[GENERATOR] Call test_eval_2 completed in 14.97s
+[LOG] generator call logged to generator_test_eval_2_20260310_152100_629.json
+[GENERATOR] Call test_eval_0 completed in 20.52s
+[LOG] generator call logged to generator_test_eval_0_20260310_152106_189.json
+
+Final Accuracy: 0.150 (0/15)
+Window 1 accuracy: 0.150 | Cumulative: 0.150
+
+--- Window 1, Step 1/15 (Global 1) ---
+[GENERATOR] Starting call online_train_s_1_gen_initial...
+[GENERATOR] Call online_train_s_1_gen_initial completed in 17.12s
+[LOG] generator call logged to generator_online_train_s_1_gen_initial_20260310_152123_364.json
+Correct: False | Retrieved: 0 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_1_round_0...
+[REFLECTOR] Call online_train_s_1_round_0 completed in 13.37s
+[LOG] reflector call logged to reflector_online_train_s_1_round_0_20260310_152136_740.json
+[GENERATOR] Starting call online_train_s_1_post_reflect_0...
+[GENERATOR] Call online_train_s_1_post_reflect_0 completed in 9.39s
+[LOG] generator call logged to generator_online_train_s_1_post_reflect_0_20260310_152146_192.json
+
+--- Running Curator + Graph Constructor at step 1 ---
+[CURATOR] Starting call online_train_s_1...
+[CURATOR] Call online_train_s_1 completed in 9.87s
+[LOG] curator call logged to curator_online_train_s_1_20260310_152156_067.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_1_post_curate...
+[GENERATOR] Call online_train_s_1_post_curate completed in 12.26s
+[LOG] generator call logged to generator_online_train_s_1_post_curate_20260310_152208_407.json
+
+--- Window 1, Step 2/15 (Global 2) ---
+[GENERATOR] Starting call online_train_s_2_gen_initial...
+[GENERATOR] Call online_train_s_2_gen_initial completed in 20.60s
+[LOG] generator call logged to generator_online_train_s_2_gen_initial_20260310_152229_041.json
+Correct: False | Retrieved: 1 nodes | Precision: 1.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_2_round_0...
+[REFLECTOR] Call online_train_s_2_round_0 completed in 11.77s
+[LOG] reflector call logged to reflector_online_train_s_2_round_0_20260310_152240_809.json
+[GENERATOR] Starting call online_train_s_2_post_reflect_0...
+[GENERATOR] Call online_train_s_2_post_reflect_0 completed in 6.99s
+[LOG] generator call logged to generator_online_train_s_2_post_reflect_0_20260310_152247_848.json
+
+--- Running Curator + Graph Constructor at step 2 ---
+[CURATOR] Starting call online_train_s_2...
+[CURATOR] Call online_train_s_2 completed in 13.24s
+[LOG] curator call logged to curator_online_train_s_2_20260310_152301_105.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_2_post_curate...
+[GENERATOR] Call online_train_s_2_post_curate completed in 11.73s
+[LOG] generator call logged to generator_online_train_s_2_post_curate_20260310_152312_918.json
+
+--- Window 1, Step 3/15 (Global 3) ---
+[GENERATOR] Starting call online_train_s_3_gen_initial...
+[GENERATOR] Call online_train_s_3_gen_initial completed in 10.48s
+[LOG] generator call logged to generator_online_train_s_3_gen_initial_20260310_152323_444.json
+Correct: False | Retrieved: 3 nodes | Precision: 0.33
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_3_round_0...
+[REFLECTOR] Call online_train_s_3_round_0 completed in 12.65s
+[LOG] reflector call logged to reflector_online_train_s_3_round_0_20260310_152336_102.json
+[GENERATOR] Starting call online_train_s_3_post_reflect_0...
+[GENERATOR] Call online_train_s_3_post_reflect_0 completed in 8.26s
+[LOG] generator call logged to generator_online_train_s_3_post_reflect_0_20260310_152344_406.json
+Corrected after reflection round 1!
+
+--- Running Curator + Graph Constructor at step 3 ---
+[CURATOR] Starting call online_train_s_3...
+[CURATOR] Call online_train_s_3 completed in 12.14s
+[LOG] curator call logged to curator_online_train_s_3_20260310_152356_555.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_3_post_curate...
+[GENERATOR] Call online_train_s_3_post_curate completed in 10.42s
+[LOG] generator call logged to generator_online_train_s_3_post_curate_20260310_152407_072.json
+
+--- Window 1, Step 4/15 (Global 4) ---
+[GENERATOR] Starting call online_train_s_4_gen_initial...
+[GENERATOR] Call online_train_s_4_gen_initial completed in 9.40s
+[LOG] generator call logged to generator_online_train_s_4_gen_initial_20260310_152416_515.json
+Correct: False | Retrieved: 4 nodes | Precision: 0.25
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_4_round_0...
+[REFLECTOR] Call online_train_s_4_round_0 completed in 12.24s
+[LOG] reflector call logged to reflector_online_train_s_4_round_0_20260310_152428_753.json
+[GENERATOR] Starting call online_train_s_4_post_reflect_0...
+[GENERATOR] Call online_train_s_4_post_reflect_0 completed in 7.86s
+[LOG] generator call logged to generator_online_train_s_4_post_reflect_0_20260310_152436_646.json
+
+--- Running Curator + Graph Constructor at step 4 ---
+[CURATOR] Starting call online_train_s_4...
+[CURATOR] Call online_train_s_4 completed in 11.64s
+[LOG] curator call logged to curator_online_train_s_4_20260310_152448_301.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_4_post_curate...
+[GENERATOR] Call online_train_s_4_post_curate completed in 9.47s
+[LOG] generator call logged to generator_online_train_s_4_post_curate_20260310_152457_855.json
+
+--- Window 1, Step 5/15 (Global 5) ---
+[GENERATOR] Starting call online_train_s_5_gen_initial...
+[GENERATOR] Call online_train_s_5_gen_initial completed in 8.25s
+[LOG] generator call logged to generator_online_train_s_5_gen_initial_20260310_152506_155.json
+Correct: False | Retrieved: 6 nodes | Precision: 0.17
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_5_round_0...
+[REFLECTOR] Call online_train_s_5_round_0 completed in 9.13s
+[LOG] reflector call logged to reflector_online_train_s_5_round_0_20260310_152515_290.json
+[GENERATOR] Starting call online_train_s_5_post_reflect_0...
+[GENERATOR] Call online_train_s_5_post_reflect_0 completed in 18.74s
+[LOG] generator call logged to generator_online_train_s_5_post_reflect_0_20260310_152534_082.json
+
+--- Running Curator + Graph Constructor at step 5 ---
+[CURATOR] Starting call online_train_s_5...
+[CURATOR] Call online_train_s_5 completed in 15.35s
+[LOG] curator call logged to curator_online_train_s_5_20260310_152549_433.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_5_post_curate...
+[GENERATOR] Call online_train_s_5_post_curate completed in 6.80s
+[LOG] generator call logged to generator_online_train_s_5_post_curate_20260310_152556_368.json
+
+--- Window 1, Step 6/15 (Global 6) ---
+[GENERATOR] Starting call online_train_s_6_gen_initial...

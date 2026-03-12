@@ -1,0 +1,19 @@
+{
+  "final_node_counts": {
+    "Strategy": 59,
+    "AntiPattern": 40,
+    "Confusion": 58,
+    "Formula": 20,
+    "Concept": 139
+  },
+  "total_nodes": 316,
+  "total_edges": 206,
+  "is_a_edges": 129,
+  "applies_to_edges": 53,
+  "fails_for_edges": 0,
+  "confused_with_edges": 34,
+  "avg_retrieval_precision_window_1": 0.19,
+  "avg_retrieval_precision_window_20": 0.28,
+  "ablation": "gsam_no_cascades",
+  "note": "Cascade edges (fails_for->depends_on propagation) absent. Graph has standard typed edges; formula dependency chains not propagated."
+}

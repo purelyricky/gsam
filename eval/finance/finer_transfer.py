@@ -161,28 +161,56 @@ def _reset_system(system) -> None:
     """
     Reset system memory to its initial state before each transfer experiment.
 
-    For GSAM: removes all learned nodes (Strategy, AntiPattern, Confusion)
-    while preserving the ontology-initialized Concept and Formula nodes.
+    For GSAM: removes ALL learned nodes (Strategy, AntiPattern, Confusion, and
+    any Formula node NOT tagged from_ontology) while preserving the
+    ontology-initialized Concept and from_ontology Formula nodes.
+    Also clears the embeddings dict for removed nodes, and resets the
+    error_history and retrieval_logs lists on the GSAM orchestrator.
 
-    For ACE: resets the playbook to empty and resets the bullet ID counter.
+    For ACE: resets the playbook AND best_playbook to empty, resets the
+    bullet ID counter.
+
+    This guarantees each transfer experiment starts from an identical clean
+    state regardless of what previous experiments accumulated.
     """
     if hasattr(system, 'knowledge_graph'):
-        # GSAM: remove learned (experiential) nodes, keep ontology backbone
+        # GSAM — remove all experiential / learned nodes
         from gsam.graph_memory import NodeType
-        learned_values = {
+        kg = system.knowledge_graph
+
+        # Node types that are always learned (never pre-initialized)
+        always_learned = {
             NodeType.STRATEGY.value,
             NodeType.ANTI_PATTERN.value,
             NodeType.CONFUSION.value,
         }
         nodes_to_remove = [
-            nid for nid, data in system.knowledge_graph.graph.nodes(data=True)
-            if data.get("type") in learned_values
+            nid for nid, data in kg.graph.nodes(data=True)
+            if data.get("type") in always_learned
+            or (
+                data.get("type") == NodeType.FORMULA.value
+                and not data.get("from_ontology")
+            )
         ]
-        system.knowledge_graph.graph.remove_nodes_from(nodes_to_remove)
-        system.knowledge_graph.tasks_processed = 0
+        kg.graph.remove_nodes_from(nodes_to_remove)
+
+        # Clean up orphaned embeddings whose nodes no longer exist
+        stale = [nid for nid in kg.embeddings if nid not in kg.graph]
+        for nid in stale:
+            del kg.embeddings[nid]
+
+        kg.tasks_processed = 0
+
+        # Clear per-run tracking lists on the GSAM orchestrator
+        if hasattr(system, 'error_history'):
+            system.error_history = []
+        if hasattr(system, 'retrieval_logs'):
+            system.retrieval_logs = []
+
     elif hasattr(system, '_initialize_empty_playbook'):
-        # ACE: reset playbook and ID counter
+        # ACE — reset playbook, best_playbook, and ID counter
         system.playbook = system._initialize_empty_playbook()
+        system.best_playbook = system.playbook
         system.next_global_id = 1
 
 

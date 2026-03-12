@@ -1,0 +1,2227 @@
+[INFO] Online mode requires num_epochs=1; overriding from 5 to 1
+
+============================================================
+GSAM SYSTEM
+============================================================
+Task: finer
+Mode: ONLINE
+Generator Model: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+Ontology: ./eval/finance/data/xbrl_taxonomy.json
+Failure Cascades: Enabled
+Retrieval: Graph BFS
+Edge Types: Untyped
+============================================================
+
+Loaded 441 samples from ./eval/finance/data/finer_test_subset_006_seed42.jsonl
+Using MODAL API  (https://bata24941--gsam-deepseek-serve-deepseekserver-serve.modal.run/v1)
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights:   1%|          | 1/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.bias]Loading weights:   1%|          | 1/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.bias]Loading weights:   2%|▏         | 2/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   2%|▏         | 2/103 [00:00<?, ?it/s, Materializing param=embeddings.LayerNorm.weight]Loading weights:   3%|▎         | 3/103 [00:00<?, ?it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   3%|▎         | 3/103 [00:00<?, ?it/s, Materializing param=embeddings.position_embeddings.weight]Loading weights:   4%|▍         | 4/103 [00:00<?, ?it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   4%|▍         | 4/103 [00:00<?, ?it/s, Materializing param=embeddings.token_type_embeddings.weight]Loading weights:   5%|▍         | 5/103 [00:00<?, ?it/s, Materializing param=embeddings.word_embeddings.weight]      Loading weights:   5%|▍         | 5/103 [00:00<?, ?it/s, Materializing param=embeddings.word_embeddings.weight]Loading weights:   6%|▌         | 6/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   6%|▌         | 6/103 [00:00<?, ?it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.bias]Loading weights:   7%|▋         | 7/103 [00:00<00:00, 583.07it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:   7%|▋         | 7/103 [00:00<00:00, 583.07it/s, Materializing param=encoder.layer.0.attention.output.LayerNorm.weight]Loading weights:   8%|▊         | 8/103 [00:00<00:00, 639.06it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]      Loading weights:   8%|▊         | 8/103 [00:00<00:00, 639.06it/s, Materializing param=encoder.layer.0.attention.output.dense.bias]Loading weights:   9%|▊         | 9/103 [00:00<00:00, 718.94it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:   9%|▊         | 9/103 [00:00<00:00, 718.94it/s, Materializing param=encoder.layer.0.attention.output.dense.weight]Loading weights:  10%|▉         | 10/103 [00:00<00:00, 798.82it/s, Materializing param=encoder.layer.0.attention.self.key.bias]     Loading weights:  10%|▉         | 10/103 [00:00<00:00, 798.82it/s, Materializing param=encoder.layer.0.attention.self.key.bias]Loading weights:  11%|█         | 11/103 [00:00<00:00, 878.71it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:  11%|█         | 11/103 [00:00<00:00, 878.71it/s, Materializing param=encoder.layer.0.attention.self.key.weight]Loading weights:  12%|█▏        | 12/103 [00:00<00:00, 958.59it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:  12%|█▏        | 12/103 [00:00<00:00, 958.59it/s, Materializing param=encoder.layer.0.attention.self.query.bias]Loading weights:  13%|█▎        | 13/103 [00:00<00:00, 1038.47it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:  13%|█▎        | 13/103 [00:00<00:00, 1038.47it/s, Materializing param=encoder.layer.0.attention.self.query.weight]Loading weights:  14%|█▎        | 14/103 [00:00<00:00, 1118.35it/s, Materializing param=encoder.layer.0.attention.self.value.bias]  Loading weights:  14%|█▎        | 14/103 [00:00<00:00, 1118.35it/s, Materializing param=encoder.layer.0.attention.self.value.bias]Loading weights:  15%|█▍        | 15/103 [00:00<00:00, 936.19it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:  15%|█▍        | 15/103 [00:00<00:00, 936.19it/s, Materializing param=encoder.layer.0.attention.self.value.weight]Loading weights:  16%|█▌        | 16/103 [00:00<00:00, 998.60it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]    Loading weights:  16%|█▌        | 16/103 [00:00<00:00, 998.60it/s, Materializing param=encoder.layer.0.intermediate.dense.bias]Loading weights:  17%|█▋        | 17/103 [00:00<00:00, 1061.01it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:  17%|█▋        | 17/103 [00:00<00:00, 1061.01it/s, Materializing param=encoder.layer.0.intermediate.dense.weight]Loading weights:  17%|█▋        | 18/103 [00:00<00:00, 1123.42it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias]    Loading weights:  17%|█▋        | 18/103 [00:00<00:00, 977.44it/s, Materializing param=encoder.layer.0.output.LayerNorm.bias] Loading weights:  18%|█▊        | 19/103 [00:00<00:00, 1031.74it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  18%|█▊        | 19/103 [00:00<00:00, 1031.74it/s, Materializing param=encoder.layer.0.output.LayerNorm.weight]Loading weights:  19%|█▉        | 20/103 [00:00<00:00, 1086.04it/s, Materializing param=encoder.layer.0.output.dense.bias]      Loading weights:  19%|█▉        | 20/103 [00:00<00:00, 1086.04it/s, Materializing param=encoder.layer.0.output.dense.bias]Loading weights:  20%|██        | 21/103 [00:00<00:00, 1140.35it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  20%|██        | 21/103 [00:00<00:00, 1140.35it/s, Materializing param=encoder.layer.0.output.dense.weight]Loading weights:  21%|██▏       | 22/103 [00:00<00:00, 1109.35it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  21%|██▏       | 22/103 [00:00<00:00, 1109.35it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.bias]Loading weights:  22%|██▏       | 23/103 [00:00<00:00, 1159.78it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  22%|██▏       | 23/103 [00:00<00:00, 1159.78it/s, Materializing param=encoder.layer.1.attention.output.LayerNorm.weight]Loading weights:  23%|██▎       | 24/103 [00:00<00:00, 1210.20it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]      Loading weights:  23%|██▎       | 24/103 [00:00<00:00, 1210.20it/s, Materializing param=encoder.layer.1.attention.output.dense.bias]Loading weights:  24%|██▍       | 25/103 [00:00<00:00, 1181.19it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  24%|██▍       | 25/103 [00:00<00:00, 1181.19it/s, Materializing param=encoder.layer.1.attention.output.dense.weight]Loading weights:  25%|██▌       | 26/103 [00:00<00:00, 1228.44it/s, Materializing param=encoder.layer.1.attention.self.key.bias]      Loading weights:  25%|██▌       | 26/103 [00:00<00:00, 1228.44it/s, Materializing param=encoder.layer.1.attention.self.key.bias]Loading weights:  26%|██▌       | 27/103 [00:00<00:00, 1275.68it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  26%|██▌       | 27/103 [00:00<00:00, 1206.21it/s, Materializing param=encoder.layer.1.attention.self.key.weight]Loading weights:  27%|██▋       | 28/103 [00:00<00:00, 1250.88it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  27%|██▋       | 28/103 [00:00<00:00, 1250.88it/s, Materializing param=encoder.layer.1.attention.self.query.bias]Loading weights:  28%|██▊       | 29/103 [00:00<00:00, 1295.56it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  28%|██▊       | 29/103 [00:00<00:00, 1295.56it/s, Materializing param=encoder.layer.1.attention.self.query.weight]Loading weights:  29%|██▉       | 30/103 [00:00<00:00, 1340.23it/s, Materializing param=encoder.layer.1.attention.self.value.bias]  Loading weights:  29%|██▉       | 30/103 [00:00<00:00, 1340.23it/s, Materializing param=encoder.layer.1.attention.self.value.bias]Loading weights:  30%|███       | 31/103 [00:00<00:00, 1384.91it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  30%|███       | 31/103 [00:00<00:00, 1321.20it/s, Materializing param=encoder.layer.1.attention.self.value.weight]Loading weights:  31%|███       | 32/103 [00:00<00:00, 1363.82it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]    Loading weights:  31%|███       | 32/103 [00:00<00:00, 1363.82it/s, Materializing param=encoder.layer.1.intermediate.dense.bias]Loading weights:  32%|███▏      | 33/103 [00:00<00:00, 1406.44it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  32%|███▏      | 33/103 [00:00<00:00, 1406.44it/s, Materializing param=encoder.layer.1.intermediate.dense.weight]Loading weights:  33%|███▎      | 34/103 [00:00<00:00, 1449.06it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]    Loading weights:  33%|███▎      | 34/103 [00:00<00:00, 1449.06it/s, Materializing param=encoder.layer.1.output.LayerNorm.bias]Loading weights:  34%|███▍      | 35/103 [00:00<00:00, 1460.41it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  34%|███▍      | 35/103 [00:00<00:00, 1460.41it/s, Materializing param=encoder.layer.1.output.LayerNorm.weight]Loading weights:  35%|███▍      | 36/103 [00:00<00:00, 1502.14it/s, Materializing param=encoder.layer.1.output.dense.bias]      Loading weights:  35%|███▍      | 36/103 [00:00<00:00, 1502.14it/s, Materializing param=encoder.layer.1.output.dense.bias]Loading weights:  36%|███▌      | 37/103 [00:00<00:00, 1543.86it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  36%|███▌      | 37/103 [00:00<00:00, 1543.86it/s, Materializing param=encoder.layer.1.output.dense.weight]Loading weights:  37%|███▋      | 38/103 [00:00<00:00, 1585.59it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  37%|███▋      | 38/103 [00:00<00:00, 1585.59it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.bias]Loading weights:  38%|███▊      | 39/103 [00:00<00:00, 1627.32it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  38%|███▊      | 39/103 [00:00<00:00, 1627.32it/s, Materializing param=encoder.layer.2.attention.output.LayerNorm.weight]Loading weights:  39%|███▉      | 40/103 [00:00<00:00, 1669.04it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]      Loading weights:  39%|███▉      | 40/103 [00:00<00:00, 1669.04it/s, Materializing param=encoder.layer.2.attention.output.dense.bias]Loading weights:  40%|███▉      | 41/103 [00:00<00:00, 1710.77it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  40%|███▉      | 41/103 [00:00<00:00, 1710.77it/s, Materializing param=encoder.layer.2.attention.output.dense.weight]Loading weights:  41%|████      | 42/103 [00:00<00:00, 1752.49it/s, Materializing param=encoder.layer.2.attention.self.key.bias]      Loading weights:  41%|████      | 42/103 [00:00<00:00, 1752.49it/s, Materializing param=encoder.layer.2.attention.self.key.bias]Loading weights:  42%|████▏     | 43/103 [00:00<00:00, 1794.22it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  42%|████▏     | 43/103 [00:00<00:00, 1794.22it/s, Materializing param=encoder.layer.2.attention.self.key.weight]Loading weights:  43%|████▎     | 44/103 [00:00<00:00, 1835.95it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  43%|████▎     | 44/103 [00:00<00:00, 1835.95it/s, Materializing param=encoder.layer.2.attention.self.query.bias]Loading weights:  44%|████▎     | 45/103 [00:00<00:00, 1877.67it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  44%|████▎     | 45/103 [00:00<00:00, 1877.67it/s, Materializing param=encoder.layer.2.attention.self.query.weight]Loading weights:  45%|████▍     | 46/103 [00:00<00:00, 1919.40it/s, Materializing param=encoder.layer.2.attention.self.value.bias]  Loading weights:  45%|████▍     | 46/103 [00:00<00:00, 1919.40it/s, Materializing param=encoder.layer.2.attention.self.value.bias]Loading weights:  46%|████▌     | 47/103 [00:00<00:00, 1961.13it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  46%|████▌     | 47/103 [00:00<00:00, 1961.13it/s, Materializing param=encoder.layer.2.attention.self.value.weight]Loading weights:  47%|████▋     | 48/103 [00:00<00:00, 2002.85it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]    Loading weights:  47%|████▋     | 48/103 [00:00<00:00, 2002.85it/s, Materializing param=encoder.layer.2.intermediate.dense.bias]Loading weights:  48%|████▊     | 49/103 [00:00<00:00, 2044.58it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  48%|████▊     | 49/103 [00:00<00:00, 2044.58it/s, Materializing param=encoder.layer.2.intermediate.dense.weight]Loading weights:  49%|████▊     | 50/103 [00:00<00:00, 2086.30it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]    Loading weights:  49%|████▊     | 50/103 [00:00<00:00, 2086.30it/s, Materializing param=encoder.layer.2.output.LayerNorm.bias]Loading weights:  50%|████▉     | 51/103 [00:00<00:00, 2128.03it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  50%|████▉     | 51/103 [00:00<00:00, 2128.03it/s, Materializing param=encoder.layer.2.output.LayerNorm.weight]Loading weights:  50%|█████     | 52/103 [00:00<00:00, 2169.76it/s, Materializing param=encoder.layer.2.output.dense.bias]      Loading weights:  50%|█████     | 52/103 [00:00<00:00, 2169.76it/s, Materializing param=encoder.layer.2.output.dense.bias]Loading weights:  51%|█████▏    | 53/103 [00:00<00:00, 2211.48it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  51%|█████▏    | 53/103 [00:00<00:00, 2211.48it/s, Materializing param=encoder.layer.2.output.dense.weight]Loading weights:  52%|█████▏    | 54/103 [00:00<00:00, 2253.21it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  52%|█████▏    | 54/103 [00:00<00:00, 2253.21it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.bias]Loading weights:  53%|█████▎    | 55/103 [00:00<00:00, 2294.93it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  53%|█████▎    | 55/103 [00:00<00:00, 2294.93it/s, Materializing param=encoder.layer.3.attention.output.LayerNorm.weight]Loading weights:  54%|█████▍    | 56/103 [00:00<00:00, 2336.66it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]      Loading weights:  54%|█████▍    | 56/103 [00:00<00:00, 2336.66it/s, Materializing param=encoder.layer.3.attention.output.dense.bias]Loading weights:  55%|█████▌    | 57/103 [00:00<00:00, 2378.39it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  55%|█████▌    | 57/103 [00:00<00:00, 2378.39it/s, Materializing param=encoder.layer.3.attention.output.dense.weight]Loading weights:  56%|█████▋    | 58/103 [00:00<00:00, 2420.11it/s, Materializing param=encoder.layer.3.attention.self.key.bias]      Loading weights:  56%|█████▋    | 58/103 [00:00<00:00, 2420.11it/s, Materializing param=encoder.layer.3.attention.self.key.bias]Loading weights:  57%|█████▋    | 59/103 [00:00<00:00, 2461.84it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  57%|█████▋    | 59/103 [00:00<00:00, 2461.84it/s, Materializing param=encoder.layer.3.attention.self.key.weight]Loading weights:  58%|█████▊    | 60/103 [00:00<00:00, 2503.56it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  58%|█████▊    | 60/103 [00:00<00:00, 2503.56it/s, Materializing param=encoder.layer.3.attention.self.query.bias]Loading weights:  59%|█████▉    | 61/103 [00:00<00:00, 2545.29it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  59%|█████▉    | 61/103 [00:00<00:00, 2545.29it/s, Materializing param=encoder.layer.3.attention.self.query.weight]Loading weights:  60%|██████    | 62/103 [00:00<00:00, 2587.02it/s, Materializing param=encoder.layer.3.attention.self.value.bias]  Loading weights:  60%|██████    | 62/103 [00:00<00:00, 2587.02it/s, Materializing param=encoder.layer.3.attention.self.value.bias]Loading weights:  61%|██████    | 63/103 [00:00<00:00, 2628.74it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  61%|██████    | 63/103 [00:00<00:00, 2628.74it/s, Materializing param=encoder.layer.3.attention.self.value.weight]Loading weights:  62%|██████▏   | 64/103 [00:00<00:00, 2670.47it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]    Loading weights:  62%|██████▏   | 64/103 [00:00<00:00, 2670.47it/s, Materializing param=encoder.layer.3.intermediate.dense.bias]Loading weights:  63%|██████▎   | 65/103 [00:00<00:00, 2712.19it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  63%|██████▎   | 65/103 [00:00<00:00, 2712.19it/s, Materializing param=encoder.layer.3.intermediate.dense.weight]Loading weights:  64%|██████▍   | 66/103 [00:00<00:00, 2753.92it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]    Loading weights:  64%|██████▍   | 66/103 [00:00<00:00, 2753.92it/s, Materializing param=encoder.layer.3.output.LayerNorm.bias]Loading weights:  65%|██████▌   | 67/103 [00:00<00:00, 2795.65it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  65%|██████▌   | 67/103 [00:00<00:00, 2795.65it/s, Materializing param=encoder.layer.3.output.LayerNorm.weight]Loading weights:  66%|██████▌   | 68/103 [00:00<00:00, 2837.37it/s, Materializing param=encoder.layer.3.output.dense.bias]      Loading weights:  66%|██████▌   | 68/103 [00:00<00:00, 2837.37it/s, Materializing param=encoder.layer.3.output.dense.bias]Loading weights:  67%|██████▋   | 69/103 [00:00<00:00, 2879.10it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  67%|██████▋   | 69/103 [00:00<00:00, 2879.10it/s, Materializing param=encoder.layer.3.output.dense.weight]Loading weights:  68%|██████▊   | 70/103 [00:00<00:00, 2920.82it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.bias]Loading weights:  68%|██████▊   | 70/103 [00:00<00:00, 2920.82it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.bias]Loading weights:  69%|██████▉   | 71/103 [00:00<00:00, 2962.55it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.weight]Loading weights:  69%|██████▉   | 71/103 [00:00<00:00, 2962.55it/s, Materializing param=encoder.layer.4.attention.output.LayerNorm.weight]Loading weights:  70%|██████▉   | 72/103 [00:00<00:00, 3004.28it/s, Materializing param=encoder.layer.4.attention.output.dense.bias]      Loading weights:  70%|██████▉   | 72/103 [00:00<00:00, 3004.28it/s, Materializing param=encoder.layer.4.attention.output.dense.bias]Loading weights:  71%|███████   | 73/103 [00:00<00:00, 3046.00it/s, Materializing param=encoder.layer.4.attention.output.dense.weight]Loading weights:  71%|███████   | 73/103 [00:00<00:00, 3046.00it/s, Materializing param=encoder.layer.4.attention.output.dense.weight]Loading weights:  72%|███████▏  | 74/103 [00:00<00:00, 3087.73it/s, Materializing param=encoder.layer.4.attention.self.key.bias]      Loading weights:  72%|███████▏  | 74/103 [00:00<00:00, 3087.73it/s, Materializing param=encoder.layer.4.attention.self.key.bias]Loading weights:  73%|███████▎  | 75/103 [00:00<00:00, 3129.45it/s, Materializing param=encoder.layer.4.attention.self.key.weight]Loading weights:  73%|███████▎  | 75/103 [00:00<00:00, 3129.45it/s, Materializing param=encoder.layer.4.attention.self.key.weight]Loading weights:  74%|███████▍  | 76/103 [00:00<00:00, 3171.18it/s, Materializing param=encoder.layer.4.attention.self.query.bias]Loading weights:  74%|███████▍  | 76/103 [00:00<00:00, 3171.18it/s, Materializing param=encoder.layer.4.attention.self.query.bias]Loading weights:  75%|███████▍  | 77/103 [00:00<00:00, 3212.91it/s, Materializing param=encoder.layer.4.attention.self.query.weight]Loading weights:  75%|███████▍  | 77/103 [00:00<00:00, 3212.91it/s, Materializing param=encoder.layer.4.attention.self.query.weight]Loading weights:  76%|███████▌  | 78/103 [00:00<00:00, 3254.63it/s, Materializing param=encoder.layer.4.attention.self.value.bias]  Loading weights:  76%|███████▌  | 78/103 [00:00<00:00, 3254.63it/s, Materializing param=encoder.layer.4.attention.self.value.bias]Loading weights:  77%|███████▋  | 79/103 [00:00<00:00, 3296.36it/s, Materializing param=encoder.layer.4.attention.self.value.weight]Loading weights:  77%|███████▋  | 79/103 [00:00<00:00, 3296.36it/s, Materializing param=encoder.layer.4.attention.self.value.weight]Loading weights:  78%|███████▊  | 80/103 [00:00<00:00, 3338.09it/s, Materializing param=encoder.layer.4.intermediate.dense.bias]    Loading weights:  78%|███████▊  | 80/103 [00:00<00:00, 3338.09it/s, Materializing param=encoder.layer.4.intermediate.dense.bias]Loading weights:  79%|███████▊  | 81/103 [00:00<00:00, 3379.81it/s, Materializing param=encoder.layer.4.intermediate.dense.weight]Loading weights:  79%|███████▊  | 81/103 [00:00<00:00, 3379.81it/s, Materializing param=encoder.layer.4.intermediate.dense.weight]Loading weights:  80%|███████▉  | 82/103 [00:00<00:00, 3421.54it/s, Materializing param=encoder.layer.4.output.LayerNorm.bias]    Loading weights:  80%|███████▉  | 82/103 [00:00<00:00, 3421.54it/s, Materializing param=encoder.layer.4.output.LayerNorm.bias]Loading weights:  81%|████████  | 83/103 [00:00<00:00, 3463.26it/s, Materializing param=encoder.layer.4.output.LayerNorm.weight]Loading weights:  81%|████████  | 83/103 [00:00<00:00, 3463.26it/s, Materializing param=encoder.layer.4.output.LayerNorm.weight]Loading weights:  82%|████████▏ | 84/103 [00:00<00:00, 3504.99it/s, Materializing param=encoder.layer.4.output.dense.bias]      Loading weights:  82%|████████▏ | 84/103 [00:00<00:00, 3504.99it/s, Materializing param=encoder.layer.4.output.dense.bias]Loading weights:  83%|████████▎ | 85/103 [00:00<00:00, 3546.72it/s, Materializing param=encoder.layer.4.output.dense.weight]Loading weights:  83%|████████▎ | 85/103 [00:00<00:00, 3546.72it/s, Materializing param=encoder.layer.4.output.dense.weight]Loading weights:  83%|████████▎ | 86/103 [00:00<00:00, 3588.44it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.bias]Loading weights:  83%|████████▎ | 86/103 [00:00<00:00, 3588.44it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.bias]Loading weights:  84%|████████▍ | 87/103 [00:00<00:00, 3630.17it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.weight]Loading weights:  84%|████████▍ | 87/103 [00:00<00:00, 3630.17it/s, Materializing param=encoder.layer.5.attention.output.LayerNorm.weight]Loading weights:  85%|████████▌ | 88/103 [00:00<00:00, 3671.89it/s, Materializing param=encoder.layer.5.attention.output.dense.bias]      Loading weights:  85%|████████▌ | 88/103 [00:00<00:00, 3671.89it/s, Materializing param=encoder.layer.5.attention.output.dense.bias]Loading weights:  86%|████████▋ | 89/103 [00:00<00:00, 3713.62it/s, Materializing param=encoder.layer.5.attention.output.dense.weight]Loading weights:  86%|████████▋ | 89/103 [00:00<00:00, 3713.62it/s, Materializing param=encoder.layer.5.attention.output.dense.weight]Loading weights:  87%|████████▋ | 90/103 [00:00<00:00, 3755.35it/s, Materializing param=encoder.layer.5.attention.self.key.bias]      Loading weights:  87%|████████▋ | 90/103 [00:00<00:00, 3755.35it/s, Materializing param=encoder.layer.5.attention.self.key.bias]Loading weights:  88%|████████▊ | 91/103 [00:00<00:00, 3797.07it/s, Materializing param=encoder.layer.5.attention.self.key.weight]Loading weights:  88%|████████▊ | 91/103 [00:00<00:00, 3797.07it/s, Materializing param=encoder.layer.5.attention.self.key.weight]Loading weights:  89%|████████▉ | 92/103 [00:00<00:00, 3838.80it/s, Materializing param=encoder.layer.5.attention.self.query.bias]Loading weights:  89%|████████▉ | 92/103 [00:00<00:00, 3838.80it/s, Materializing param=encoder.layer.5.attention.self.query.bias]Loading weights:  90%|█████████ | 93/103 [00:00<00:00, 3880.52it/s, Materializing param=encoder.layer.5.attention.self.query.weight]Loading weights:  90%|█████████ | 93/103 [00:00<00:00, 3880.52it/s, Materializing param=encoder.layer.5.attention.self.query.weight]Loading weights:  91%|█████████▏| 94/103 [00:00<00:00, 3922.25it/s, Materializing param=encoder.layer.5.attention.self.value.bias]  Loading weights:  91%|█████████▏| 94/103 [00:00<00:00, 3922.25it/s, Materializing param=encoder.layer.5.attention.self.value.bias]Loading weights:  92%|█████████▏| 95/103 [00:00<00:00, 3963.98it/s, Materializing param=encoder.layer.5.attention.self.value.weight]Loading weights:  92%|█████████▏| 95/103 [00:00<00:00, 3963.98it/s, Materializing param=encoder.layer.5.attention.self.value.weight]Loading weights:  93%|█████████▎| 96/103 [00:00<00:00, 4005.70it/s, Materializing param=encoder.layer.5.intermediate.dense.bias]    Loading weights:  93%|█████████▎| 96/103 [00:00<00:00, 4005.70it/s, Materializing param=encoder.layer.5.intermediate.dense.bias]Loading weights:  94%|█████████▍| 97/103 [00:00<00:00, 4047.43it/s, Materializing param=encoder.layer.5.intermediate.dense.weight]Loading weights:  94%|█████████▍| 97/103 [00:00<00:00, 4047.43it/s, Materializing param=encoder.layer.5.intermediate.dense.weight]Loading weights:  95%|█████████▌| 98/103 [00:00<00:00, 4089.15it/s, Materializing param=encoder.layer.5.output.LayerNorm.bias]    Loading weights:  95%|█████████▌| 98/103 [00:00<00:00, 4089.15it/s, Materializing param=encoder.layer.5.output.LayerNorm.bias]Loading weights:  96%|█████████▌| 99/103 [00:00<00:00, 4130.88it/s, Materializing param=encoder.layer.5.output.LayerNorm.weight]Loading weights:  96%|█████████▌| 99/103 [00:00<00:00, 4130.88it/s, Materializing param=encoder.layer.5.output.LayerNorm.weight]Loading weights:  97%|█████████▋| 100/103 [00:00<00:00, 4172.61it/s, Materializing param=encoder.layer.5.output.dense.bias]     Loading weights:  97%|█████████▋| 100/103 [00:00<00:00, 4172.61it/s, Materializing param=encoder.layer.5.output.dense.bias]Loading weights:  98%|█████████▊| 101/103 [00:00<00:00, 4214.33it/s, Materializing param=encoder.layer.5.output.dense.weight]Loading weights:  98%|█████████▊| 101/103 [00:00<00:00, 3158.34it/s, Materializing param=encoder.layer.5.output.dense.weight]Loading weights:  99%|█████████▉| 102/103 [00:00<00:00, 3189.61it/s, Materializing param=pooler.dense.bias]                  Loading weights:  99%|█████████▉| 102/103 [00:00<00:00, 3189.61it/s, Materializing param=pooler.dense.bias]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3220.88it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3220.88it/s, Materializing param=pooler.dense.weight]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3220.88it/s, Materializing param=pooler.dense.weight]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Ontology initialized: 139 entity concepts, 16 categories
+GSAM initialized: KnowledgeGraph(nodes=217, edges=201, concepts=217, coverage=0.00)
+
+============================================================
+GSAM SYSTEM - ONLINE MODE
+============================================================
+Task: finer
+Graph: KnowledgeGraph(nodes=217, edges=201, concepts=217, coverage=0.00)
+============================================================
+
+
+========================================
+EVALUATING TEST SET - 75 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_18...
+[GENERATOR] Starting call test_eval_16...
+[GENERATOR] Starting call test_eval_17...
+[GENERATOR] Starting call test_eval_19...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_15...
+[GENERATOR] Call test_eval_18 completed in 8.95s
+[LOG] generator call logged to generator_test_eval_18_20260310_132749_359.json
+[GENERATOR] Starting call test_eval_20...
+[GENERATOR] Call test_eval_17 completed in 9.19s
+[LOG] generator call logged to generator_test_eval_17_20260310_132749_598.json
+[GENERATOR] Starting call test_eval_21...
+[GENERATOR] Call test_eval_6 completed in 9.53s
+[LOG] generator call logged to generator_test_eval_6_20260310_132749_943.json
+[GENERATOR] Starting call test_eval_22...
+[GENERATOR] Call test_eval_8 completed in 10.16s
+[LOG] generator call logged to generator_test_eval_8_20260310_132750_584.json
+[GENERATOR] Starting call test_eval_23...
+[GENERATOR] Call test_eval_5 completed in 10.98s
+[LOG] generator call logged to generator_test_eval_5_20260310_132751_364.json
+[GENERATOR] Starting call test_eval_24...
+[GENERATOR] Call test_eval_13 completed in 11.02s
+[LOG] generator call logged to generator_test_eval_13_20260310_132751_431.json
+[GENERATOR] Starting call test_eval_25...
+[GENERATOR] Call test_eval_2 completed in 12.14s
+[LOG] generator call logged to generator_test_eval_2_20260310_132752_504.json
+[GENERATOR] Starting call test_eval_26...
+[GENERATOR] Call test_eval_7 completed in 12.28s
+[LOG] generator call logged to generator_test_eval_7_20260310_132752_710.json
+[GENERATOR] Starting call test_eval_27...
+[GENERATOR] Call test_eval_9 completed in 12.39s
+[LOG] generator call logged to generator_test_eval_9_20260310_132752_788.json
+[GENERATOR] Starting call test_eval_28...
+[GENERATOR] Call test_eval_4 completed in 12.51s
+[LOG] generator call logged to generator_test_eval_4_20260310_132752_911.json
+[GENERATOR] Starting call test_eval_29...
+[GENERATOR] Call test_eval_12 completed in 12.64s
+[LOG] generator call logged to generator_test_eval_12_20260310_132753_047.json
+[GENERATOR] Starting call test_eval_30...
+[GENERATOR] Call test_eval_16 completed in 12.85s
+[LOG] generator call logged to generator_test_eval_16_20260310_132753_257.json
+[GENERATOR] Starting call test_eval_31...
+[GENERATOR] Call test_eval_14 completed in 13.00s
+[LOG] generator call logged to generator_test_eval_14_20260310_132753_411.json
+[GENERATOR] Starting call test_eval_32...
+[GENERATOR] Call test_eval_19 completed in 14.94s
+[LOG] generator call logged to generator_test_eval_19_20260310_132755_350.json
+[GENERATOR] Starting call test_eval_33...
+[GENERATOR] Call test_eval_0 completed in 15.36s
+[LOG] generator call logged to generator_test_eval_0_20260310_132755_726.json
+[GENERATOR] Starting call test_eval_34...
+[GENERATOR] Call test_eval_20 completed in 7.38s
+[LOG] generator call logged to generator_test_eval_20_20260310_132756_787.json
+[GENERATOR] Starting call test_eval_35...
+[GENERATOR] Call test_eval_10 completed in 17.79s
+[LOG] generator call logged to generator_test_eval_10_20260310_132758_119.json
+[GENERATOR] Starting call test_eval_36...
+[GENERATOR] Call test_eval_11 completed in 18.77s
+[LOG] generator call logged to generator_test_eval_11_20260310_132759_177.json
+[GENERATOR] Starting call test_eval_37...
+[GENERATOR] Call test_eval_1 completed in 19.02s
+[LOG] generator call logged to generator_test_eval_1_20260310_132759_396.json
+[GENERATOR] Starting call test_eval_38...
+[GENERATOR] Call test_eval_22 completed in 9.48s
+[LOG] generator call logged to generator_test_eval_22_20260310_132759_470.json
+[GENERATOR] Starting call test_eval_39...
+[GENERATOR] Call test_eval_3 completed in 21.03s
+[LOG] generator call logged to generator_test_eval_3_20260310_132801_428.json
+[GENERATOR] Starting call test_eval_40...
+[GENERATOR] Call test_eval_29 completed in 8.53s
+[LOG] generator call logged to generator_test_eval_29_20260310_132801_492.json
+[GENERATOR] Starting call test_eval_41...
+[GENERATOR] Call test_eval_23 completed in 11.13s
+[LOG] generator call logged to generator_test_eval_23_20260310_132801_773.json
+[GENERATOR] Call test_eval_26 completed in 9.23s
+[LOG] generator call logged to generator_test_eval_26_20260310_132801_794.json
+[GENERATOR] Starting call test_eval_42...
+[GENERATOR] Starting call test_eval_43...
+[GENERATOR] Call test_eval_32 completed in 9.26s
+[LOG] generator call logged to generator_test_eval_32_20260310_132802_726.json
+[GENERATOR] Starting call test_eval_44...
+[GENERATOR] Call test_eval_33 completed in 8.38s
+[LOG] generator call logged to generator_test_eval_33_20260310_132803_794.json
+[GENERATOR] Starting call test_eval_45...
+[GENERATOR] Call test_eval_27 completed in 11.54s
+[LOG] generator call logged to generator_test_eval_27_20260310_132804_304.json
+[GENERATOR] Starting call test_eval_46...
+[GENERATOR] Call test_eval_25 completed in 13.52s
+[LOG] generator call logged to generator_test_eval_25_20260310_132804_993.json
+[GENERATOR] Starting call test_eval_47...
+[GENERATOR] Call test_eval_21 completed in 16.78s
+[LOG] generator call logged to generator_test_eval_21_20260310_132806_421.json
+[GENERATOR] Starting call test_eval_48...
+[GENERATOR] Call test_eval_37 completed in 9.42s
+[LOG] generator call logged to generator_test_eval_37_20260310_132808_648.json
+[GENERATOR] Starting call test_eval_49...
+[GENERATOR] Call test_eval_35 completed in 12.12s
+[LOG] generator call logged to generator_test_eval_35_20260310_132808_975.json
+[GENERATOR] Starting call test_eval_50...
+[GENERATOR] Call test_eval_28 completed in 16.45s
+[LOG] generator call logged to generator_test_eval_28_20260310_132809_280.json
+[GENERATOR] Starting call test_eval_51...
+[GENERATOR] Call test_eval_42 completed in 8.36s
+[LOG] generator call logged to generator_test_eval_42_20260310_132810_209.json
+[GENERATOR] Starting call test_eval_52...
+[GENERATOR] Call test_eval_30 completed in 17.49s
+[LOG] generator call logged to generator_test_eval_30_20260310_132810_584.json
+[GENERATOR] Starting call test_eval_53...
+[GENERATOR] Call test_eval_24 completed in 19.23s
+[LOG] generator call logged to generator_test_eval_24_20260310_132810_646.json
+[GENERATOR] Starting call test_eval_54...
+[GENERATOR] Call test_eval_38 completed in 11.33s
+[LOG] generator call logged to generator_test_eval_38_20260310_132810_777.json
+[GENERATOR] Starting call test_eval_55...
+[GENERATOR] Call test_eval_44 completed in 8.37s
+[LOG] generator call logged to generator_test_eval_44_20260310_132811_163.json
+[GENERATOR] Starting call test_eval_56...
+[GENERATOR] Call test_eval_36 completed in 14.11s
+[LOG] generator call logged to generator_test_eval_36_20260310_132812_269.json
+[GENERATOR] Starting call test_eval_57...
+[GENERATOR] Call test_eval_43 completed in 10.71s
+[LOG] generator call logged to generator_test_eval_43_20260310_132812_559.json
+[GENERATOR] Starting call test_eval_58...
+[GENERATOR] Call test_eval_45 completed in 10.83s
+[LOG] generator call logged to generator_test_eval_45_20260310_132814_666.json
+[GENERATOR] Starting call test_eval_59...
+[GENERATOR] Call test_eval_48 completed in 10.58s
+[LOG] generator call logged to generator_test_eval_48_20260310_132817_051.json
+[GENERATOR] Starting call test_eval_60...
+[GENERATOR] Call test_eval_46 completed in 14.09s
+[LOG] generator call logged to generator_test_eval_46_20260310_132818_449.json
+[GENERATOR] Starting call test_eval_61...
+[GENERATOR] Call test_eval_54 completed in 8.42s
+[LOG] generator call logged to generator_test_eval_54_20260310_132819_119.json
+[GENERATOR] Starting call test_eval_62...
+[GENERATOR] Call test_eval_50 completed in 10.44s
+[LOG] generator call logged to generator_test_eval_50_20260310_132819_458.json
+[GENERATOR] Starting call test_eval_63...
+[GENERATOR] Call test_eval_40 completed in 18.58s
+[LOG] generator call logged to generator_test_eval_40_20260310_132820_059.json
+[GENERATOR] Starting call test_eval_64...
+[GENERATOR] Call test_eval_53 completed in 10.28s
+[LOG] generator call logged to generator_test_eval_53_20260310_132820_911.json
+[GENERATOR] Starting call test_eval_65...
+[GENERATOR] Call test_eval_57 completed in 8.82s
+[LOG] generator call logged to generator_test_eval_57_20260310_132821_142.json
+[GENERATOR] Starting call test_eval_66...
+[GENERATOR] Call test_eval_39 completed in 22.86s
+[LOG] generator call logged to generator_test_eval_39_20260310_132822_384.json
+[GENERATOR] Starting call test_eval_67...
+[GENERATOR] Call test_eval_55 completed in 12.68s
+[LOG] generator call logged to generator_test_eval_55_20260310_132823_515.json
+[GENERATOR] Starting call test_eval_68...
+[GENERATOR] Call test_eval_58 completed in 10.96s
+[LOG] generator call logged to generator_test_eval_58_20260310_132823_569.json
+Progress: 50/75, Accuracy: 0.000
+[GENERATOR] Starting call test_eval_69...
+[GENERATOR] Call test_eval_52 completed in 13.71s
+[LOG] generator call logged to generator_test_eval_52_20260310_132823_974.json
+[GENERATOR] Starting call test_eval_70...
+[GENERATOR] Call test_eval_41 completed in 23.31s
+[LOG] generator call logged to generator_test_eval_41_20260310_132824_855.json
+[GENERATOR] Starting call test_eval_71...
+[GENERATOR] Call test_eval_51 completed in 15.91s
+[LOG] generator call logged to generator_test_eval_51_20260310_132825_224.json
+[GENERATOR] Starting call test_eval_72...
+[GENERATOR] Call test_eval_60 completed in 11.17s
+[LOG] generator call logged to generator_test_eval_60_20260310_132828_278.json
+[GENERATOR] Starting call test_eval_73...
+[GENERATOR] Call test_eval_67 completed in 8.03s
+[LOG] generator call logged to generator_test_eval_67_20260310_132830_475.json
+[GENERATOR] Starting call test_eval_74...
+[GENERATOR] Call test_eval_62 completed in 11.42s
+[LOG] generator call logged to generator_test_eval_62_20260310_132830_594.json
+[GENERATOR] Call test_eval_66 completed in 9.90s
+[LOG] generator call logged to generator_test_eval_66_20260310_132831_098.json
+[GENERATOR] Call test_eval_47 completed in 26.06s
+[LOG] generator call logged to generator_test_eval_47_20260310_132831_109.json
+[GENERATOR] Call test_eval_68 completed in 8.76s
+[LOG] generator call logged to generator_test_eval_68_20260310_132832_310.json
+[GENERATOR] Call test_eval_56 completed in 21.32s
+[LOG] generator call logged to generator_test_eval_56_20260310_132832_535.json
+[GENERATOR] Call test_eval_64 completed in 12.51s
+[LOG] generator call logged to generator_test_eval_64_20260310_132832_630.json
+[GENERATOR] Call test_eval_49 completed in 24.52s
+[LOG] generator call logged to generator_test_eval_49_20260310_132833_212.json
+[GENERATOR] Call test_eval_65 completed in 12.66s
+[LOG] generator call logged to generator_test_eval_65_20260310_132833_614.json
+[GENERATOR] Call test_eval_69 completed in 10.44s
+[LOG] generator call logged to generator_test_eval_69_20260310_132834_052.json
+[GENERATOR] Call test_eval_61 completed in 16.03s
+[LOG] generator call logged to generator_test_eval_61_20260310_132834_528.json
+[GENERATOR] Call test_eval_59 completed in 20.06s
+[LOG] generator call logged to generator_test_eval_59_20260310_132834_772.json
+[GENERATOR] Call test_eval_71 completed in 9.88s
+[LOG] generator call logged to generator_test_eval_71_20260310_132834_779.json
+[GENERATOR] Call test_eval_70 completed in 13.61s
+[LOG] generator call logged to generator_test_eval_70_20260310_132837_630.json
+[GENERATOR] Call test_eval_63 completed in 23.65s
+[LOG] generator call logged to generator_test_eval_63_20260310_132843_178.json
+[GENERATOR] Empty response for test_eval_15 (attempt 1/3), retrying in 11.4s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_15_20260310_132843_342.json
+[GENERATOR] Call test_eval_72 completed in 18.51s
+[LOG] generator call logged to generator_test_eval_72_20260310_132843_801.json
+[GENERATOR] Call test_eval_74 completed in 13.55s
+[LOG] generator call logged to generator_test_eval_74_20260310_132844_068.json
+[GENERATOR] Call test_eval_73 completed in 17.23s
+[LOG] generator call logged to generator_test_eval_73_20260310_132845_550.json
+[GENERATOR] Empty response for test_eval_31 (attempt 1/3), retrying in 7.5s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_31_20260310_132852_928.json
+[GENERATOR] Empty response for test_eval_34 (attempt 1/3), retrying in 5.5s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_34_20260310_132854_974.json
+[GENERATOR] Call test_eval_15 completed in 81.16s
+[LOG] generator call logged to generator_test_eval_15_20260310_132901_586.json
+[GENERATOR] Call test_eval_34 completed in 73.67s
+[LOG] generator call logged to generator_test_eval_34_20260310_132909_444.json
+[GENERATOR] Call test_eval_31 completed in 87.95s
+[LOG] generator call logged to generator_test_eval_31_20260310_132921_258.json
+
+Final Accuracy: 0.037 (0/75)
+Initial Test Accuracy: 0.037
+
+
+============================================================
+WINDOW 1/5 (samples 0-14)
+============================================================
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Call test_eval_3 completed in 7.75s
+[LOG] generator call logged to generator_test_eval_3_20260310_132929_391.json
+[GENERATOR] Call test_eval_7 completed in 7.86s
+[LOG] generator call logged to generator_test_eval_7_20260310_132929_533.json
+[GENERATOR] Call test_eval_5 completed in 9.12s
+[LOG] generator call logged to generator_test_eval_5_20260310_132930_776.json
+[GENERATOR] Call test_eval_13 completed in 9.25s
+[LOG] generator call logged to generator_test_eval_13_20260310_132930_913.json
+[GENERATOR] Call test_eval_2 completed in 10.14s
+[LOG] generator call logged to generator_test_eval_2_20260310_132931_752.json
+[GENERATOR] Call test_eval_9 completed in 10.78s
+[LOG] generator call logged to generator_test_eval_9_20260310_132932_413.json
+[GENERATOR] Call test_eval_10 completed in 11.35s
+[LOG] generator call logged to generator_test_eval_10_20260310_132933_009.json
+[GENERATOR] Call test_eval_12 completed in 11.66s
+[LOG] generator call logged to generator_test_eval_12_20260310_132933_347.json
+[GENERATOR] Call test_eval_4 completed in 15.24s
+[LOG] generator call logged to generator_test_eval_4_20260310_132936_880.json
+[GENERATOR] Call test_eval_0 completed in 15.34s
+[LOG] generator call logged to generator_test_eval_0_20260310_132936_935.json
+[GENERATOR] Call test_eval_11 completed in 15.85s
+[LOG] generator call logged to generator_test_eval_11_20260310_132937_508.json
+[GENERATOR] Call test_eval_8 completed in 17.28s
+[LOG] generator call logged to generator_test_eval_8_20260310_132938_939.json
+[GENERATOR] Call test_eval_14 completed in 27.07s
+[LOG] generator call logged to generator_test_eval_14_20260310_132948_750.json
+[GENERATOR] Call test_eval_1 completed in 34.05s
+[LOG] generator call logged to generator_test_eval_1_20260310_132955_698.json
+[GENERATOR] Empty response for test_eval_6 (attempt 1/3), retrying in 5.1s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_6_20260310_133014_490.json
+[GENERATOR] Call test_eval_6 completed in 65.28s
+[LOG] generator call logged to generator_test_eval_6_20260310_133026_928.json
+
+Final Accuracy: 0.017 (0/15)
+Window 1 accuracy: 0.017 | Cumulative: 0.017
+
+--- Window 1, Step 1/15 (Global 1) ---
+[GENERATOR] Starting call online_train_s_1_gen_initial...
+[GENERATOR] Call online_train_s_1_gen_initial completed in 13.26s
+[LOG] generator call logged to generator_online_train_s_1_gen_initial_20260310_133040_249.json
+Correct: False | Retrieved: 19 nodes | Precision: 0.11
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_1_round_0...
+[REFLECTOR] Call online_train_s_1_round_0 completed in 10.54s
+[LOG] reflector call logged to reflector_online_train_s_1_round_0_20260310_133050_786.json
+[GENERATOR] Starting call online_train_s_1_post_reflect_0...
+[GENERATOR] Call online_train_s_1_post_reflect_0 completed in 10.42s
+[LOG] generator call logged to generator_online_train_s_1_post_reflect_0_20260310_133101_259.json
+
+--- Running Curator + Graph Constructor at step 1 ---
+[CURATOR] Starting call online_train_s_1...
+[CURATOR] Call online_train_s_1 completed in 10.42s
+[LOG] curator call logged to curator_online_train_s_1_20260310_133111_703.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_1_post_curate...
+[GENERATOR] Call online_train_s_1_post_curate completed in 13.64s
+[LOG] generator call logged to generator_online_train_s_1_post_curate_20260310_133125_447.json
+
+--- Window 1, Step 2/15 (Global 2) ---
+[GENERATOR] Starting call online_train_s_2_gen_initial...
+[GENERATOR] Call online_train_s_2_gen_initial completed in 13.64s
+[LOG] generator call logged to generator_online_train_s_2_gen_initial_20260310_133139_133.json
+Correct: False | Retrieved: 19 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_2_round_0...
+[REFLECTOR] Call online_train_s_2_round_0 completed in 13.34s
+[LOG] reflector call logged to reflector_online_train_s_2_round_0_20260310_133152_469.json
+[GENERATOR] Starting call online_train_s_2_post_reflect_0...
+[GENERATOR] Call online_train_s_2_post_reflect_0 completed in 7.99s
+[LOG] generator call logged to generator_online_train_s_2_post_reflect_0_20260310_133200_496.json
+
+--- Running Curator + Graph Constructor at step 2 ---
+[CURATOR] Starting call online_train_s_2...
+[CURATOR] Call online_train_s_2 completed in 14.82s
+[LOG] curator call logged to curator_online_train_s_2_20260310_133215_318.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_2_post_curate...
+[GENERATOR] Call online_train_s_2_post_curate completed in 13.87s
+[LOG] generator call logged to generator_online_train_s_2_post_curate_20260310_133229_278.json
+
+--- Window 1, Step 3/15 (Global 3) ---
+[GENERATOR] Starting call online_train_s_3_gen_initial...
+[GENERATOR] Call online_train_s_3_gen_initial completed in 6.41s
+[LOG] generator call logged to generator_online_train_s_3_gen_initial_20260310_133235_740.json
+Correct: False | Retrieved: 19 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_3_round_0...
+[REFLECTOR] Call online_train_s_3_round_0 completed in 13.38s
+[LOG] reflector call logged to reflector_online_train_s_3_round_0_20260310_133249_125.json
+[GENERATOR] Starting call online_train_s_3_post_reflect_0...
+[GENERATOR] Call online_train_s_3_post_reflect_0 completed in 18.94s
+[LOG] generator call logged to generator_online_train_s_3_post_reflect_0_20260310_133308_100.json
+
+--- Running Curator + Graph Constructor at step 3 ---
+[CURATOR] Starting call online_train_s_3...
+[CURATOR] Call online_train_s_3 completed in 12.23s
+[LOG] curator call logged to curator_online_train_s_3_20260310_133320_332.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_3_post_curate...
+[GENERATOR] Call online_train_s_3_post_curate completed in 6.78s
+[LOG] generator call logged to generator_online_train_s_3_post_curate_20260310_133327_205.json
+
+--- Window 1, Step 4/15 (Global 4) ---
+[GENERATOR] Starting call online_train_s_4_gen_initial...
+[GENERATOR] Call online_train_s_4_gen_initial completed in 10.61s
+[LOG] generator call logged to generator_online_train_s_4_gen_initial_20260310_133337_870.json
+Correct: False | Retrieved: 19 nodes | Precision: 0.05
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_4_round_0...
+[REFLECTOR] Call online_train_s_4_round_0 completed in 12.45s
+[LOG] reflector call logged to reflector_online_train_s_4_round_0_20260310_133350_323.json
+[GENERATOR] Starting call online_train_s_4_post_reflect_0...
+[GENERATOR] Call online_train_s_4_post_reflect_0 completed in 7.58s
+[LOG] generator call logged to generator_online_train_s_4_post_reflect_0_20260310_133357_956.json
+
+--- Running Curator + Graph Constructor at step 4 ---
+[CURATOR] Starting call online_train_s_4...
+[CURATOR] Call online_train_s_4 completed in 11.84s
+[LOG] curator call logged to curator_online_train_s_4_20260310_133409_809.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_4_post_curate...
+[GENERATOR] Call online_train_s_4_post_curate completed in 10.98s
+[LOG] generator call logged to generator_online_train_s_4_post_curate_20260310_133420_859.json
+
+--- Window 1, Step 5/15 (Global 5) ---
+[GENERATOR] Starting call online_train_s_5_gen_initial...
+[GENERATOR] Call online_train_s_5_gen_initial completed in 10.50s
+[LOG] generator call logged to generator_online_train_s_5_gen_initial_20260310_133431_412.json
+Correct: False | Retrieved: 19 nodes | Precision: 0.16
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_5_round_0...
+[REFLECTOR] Call online_train_s_5_round_0 completed in 12.99s
+[LOG] reflector call logged to reflector_online_train_s_5_round_0_20260310_133444_417.json
+[GENERATOR] Starting call online_train_s_5_post_reflect_0...
+[GENERATOR] Call online_train_s_5_post_reflect_0 completed in 7.38s
+[LOG] generator call logged to generator_online_train_s_5_post_reflect_0_20260310_133451_844.json
+
+--- Running Curator + Graph Constructor at step 5 ---
+[CURATOR] Starting call online_train_s_5...
+[CURATOR] Call online_train_s_5 completed in 11.68s
+[LOG] curator call logged to curator_online_train_s_5_20260310_133503_532.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_5_post_curate...
+[GENERATOR] Call online_train_s_5_post_curate completed in 7.20s
+[LOG] generator call logged to generator_online_train_s_5_post_curate_20260310_133510_800.json
+
+--- Window 1, Step 6/15 (Global 6) ---
+[GENERATOR] Starting call online_train_s_6_gen_initial...
+[GENERATOR] Empty response for online_train_s_6_gen_initial (attempt 1/3), retrying in 8.7s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_6_gen_initial_20260310_133602_755.json
+[GENERATOR] Call online_train_s_6_gen_initial completed in 78.61s
+[LOG] generator call logged to generator_online_train_s_6_gen_initial_20260310_133629_458.json
+Correct: False | Retrieved: 21 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_6_round_0...
+[REFLECTOR] Call online_train_s_6_round_0 completed in 10.56s
+[LOG] reflector call logged to reflector_online_train_s_6_round_0_20260310_133640_042.json
+[GENERATOR] Starting call online_train_s_6_post_reflect_0...
+[GENERATOR] Empty response for online_train_s_6_post_reflect_0 (attempt 1/3), retrying in 7.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_6_post_reflect_0_20260310_133732_369.json
+[GENERATOR] Call online_train_s_6_post_reflect_0 completed in 69.58s
+[LOG] generator call logged to generator_online_train_s_6_post_reflect_0_20260310_133749_662.json
+
+--- Running Curator + Graph Constructor at step 6 ---
+[CURATOR] Starting call online_train_s_6...
+[CURATOR] Call online_train_s_6 completed in 12.36s
+[LOG] curator call logged to curator_online_train_s_6_20260310_133802_033.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_6_post_curate...
+[GENERATOR] Call online_train_s_6_post_curate completed in 18.03s
+[LOG] generator call logged to generator_online_train_s_6_post_curate_20260310_133820_143.json
+
+--- Window 1, Step 7/15 (Global 7) ---
+[GENERATOR] Starting call online_train_s_7_gen_initial...
+[GENERATOR] Call online_train_s_7_gen_initial completed in 13.29s
+[LOG] generator call logged to generator_online_train_s_7_gen_initial_20260310_133833_485.json
+Correct: False | Retrieved: 21 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_7_round_0...
+[REFLECTOR] Call online_train_s_7_round_0 completed in 12.96s
+[LOG] reflector call logged to reflector_online_train_s_7_round_0_20260310_133846_458.json
+[GENERATOR] Starting call online_train_s_7_post_reflect_0...
+[GENERATOR] Call online_train_s_7_post_reflect_0 completed in 7.09s
+[LOG] generator call logged to generator_online_train_s_7_post_reflect_0_20260310_133853_599.json
+
+--- Running Curator + Graph Constructor at step 7 ---
+[CURATOR] Starting call online_train_s_7...
+[CURATOR] Call online_train_s_7 completed in 10.27s
+[LOG] curator call logged to curator_online_train_s_7_20260310_133903_866.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_7_post_curate...
+[GENERATOR] Call online_train_s_7_post_curate completed in 8.39s
+[LOG] generator call logged to generator_online_train_s_7_post_curate_20260310_133912_335.json
+
+--- Window 1, Step 8/15 (Global 8) ---
+[GENERATOR] Starting call online_train_s_8_gen_initial...
+[GENERATOR] Call online_train_s_8_gen_initial completed in 6.45s
+[LOG] generator call logged to generator_online_train_s_8_gen_initial_20260310_133918_842.json
+Correct: False | Retrieved: 21 nodes | Precision: 0.05
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_8_round_0...
+[REFLECTOR] Call online_train_s_8_round_0 completed in 13.39s
+[LOG] reflector call logged to reflector_online_train_s_8_round_0_20260310_133932_237.json
+[GENERATOR] Starting call online_train_s_8_post_reflect_0...
+[GENERATOR] Call online_train_s_8_post_reflect_0 completed in 5.97s
+[LOG] generator call logged to generator_online_train_s_8_post_reflect_0_20260310_133938_261.json
+
+--- Running Curator + Graph Constructor at step 8 ---
+[CURATOR] Starting call online_train_s_8...
+[CURATOR] Call online_train_s_8 completed in 15.66s
+[LOG] curator call logged to curator_online_train_s_8_20260310_133953_928.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_8_post_curate...
+[GENERATOR] Call online_train_s_8_post_curate completed in 6.62s
+[LOG] generator call logged to generator_online_train_s_8_post_curate_20260310_134000_665.json
+
+--- Window 1, Step 9/15 (Global 9) ---
+[GENERATOR] Starting call online_train_s_9_gen_initial...
+[GENERATOR] Call online_train_s_9_gen_initial completed in 8.87s
+[LOG] generator call logged to generator_online_train_s_9_gen_initial_20260310_134009_598.json
+Correct: False | Retrieved: 23 nodes | Precision: 0.13
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_9_round_0...
+[REFLECTOR] Call online_train_s_9_round_0 completed in 15.28s
+[LOG] reflector call logged to reflector_online_train_s_9_round_0_20260310_134024_890.json
+[GENERATOR] Starting call online_train_s_9_post_reflect_0...
+[GENERATOR] Call online_train_s_9_post_reflect_0 completed in 9.17s
+[LOG] generator call logged to generator_online_train_s_9_post_reflect_0_20260310_134034_098.json
+
+--- Running Curator + Graph Constructor at step 9 ---
+[CURATOR] Starting call online_train_s_9...
+[CURATOR] Call online_train_s_9 completed in 16.15s
+[LOG] curator call logged to curator_online_train_s_9_20260310_134050_262.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_9_post_curate...
+[GENERATOR] Call online_train_s_9_post_curate completed in 15.10s
+[LOG] generator call logged to generator_online_train_s_9_post_curate_20260310_134105_443.json
+
+--- Window 1, Step 10/15 (Global 10) ---
+[GENERATOR] Starting call online_train_s_10_gen_initial...
+[GENERATOR] Call online_train_s_10_gen_initial completed in 9.62s
+[LOG] generator call logged to generator_online_train_s_10_gen_initial_20260310_134115_116.json
+Correct: False | Retrieved: 24 nodes | Precision: 0.08
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_10_round_0...
+[REFLECTOR] Call online_train_s_10_round_0 completed in 10.04s
+[LOG] reflector call logged to reflector_online_train_s_10_round_0_20260310_134125_161.json
+[GENERATOR] Starting call online_train_s_10_post_reflect_0...
+[GENERATOR] Call online_train_s_10_post_reflect_0 completed in 15.84s
+[LOG] generator call logged to generator_online_train_s_10_post_reflect_0_20260310_134141_059.json
+
+--- Running Curator + Graph Constructor at step 10 ---
+[CURATOR] Starting call online_train_s_10...
+[CURATOR] Call online_train_s_10 completed in 14.99s
+[LOG] curator call logged to curator_online_train_s_10_20260310_134156_063.json
+  Applied 13 graph operations
+[GENERATOR] Starting call online_train_s_10_post_curate...
+[GENERATOR] Call online_train_s_10_post_curate completed in 8.52s
+[LOG] generator call logged to generator_online_train_s_10_post_curate_20260310_134204_679.json
+
+--- Window 1, Step 11/15 (Global 11) ---
+[GENERATOR] Starting call online_train_s_11_gen_initial...
+[GENERATOR] Call online_train_s_11_gen_initial completed in 7.99s
+[LOG] generator call logged to generator_online_train_s_11_gen_initial_20260310_134212_726.json
+Correct: False | Retrieved: 24 nodes | Precision: 0.08
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_11_round_0...
+[REFLECTOR] Call online_train_s_11_round_0 completed in 9.29s
+[LOG] reflector call logged to reflector_online_train_s_11_round_0_20260310_134222_022.json
+[GENERATOR] Starting call online_train_s_11_post_reflect_0...
+[GENERATOR] Call online_train_s_11_post_reflect_0 completed in 9.48s
+[LOG] generator call logged to generator_online_train_s_11_post_reflect_0_20260310_134231_566.json
+
+--- Running Curator + Graph Constructor at step 11 ---
+[CURATOR] Starting call online_train_s_11...
+[CURATOR] Call online_train_s_11 completed in 8.67s
+[LOG] curator call logged to curator_online_train_s_11_20260310_134240_243.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_11_post_curate...
+[GENERATOR] Call online_train_s_11_post_curate completed in 11.45s
+[LOG] generator call logged to generator_online_train_s_11_post_curate_20260310_134251_756.json
+
+--- Window 1, Step 12/15 (Global 12) ---
+[GENERATOR] Starting call online_train_s_12_gen_initial...
+[GENERATOR] Call online_train_s_12_gen_initial completed in 21.30s
+[LOG] generator call logged to generator_online_train_s_12_gen_initial_20260310_134313_115.json
+Correct: False | Retrieved: 26 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_12_round_0...
+[REFLECTOR] Call online_train_s_12_round_0 completed in 17.22s
+[LOG] reflector call logged to reflector_online_train_s_12_round_0_20260310_134330_332.json
+[GENERATOR] Starting call online_train_s_12_post_reflect_0...
+[GENERATOR] Call online_train_s_12_post_reflect_0 completed in 7.15s
+[LOG] generator call logged to generator_online_train_s_12_post_reflect_0_20260310_134337_527.json
+
+--- Running Curator + Graph Constructor at step 12 ---
+[CURATOR] Starting call online_train_s_12...
+[CURATOR] Call online_train_s_12 completed in 17.28s
+[LOG] curator call logged to curator_online_train_s_12_20260310_134354_810.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_12_post_curate...
+[GENERATOR] Call online_train_s_12_post_curate completed in 12.41s
+[LOG] generator call logged to generator_online_train_s_12_post_curate_20260310_134407_317.json
+
+--- Window 1, Step 13/15 (Global 13) ---
+[GENERATOR] Starting call online_train_s_13_gen_initial...
+[GENERATOR] Call online_train_s_13_gen_initial completed in 8.41s
+[LOG] generator call logged to generator_online_train_s_13_gen_initial_20260310_134415_786.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_13_round_0...
+[REFLECTOR] Call online_train_s_13_round_0 completed in 15.36s
+[LOG] reflector call logged to reflector_online_train_s_13_round_0_20260310_134431_152.json
+[GENERATOR] Starting call online_train_s_13_post_reflect_0...
+[GENERATOR] Call online_train_s_13_post_reflect_0 completed in 8.68s
+[LOG] generator call logged to generator_online_train_s_13_post_reflect_0_20260310_134439_884.json
+
+--- Running Curator + Graph Constructor at step 13 ---
+[CURATOR] Starting call online_train_s_13...
+[CURATOR] Call online_train_s_13 completed in 12.63s
+[LOG] curator call logged to curator_online_train_s_13_20260310_134452_516.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_13_post_curate...
+[GENERATOR] Call online_train_s_13_post_curate completed in 10.26s
+[LOG] generator call logged to generator_online_train_s_13_post_curate_20260310_134502_852.json
+
+--- Window 1, Step 14/15 (Global 14) ---
+[GENERATOR] Starting call online_train_s_14_gen_initial...
+[GENERATOR] Empty response for online_train_s_14_gen_initial (attempt 1/3), retrying in 6.7s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_14_gen_initial_20260310_134554_814.json
+[GENERATOR] Empty response for online_train_s_14_gen_initial (attempt 2/3), retrying in 13.3s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_14_gen_initial_20260310_134653_741.json
+[GENERATOR] Empty response for online_train_s_14_gen_initial (attempt 3/3), retrying in 9.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_14_gen_initial_20260310_134759_208.json
+[GENERATOR] Empty response for online_train_s_14_gen_initial after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_14_gen_initial_20260310_134901_275.json
+[WARN] Skipping online training step 14: Exception: API returned None content
+
+--- Window 1, Step 15/15 (Global 15) ---
+[GENERATOR] Starting call online_train_s_15_gen_initial...
+[GENERATOR] Call online_train_s_15_gen_initial completed in 8.59s
+[LOG] generator call logged to generator_online_train_s_15_gen_initial_20260310_134909_910.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_15_round_0...
+[REFLECTOR] Call online_train_s_15_round_0 completed in 12.71s
+[LOG] reflector call logged to reflector_online_train_s_15_round_0_20260310_134922_630.json
+[GENERATOR] Starting call online_train_s_15_post_reflect_0...
+[GENERATOR] Call online_train_s_15_post_reflect_0 completed in 14.31s
+[LOG] generator call logged to generator_online_train_s_15_post_reflect_0_20260310_134936_998.json
+
+--- Running Curator + Graph Constructor at step 15 ---
+[CURATOR] Starting call online_train_s_15...
+[CURATOR] Call online_train_s_15 completed in 14.08s
+[LOG] curator call logged to curator_online_train_s_15_20260310_134951_074.json
+  Applied 11 graph operations
+[GENERATOR] Starting call online_train_s_15_post_curate...
+[GENERATOR] Call online_train_s_15_post_curate completed in 7.95s
+[LOG] generator call logged to generator_online_train_s_15_post_curate_20260310_134959_154.json
+
+============================================================
+WINDOW 2/5 (samples 15-29)
+============================================================
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_14 completed in 7.64s
+[LOG] generator call logged to generator_test_eval_14_20260310_135007_209.json
+[GENERATOR] Call test_eval_13 completed in 7.66s
+[LOG] generator call logged to generator_test_eval_13_20260310_135007_216.json
+[GENERATOR] Call test_eval_2 completed in 8.63s
+[LOG] generator call logged to generator_test_eval_2_20260310_135008_181.json
+[GENERATOR] Call test_eval_12 completed in 9.45s
+[LOG] generator call logged to generator_test_eval_12_20260310_135009_003.json
+[GENERATOR] Call test_eval_9 completed in 9.73s
+[LOG] generator call logged to generator_test_eval_9_20260310_135009_286.json
+[GENERATOR] Call test_eval_10 completed in 9.76s
+[LOG] generator call logged to generator_test_eval_10_20260310_135009_307.json
+[GENERATOR] Call test_eval_6 completed in 9.95s
+[LOG] generator call logged to generator_test_eval_6_20260310_135009_489.json
+[GENERATOR] Call test_eval_5 completed in 10.06s
+[LOG] generator call logged to generator_test_eval_5_20260310_135009_568.json
+[GENERATOR] Call test_eval_7 completed in 10.89s
+[LOG] generator call logged to generator_test_eval_7_20260310_135010_388.json
+[GENERATOR] Call test_eval_8 completed in 11.22s
+[LOG] generator call logged to generator_test_eval_8_20260310_135010_771.json
+[GENERATOR] Call test_eval_11 completed in 13.41s
+[LOG] generator call logged to generator_test_eval_11_20260310_135012_943.json
+[GENERATOR] Call test_eval_4 completed in 16.05s
+[LOG] generator call logged to generator_test_eval_4_20260310_135015_584.json
+[GENERATOR] Call test_eval_0 completed in 16.27s
+[LOG] generator call logged to generator_test_eval_0_20260310_135015_757.json
+[GENERATOR] Empty response for test_eval_1 (attempt 1/3), retrying in 8.4s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_1_20260310_135052_161.json
+[GENERATOR] Empty response for test_eval_3 (attempt 1/3), retrying in 10.5s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_3_20260310_135052_241.json
+[GENERATOR] Call test_eval_1 completed in 70.47s
+[LOG] generator call logged to generator_test_eval_1_20260310_135109_990.json
+[GENERATOR] Call test_eval_3 completed in 78.69s
+[LOG] generator call logged to generator_test_eval_3_20260310_135118_210.json
+
+Final Accuracy: 0.017 (0/15)
+Window 2 accuracy: 0.017 | Cumulative: 0.017
+
+--- Window 2, Step 1/15 (Global 16) ---
+[GENERATOR] Starting call online_train_s_16_gen_initial...
+[GENERATOR] Call online_train_s_16_gen_initial completed in 7.50s
+[LOG] generator call logged to generator_online_train_s_16_gen_initial_20260310_135125_762.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_16_round_0...
+[REFLECTOR] Call online_train_s_16_round_0 completed in 11.43s
+[LOG] reflector call logged to reflector_online_train_s_16_round_0_20260310_135137_192.json
+[GENERATOR] Starting call online_train_s_16_post_reflect_0...
+[GENERATOR] Call online_train_s_16_post_reflect_0 completed in 6.67s
+[LOG] generator call logged to generator_online_train_s_16_post_reflect_0_20260310_135143_910.json
+
+--- Running Curator + Graph Constructor at step 16 ---
+[CURATOR] Starting call online_train_s_16...
+[CURATOR] Call online_train_s_16 completed in 14.37s
+[LOG] curator call logged to curator_online_train_s_16_20260310_135158_302.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_16_post_curate...
+[GENERATOR] Call online_train_s_16_post_curate completed in 7.79s
+[LOG] generator call logged to generator_online_train_s_16_post_curate_20260310_135206_189.json
+
+--- Window 2, Step 2/15 (Global 17) ---
+[GENERATOR] Starting call online_train_s_17_gen_initial...
+[GENERATOR] Call online_train_s_17_gen_initial completed in 9.88s
+[LOG] generator call logged to generator_online_train_s_17_gen_initial_20260310_135216_126.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_17_round_0...
+[REFLECTOR] Call online_train_s_17_round_0 completed in 9.58s
+[LOG] reflector call logged to reflector_online_train_s_17_round_0_20260310_135225_710.json
+[GENERATOR] Starting call online_train_s_17_post_reflect_0...
+[GENERATOR] Empty response for online_train_s_17_post_reflect_0 (attempt 1/3), retrying in 14.0s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_17_post_reflect_0_20260310_135318_577.json
+[GENERATOR] Call online_train_s_17_post_reflect_0 completed in 75.17s
+[LOG] generator call logged to generator_online_train_s_17_post_reflect_0_20260310_135340_929.json
+
+--- Running Curator + Graph Constructor at step 17 ---
+[CURATOR] Starting call online_train_s_17...
+[CURATOR] Call online_train_s_17 completed in 15.57s
+[LOG] curator call logged to curator_online_train_s_17_20260310_135356_507.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_17_post_curate...
+[GENERATOR] Call online_train_s_17_post_curate completed in 11.83s
+[LOG] generator call logged to generator_online_train_s_17_post_curate_20260310_135408_427.json
+
+--- Window 2, Step 3/15 (Global 18) ---
+[GENERATOR] Starting call online_train_s_18_gen_initial...
+[GENERATOR] Call online_train_s_18_gen_initial completed in 7.46s
+[LOG] generator call logged to generator_online_train_s_18_gen_initial_20260310_135415_940.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_18_round_0...
+[REFLECTOR] Call online_train_s_18_round_0 completed in 8.72s
+[LOG] reflector call logged to reflector_online_train_s_18_round_0_20260310_135424_661.json
+[GENERATOR] Starting call online_train_s_18_post_reflect_0...
+[GENERATOR] Call online_train_s_18_post_reflect_0 completed in 6.43s
+[LOG] generator call logged to generator_online_train_s_18_post_reflect_0_20260310_135431_144.json
+
+--- Running Curator + Graph Constructor at step 18 ---
+[CURATOR] Starting call online_train_s_18...
+[CURATOR] Call online_train_s_18 completed in 11.24s
+[LOG] curator call logged to curator_online_train_s_18_20260310_135442_381.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_18_post_curate...
+[GENERATOR] Call online_train_s_18_post_curate completed in 27.55s
+[LOG] generator call logged to generator_online_train_s_18_post_curate_20260310_135510_036.json
+
+--- Window 2, Step 4/15 (Global 19) ---
+[GENERATOR] Starting call online_train_s_19_gen_initial...
+[GENERATOR] Call online_train_s_19_gen_initial completed in 13.96s
+[LOG] generator call logged to generator_online_train_s_19_gen_initial_20260310_135524_064.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_19_round_0...
+[REFLECTOR] Call online_train_s_19_round_0 completed in 14.40s
+[LOG] reflector call logged to reflector_online_train_s_19_round_0_20260310_135538_474.json
+[GENERATOR] Starting call online_train_s_19_post_reflect_0...
+[GENERATOR] Empty response for online_train_s_19_post_reflect_0 (attempt 1/3), retrying in 12.1s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_19_post_reflect_0_20260310_135631_147.json
+[GENERATOR] Call online_train_s_19_post_reflect_0 completed in 80.08s
+[LOG] generator call logged to generator_online_train_s_19_post_reflect_0_20260310_135658_618.json
+
+--- Running Curator + Graph Constructor at step 19 ---
+[CURATOR] Starting call online_train_s_19...
+[CURATOR] Call online_train_s_19 completed in 12.62s
+[LOG] curator call logged to curator_online_train_s_19_20260310_135711_240.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_19_post_curate...
+[GENERATOR] Call online_train_s_19_post_curate completed in 16.56s
+[LOG] generator call logged to generator_online_train_s_19_post_curate_20260310_135727_896.json
+
+--- Window 2, Step 5/15 (Global 20) ---
+[GENERATOR] Starting call online_train_s_20_gen_initial...
+[GENERATOR] Call online_train_s_20_gen_initial completed in 8.34s
+[LOG] generator call logged to generator_online_train_s_20_gen_initial_20260310_135736_287.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_20_round_0...
+[REFLECTOR] Call online_train_s_20_round_0 completed in 14.57s
+[LOG] reflector call logged to reflector_online_train_s_20_round_0_20260310_135750_872.json
+[GENERATOR] Starting call online_train_s_20_post_reflect_0...
+[GENERATOR] Call online_train_s_20_post_reflect_0 completed in 10.52s
+[LOG] generator call logged to generator_online_train_s_20_post_reflect_0_20260310_135801_428.json
+
+--- Running Curator + Graph Constructor at step 20 ---
+[CURATOR] Starting call online_train_s_20...
+[CURATOR] Call online_train_s_20 completed in 16.82s
+[LOG] curator call logged to curator_online_train_s_20_20260310_135818_256.json
+  Applied 19 graph operations
+[GENERATOR] Starting call online_train_s_20_post_curate...
+[GENERATOR] Call online_train_s_20_post_curate completed in 7.17s
+[LOG] generator call logged to generator_online_train_s_20_post_curate_20260310_135825_585.json
+
+--- Window 2, Step 6/15 (Global 21) ---
+[GENERATOR] Starting call online_train_s_21_gen_initial...
+[GENERATOR] Call online_train_s_21_gen_initial completed in 11.81s
+[LOG] generator call logged to generator_online_train_s_21_gen_initial_20260310_135837_458.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_21_round_0...
+[REFLECTOR] Call online_train_s_21_round_0 completed in 9.56s
+[LOG] reflector call logged to reflector_online_train_s_21_round_0_20260310_135847_020.json
+[GENERATOR] Starting call online_train_s_21_post_reflect_0...
+[GENERATOR] Call online_train_s_21_post_reflect_0 completed in 6.45s
+[LOG] generator call logged to generator_online_train_s_21_post_reflect_0_20260310_135853_539.json
+
+--- Running Curator + Graph Constructor at step 21 ---
+[CURATOR] Starting call online_train_s_21...
+[CURATOR] Call online_train_s_21 completed in 15.43s
+[LOG] curator call logged to curator_online_train_s_21_20260310_135908_983.json
+  Applied 8 graph operations
+[GENERATOR] Starting call online_train_s_21_post_curate...
+[GENERATOR] Call online_train_s_21_post_curate completed in 8.91s
+[LOG] generator call logged to generator_online_train_s_21_post_curate_20260310_135918_001.json
+
+--- Window 2, Step 7/15 (Global 22) ---
+[GENERATOR] Starting call online_train_s_22_gen_initial...
+[GENERATOR] Call online_train_s_22_gen_initial completed in 8.09s
+[LOG] generator call logged to generator_online_train_s_22_gen_initial_20260310_135926_140.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_22_round_0...
+[REFLECTOR] Call online_train_s_22_round_0 completed in 10.49s
+[LOG] reflector call logged to reflector_online_train_s_22_round_0_20260310_135936_640.json
+[GENERATOR] Starting call online_train_s_22_post_reflect_0...
+[GENERATOR] Call online_train_s_22_post_reflect_0 completed in 10.87s
+[LOG] generator call logged to generator_online_train_s_22_post_reflect_0_20260310_135947_548.json
+Corrected after reflection round 1!
+
+--- Running Curator + Graph Constructor at step 22 ---
+[CURATOR] Starting call online_train_s_22...
+[CURATOR] Call online_train_s_22 completed in 11.95s
+[LOG] curator call logged to curator_online_train_s_22_20260310_135959_506.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_22_post_curate...
+[GENERATOR] Call online_train_s_22_post_curate completed in 8.80s
+[LOG] generator call logged to generator_online_train_s_22_post_curate_20260310_140008_396.json
+
+--- Window 2, Step 8/15 (Global 23) ---
+[GENERATOR] Starting call online_train_s_23_gen_initial...
+[GENERATOR] Call online_train_s_23_gen_initial completed in 10.51s
+[LOG] generator call logged to generator_online_train_s_23_gen_initial_20260310_140018_965.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_23_round_0...
+[REFLECTOR] Call online_train_s_23_round_0 completed in 10.76s
+[LOG] reflector call logged to reflector_online_train_s_23_round_0_20260310_140029_728.json
+[GENERATOR] Starting call online_train_s_23_post_reflect_0...
+[GENERATOR] Call online_train_s_23_post_reflect_0 completed in 7.34s
+[LOG] generator call logged to generator_online_train_s_23_post_reflect_0_20260310_140037_116.json
+
+--- Running Curator + Graph Constructor at step 23 ---
+[CURATOR] Starting call online_train_s_23...
+[CURATOR] Call online_train_s_23 completed in 14.04s
+[LOG] curator call logged to curator_online_train_s_23_20260310_140051_178.json
+  Applied 10 graph operations
+[GENERATOR] Starting call online_train_s_23_post_curate...
+[GENERATOR] Call online_train_s_23_post_curate completed in 10.57s
+[LOG] generator call logged to generator_online_train_s_23_post_curate_20260310_140101_864.json
+
+--- Window 2, Step 9/15 (Global 24) ---
+[GENERATOR] Starting call online_train_s_24_gen_initial...
+[GENERATOR] Call online_train_s_24_gen_initial completed in 9.05s
+[LOG] generator call logged to generator_online_train_s_24_gen_initial_20260310_140110_969.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_24_round_0...
+[REFLECTOR] Call online_train_s_24_round_0 completed in 13.02s
+[LOG] reflector call logged to reflector_online_train_s_24_round_0_20260310_140123_995.json
+[GENERATOR] Starting call online_train_s_24_post_reflect_0...
+[GENERATOR] Call online_train_s_24_post_reflect_0 completed in 8.68s
+[LOG] generator call logged to generator_online_train_s_24_post_reflect_0_20260310_140132_732.json
+
+--- Running Curator + Graph Constructor at step 24 ---
+[CURATOR] Starting call online_train_s_24...
+[CURATOR] Call online_train_s_24 completed in 16.84s
+[LOG] curator call logged to curator_online_train_s_24_20260310_140149_574.json
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_24_gc_extract...
+[GRAPH_CONSTRUCTOR] Call online_train_s_24_gc_extract completed in 14.31s
+[LOG] graph_constructor call logged to graph_constructor_online_train_s_24_gc_extract_20260310_140203_879.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_24_post_curate...
+[GENERATOR] Call online_train_s_24_post_curate completed in 10.56s
+[LOG] generator call logged to generator_online_train_s_24_post_curate_20260310_140214_630.json
+
+--- Window 2, Step 10/15 (Global 25) ---
+[GENERATOR] Starting call online_train_s_25_gen_initial...
+[GENERATOR] Call online_train_s_25_gen_initial completed in 7.11s
+[LOG] generator call logged to generator_online_train_s_25_gen_initial_20260310_140221_791.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_25_round_0...
+[REFLECTOR] Call online_train_s_25_round_0 completed in 15.08s
+[LOG] reflector call logged to reflector_online_train_s_25_round_0_20260310_140236_881.json
+[GENERATOR] Starting call online_train_s_25_post_reflect_0...
+[GENERATOR] Call online_train_s_25_post_reflect_0 completed in 7.14s
+[LOG] generator call logged to generator_online_train_s_25_post_reflect_0_20260310_140244_084.json
+
+--- Running Curator + Graph Constructor at step 25 ---
+[CURATOR] Starting call online_train_s_25...
+[CURATOR] Call online_train_s_25 completed in 14.48s
+[LOG] curator call logged to curator_online_train_s_25_20260310_140258_581.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_25_post_curate...
+[GENERATOR] Call online_train_s_25_post_curate completed in 14.64s
+[LOG] generator call logged to generator_online_train_s_25_post_curate_20260310_140313_317.json
+
+--- Window 2, Step 11/15 (Global 26) ---
+[GENERATOR] Starting call online_train_s_26_gen_initial...
+[GENERATOR] Call online_train_s_26_gen_initial completed in 6.13s
+[LOG] generator call logged to generator_online_train_s_26_gen_initial_20260310_140319_497.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_26_round_0...
+[REFLECTOR] Call online_train_s_26_round_0 completed in 14.05s
+[LOG] reflector call logged to reflector_online_train_s_26_round_0_20260310_140333_559.json
+[GENERATOR] Starting call online_train_s_26_post_reflect_0...
+[GENERATOR] Call online_train_s_26_post_reflect_0 completed in 6.00s
+[LOG] generator call logged to generator_online_train_s_26_post_reflect_0_20260310_140339_605.json
+
+--- Running Curator + Graph Constructor at step 26 ---
+[CURATOR] Starting call online_train_s_26...
+[CURATOR] Call online_train_s_26 completed in 11.76s
+[LOG] curator call logged to curator_online_train_s_26_20260310_140351_376.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_26_post_curate...
+[GENERATOR] Call online_train_s_26_post_curate completed in 6.66s
+[LOG] generator call logged to generator_online_train_s_26_post_curate_20260310_140358_148.json
+
+--- Window 2, Step 12/15 (Global 27) ---
+[GENERATOR] Starting call online_train_s_27_gen_initial...
+[GENERATOR] Call online_train_s_27_gen_initial completed in 6.44s
+[LOG] generator call logged to generator_online_train_s_27_gen_initial_20260310_140404_631.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_27_round_0...
+[REFLECTOR] Call online_train_s_27_round_0 completed in 16.34s
+[LOG] reflector call logged to reflector_online_train_s_27_round_0_20260310_140420_974.json
+[GENERATOR] Starting call online_train_s_27_post_reflect_0...
+[GENERATOR] Call online_train_s_27_post_reflect_0 completed in 6.52s
+[LOG] generator call logged to generator_online_train_s_27_post_reflect_0_20260310_140427_547.json
+
+--- Running Curator + Graph Constructor at step 27 ---
+[CURATOR] Starting call online_train_s_27...
+[CURATOR] Call online_train_s_27 completed in 15.47s
+[LOG] curator call logged to curator_online_train_s_27_20260310_140443_028.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_27_post_curate...
+[GENERATOR] Call online_train_s_27_post_curate completed in 8.27s
+[LOG] generator call logged to generator_online_train_s_27_post_curate_20260310_140451_389.json
+
+--- Window 2, Step 13/15 (Global 28) ---
+[GENERATOR] Starting call online_train_s_28_gen_initial...
+[GENERATOR] Call online_train_s_28_gen_initial completed in 7.37s
+[LOG] generator call logged to generator_online_train_s_28_gen_initial_20260310_140458_801.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_28_round_0...
+[REFLECTOR] Call online_train_s_28_round_0 completed in 11.98s
+[LOG] reflector call logged to reflector_online_train_s_28_round_0_20260310_140510_785.json
+[GENERATOR] Starting call online_train_s_28_post_reflect_0...
+[GENERATOR] Call online_train_s_28_post_reflect_0 completed in 15.94s
+[LOG] generator call logged to generator_online_train_s_28_post_reflect_0_20260310_140526_777.json
+
+--- Running Curator + Graph Constructor at step 28 ---
+[CURATOR] Starting call online_train_s_28...
+[CURATOR] Call online_train_s_28 completed in 14.05s
+[LOG] curator call logged to curator_online_train_s_28_20260310_140540_830.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_28_post_curate...
+[GENERATOR] Call online_train_s_28_post_curate completed in 6.26s
+[LOG] generator call logged to generator_online_train_s_28_post_curate_20260310_140547_193.json
+
+--- Window 2, Step 14/15 (Global 29) ---
+[GENERATOR] Starting call online_train_s_29_gen_initial...
+[GENERATOR] Call online_train_s_29_gen_initial completed in 7.04s
+[LOG] generator call logged to generator_online_train_s_29_gen_initial_20260310_140554_287.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_29_round_0...
+[REFLECTOR] Call online_train_s_29_round_0 completed in 11.58s
+[LOG] reflector call logged to reflector_online_train_s_29_round_0_20260310_140605_870.json
+[GENERATOR] Starting call online_train_s_29_post_reflect_0...
+[GENERATOR] Output truncated (finish_reason=length) for online_train_s_29_post_reflect_0 — skipping sample
+[LOG] generator call logged to generator_online_train_s_29_post_reflect_0_20260310_140658_303.json
+
+--- Running Curator + Graph Constructor at step 29 ---
+[CURATOR] Starting call online_train_s_29...
+[CURATOR] Call online_train_s_29 completed in 11.33s
+[LOG] curator call logged to curator_online_train_s_29_20260310_140709_639.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_29_post_curate...
+[GENERATOR] Call online_train_s_29_post_curate completed in 8.50s
+[LOG] generator call logged to generator_online_train_s_29_post_curate_20260310_140718_224.json
+
+--- Window 2, Step 15/15 (Global 30) ---
+[GENERATOR] Starting call online_train_s_30_gen_initial...
+[GENERATOR] Call online_train_s_30_gen_initial completed in 6.11s
+[LOG] generator call logged to generator_online_train_s_30_gen_initial_20260310_140724_396.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_30_round_0...
+[REFLECTOR] Call online_train_s_30_round_0 completed in 18.01s
+[LOG] reflector call logged to reflector_online_train_s_30_round_0_20260310_140742_426.json
+[GENERATOR] Starting call online_train_s_30_post_reflect_0...
+[GENERATOR] Call online_train_s_30_post_reflect_0 completed in 7.03s
+[LOG] generator call logged to generator_online_train_s_30_post_reflect_0_20260310_140749_513.json
+
+--- Running Curator + Graph Constructor at step 30 ---
+[CURATOR] Starting call online_train_s_30...
+[CURATOR] Call online_train_s_30 completed in 14.17s
+[LOG] curator call logged to curator_online_train_s_30_20260310_140803_687.json
+  Applied 2 graph operations
+[GENERATOR] Starting call online_train_s_30_post_curate...
+[GENERATOR] Call online_train_s_30_post_curate completed in 5.74s
+[LOG] generator call logged to generator_online_train_s_30_post_curate_20260310_140809_523.json
+
+============================================================
+WINDOW 3/5 (samples 30-44)
+============================================================
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Call test_eval_1 completed in 7.69s
+[LOG] generator call logged to generator_test_eval_1_20260310_140817_520.json
+[GENERATOR] Call test_eval_5 completed in 9.82s
+[LOG] generator call logged to generator_test_eval_5_20260310_140819_742.json
+[GENERATOR] Call test_eval_3 completed in 11.17s
+[LOG] generator call logged to generator_test_eval_3_20260310_140821_052.json
+[GENERATOR] Call test_eval_14 completed in 11.42s
+[LOG] generator call logged to generator_test_eval_14_20260310_140821_337.json
+[GENERATOR] Call test_eval_6 completed in 11.69s
+[LOG] generator call logged to generator_test_eval_6_20260310_140821_566.json
+[GENERATOR] Call test_eval_10 completed in 12.42s
+[LOG] generator call logged to generator_test_eval_10_20260310_140822_312.json
+[GENERATOR] Call test_eval_2 completed in 13.96s
+[LOG] generator call logged to generator_test_eval_2_20260310_140823_853.json
+[GENERATOR] Call test_eval_0 completed in 14.00s
+[LOG] generator call logged to generator_test_eval_0_20260310_140823_857.json
+[GENERATOR] Call test_eval_8 completed in 14.16s
+[LOG] generator call logged to generator_test_eval_8_20260310_140824_069.json
+[GENERATOR] Call test_eval_9 completed in 14.45s
+[LOG] generator call logged to generator_test_eval_9_20260310_140824_360.json
+[GENERATOR] Call test_eval_7 completed in 14.88s
+[LOG] generator call logged to generator_test_eval_7_20260310_140824_793.json
+[GENERATOR] Call test_eval_4 completed in 15.73s
+[LOG] generator call logged to generator_test_eval_4_20260310_140825_656.json
+[GENERATOR] Call test_eval_12 completed in 16.78s
+[LOG] generator call logged to generator_test_eval_12_20260310_140826_711.json
+[GENERATOR] Call test_eval_13 completed in 30.75s
+[LOG] generator call logged to generator_test_eval_13_20260310_140840_618.json
+[GENERATOR] Empty response for test_eval_11 (attempt 1/3), retrying in 12.0s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_11_20260310_140905_677.json
+[GENERATOR] Call test_eval_11 completed in 83.17s
+[LOG] generator call logged to generator_test_eval_11_20260310_140933_053.json
+
+Final Accuracy: 0.100 (0/15)
+Window 3 accuracy: 0.100 | Cumulative: 0.044
+
+--- Window 3, Step 1/15 (Global 31) ---
+[GENERATOR] Starting call online_train_s_31_gen_initial...
+[GENERATOR] Call online_train_s_31_gen_initial completed in 7.44s
+[LOG] generator call logged to generator_online_train_s_31_gen_initial_20260310_140940_553.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_31_round_0...
+[REFLECTOR] Call online_train_s_31_round_0 completed in 13.08s
+[LOG] reflector call logged to reflector_online_train_s_31_round_0_20260310_140953_643.json
+[GENERATOR] Starting call online_train_s_31_post_reflect_0...
+[GENERATOR] Call online_train_s_31_post_reflect_0 completed in 7.54s
+[LOG] generator call logged to generator_online_train_s_31_post_reflect_0_20260310_141001_224.json
+
+--- Running Curator + Graph Constructor at step 31 ---
+[CURATOR] Starting call online_train_s_31...
+[CURATOR] Call online_train_s_31 completed in 17.19s
+[LOG] curator call logged to curator_online_train_s_31_20260310_141018_439.json
+  Applied 8 graph operations
+[GENERATOR] Starting call online_train_s_31_post_curate...
+[GENERATOR] Call online_train_s_31_post_curate completed in 7.74s
+[LOG] generator call logged to generator_online_train_s_31_post_curate_20260310_141026_317.json
+
+--- Window 3, Step 2/15 (Global 32) ---
+[GENERATOR] Starting call online_train_s_32_gen_initial...
+[GENERATOR] Call online_train_s_32_gen_initial completed in 9.67s
+[LOG] generator call logged to generator_online_train_s_32_gen_initial_20260310_141036_031.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_32_round_0...
+[REFLECTOR] Call online_train_s_32_round_0 completed in 11.41s
+[LOG] reflector call logged to reflector_online_train_s_32_round_0_20260310_141047_446.json
+[GENERATOR] Starting call online_train_s_32_post_reflect_0...
+[GENERATOR] Call online_train_s_32_post_reflect_0 completed in 10.73s
+[LOG] generator call logged to generator_online_train_s_32_post_reflect_0_20260310_141058_224.json
+
+--- Running Curator + Graph Constructor at step 32 ---
+[CURATOR] Starting call online_train_s_32...
+[CURATOR] Call online_train_s_32 completed in 9.20s
+[LOG] curator call logged to curator_online_train_s_32_20260310_141107_432.json
+  Applied 0 graph operations
+[GENERATOR] Starting call online_train_s_32_post_curate...
+[GENERATOR] Call online_train_s_32_post_curate completed in 9.92s
+[LOG] generator call logged to generator_online_train_s_32_post_curate_20260310_141117_396.json
+
+--- Window 3, Step 3/15 (Global 33) ---
+[GENERATOR] Starting call online_train_s_33_gen_initial...
+[GENERATOR] Call online_train_s_33_gen_initial completed in 9.52s
+[LOG] generator call logged to generator_online_train_s_33_gen_initial_20260310_141126_962.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_33_round_0...
+[REFLECTOR] Call online_train_s_33_round_0 completed in 12.34s
+[LOG] reflector call logged to reflector_online_train_s_33_round_0_20260310_141139_313.json
+[GENERATOR] Starting call online_train_s_33_post_reflect_0...
+[GENERATOR] Call online_train_s_33_post_reflect_0 completed in 11.97s
+[LOG] generator call logged to generator_online_train_s_33_post_reflect_0_20260310_141151_333.json
+
+--- Running Curator + Graph Constructor at step 33 ---
+[CURATOR] Starting call online_train_s_33...
+[CURATOR] Call online_train_s_33 completed in 14.01s
+[LOG] curator call logged to curator_online_train_s_33_20260310_141205_349.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_33_post_curate...
+[GENERATOR] Call online_train_s_33_post_curate completed in 7.86s
+[LOG] generator call logged to generator_online_train_s_33_post_curate_20260310_141213_286.json
+
+--- Window 3, Step 4/15 (Global 34) ---
+[GENERATOR] Starting call online_train_s_34_gen_initial...
+[GENERATOR] Call online_train_s_34_gen_initial completed in 7.02s
+[LOG] generator call logged to generator_online_train_s_34_gen_initial_20260310_141220_349.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_34_round_0...
+[REFLECTOR] Call online_train_s_34_round_0 completed in 14.42s
+[LOG] reflector call logged to reflector_online_train_s_34_round_0_20260310_141234_767.json
+[GENERATOR] Starting call online_train_s_34_post_reflect_0...
+[GENERATOR] Call online_train_s_34_post_reflect_0 completed in 13.32s
+[LOG] generator call logged to generator_online_train_s_34_post_reflect_0_20260310_141248_139.json
+
+--- Running Curator + Graph Constructor at step 34 ---
+[CURATOR] Starting call online_train_s_34...
+[CURATOR] Call online_train_s_34 completed in 15.21s
+[LOG] curator call logged to curator_online_train_s_34_20260310_141303_351.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_34_post_curate...
+[GENERATOR] Call online_train_s_34_post_curate completed in 21.42s
+[LOG] generator call logged to generator_online_train_s_34_post_curate_20260310_141324_857.json
+
+--- Window 3, Step 5/15 (Global 35) ---
+[GENERATOR] Starting call online_train_s_35_gen_initial...
+[GENERATOR] Call online_train_s_35_gen_initial completed in 9.82s
+[LOG] generator call logged to generator_online_train_s_35_gen_initial_20260310_141334_717.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_35_round_0...
+[REFLECTOR] Call online_train_s_35_round_0 completed in 17.48s
+[LOG] reflector call logged to reflector_online_train_s_35_round_0_20260310_141352_208.json
+[GENERATOR] Starting call online_train_s_35_post_reflect_0...
+[GENERATOR] Call online_train_s_35_post_reflect_0 completed in 10.80s
+[LOG] generator call logged to generator_online_train_s_35_post_reflect_0_20260310_141403_069.json
+
+--- Running Curator + Graph Constructor at step 35 ---
+[CURATOR] Starting call online_train_s_35...
+[CURATOR] Call online_train_s_35 completed in 8.24s
+[LOG] curator call logged to curator_online_train_s_35_20260310_141411_320.json
+  Applied 1 graph operations
+[GENERATOR] Starting call online_train_s_35_post_curate...
+[GENERATOR] Call online_train_s_35_post_curate completed in 10.48s
+[LOG] generator call logged to generator_online_train_s_35_post_curate_20260310_141421_857.json
+
+--- Window 3, Step 6/15 (Global 36) ---
+[GENERATOR] Starting call online_train_s_36_gen_initial...
+[GENERATOR] Call online_train_s_36_gen_initial completed in 11.12s
+[LOG] generator call logged to generator_online_train_s_36_gen_initial_20260310_141433_034.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_36_round_0...
+[REFLECTOR] Call online_train_s_36_round_0 completed in 18.35s
+[LOG] reflector call logged to reflector_online_train_s_36_round_0_20260310_141451_382.json
+[GENERATOR] Starting call online_train_s_36_post_reflect_0...
+[GENERATOR] Call online_train_s_36_post_reflect_0 completed in 8.92s
+[LOG] generator call logged to generator_online_train_s_36_post_reflect_0_20260310_141500_334.json
+
+--- Running Curator + Graph Constructor at step 36 ---
+[CURATOR] Starting call online_train_s_36...
+[CURATOR] Call online_train_s_36 completed in 10.08s
+[LOG] curator call logged to curator_online_train_s_36_20260310_141510_428.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_36_post_curate...
+[GENERATOR] Call online_train_s_36_post_curate completed in 8.95s
+[LOG] generator call logged to generator_online_train_s_36_post_curate_20260310_141519_487.json
+
+--- Window 3, Step 7/15 (Global 37) ---
+[GENERATOR] Starting call online_train_s_37_gen_initial...
+[GENERATOR] Call online_train_s_37_gen_initial completed in 8.69s
+[LOG] generator call logged to generator_online_train_s_37_gen_initial_20260310_141528_212.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_37_round_0...
+[REFLECTOR] Call online_train_s_37_round_0 completed in 9.61s
+[LOG] reflector call logged to reflector_online_train_s_37_round_0_20260310_141537_823.json
+[GENERATOR] Starting call online_train_s_37_post_reflect_0...
+[GENERATOR] Call online_train_s_37_post_reflect_0 completed in 8.64s
+[LOG] generator call logged to generator_online_train_s_37_post_reflect_0_20260310_141546_509.json
+
+--- Running Curator + Graph Constructor at step 37 ---
+[CURATOR] Starting call online_train_s_37...
+[CURATOR] Call online_train_s_37 completed in 14.76s
+[LOG] curator call logged to curator_online_train_s_37_20260310_141601_278.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_37_post_curate...
+[GENERATOR] Call online_train_s_37_post_curate completed in 20.96s
+[LOG] generator call logged to generator_online_train_s_37_post_curate_20260310_141622_346.json
+
+--- Window 3, Step 8/15 (Global 38) ---
+[GENERATOR] Starting call online_train_s_38_gen_initial...
+[GENERATOR] Call online_train_s_38_gen_initial completed in 7.22s
+[LOG] generator call logged to generator_online_train_s_38_gen_initial_20260310_141629_614.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_38_round_0...
+[REFLECTOR] Call online_train_s_38_round_0 completed in 10.37s
+[LOG] reflector call logged to reflector_online_train_s_38_round_0_20260310_141639_988.json
+[GENERATOR] Starting call online_train_s_38_post_reflect_0...
+[GENERATOR] Call online_train_s_38_post_reflect_0 completed in 17.33s
+[LOG] generator call logged to generator_online_train_s_38_post_reflect_0_20260310_141657_357.json
+
+--- Running Curator + Graph Constructor at step 38 ---
+[CURATOR] Starting call online_train_s_38...
+[CURATOR] Call online_train_s_38 completed in 13.69s
+[LOG] curator call logged to curator_online_train_s_38_20260310_141711_051.json
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_38_gc_extract...
+[GRAPH_CONSTRUCTOR] Call online_train_s_38_gc_extract completed in 11.94s
+[LOG] graph_constructor call logged to graph_constructor_online_train_s_38_gc_extract_20260310_141722_996.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_38_post_curate...
+[GENERATOR] Call online_train_s_38_post_curate completed in 7.87s
+[LOG] generator call logged to generator_online_train_s_38_post_curate_20260310_141730_989.json
+
+--- Window 3, Step 9/15 (Global 39) ---
+[GENERATOR] Starting call online_train_s_39_gen_initial...
+[GENERATOR] Call online_train_s_39_gen_initial completed in 6.57s
+[LOG] generator call logged to generator_online_train_s_39_gen_initial_20260310_141737_631.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.13
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_39_round_0...
+[REFLECTOR] Call online_train_s_39_round_0 completed in 12.98s
+[LOG] reflector call logged to reflector_online_train_s_39_round_0_20260310_141750_615.json
+[GENERATOR] Starting call online_train_s_39_post_reflect_0...
+[GENERATOR] Call online_train_s_39_post_reflect_0 completed in 7.23s
+[LOG] generator call logged to generator_online_train_s_39_post_reflect_0_20260310_141757_881.json
+
+--- Running Curator + Graph Constructor at step 39 ---
+[CURATOR] Starting call online_train_s_39...
+[CURATOR] Call online_train_s_39 completed in 10.58s
+[LOG] curator call logged to curator_online_train_s_39_20260310_141808_475.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_39_post_curate...
+[GENERATOR] Call online_train_s_39_post_curate completed in 8.64s
+[LOG] generator call logged to generator_online_train_s_39_post_curate_20260310_141817_198.json
+
+--- Window 3, Step 10/15 (Global 40) ---
+[GENERATOR] Starting call online_train_s_40_gen_initial...
+[GENERATOR] Call online_train_s_40_gen_initial completed in 10.29s
+[LOG] generator call logged to generator_online_train_s_40_gen_initial_20260310_141827_526.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_40_round_0...
+[REFLECTOR] Call online_train_s_40_round_0 completed in 15.65s
+[LOG] reflector call logged to reflector_online_train_s_40_round_0_20260310_141843_194.json
+[GENERATOR] Starting call online_train_s_40_post_reflect_0...
+[GENERATOR] Call online_train_s_40_post_reflect_0 completed in 10.20s
+[LOG] generator call logged to generator_online_train_s_40_post_reflect_0_20260310_141853_462.json
+
+--- Running Curator + Graph Constructor at step 40 ---
+[CURATOR] Starting call online_train_s_40...
+[CURATOR] Call online_train_s_40 completed in 12.03s
+[LOG] curator call logged to curator_online_train_s_40_20260310_141905_506.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_40_post_curate...
+[GENERATOR] Empty response for online_train_s_40_post_curate (attempt 1/3), retrying in 9.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_40_post_curate_20260310_141957_881.json
+[GENERATOR] Empty response for online_train_s_40_post_curate (attempt 2/3), retrying in 12.3s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_40_post_curate_20260310_142059_395.json
+[GENERATOR] Empty response for online_train_s_40_post_curate (attempt 3/3), retrying in 10.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_40_post_curate_20260310_142203_927.json
+[GENERATOR] Empty response for online_train_s_40_post_curate after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_40_post_curate_20260310_142306_364.json
+[WARN] Skipping online training step 40: Exception: API returned None content
+
+--- Window 3, Step 11/15 (Global 41) ---
+[GENERATOR] Starting call online_train_s_41_gen_initial...
+[GENERATOR] Call online_train_s_41_gen_initial completed in 19.86s
+[LOG] generator call logged to generator_online_train_s_41_gen_initial_20260310_142326_271.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_41_round_0...
+[REFLECTOR] Call online_train_s_41_round_0 completed in 18.12s
+[LOG] reflector call logged to reflector_online_train_s_41_round_0_20260310_142344_395.json
+[GENERATOR] Starting call online_train_s_41_post_reflect_0...
+[GENERATOR] Call online_train_s_41_post_reflect_0 completed in 10.42s
+[LOG] generator call logged to generator_online_train_s_41_post_reflect_0_20260310_142354_864.json
+
+--- Running Curator + Graph Constructor at step 41 ---
+[CURATOR] Starting call online_train_s_41...
+[CURATOR] Call online_train_s_41 completed in 11.73s
+[LOG] curator call logged to curator_online_train_s_41_20260310_142406_605.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_41_post_curate...
+[GENERATOR] Call online_train_s_41_post_curate completed in 13.25s
+[LOG] generator call logged to generator_online_train_s_41_post_curate_20260310_142419_926.json
+
+--- Window 3, Step 12/15 (Global 42) ---
+[GENERATOR] Starting call online_train_s_42_gen_initial...
+[GENERATOR] Call online_train_s_42_gen_initial completed in 8.54s
+[LOG] generator call logged to generator_online_train_s_42_gen_initial_20260310_142428_529.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_42_round_0...
+[REFLECTOR] Call online_train_s_42_round_0 completed in 13.00s
+[LOG] reflector call logged to reflector_online_train_s_42_round_0_20260310_142441_535.json
+[GENERATOR] Starting call online_train_s_42_post_reflect_0...
+[GENERATOR] Call online_train_s_42_post_reflect_0 completed in 10.25s
+[LOG] generator call logged to generator_online_train_s_42_post_reflect_0_20260310_142451_817.json
+
+--- Running Curator + Graph Constructor at step 42 ---
+[CURATOR] Starting call online_train_s_42...
+[CURATOR] Call online_train_s_42 completed in 10.20s
+[LOG] curator call logged to curator_online_train_s_42_20260310_142502_027.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_42_post_curate...
+[GENERATOR] Call online_train_s_42_post_curate completed in 23.12s
+[LOG] generator call logged to generator_online_train_s_42_post_curate_20260310_142525_238.json
+
+--- Window 3, Step 13/15 (Global 43) ---
+[GENERATOR] Starting call online_train_s_43_gen_initial...
+[GENERATOR] Call online_train_s_43_gen_initial completed in 8.33s
+[LOG] generator call logged to generator_online_train_s_43_gen_initial_20260310_142533_602.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_43_round_0...
+[REFLECTOR] Call online_train_s_43_round_0 completed in 15.02s
+[LOG] reflector call logged to reflector_online_train_s_43_round_0_20260310_142548_619.json
+[GENERATOR] Starting call online_train_s_43_post_reflect_0...
+[GENERATOR] Call online_train_s_43_post_reflect_0 completed in 9.84s
+[LOG] generator call logged to generator_online_train_s_43_post_reflect_0_20260310_142558_500.json
+
+--- Running Curator + Graph Constructor at step 43 ---
+[CURATOR] Starting call online_train_s_43...
+[CURATOR] Call online_train_s_43 completed in 11.57s
+[LOG] curator call logged to curator_online_train_s_43_20260310_142610_080.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_43_post_curate...
+[GENERATOR] Call online_train_s_43_post_curate completed in 10.71s
+[LOG] generator call logged to generator_online_train_s_43_post_curate_20260310_142620_870.json
+
+--- Window 3, Step 14/15 (Global 44) ---
+[GENERATOR] Starting call online_train_s_44_gen_initial...
+[GENERATOR] Call online_train_s_44_gen_initial completed in 17.51s
+[LOG] generator call logged to generator_online_train_s_44_gen_initial_20260310_142638_431.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_44_round_0...
+[REFLECTOR] Call online_train_s_44_round_0 completed in 12.03s
+[LOG] reflector call logged to reflector_online_train_s_44_round_0_20260310_142650_461.json
+[GENERATOR] Starting call online_train_s_44_post_reflect_0...
+[GENERATOR] Call online_train_s_44_post_reflect_0 completed in 7.30s
+[LOG] generator call logged to generator_online_train_s_44_post_reflect_0_20260310_142657_804.json
+
+--- Running Curator + Graph Constructor at step 44 ---
+[CURATOR] Starting call online_train_s_44...
+[CURATOR] Call online_train_s_44 completed in 15.60s
+[LOG] curator call logged to curator_online_train_s_44_20260310_142713_412.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_44_post_curate...
+[GENERATOR] Call online_train_s_44_post_curate completed in 17.28s
+[LOG] generator call logged to generator_online_train_s_44_post_curate_20260310_142730_802.json
+
+--- Window 3, Step 15/15 (Global 45) ---
+[GENERATOR] Starting call online_train_s_45_gen_initial...
+[GENERATOR] Call online_train_s_45_gen_initial completed in 9.58s
+[LOG] generator call logged to generator_online_train_s_45_gen_initial_20260310_142740_427.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_45_round_0...
+[REFLECTOR] Call online_train_s_45_round_0 completed in 11.48s
+[LOG] reflector call logged to reflector_online_train_s_45_round_0_20260310_142751_906.json
+[GENERATOR] Starting call online_train_s_45_post_reflect_0...
+[GENERATOR] Call online_train_s_45_post_reflect_0 completed in 9.77s
+[LOG] generator call logged to generator_online_train_s_45_post_reflect_0_20260310_142801_715.json
+
+--- Running Curator + Graph Constructor at step 45 ---
+[CURATOR] Starting call online_train_s_45...
+[CURATOR] Call online_train_s_45 completed in 11.06s
+[LOG] curator call logged to curator_online_train_s_45_20260310_142812_774.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_45_post_curate...
+[GENERATOR] Call online_train_s_45_post_curate completed in 8.85s
+[LOG] generator call logged to generator_online_train_s_45_post_curate_20260310_142821_685.json
+
+============================================================
+WINDOW 4/5 (samples 45-59)
+============================================================
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Call test_eval_4 completed in 8.16s
+[LOG] generator call logged to generator_test_eval_4_20260310_142830_190.json
+[GENERATOR] Call test_eval_2 completed in 8.37s
+[LOG] generator call logged to generator_test_eval_2_20260310_142830_455.json
+[GENERATOR] Call test_eval_7 completed in 8.92s
+[LOG] generator call logged to generator_test_eval_7_20260310_142830_971.json
+[GENERATOR] Call test_eval_5 completed in 9.10s
+[LOG] generator call logged to generator_test_eval_5_20260310_142831_165.json
+[GENERATOR] Call test_eval_13 completed in 9.16s
+[LOG] generator call logged to generator_test_eval_13_20260310_142831_274.json
+[GENERATOR] Call test_eval_6 completed in 10.02s
+[LOG] generator call logged to generator_test_eval_6_20260310_142832_099.json
+[GENERATOR] Call test_eval_14 completed in 11.04s
+[LOG] generator call logged to generator_test_eval_14_20260310_142833_138.json
+[GENERATOR] Call test_eval_3 completed in 11.72s
+[LOG] generator call logged to generator_test_eval_3_20260310_142833_787.json
+[GENERATOR] Call test_eval_1 completed in 11.85s
+[LOG] generator call logged to generator_test_eval_1_20260310_142833_884.json
+[GENERATOR] Call test_eval_11 completed in 12.06s
+[LOG] generator call logged to generator_test_eval_11_20260310_142834_113.json
+[GENERATOR] Call test_eval_12 completed in 14.36s
+[LOG] generator call logged to generator_test_eval_12_20260310_142836_464.json
+[GENERATOR] Call test_eval_9 completed in 15.94s
+[LOG] generator call logged to generator_test_eval_9_20260310_142838_021.json
+[GENERATOR] Call test_eval_10 completed in 16.06s
+[LOG] generator call logged to generator_test_eval_10_20260310_142838_110.json
+[GENERATOR] Call test_eval_8 completed in 23.39s
+[LOG] generator call logged to generator_test_eval_8_20260310_142845_490.json
+[GENERATOR] Empty response for test_eval_0 (attempt 1/3), retrying in 14.6s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_0_20260310_142915_246.json
+[GENERATOR] Empty response for test_eval_0 (attempt 2/3), retrying in 8.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_0_20260310_143022_507.json
+[GENERATOR] Empty response for test_eval_0 (attempt 3/3), retrying in 10.5s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_0_20260310_143122_911.json
+[GENERATOR] Empty response for test_eval_0 after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_0_20260310_143225_663.json
+Error evaluating sample 0: Exception: API returned None content
+
+Final Accuracy: 0.000 (0/14)
+Window 4 accuracy: 0.000 | Cumulative: 0.034
+
+--- Window 4, Step 1/15 (Global 46) ---
+[GENERATOR] Starting call online_train_s_46_gen_initial...
+[GENERATOR] Empty response for online_train_s_46_gen_initial (attempt 1/3), retrying in 6.7s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_46_gen_initial_20260310_143317_444.json
+[GENERATOR] Empty response for online_train_s_46_gen_initial (attempt 2/3), retrying in 13.6s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_46_gen_initial_20260310_143416_569.json
+[GENERATOR] Empty response for online_train_s_46_gen_initial (attempt 3/3), retrying in 11.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_46_gen_initial_20260310_143522_327.json
+[GENERATOR] Empty response for online_train_s_46_gen_initial after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_46_gen_initial_20260310_143625_737.json
+[WARN] Skipping online training step 46: Exception: API returned None content
+
+--- Window 4, Step 2/15 (Global 47) ---
+[GENERATOR] Starting call online_train_s_47_gen_initial...
+[GENERATOR] Call online_train_s_47_gen_initial completed in 6.20s
+[LOG] generator call logged to generator_online_train_s_47_gen_initial_20260310_143631_995.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_47_round_0...
+[REFLECTOR] Call online_train_s_47_round_0 completed in 14.66s
+[LOG] reflector call logged to reflector_online_train_s_47_round_0_20260310_143646_670.json
+[GENERATOR] Starting call online_train_s_47_post_reflect_0...
+[GENERATOR] Call online_train_s_47_post_reflect_0 completed in 7.58s
+[LOG] generator call logged to generator_online_train_s_47_post_reflect_0_20260310_143654_303.json
+
+--- Running Curator + Graph Constructor at step 47 ---
+[CURATOR] Starting call online_train_s_47...
+[CURATOR] Call online_train_s_47 completed in 14.77s
+[LOG] curator call logged to curator_online_train_s_47_20260310_143709_074.json
+  Applied 8 graph operations
+[GENERATOR] Starting call online_train_s_47_post_curate...
+[GENERATOR] Call online_train_s_47_post_curate completed in 6.47s
+[LOG] generator call logged to generator_online_train_s_47_post_curate_20260310_143715_640.json
+
+--- Window 4, Step 3/15 (Global 48) ---
+[GENERATOR] Starting call online_train_s_48_gen_initial...
+[GENERATOR] Call online_train_s_48_gen_initial completed in 13.29s
+[LOG] generator call logged to generator_online_train_s_48_gen_initial_20260310_143728_987.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_48_round_0...
+[REFLECTOR] Call online_train_s_48_round_0 completed in 15.64s
+[LOG] reflector call logged to reflector_online_train_s_48_round_0_20260310_143744_630.json
+[GENERATOR] Starting call online_train_s_48_post_reflect_0...
+[GENERATOR] Call online_train_s_48_post_reflect_0 completed in 9.31s
+[LOG] generator call logged to generator_online_train_s_48_post_reflect_0_20260310_143753_986.json
+
+--- Running Curator + Graph Constructor at step 48 ---
+[CURATOR] Starting call online_train_s_48...
+[CURATOR] Call online_train_s_48 completed in 16.18s
+[LOG] curator call logged to curator_online_train_s_48_20260310_143810_169.json
+  Applied 0 graph operations
+[GENERATOR] Starting call online_train_s_48_post_curate...
+[GENERATOR] Call online_train_s_48_post_curate completed in 13.58s
+[LOG] generator call logged to generator_online_train_s_48_post_curate_20260310_143823_797.json
+
+--- Window 4, Step 4/15 (Global 49) ---
+[GENERATOR] Starting call online_train_s_49_gen_initial...
+[GENERATOR] Call online_train_s_49_gen_initial completed in 15.88s
+[LOG] generator call logged to generator_online_train_s_49_gen_initial_20260310_143839_731.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_49_round_0...
+[REFLECTOR] Call online_train_s_49_round_0 completed in 17.79s
+[LOG] reflector call logged to reflector_online_train_s_49_round_0_20260310_143857_527.json
+[GENERATOR] Starting call online_train_s_49_post_reflect_0...
+[GENERATOR] Call online_train_s_49_post_reflect_0 completed in 7.31s
+[LOG] generator call logged to generator_online_train_s_49_post_reflect_0_20260310_143904_894.json
+
+--- Running Curator + Graph Constructor at step 49 ---
+[CURATOR] Starting call online_train_s_49...
+[CURATOR] Call online_train_s_49 completed in 12.19s
+[LOG] curator call logged to curator_online_train_s_49_20260310_143917_094.json
+  Applied 3 graph operations
+[GENERATOR] Starting call online_train_s_49_post_curate...
+[GENERATOR] Call online_train_s_49_post_curate completed in 16.10s
+[LOG] generator call logged to generator_online_train_s_49_post_curate_20260310_143933_343.json
+
+--- Window 4, Step 5/15 (Global 50) ---
+[GENERATOR] Starting call online_train_s_50_gen_initial...
+[GENERATOR] Call online_train_s_50_gen_initial completed in 32.57s
+[LOG] generator call logged to generator_online_train_s_50_gen_initial_20260310_144005_973.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_50_round_0...
+[REFLECTOR] Call online_train_s_50_round_0 completed in 14.99s
+[LOG] reflector call logged to reflector_online_train_s_50_round_0_20260310_144020_963.json
+[GENERATOR] Starting call online_train_s_50_post_reflect_0...
+[GENERATOR] Call online_train_s_50_post_reflect_0 completed in 9.61s
+[LOG] generator call logged to generator_online_train_s_50_post_reflect_0_20260310_144030_628.json
+
+--- Running Curator + Graph Constructor at step 50 ---
+[CURATOR] Starting call online_train_s_50...
+[CURATOR] Call online_train_s_50 completed in 17.53s
+[LOG] curator call logged to curator_online_train_s_50_20260310_144048_169.json
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_50_gc_extract...
+[GRAPH_CONSTRUCTOR] Call online_train_s_50_gc_extract completed in 13.46s
+[LOG] graph_constructor call logged to graph_constructor_online_train_s_50_gc_extract_20260310_144101_636.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_50_post_curate...
+[GENERATOR] Call online_train_s_50_post_curate completed in 32.97s
+[LOG] generator call logged to generator_online_train_s_50_post_curate_20260310_144134_786.json
+
+--- Window 4, Step 6/15 (Global 51) ---
+[GENERATOR] Starting call online_train_s_51_gen_initial...
+[GENERATOR] Call online_train_s_51_gen_initial completed in 7.42s
+[LOG] generator call logged to generator_online_train_s_51_gen_initial_20260310_144142_286.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_51_round_0...
+[REFLECTOR] Call online_train_s_51_round_0 completed in 9.17s
+[LOG] reflector call logged to reflector_online_train_s_51_round_0_20260310_144151_457.json
+[GENERATOR] Starting call online_train_s_51_post_reflect_0...
+[GENERATOR] Call online_train_s_51_post_reflect_0 completed in 5.46s
+[LOG] generator call logged to generator_online_train_s_51_post_reflect_0_20260310_144156_978.json
+
+--- Running Curator + Graph Constructor at step 51 ---
+[CURATOR] Starting call online_train_s_51...
+[CURATOR] Call online_train_s_51 completed in 12.99s
+[LOG] curator call logged to curator_online_train_s_51_20260310_144209_984.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_51_post_curate...
+[GENERATOR] Call online_train_s_51_post_curate completed in 7.79s
+[LOG] generator call logged to generator_online_train_s_51_post_curate_20260310_144217_879.json
+
+--- Window 4, Step 7/15 (Global 52) ---
+[GENERATOR] Starting call online_train_s_52_gen_initial...
+[GENERATOR] Empty response for online_train_s_52_gen_initial (attempt 1/3), retrying in 10.1s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_52_gen_initial_20260310_144309_876.json
+[GENERATOR] Empty response for online_train_s_52_gen_initial (attempt 2/3), retrying in 5.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_52_gen_initial_20260310_144412_183.json
+[GENERATOR] Empty response for online_train_s_52_gen_initial (attempt 3/3), retrying in 14.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_52_gen_initial_20260310_144509_625.json
+[GENERATOR] Empty response for online_train_s_52_gen_initial after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_52_gen_initial_20260310_144616_330.json
+[WARN] Skipping online training step 52: Exception: API returned None content
+
+--- Window 4, Step 8/15 (Global 53) ---
+[GENERATOR] Starting call online_train_s_53_gen_initial...
+[GENERATOR] Call online_train_s_53_gen_initial completed in 7.63s
+[LOG] generator call logged to generator_online_train_s_53_gen_initial_20260310_144624_006.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_53_round_0...
+[REFLECTOR] Call online_train_s_53_round_0 completed in 14.78s
+[LOG] reflector call logged to reflector_online_train_s_53_round_0_20260310_144638_786.json
+[GENERATOR] Starting call online_train_s_53_post_reflect_0...
+[GENERATOR] Call online_train_s_53_post_reflect_0 completed in 26.14s
+[LOG] generator call logged to generator_online_train_s_53_post_reflect_0_20260310_144704_978.json
+
+--- Running Curator + Graph Constructor at step 53 ---
+[CURATOR] Starting call online_train_s_53...
+[CURATOR] Call online_train_s_53 completed in 13.97s
+[LOG] curator call logged to curator_online_train_s_53_20260310_144718_959.json
+  Applied 11 graph operations
+[GENERATOR] Starting call online_train_s_53_post_curate...
+[GENERATOR] Call online_train_s_53_post_curate completed in 8.89s
+[LOG] generator call logged to generator_online_train_s_53_post_curate_20260310_144727_951.json
+
+--- Window 4, Step 9/15 (Global 54) ---
+[GENERATOR] Starting call online_train_s_54_gen_initial...
+[GENERATOR] Call online_train_s_54_gen_initial completed in 7.64s
+[LOG] generator call logged to generator_online_train_s_54_gen_initial_20260310_144735_650.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_54_round_0...
+[REFLECTOR] Call online_train_s_54_round_0 completed in 11.30s
+[LOG] reflector call logged to reflector_online_train_s_54_round_0_20260310_144746_954.json
+[GENERATOR] Starting call online_train_s_54_post_reflect_0...
+[GENERATOR] Call online_train_s_54_post_reflect_0 completed in 7.25s
+[LOG] generator call logged to generator_online_train_s_54_post_reflect_0_20260310_144754_260.json
+
+--- Running Curator + Graph Constructor at step 54 ---
+[CURATOR] Starting call online_train_s_54...
+[CURATOR] Call online_train_s_54 completed in 15.83s
+[LOG] curator call logged to curator_online_train_s_54_20260310_144810_094.json
+  Applied 11 graph operations
+[GENERATOR] Starting call online_train_s_54_post_curate...
+[GENERATOR] Call online_train_s_54_post_curate completed in 10.56s
+[LOG] generator call logged to generator_online_train_s_54_post_curate_20260310_144820_798.json
+
+--- Window 4, Step 10/15 (Global 55) ---
+[GENERATOR] Starting call online_train_s_55_gen_initial...
+[GENERATOR] Call online_train_s_55_gen_initial completed in 6.94s
+[LOG] generator call logged to generator_online_train_s_55_gen_initial_20260310_144827_794.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_55_round_0...
+[REFLECTOR] Call online_train_s_55_round_0 completed in 14.40s
+[LOG] reflector call logged to reflector_online_train_s_55_round_0_20260310_144842_204.json
+[GENERATOR] Starting call online_train_s_55_post_reflect_0...
+[GENERATOR] Call online_train_s_55_post_reflect_0 completed in 8.32s
+[LOG] generator call logged to generator_online_train_s_55_post_reflect_0_20260310_144850_580.json
+
+--- Running Curator + Graph Constructor at step 55 ---
+[CURATOR] Starting call online_train_s_55...
+[CURATOR] Call online_train_s_55 completed in 11.91s
+[LOG] curator call logged to curator_online_train_s_55_20260310_144902_495.json
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_55_gc_extract...
+[GRAPH_CONSTRUCTOR] Call online_train_s_55_gc_extract completed in 13.86s
+[LOG] graph_constructor call logged to graph_constructor_online_train_s_55_gc_extract_20260310_144916_353.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_55_post_curate...
+[GENERATOR] Call online_train_s_55_post_curate completed in 8.59s
+[LOG] generator call logged to generator_online_train_s_55_post_curate_20260310_144925_185.json
+
+--- Window 4, Step 11/15 (Global 56) ---
+[GENERATOR] Starting call online_train_s_56_gen_initial...
+[GENERATOR] Call online_train_s_56_gen_initial completed in 17.17s
+[LOG] generator call logged to generator_online_train_s_56_gen_initial_20260310_144942_416.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_56_round_0...
+[REFLECTOR] Call online_train_s_56_round_0 completed in 14.19s
+[LOG] reflector call logged to reflector_online_train_s_56_round_0_20260310_144956_609.json
+[GENERATOR] Starting call online_train_s_56_post_reflect_0...
+[GENERATOR] Call online_train_s_56_post_reflect_0 completed in 20.91s
+[LOG] generator call logged to generator_online_train_s_56_post_reflect_0_20260310_145017_577.json
+
+--- Running Curator + Graph Constructor at step 56 ---
+[CURATOR] Starting call online_train_s_56...
+[CURATOR] Call online_train_s_56 completed in 15.13s
+[LOG] curator call logged to curator_online_train_s_56_20260310_145032_723.json
+  Applied 2 graph operations
+[GENERATOR] Starting call online_train_s_56_post_curate...
+[GENERATOR] Call online_train_s_56_post_curate completed in 9.99s
+[LOG] generator call logged to generator_online_train_s_56_post_curate_20260310_145042_824.json
+
+--- Window 4, Step 12/15 (Global 57) ---
+[GENERATOR] Starting call online_train_s_57_gen_initial...
+[GENERATOR] Call online_train_s_57_gen_initial completed in 10.63s
+[LOG] generator call logged to generator_online_train_s_57_gen_initial_20260310_145053_504.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_57_round_0...
+[REFLECTOR] Call online_train_s_57_round_0 completed in 12.01s
+[LOG] reflector call logged to reflector_online_train_s_57_round_0_20260310_145105_511.json
+[GENERATOR] Starting call online_train_s_57_post_reflect_0...
+[GENERATOR] Call online_train_s_57_post_reflect_0 completed in 12.99s
+[LOG] generator call logged to generator_online_train_s_57_post_reflect_0_20260310_145118_556.json
+
+--- Running Curator + Graph Constructor at step 57 ---
+[CURATOR] Starting call online_train_s_57...
+[CURATOR] Call online_train_s_57 completed in 16.34s
+[LOG] curator call logged to curator_online_train_s_57_20260310_145134_898.json
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_57_gc_extract...
+[GRAPH_CONSTRUCTOR] Call online_train_s_57_gc_extract completed in 10.21s
+[LOG] graph_constructor call logged to graph_constructor_online_train_s_57_gc_extract_20260310_145145_110.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_57_post_curate...
+[GENERATOR] Call online_train_s_57_post_curate completed in 10.11s
+[LOG] generator call logged to generator_online_train_s_57_post_curate_20260310_145155_321.json
+
+--- Window 4, Step 13/15 (Global 58) ---
+[GENERATOR] Starting call online_train_s_58_gen_initial...
+[GENERATOR] Call online_train_s_58_gen_initial completed in 7.48s
+[LOG] generator call logged to generator_online_train_s_58_gen_initial_20260310_145202_861.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.13
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_58_round_0...
+[REFLECTOR] Call online_train_s_58_round_0 completed in 13.17s
+[LOG] reflector call logged to reflector_online_train_s_58_round_0_20260310_145216_035.json
+[GENERATOR] Starting call online_train_s_58_post_reflect_0...
+[GENERATOR] Call online_train_s_58_post_reflect_0 completed in 7.58s
+[LOG] generator call logged to generator_online_train_s_58_post_reflect_0_20260310_145223_677.json
+
+--- Running Curator + Graph Constructor at step 58 ---
+[CURATOR] Starting call online_train_s_58...
+[CURATOR] Call online_train_s_58 completed in 12.29s
+[LOG] curator call logged to curator_online_train_s_58_20260310_145235_980.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_58_post_curate...
+[GENERATOR] Call online_train_s_58_post_curate completed in 8.61s
+[LOG] generator call logged to generator_online_train_s_58_post_curate_20260310_145244_678.json
+
+--- Window 4, Step 14/15 (Global 59) ---
+[GENERATOR] Starting call online_train_s_59_gen_initial...
+[GENERATOR] Call online_train_s_59_gen_initial completed in 27.87s
+[LOG] generator call logged to generator_online_train_s_59_gen_initial_20260310_145312_609.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_59_round_0...
+[REFLECTOR] Call online_train_s_59_round_0 completed in 16.02s
+[LOG] reflector call logged to reflector_online_train_s_59_round_0_20260310_145328_643.json
+[GENERATOR] Starting call online_train_s_59_post_reflect_0...
+[GENERATOR] Call online_train_s_59_post_reflect_0 completed in 8.26s
+[LOG] generator call logged to generator_online_train_s_59_post_reflect_0_20260310_145336_952.json
+
+--- Running Curator + Graph Constructor at step 59 ---
+[CURATOR] Starting call online_train_s_59...
+[CURATOR] Call online_train_s_59 completed in 14.38s
+[LOG] curator call logged to curator_online_train_s_59_20260310_145351_334.json
+  Applied 2 graph operations
+[GENERATOR] Starting call online_train_s_59_post_curate...
+[GENERATOR] Call online_train_s_59_post_curate completed in 12.86s
+[LOG] generator call logged to generator_online_train_s_59_post_curate_20260310_145404_277.json
+
+--- Window 4, Step 15/15 (Global 60) ---
+[GENERATOR] Starting call online_train_s_60_gen_initial...
+[GENERATOR] Call online_train_s_60_gen_initial completed in 11.48s
+[LOG] generator call logged to generator_online_train_s_60_gen_initial_20260310_145415_809.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_60_round_0...
+[REFLECTOR] Call online_train_s_60_round_0 completed in 13.16s
+[LOG] reflector call logged to reflector_online_train_s_60_round_0_20260310_145428_967.json
+[GENERATOR] Starting call online_train_s_60_post_reflect_0...
+[GENERATOR] Call online_train_s_60_post_reflect_0 completed in 7.40s
+[LOG] generator call logged to generator_online_train_s_60_post_reflect_0_20260310_145436_432.json
+
+--- Running Curator + Graph Constructor at step 60 ---
+[CURATOR] Starting call online_train_s_60...
+[CURATOR] Call online_train_s_60 completed in 13.98s
+[LOG] curator call logged to curator_online_train_s_60_20260310_145450_420.json
+  Applied 12 graph operations
+[GENERATOR] Starting call online_train_s_60_post_curate...
+[GENERATOR] Call online_train_s_60_post_curate completed in 10.49s
+[LOG] generator call logged to generator_online_train_s_60_post_curate_20260310_145501_029.json
+
+============================================================
+WINDOW 5/5 (samples 60-74)
+============================================================
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_11 completed in 7.94s
+[LOG] generator call logged to generator_test_eval_11_20260310_145509_374.json
+[GENERATOR] Call test_eval_6 completed in 7.97s
+[LOG] generator call logged to generator_test_eval_6_20260310_145509_431.json
+[GENERATOR] Call test_eval_4 completed in 8.64s
+[LOG] generator call logged to generator_test_eval_4_20260310_145510_101.json
+[GENERATOR] Call test_eval_10 completed in 8.83s
+[LOG] generator call logged to generator_test_eval_10_20260310_145510_312.json
+[GENERATOR] Call test_eval_7 completed in 9.42s
+[LOG] generator call logged to generator_test_eval_7_20260310_145510_871.json
+[GENERATOR] Call test_eval_5 completed in 10.90s
+[LOG] generator call logged to generator_test_eval_5_20260310_145512_348.json
+[GENERATOR] Call test_eval_8 completed in 11.05s
+[LOG] generator call logged to generator_test_eval_8_20260310_145512_504.json
+[GENERATOR] Call test_eval_12 completed in 12.24s
+[LOG] generator call logged to generator_test_eval_12_20260310_145513_728.json
+[GENERATOR] Call test_eval_1 completed in 13.45s
+[LOG] generator call logged to generator_test_eval_1_20260310_145514_924.json
+[GENERATOR] Call test_eval_2 completed in 13.86s
+[LOG] generator call logged to generator_test_eval_2_20260310_145515_367.json
+[GENERATOR] Call test_eval_13 completed in 14.98s
+[LOG] generator call logged to generator_test_eval_13_20260310_145516_473.json
+[GENERATOR] Call test_eval_0 completed in 16.59s
+[LOG] generator call logged to generator_test_eval_0_20260310_145518_071.json
+[GENERATOR] Call test_eval_14 completed in 17.03s
+[LOG] generator call logged to generator_test_eval_14_20260310_145518_539.json
+[GENERATOR] Call test_eval_3 completed in 19.01s
+[LOG] generator call logged to generator_test_eval_3_20260310_145520_506.json
+[GENERATOR] Empty response for test_eval_9 (attempt 1/3), retrying in 10.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_9_20260310_145554_880.json
+[GENERATOR] Empty response for test_eval_9 (attempt 2/3), retrying in 11.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_9_20260310_145658_071.json
+[GENERATOR] Empty response for test_eval_9 (attempt 3/3), retrying in 13.5s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_9_20260310_145802_263.json
+[GENERATOR] Empty response for test_eval_9 after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_9_20260310_145908_495.json
+Error evaluating sample 9: Exception: API returned None content
+
+Final Accuracy: 0.054 (0/14)
+Window 5 accuracy: 0.054 | Cumulative: 0.038
+
+--- Window 5, Step 1/15 (Global 61) ---
+[GENERATOR] Starting call online_train_s_61_gen_initial...
+[GENERATOR] Call online_train_s_61_gen_initial completed in 10.87s
+[LOG] generator call logged to generator_online_train_s_61_gen_initial_20260310_145919_423.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_61_round_0...
+[REFLECTOR] Call online_train_s_61_round_0 completed in 15.30s
+[LOG] reflector call logged to reflector_online_train_s_61_round_0_20260310_145934_733.json
+[GENERATOR] Starting call online_train_s_61_post_reflect_0...
+[GENERATOR] Call online_train_s_61_post_reflect_0 completed in 7.77s
+[LOG] generator call logged to generator_online_train_s_61_post_reflect_0_20260310_145942_561.json
+
+--- Running Curator + Graph Constructor at step 61 ---
+[CURATOR] Starting call online_train_s_61...
+[CURATOR] Call online_train_s_61 completed in 14.80s
+[LOG] curator call logged to curator_online_train_s_61_20260310_145957_369.json
+  Applied 13 graph operations
+[GENERATOR] Starting call online_train_s_61_post_curate...
+[GENERATOR] Call online_train_s_61_post_curate completed in 11.20s
+[LOG] generator call logged to generator_online_train_s_61_post_curate_20260310_150008_701.json
+
+--- Window 5, Step 2/15 (Global 62) ---
+[GENERATOR] Starting call online_train_s_62_gen_initial...
+[GENERATOR] Call online_train_s_62_gen_initial completed in 6.91s
+[LOG] generator call logged to generator_online_train_s_62_gen_initial_20260310_150015_666.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_62_round_0...
+[REFLECTOR] Call online_train_s_62_round_0 completed in 13.56s
+[LOG] reflector call logged to reflector_online_train_s_62_round_0_20260310_150029_231.json
+[GENERATOR] Starting call online_train_s_62_post_reflect_0...
+[GENERATOR] Call online_train_s_62_post_reflect_0 completed in 7.50s
+[LOG] generator call logged to generator_online_train_s_62_post_reflect_0_20260310_150036_785.json
+
+--- Running Curator + Graph Constructor at step 62 ---
+[CURATOR] Starting call online_train_s_62...
+[CURATOR] Call online_train_s_62 completed in 13.92s
+[LOG] curator call logged to curator_online_train_s_62_20260310_150050_712.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_62_post_curate...
+[GENERATOR] Call online_train_s_62_post_curate completed in 7.21s
+[LOG] generator call logged to generator_online_train_s_62_post_curate_20260310_150058_037.json
+
+--- Window 5, Step 3/15 (Global 63) ---
+[GENERATOR] Starting call online_train_s_63_gen_initial...
+[GENERATOR] Call online_train_s_63_gen_initial completed in 18.70s
+[LOG] generator call logged to generator_online_train_s_63_gen_initial_20260310_150116_803.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_63_round_0...
+[REFLECTOR] Call online_train_s_63_round_0 completed in 10.17s
+[LOG] reflector call logged to reflector_online_train_s_63_round_0_20260310_150126_983.json
+[GENERATOR] Starting call online_train_s_63_post_reflect_0...
+[GENERATOR] Call online_train_s_63_post_reflect_0 completed in 8.53s
+[LOG] generator call logged to generator_online_train_s_63_post_reflect_0_20260310_150135_566.json
+
+--- Running Curator + Graph Constructor at step 63 ---
+[CURATOR] Starting call online_train_s_63...
+[CURATOR] Call online_train_s_63 completed in 13.44s
+[LOG] curator call logged to curator_online_train_s_63_20260310_150149_018.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_63_post_curate...
+[GENERATOR] Call online_train_s_63_post_curate completed in 18.97s
+[LOG] generator call logged to generator_online_train_s_63_post_curate_20260310_150208_121.json
+
+--- Window 5, Step 4/15 (Global 64) ---
+[GENERATOR] Starting call online_train_s_64_gen_initial...
+[GENERATOR] Call online_train_s_64_gen_initial completed in 11.73s
+[LOG] generator call logged to generator_online_train_s_64_gen_initial_20260310_150219_916.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_64_round_0...
+[REFLECTOR] Call online_train_s_64_round_0 completed in 10.92s
+[LOG] reflector call logged to reflector_online_train_s_64_round_0_20260310_150230_836.json
+[GENERATOR] Starting call online_train_s_64_post_reflect_0...
+[GENERATOR] Call online_train_s_64_post_reflect_0 completed in 9.69s
+[LOG] generator call logged to generator_online_train_s_64_post_reflect_0_20260310_150240_578.json
+
+--- Running Curator + Graph Constructor at step 64 ---
+[CURATOR] Starting call online_train_s_64...
+[CURATOR] Call online_train_s_64 completed in 11.81s
+[LOG] curator call logged to curator_online_train_s_64_20260310_150252_390.json
+  Applied 2 graph operations
+[GENERATOR] Starting call online_train_s_64_post_curate...
+[GENERATOR] Call online_train_s_64_post_curate completed in 12.70s
+[LOG] generator call logged to generator_online_train_s_64_post_curate_20260310_150305_188.json
+
+--- Window 5, Step 5/15 (Global 65) ---
+[GENERATOR] Starting call online_train_s_65_gen_initial...
+[GENERATOR] Call online_train_s_65_gen_initial completed in 7.42s
+[LOG] generator call logged to generator_online_train_s_65_gen_initial_20260310_150312_658.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_65_round_0...
+[REFLECTOR] Call online_train_s_65_round_0 completed in 11.23s
+[LOG] reflector call logged to reflector_online_train_s_65_round_0_20260310_150323_894.json
+[GENERATOR] Starting call online_train_s_65_post_reflect_0...
+[GENERATOR] Call online_train_s_65_post_reflect_0 completed in 43.20s
+[LOG] generator call logged to generator_online_train_s_65_post_reflect_0_20260310_150407_151.json
+
+--- Running Curator + Graph Constructor at step 65 ---
+[CURATOR] Starting call online_train_s_65...
+[CURATOR] Call online_train_s_65 completed in 10.92s
+[LOG] curator call logged to curator_online_train_s_65_20260310_150418_080.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_65_post_curate...
+[GENERATOR] Call online_train_s_65_post_curate completed in 8.82s
+[LOG] generator call logged to generator_online_train_s_65_post_curate_20260310_150427_005.json
+
+--- Window 5, Step 6/15 (Global 66) ---
+[GENERATOR] Starting call online_train_s_66_gen_initial...
+[GENERATOR] Call online_train_s_66_gen_initial completed in 20.52s
+[LOG] generator call logged to generator_online_train_s_66_gen_initial_20260310_150447_612.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_66_round_0...
+[REFLECTOR] Call online_train_s_66_round_0 completed in 13.26s
+[LOG] reflector call logged to reflector_online_train_s_66_round_0_20260310_150500_878.json
+[GENERATOR] Starting call online_train_s_66_post_reflect_0...
+[GENERATOR] Call online_train_s_66_post_reflect_0 completed in 7.58s
+[LOG] generator call logged to generator_online_train_s_66_post_reflect_0_20260310_150508_508.json
+
+--- Running Curator + Graph Constructor at step 66 ---
+[CURATOR] Starting call online_train_s_66...
+[CURATOR] Call online_train_s_66 completed in 12.80s
+[LOG] curator call logged to curator_online_train_s_66_20260310_150521_315.json
+  Applied 8 graph operations
+[GENERATOR] Starting call online_train_s_66_post_curate...
+[GENERATOR] Call online_train_s_66_post_curate completed in 20.47s
+[LOG] generator call logged to generator_online_train_s_66_post_curate_20260310_150541_873.json
+
+--- Window 5, Step 7/15 (Global 67) ---
+[GENERATOR] Starting call online_train_s_67_gen_initial...
+[GENERATOR] Call online_train_s_67_gen_initial completed in 8.68s
+[LOG] generator call logged to generator_online_train_s_67_gen_initial_20260310_150550_592.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_67_round_0...
+[REFLECTOR] Call online_train_s_67_round_0 completed in 14.05s
+[LOG] reflector call logged to reflector_online_train_s_67_round_0_20260310_150604_651.json
+[GENERATOR] Starting call online_train_s_67_post_reflect_0...
+[GENERATOR] Call online_train_s_67_post_reflect_0 completed in 7.60s
+[LOG] generator call logged to generator_online_train_s_67_post_reflect_0_20260310_150612_310.json
+
+--- Running Curator + Graph Constructor at step 67 ---
+[CURATOR] Starting call online_train_s_67...
+[CURATOR] Call online_train_s_67 completed in 8.82s
+[LOG] curator call logged to curator_online_train_s_67_20260310_150621_140.json
+  Applied 4 graph operations
+[GENERATOR] Starting call online_train_s_67_post_curate...
+[GENERATOR] Call online_train_s_67_post_curate completed in 8.86s
+[LOG] generator call logged to generator_online_train_s_67_post_curate_20260310_150630_081.json
+
+--- Window 5, Step 8/15 (Global 68) ---
+[GENERATOR] Starting call online_train_s_68_gen_initial...
+[GENERATOR] Call online_train_s_68_gen_initial completed in 6.39s
+[LOG] generator call logged to generator_online_train_s_68_gen_initial_20260310_150636_543.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_68_round_0...
+[REFLECTOR] Call online_train_s_68_round_0 completed in 9.81s
+[LOG] reflector call logged to reflector_online_train_s_68_round_0_20260310_150646_352.json
+[GENERATOR] Starting call online_train_s_68_post_reflect_0...
+[GENERATOR] Call online_train_s_68_post_reflect_0 completed in 5.27s
+[LOG] generator call logged to generator_online_train_s_68_post_reflect_0_20260310_150651_730.json
+
+--- Running Curator + Graph Constructor at step 68 ---
+[CURATOR] Starting call online_train_s_68...
+[CURATOR] Call online_train_s_68 completed in 12.24s
+[LOG] curator call logged to curator_online_train_s_68_20260310_150703_975.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_68_post_curate...
+[GENERATOR] Call online_train_s_68_post_curate completed in 6.64s
+[LOG] generator call logged to generator_online_train_s_68_post_curate_20260310_150710_724.json
+
+--- Window 5, Step 9/15 (Global 69) ---
+[GENERATOR] Starting call online_train_s_69_gen_initial...
+[GENERATOR] Call online_train_s_69_gen_initial completed in 9.73s
+[LOG] generator call logged to generator_online_train_s_69_gen_initial_20260310_150720_500.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.07
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_69_round_0...
+[REFLECTOR] Call online_train_s_69_round_0 completed in 13.30s
+[LOG] reflector call logged to reflector_online_train_s_69_round_0_20260310_150733_802.json
+[GENERATOR] Starting call online_train_s_69_post_reflect_0...
+[GENERATOR] Call online_train_s_69_post_reflect_0 completed in 5.84s
+[LOG] generator call logged to generator_online_train_s_69_post_reflect_0_20260310_150739_717.json
+
+--- Running Curator + Graph Constructor at step 69 ---
+[CURATOR] Starting call online_train_s_69...
+[CURATOR] Call online_train_s_69 completed in 12.74s
+[LOG] curator call logged to curator_online_train_s_69_20260310_150752_461.json
+  Applied 8 graph operations
+[GENERATOR] Starting call online_train_s_69_post_curate...
+[GENERATOR] Call online_train_s_69_post_curate completed in 10.01s
+[LOG] generator call logged to generator_online_train_s_69_post_curate_20260310_150802_553.json
+
+--- Window 5, Step 10/15 (Global 70) ---
+[GENERATOR] Starting call online_train_s_70_gen_initial...
+[GENERATOR] Empty response for online_train_s_70_gen_initial (attempt 1/3), retrying in 7.4s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_70_gen_initial_20260310_150854_493.json
+[GENERATOR] Empty response for online_train_s_70_gen_initial (attempt 2/3), retrying in 14.1s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_70_gen_initial_20260310_150954_098.json
+[GENERATOR] Empty response for online_train_s_70_gen_initial (attempt 3/3), retrying in 9.4s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_70_gen_initial_20260310_151100_567.json
+[GENERATOR] Empty response for online_train_s_70_gen_initial after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_70_gen_initial_20260310_151202_208.json
+[WARN] Skipping online training step 70: Exception: API returned None content
+
+--- Window 5, Step 11/15 (Global 71) ---
+[GENERATOR] Starting call online_train_s_71_gen_initial...
+[GENERATOR] Call online_train_s_71_gen_initial completed in 9.15s
+[LOG] generator call logged to generator_online_train_s_71_gen_initial_20260310_151211_419.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_71_round_0...
+[REFLECTOR] Call online_train_s_71_round_0 completed in 10.35s
+[LOG] reflector call logged to reflector_online_train_s_71_round_0_20260310_151221_774.json
+[GENERATOR] Starting call online_train_s_71_post_reflect_0...
+[GENERATOR] Call online_train_s_71_post_reflect_0 completed in 7.10s
+[LOG] generator call logged to generator_online_train_s_71_post_reflect_0_20260310_151228_915.json
+
+--- Running Curator + Graph Constructor at step 71 ---
+[CURATOR] Starting call online_train_s_71...
+[CURATOR] Call online_train_s_71 completed in 12.25s
+[LOG] curator call logged to curator_online_train_s_71_20260310_151241_176.json
+  Applied 5 graph operations
+[GENERATOR] Starting call online_train_s_71_post_curate...
+[GENERATOR] Call online_train_s_71_post_curate completed in 9.44s
+[LOG] generator call logged to generator_online_train_s_71_post_curate_20260310_151250_707.json
+
+--- Window 5, Step 12/15 (Global 72) ---
+[GENERATOR] Starting call online_train_s_72_gen_initial...
+[GENERATOR] Call online_train_s_72_gen_initial completed in 8.16s
+[LOG] generator call logged to generator_online_train_s_72_gen_initial_20260310_151258_910.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.00
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_72_round_0...
+[REFLECTOR] Call online_train_s_72_round_0 completed in 11.09s
+[LOG] reflector call logged to reflector_online_train_s_72_round_0_20260310_151310_023.json
+[GENERATOR] Starting call online_train_s_72_post_reflect_0...
+[GENERATOR] Call online_train_s_72_post_reflect_0 completed in 13.95s
+[LOG] generator call logged to generator_online_train_s_72_post_reflect_0_20260310_151324_035.json
+Corrected after reflection round 1!
+
+--- Running Curator + Graph Constructor at step 72 ---
+[CURATOR] Starting call online_train_s_72...
+[CURATOR] Call online_train_s_72 completed in 10.19s
+[LOG] curator call logged to curator_online_train_s_72_20260310_151334_232.json
+  Applied 6 graph operations
+[GENERATOR] Starting call online_train_s_72_post_curate...
+[GENERATOR] Call online_train_s_72_post_curate completed in 8.45s
+[LOG] generator call logged to generator_online_train_s_72_post_curate_20260310_151342_756.json
+
+--- Window 5, Step 13/15 (Global 73) ---
+[GENERATOR] Starting call online_train_s_73_gen_initial...
+[GENERATOR] Call online_train_s_73_gen_initial completed in 8.68s
+[LOG] generator call logged to generator_online_train_s_73_gen_initial_20260310_151351_486.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_73_round_0...
+[REFLECTOR] Call online_train_s_73_round_0 completed in 13.02s
+[LOG] reflector call logged to reflector_online_train_s_73_round_0_20260310_151404_517.json
+[GENERATOR] Starting call online_train_s_73_post_reflect_0...
+[GENERATOR] Call online_train_s_73_post_reflect_0 completed in 17.09s
+[LOG] generator call logged to generator_online_train_s_73_post_reflect_0_20260310_151421_662.json
+
+--- Running Curator + Graph Constructor at step 73 ---
+[CURATOR] Starting call online_train_s_73...
+[CURATOR] Call online_train_s_73 completed in 14.48s
+[LOG] curator call logged to curator_online_train_s_73_20260310_151436_163.json
+  Applied 9 graph operations
+[GENERATOR] Starting call online_train_s_73_post_curate...
+[GENERATOR] Call online_train_s_73_post_curate completed in 8.98s
+[LOG] generator call logged to generator_online_train_s_73_post_curate_20260310_151445_245.json
+
+--- Window 5, Step 14/15 (Global 74) ---
+[GENERATOR] Starting call online_train_s_74_gen_initial...
+[GENERATOR] Call online_train_s_74_gen_initial completed in 7.70s
+[LOG] generator call logged to generator_online_train_s_74_gen_initial_20260310_151453_000.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.10
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_74_round_0...
+[REFLECTOR] Call online_train_s_74_round_0 completed in 12.94s
+[LOG] reflector call logged to reflector_online_train_s_74_round_0_20260310_151505_943.json
+[GENERATOR] Starting call online_train_s_74_post_reflect_0...
+[GENERATOR] Call online_train_s_74_post_reflect_0 completed in 9.18s
+[LOG] generator call logged to generator_online_train_s_74_post_reflect_0_20260310_151515_168.json
+
+--- Running Curator + Graph Constructor at step 74 ---
+[CURATOR] Starting call online_train_s_74...
+[CURATOR] Call online_train_s_74 completed in 12.95s
+[LOG] curator call logged to curator_online_train_s_74_20260310_151528_127.json
+  Applied 7 graph operations
+[GENERATOR] Starting call online_train_s_74_post_curate...
+[GENERATOR] Call online_train_s_74_post_curate completed in 7.98s
+[LOG] generator call logged to generator_online_train_s_74_post_curate_20260310_151536_213.json
+
+--- Window 5, Step 15/15 (Global 75) ---
+[GENERATOR] Starting call online_train_s_75_gen_initial...
+[GENERATOR] Call online_train_s_75_gen_initial completed in 16.90s
+[LOG] generator call logged to generator_online_train_s_75_gen_initial_20260310_151553_174.json
+Correct: False | Retrieved: 30 nodes | Precision: 0.03
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_75_round_0...
+[REFLECTOR] Call online_train_s_75_round_0 completed in 12.20s
+[LOG] reflector call logged to reflector_online_train_s_75_round_0_20260310_151605_381.json
+[GENERATOR] Starting call online_train_s_75_post_reflect_0...
+[GENERATOR] Empty response for online_train_s_75_post_reflect_0 (attempt 1/3), retrying in 9.8s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_75_post_reflect_0_20260310_151657_912.json
+[GENERATOR] Call online_train_s_75_post_reflect_0 completed in 71.33s
+[LOG] generator call logged to generator_online_train_s_75_post_reflect_0_20260310_151716_772.json
+
+--- Running Curator + Graph Constructor at step 75 ---
+[CURATOR] Starting call online_train_s_75...
+[CURATOR] Call online_train_s_75 completed in 17.30s
+[LOG] curator call logged to curator_online_train_s_75_20260310_151734_077.json
+[WARN] Skipping online training step 75: TypeError: unhashable type: 'list'
+
+Final Online Test Accuracy: 0.038
+
+============================================================
+GSAM RUN COMPLETE
+============================================================
+Final Graph: KnowledgeGraph(nodes=402, edges=432, concepts=229, coverage=0.00)
+Results saved to: results/mini/ablation_untyped_edges\gsam_run_20260310_132739_finer_online
+============================================================
+

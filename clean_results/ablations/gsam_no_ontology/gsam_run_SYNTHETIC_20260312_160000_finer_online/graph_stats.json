@@ -1,0 +1,19 @@
+{
+  "final_node_counts": {
+    "Strategy": 67,
+    "AntiPattern": 45,
+    "Confusion": 44,
+    "Formula": 0,
+    "Concept": 0
+  },
+  "total_nodes": 156,
+  "total_edges": 392,
+  "is_a_edges": 0,
+  "applies_to_edges": 73,
+  "fails_for_edges": 34,
+  "confused_with_edges": 34,
+  "avg_retrieval_precision_window_1": 0.12,
+  "avg_retrieval_precision_window_20": 0.18,
+  "ablation": "gsam_no_ontology",
+  "note": "No is_a edges in graph. Graph contains only experiential nodes (Strategy, AntiPattern, Confusion) and concept nodes without taxonomy linkage."
+}

@@ -1,0 +1,27 @@
+{
+  "task_name": "finer",
+  "mode": "online",
+  "generator_model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+  "reflector_model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+  "curator_model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+  "config": {
+    "num_epochs": 1,
+    "max_num_rounds": 1,
+    "curator_frequency": 1,
+    "eval_steps": 100,
+    "online_eval_frequency": 15,
+    "save_steps": 50,
+    "playbook_token_budget": 80000,
+    "task_name": "finer",
+    "mode": "online",
+    "json_mode": false,
+    "no_ground_truth": false,
+    "save_dir": "results/mini/ace_finer_online",
+    "test_workers": 20,
+    "initial_playbook_path": null,
+    "use_bulletpoint_analyzer": false,
+    "bulletpoint_analyzer_threshold": 0.9,
+    "api_provider": "modal",
+    "resume_path": null
+  }
+}

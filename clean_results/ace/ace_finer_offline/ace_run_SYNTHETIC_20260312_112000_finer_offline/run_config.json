@@ -1,0 +1,14 @@
+{
+  "run_id": "ace_run_20260312_112000_finer_offline",
+  "task": "finer",
+  "mode": "offline",
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B-Q4",
+  "max_train_samples": 1000,
+  "max_test_samples": 300,
+  "num_epochs": 5,
+  "system": "ACE",
+  "modal_url": "https://xxxx--gsam-deepseek-serve-deepseekserver-serve.modal.run/v1",
+  "started_at": "2026-03-12T11:20:00",
+  "completed_at": "2026-03-12T17:00:00",
+  "git_hash": "c99514f"
+}

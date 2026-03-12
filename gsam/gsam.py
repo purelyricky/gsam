@@ -88,19 +88,22 @@ class GSAMGenerator:
         return response, node_ids, call_info
 
     def _extract_node_ids(self, response: str, use_json_mode: bool) -> List[str]:
-        """Extract node IDs from generator response."""
-        node_ids = []
+        """Extract node IDs from generator response.
 
-        if use_json_mode:
-            try:
-                parsed = json.loads(response)
-                node_ids = parsed.get("node_ids", [])
-            except (json.JSONDecodeError, KeyError):
-                node_ids = self._extract_node_ids_regex(response)
-        else:
-            node_ids = self._extract_node_ids_regex(response)
+        Always tries JSON extraction first (model is prompted for JSON output),
+        then falls back to regex for bracket-style references like [S:0001].
+        """
+        # Try JSON extraction regardless of use_json_mode — the generator prompt
+        # asks for a JSON object with a "node_ids" key in all modes.
+        try:
+            parsed = extract_json_from_text(response)
+            if parsed and isinstance(parsed.get("node_ids"), list):
+                return [str(nid) for nid in parsed["node_ids"]]
+        except Exception:
+            pass
 
-        return node_ids
+        # Fall back to regex: matches [S:0001], [A:0003], etc.
+        return self._extract_node_ids_regex(response)
 
     def _extract_node_ids_regex(self, text: str) -> List[str]:
         """Extract node IDs using regex: [S:0001], [A:0005], [C:0023], etc."""
@@ -219,6 +222,15 @@ class GSAMCurator:
         Returns:
             Tuple of (curator_response, call_info).
         """
+        # Truncate large inputs to prevent oversized prompts causing vLLM None responses.
+        MAX_SUMMARY_CHARS = 3000
+        if len(graph_summary) > MAX_SUMMARY_CHARS:
+            graph_summary = graph_summary[:MAX_SUMMARY_CHARS] + "\n...[truncated for brevity]"
+
+        MAX_REFLECTION_CHARS = 2000
+        if len(recent_reflection) > MAX_REFLECTION_CHARS:
+            recent_reflection = recent_reflection[:MAX_REFLECTION_CHARS] + "\n...[truncated]"
+
         if use_ground_truth:
             prompt = GSAM_CURATOR_PROMPT.format(
                 token_budget=token_budget,
@@ -253,6 +265,33 @@ class GSAMCurator:
         )
 
         return response, call_info
+
+
+class _RetrievalAwareGenerator:
+    """
+    Wraps GSAMGenerator to perform per-query graph retrieval at test/eval time.
+
+    evaluate_test_set() passes context via the `playbook` parameter. This
+    wrapper intercepts those calls and replaces the static playbook with a
+    targeted subgraph retrieved for the specific (question, context) pair,
+    which is what GSAM should be doing at inference time.
+    """
+
+    def __init__(self, generator: "GSAMGenerator", retriever: "GraphRetriever"):
+        self._gen = generator
+        self._ret = retriever
+
+    def generate(self, question: str, playbook: str = "", context: str = "", **kwargs):
+        # Ignore the static playbook — retrieve per-query instead.
+        graph_ctx, _ = self._ret.retrieve(query=question, context=context)
+        # Drop 'playbook' from kwargs if callers passed it both ways.
+        kwargs.pop("playbook", None)
+        return self._gen.generate(
+            question=question,
+            graph_context=graph_ctx,
+            context=context,
+            **kwargs,
+        )
 
 
 class GSAM:
@@ -353,6 +392,81 @@ class GSAM:
 
         print(f"GSAM initialized: {self.knowledge_graph}")
 
+    # ------------------------------------------------------------------
+    # Resume helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _find_latest_graph_checkpoint(graph_dir: str) -> Optional[str]:
+        """Return path to the graph checkpoint with the highest step number."""
+        best_step = -1
+        best_file = None
+        try:
+            for fname in os.listdir(graph_dir):
+                if not fname.endswith('.json'):
+                    continue
+                nums = list(map(int, re.findall(r'\d+', fname)))
+                if nums:
+                    step = nums[-1]
+                    if step > best_step:
+                        best_step = step
+                        best_file = os.path.join(graph_dir, fname)
+        except (FileNotFoundError, OSError):
+            pass
+        return best_file
+
+    def _save_progress(self, save_path: str, **kwargs) -> None:
+        """Write progress.json so runs can be resumed after interruption."""
+        progress = {"timestamp": datetime.now().isoformat(), **kwargs}
+        with open(os.path.join(save_path, "progress.json"), "w") as f:
+            json.dump(progress, f, indent=2)
+
+    def _load_resume_state(self, resume_path: str) -> Dict[str, Any]:
+        """
+        Load graph checkpoint and progress from a partial run.
+        Mutates self.knowledge_graph in-place from the latest checkpoint.
+        Returns a dict with start_epoch, start_step, start_window,
+        start_global_step, prior_online_results.
+        """
+        state: Dict[str, Any] = {
+            "start_epoch": 1, "start_step": 0,
+            "start_window": 0, "start_global_step": 0,
+            "prior_online_results": None,
+        }
+        graph_dir = os.path.join(resume_path, "graph_checkpoints")
+        latest_ckpt = self._find_latest_graph_checkpoint(graph_dir)
+        if latest_ckpt:
+            loaded = KnowledgeGraph.load(latest_ckpt)
+            # Replace graph internals in-place so existing references
+            # (GraphConstructor, GraphRetriever) stay valid.
+            self.knowledge_graph.graph = loaded.graph
+            self.knowledge_graph.embeddings = loaded.embeddings
+            self.knowledge_graph._next_ids = loaded._next_ids
+            self.knowledge_graph.tasks_processed = loaded.tasks_processed
+            self.knowledge_graph.created_at = loaded.created_at
+            print(f"Loaded graph checkpoint: {latest_ckpt}")
+            print(f"  Resumed graph: {self.knowledge_graph}")
+
+        progress_file = os.path.join(resume_path, "progress.json")
+        if os.path.exists(progress_file):
+            with open(progress_file) as f:
+                progress = json.load(f)
+            print(f"Resuming from progress: {progress}")
+            if progress.get("mode") == "offline":
+                state["start_epoch"] = progress.get("epoch", 1)
+                state["start_step"] = progress.get("step", 0)
+            elif progress.get("mode") == "online":
+                # Resume at the NEXT window after the last completed one
+                state["start_window"] = progress.get("window", 0) + 1
+                state["start_global_step"] = progress.get("global_step", 0)
+
+        partial_file = os.path.join(resume_path, "partial_online_results.json")
+        if os.path.exists(partial_file):
+            with open(partial_file) as f:
+                state["prior_online_results"] = json.load(f)
+
+        return state
+
     def run(
         self,
         mode: str,
@@ -373,23 +487,39 @@ class GSAM:
         save_dir = config_params['save_dir']
         task_name = config_params['task_name']
 
-        # Setup paths
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        run_folder = f"gsam_run_{timestamp}_{task_name}_{mode}"
-        save_path = os.path.join(save_dir, run_folder)
-        os.makedirs(save_path, exist_ok=True)
+        # Determine save_path: resume into existing dir OR create a new timestamped one
+        resume_cfg = config.get('resume_path')
+        start_epoch, start_step, start_window, start_global_step = 1, 0, 0, 0
+        prior_online_results = None
+
+        if resume_cfg and os.path.isdir(resume_cfg):
+            save_path = resume_cfg
+            print(f"\nRESUMING run from: {resume_cfg}")
+            state = self._load_resume_state(resume_cfg)
+            start_epoch = state["start_epoch"]
+            start_step = state["start_step"]
+            start_window = state["start_window"]
+            start_global_step = state["start_global_step"]
+            prior_online_results = state["prior_online_results"]
+        else:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            run_folder = f"gsam_run_{timestamp}_{task_name}_{mode}"
+            save_path = os.path.join(save_dir, run_folder)
+            os.makedirs(save_path, exist_ok=True)
+
         log_dir = os.path.join(save_path, "detailed_llm_logs")
         os.makedirs(log_dir, exist_ok=True)
 
         graph_dir = os.path.join(save_path, "graph_checkpoints")
         os.makedirs(graph_dir, exist_ok=True)
 
-        # Save config
+        # Save config (overwrite so resume picks up any changed params)
         with open(os.path.join(save_path, "run_config.json"), "w") as f:
             json.dump({"task_name": task_name, "mode": mode, "config": config}, f, indent=2)
 
-        # Save initial graph
-        self.knowledge_graph.save(os.path.join(graph_dir, "graph_step_0.json"))
+        if not resume_cfg:
+            # Save initial graph only on a fresh run
+            self.knowledge_graph.save(os.path.join(graph_dir, "graph_step_0.json"))
 
         print(f"\n{'='*60}")
         print(f"GSAM SYSTEM - {mode.upper()} MODE")
@@ -409,6 +539,7 @@ class GSAM:
             training_results = self._offline_train(
                 train_samples, val_samples, data_processor, config,
                 save_path, log_dir, graph_dir,
+                start_epoch=start_epoch, start_step=start_step,
             )
             results['training_results'] = training_results
             if training_results.get("latency_stats"):
@@ -427,6 +558,9 @@ class GSAM:
             online_results = self._online_train_and_test(
                 test_samples, data_processor, config,
                 save_path, log_dir, graph_dir,
+                start_window=start_window,
+                start_global_step=start_global_step,
+                prior_online_results=prior_online_results,
             )
             results['online_test_results'] = online_results
             if online_results.get("latency_stats"):
@@ -454,19 +588,17 @@ class GSAM:
         return results
 
     def _run_test(self, test_samples, data_processor, config, log_dir, save_path, prefix):
-        """Run test evaluation using current graph."""
+        """Run test evaluation using current graph with per-query retrieval."""
         config_params = self._extract_config_params(config)
 
-        # For test evaluation, serialize the full graph context
-        # We use the ACE-compatible evaluate_test_set but with our generator
-        # that accepts playbook parameter (for compatibility)
-        # The generator will use graph retrieval internally
-        graph_context = self._get_full_graph_summary()
+        # Use per-query graph retrieval at test time so GSAM's retrieval
+        # architecture is exercised during evaluation (not just training).
+        retrieval_gen = _RetrievalAwareGenerator(self.generator, self.graph_retriever)
 
         test_results, test_error_log = evaluate_test_set(
             data_processor,
-            self.generator,
-            graph_context,  # passed as "playbook" parameter
+            retrieval_gen,
+            "",  # playbook unused — retrieval_gen ignores it
             test_samples,
             self.max_tokens,
             log_dir,
@@ -593,7 +725,15 @@ class GSAM:
                     "error_severity": meta.get("error_severity", "medium"),
                 })
 
-                # Regenerate with reflection
+                # Re-retrieve after node tag updates so the generator sees
+                # updated helpful/harmful counts in this round's context.
+                _t0 = time.time()
+                graph_context, retrieved_ids = self.graph_retriever.retrieve(
+                    query=question, context=context
+                )
+                retrieval_time += time.time() - _t0
+
+                # Regenerate with reflection and fresh context
                 _t0 = time.time()
                 gen_response, node_ids, _ = self.generator.generate(
                     question=question,
@@ -714,7 +854,8 @@ class GSAM:
         return pre_train_answer, post_train_answer, tracking_dict, latency_dict
 
     def _offline_train(self, train_samples, val_samples, data_processor, config,
-                       save_path, log_dir, graph_dir):
+                       save_path, log_dir, graph_dir,
+                       start_epoch: int = 1, start_step: int = 0):
         """Offline training loop."""
         config_params = self._extract_config_params(config)
         num_epochs = config_params['num_epochs']
@@ -727,6 +868,11 @@ class GSAM:
         all_latencies = []
 
         for epoch in range(1, num_epochs + 1):
+            # --- RESUME: skip epochs already completed ---
+            if epoch < start_epoch:
+                print(f"Skipping epoch {epoch} (resuming from epoch {start_epoch}, step {start_step})")
+                continue
+
             print(f"\n{'='*60}\nEPOCH {epoch}/{num_epochs}\n{'='*60}")
 
             answers_pre, targets_pre = [], []
@@ -734,13 +880,23 @@ class GSAM:
 
             for step, task_dict in enumerate(train_samples):
                 step += 1
+
+                # --- RESUME: skip steps already completed in the resume epoch ---
+                if epoch == start_epoch and step <= start_step:
+                    continue
+
                 print(f"\n--- Step {step}/{len(train_samples)} ---")
 
                 target = task_dict.get("target", "")
-                pre, post, tracking, latency = self._train_single_sample(
-                    task_dict, data_processor, f"train_e_{epoch}_s_{step}",
-                    step, log_dir, config_params, len(train_samples),
-                )
+                try:
+                    pre, post, tracking, latency = self._train_single_sample(
+                        task_dict, data_processor, f"train_e_{epoch}_s_{step}",
+                        step, log_dir, config_params, len(train_samples),
+                    )
+                except Exception as e:
+                    print(f"[WARN] Skipping training sample (epoch={epoch}, step={step}): {type(e).__name__}: {e}")
+                    self._save_progress(save_path, mode="offline", epoch=epoch, step=step)
+                    continue
 
                 answers_pre.append(pre)
                 targets_pre.append(target)
@@ -751,6 +907,9 @@ class GSAM:
                 pre_post_results.append({
                     "epoch": epoch, "step": step, "target": target, **tracking,
                 })
+
+                # Save progress cursor so this run can be resumed if interrupted
+                self._save_progress(save_path, mode="offline", epoch=epoch, step=step)
 
                 if step % save_steps == 0:
                     self.knowledge_graph.save(
@@ -763,9 +922,9 @@ class GSAM:
 
                     val_results = {}
                     if val_samples:
-                        graph_ctx = self._get_full_graph_summary()
+                        retrieval_gen = _RetrievalAwareGenerator(self.generator, self.graph_retriever)
                         val_results, _ = evaluate_test_set(
-                            data_processor, self.generator, graph_ctx,
+                            data_processor, retrieval_gen, "",
                             val_samples, self.max_tokens, log_dir,
                             max_workers=config_params['test_workers'],
                             use_json_mode=config_params['use_json_mode'],
@@ -815,34 +974,54 @@ class GSAM:
         return {"best_validation_accuracy": best_accuracy, "latency_stats": latency_stats}
 
     def _online_train_and_test(self, test_samples, data_processor, config,
-                               save_path, log_dir, graph_dir):
+                               save_path, log_dir, graph_dir,
+                               start_window: int = 0, start_global_step: int = 0,
+                               prior_online_results: Optional[Dict] = None):
         """Online training and testing loop."""
         config_params = self._extract_config_params(config)
         online_eval_frequency = config.get('online_eval_frequency', 15)
         save_steps = config_params['save_steps']
 
-        correct_count_sample = 0
-        total_count = 0
-        all_answers = []
-        all_targets = []
+        # Initialize accumulators — restore from saved partial results when resuming
+        if prior_online_results:
+            all_answers = prior_online_results.get('all_answers', [])
+            all_targets = prior_online_results.get('all_targets', [])
+            window_results = prior_online_results.get('window_results', [])
+            correct_count_sample = prior_online_results.get('correct_count_sample', 0)
+            total_count = prior_online_results.get('total_count', 0)
+            skipped_count = prior_online_results.get('skipped_count', 0)
+            global_step = start_global_step
+            print(f"Resumed online: {len(window_results)} windows already done, "
+                  f"global_step={global_step}")
+        else:
+            correct_count_sample = 0
+            total_count = 0
+            skipped_count = 0
+            all_answers = []
+            all_targets = []
+            window_results = []
+            global_step = 0
+
         all_errors = []
-        window_results = []
         all_latencies = []
 
         num_windows = (len(test_samples) + online_eval_frequency - 1) // online_eval_frequency
-        global_step = 0
 
         for window_idx in range(num_windows):
+            # --- RESUME: skip windows already completed ---
+            if window_idx < start_window:
+                continue
+
             start = window_idx * online_eval_frequency
             end = min((window_idx + 1) * online_eval_frequency, len(test_samples))
             window_samples = test_samples[start:end]
 
             print(f"\n{'='*60}\nWINDOW {window_idx+1}/{num_windows} (samples {start}-{end-1})\n{'='*60}")
 
-            # Test on window
-            graph_ctx = self._get_full_graph_summary()
+            # Test on window with per-query retrieval
+            retrieval_gen = _RetrievalAwareGenerator(self.generator, self.graph_retriever)
             w_results, w_errors = evaluate_test_set(
-                data_processor, self.generator, graph_ctx,
+                data_processor, retrieval_gen, "",
                 window_samples, self.max_tokens, log_dir,
                 max_workers=config_params['test_workers'],
                 use_json_mode=config_params['use_json_mode'],
@@ -851,8 +1030,10 @@ class GSAM:
             w_acc = w_results['accuracy']
             w_correct = w_results['correct']
             w_total = w_results['total']
+            w_skipped = w_results.get('skipped', 0)
             correct_count_sample += w_correct
             total_count += w_total
+            skipped_count += w_skipped
             # Accumulate raw answers/targets so final accuracy can be
             # computed via data_processor.evaluate_accuracy (which uses
             # the correct metric — token-level for FiNER, sample-level
@@ -884,16 +1065,34 @@ class GSAM:
                 global_step += 1
                 print(f"\n--- Window {window_idx+1}, Step {local_step+1}/{len(window_samples)} (Global {global_step}) ---")
 
-                _, _, _, latency = self._train_single_sample(
-                    task_dict, data_processor, f"online_train_s_{global_step}",
-                    global_step, log_dir, config_params, len(test_samples),
-                )
-                all_latencies.append(latency)
+                try:
+                    _, _, _, latency = self._train_single_sample(
+                        task_dict, data_processor, f"online_train_s_{global_step}",
+                        global_step, log_dir, config_params, len(test_samples),
+                    )
+                    all_latencies.append(latency)
+                except Exception as e:
+                    print(f"[WARN] Skipping online training step {global_step}: {type(e).__name__}: {e}")
 
                 if global_step % save_steps == 0:
                     self.knowledge_graph.save(
                         os.path.join(graph_dir, f"graph_step_{global_step}.json")
                     )
+
+            # Save partial results and progress after each window so the run
+            # can be resumed from the next window if interrupted.
+            partial = {
+                'all_answers': all_answers,
+                'all_targets': all_targets,
+                'window_results': window_results,
+                'correct_count_sample': correct_count_sample,
+                'total_count': total_count,
+                'skipped_count': skipped_count,
+            }
+            with open(os.path.join(save_path, "partial_online_results.json"), "w") as _pf:
+                json.dump(partial, _pf)
+            self._save_progress(save_path, mode="online",
+                                window=window_idx, global_step=global_step)
 
         # Compute final accuracy using the proper per-task metric
         if all_answers and all_targets:
@@ -914,20 +1113,25 @@ class GSAM:
                 sum(d.values()) for d in all_latencies
             ) / n
 
+        if skipped_count > 0:
+            print(f"Warning: {skipped_count} sample(s) skipped due to LLM failures and excluded from accuracy.")
+
         # Save results
         with open(os.path.join(save_path, "test_results.json"), "w") as f:
             json.dump({
                 "test_accuracy": final_acc,
+                "skipped": skipped_count,
                 "window_results": window_results,
                 "errors": all_errors,
             }, f, indent=2)
 
-        print(f"\nFinal Online Test Accuracy: {final_acc:.3f}")
+        print(f"\nFinal Online Test Accuracy: {final_acc:.3f} (skipped={skipped_count})")
 
         return {
             "accuracy": final_acc,
             "correct": correct_count_sample,
             "total": total_count,
+            "skipped": skipped_count,
             "latency_stats": latency_stats,
         }
 
@@ -992,15 +1196,22 @@ class GSAM:
         return "\n".join(lines)
 
     def _get_full_graph_summary(self) -> str:
-        """Get full graph serialization for test-time evaluation."""
-        # Get all strategies and anti-patterns
+        """Get graph serialization for test-time evaluation, capped to prevent context overflow."""
         strategies = self.knowledge_graph.get_nodes_by_type(NodeType.STRATEGY)
         antipatterns = self.knowledge_graph.get_nodes_by_type(NodeType.ANTI_PATTERN)
 
-        all_ids = strategies + antipatterns
-        if not all_ids:
+        if not strategies and not antipatterns:
             return "(No learned knowledge in graph yet)"
 
+        # Rank by helpful_count * confidence; keep top nodes to stay within token budget.
+        def _score(nid):
+            data = self.knowledge_graph.graph.nodes.get(nid, {})
+            return data.get("helpful_count", 0) * data.get("confidence", 1.0) + data.get("helpful_count", 0)
+
+        strategies = sorted(strategies, key=_score, reverse=True)[:20]
+        antipatterns = sorted(antipatterns, key=_score, reverse=True)[:10]
+
+        all_ids = strategies + antipatterns
         subgraph = self.knowledge_graph.get_subgraph(all_ids, depth=1)
         return self.knowledge_graph.serialize_subgraph(subgraph)
 

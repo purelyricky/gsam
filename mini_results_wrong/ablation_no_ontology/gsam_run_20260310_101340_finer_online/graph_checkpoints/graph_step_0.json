@@ -1,0 +1,11 @@
+{
+  "nodes": [],
+  "edges": [],
+  "metadata": {
+    "created_at": 1773134020.700822,
+    "tasks_processed": 0,
+    "next_ids": {},
+    "embedding_model": "all-MiniLM-L6-v2",
+    "use_typed_edges": true
+  }
+}

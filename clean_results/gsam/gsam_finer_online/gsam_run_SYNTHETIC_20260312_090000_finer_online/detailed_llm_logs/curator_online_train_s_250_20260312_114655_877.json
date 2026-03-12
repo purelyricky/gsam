@@ -1,0 +1,41 @@
+{
+  "synthetic_reference": true,
+  "call_id": "online_train_s_250",
+  "role": "curator",
+  "step": 250,
+  "window": 17,
+  "timestamp": "2026-03-12T11:46:55.000000",
+  "input_tokens": 1933,
+  "output_tokens": 263,
+  "latency_s": 14.95,
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "target_concept": "LineOfCreditFacilityMaximumBorrowingCapacity"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "S:0250",
+      "relation": "applies_to",
+      "target": "C:0014"
+    },
+    {
+      "op": "ADD_ANTIPATTERN",
+      "content": "Confusing ContractWithCustomerLiability (deferred revenue balance) with ContractWithCustomerLiabilityRevenueRecognized (revenue recognized FROM deferred revenue). The former is a balance sheet item; the latter is a flow item recognized in the period.",
+      "target_concept": "ContractWithCustomerLiability"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "A:0250",
+      "relation": "fails_for",
+      "target": "C:0002"
+    },
+    {
+      "op": "UPDATE_ATTR",
+      "node": "C:0057",
+      "attr": "harmful_count",
+      "delta": 1
+    }
+  ]
+}

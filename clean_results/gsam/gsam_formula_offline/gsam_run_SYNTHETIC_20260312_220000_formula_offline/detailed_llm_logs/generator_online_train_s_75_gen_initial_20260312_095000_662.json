@@ -1,0 +1,15 @@
+{
+  "synthetic_reference": true,
+  "call_id": "online_train_s_75_gen_initial",
+  "role": "generator",
+  "step": 75,
+  "window": 5,
+  "timestamp": "2026-03-12T09:50:00.000000",
+  "input_tokens": 1895,
+  "output_tokens": 157,
+  "latency_s": 13.31,
+  "retrieved_nodes": 16,
+  "retrieval_precision": 0.218,
+  "predicted": "Depreciation",
+  "graph_context_snippet": "[Strategy S:0075]: EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for key..."
+}

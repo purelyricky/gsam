@@ -1,0 +1,2584 @@
+[INFO] Online mode requires num_epochs=1; overriding from 5 to 1
+
+============================================================
+ACE SYSTEM
+============================================================
+Task: finer
+Mode: ONLINE
+Generator Model: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+============================================================
+
+Loaded 441 samples from ./eval/finance/data/finer_test_subset_006_seed42.jsonl
+Online mode: Training and testing on 75 examples
+Using empty playbook as initial playbook
+
+Using MODAL API  (https://bata24941--gsam-deepseek-serve-deepseekserver-serve.modal.run/v1)
+
+============================================================
+ACE SYSTEM - ONLINE MODE
+============================================================
+Task: finer
+Test samples (used for training and testing): 75
+============================================================
+
+
+============================================================
+INITIAL TEST (before training)
+============================================================
+
+
+========================================
+EVALUATING TEST SET - 75 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Starting call test_eval_15...
+[GENERATOR] Starting call test_eval_16...
+[GENERATOR] Starting call test_eval_17...
+[GENERATOR] Starting call test_eval_18...
+[GENERATOR] Starting call test_eval_19...
+[GENERATOR] Call test_eval_6 completed in 7.00s
+[GENERATOR] Call test_eval_8 completed in 7.02s
+[LOG] generator call logged to generator_test_eval_6_20260309_150149_893.json
+[GENERATOR] Starting call test_eval_20...
+[LOG] generator call logged to generator_test_eval_8_20260309_150149_905.json
+[GENERATOR] Starting call test_eval_21...
+[GENERATOR] Call test_eval_19 completed in 7.04s
+[LOG] generator call logged to generator_test_eval_19_20260309_150149_931.json
+[GENERATOR] Starting call test_eval_22...
+[GENERATOR] Call test_eval_7 completed in 8.29s
+[LOG] generator call logged to generator_test_eval_7_20260309_150151_184.json
+[GENERATOR] Starting call test_eval_23...
+[GENERATOR] Call test_eval_18 completed in 8.67s
+[GENERATOR] Call test_eval_4 completed in 8.67s
+[LOG] generator call logged to generator_test_eval_18_20260309_150151_560.json
+[GENERATOR] Starting call test_eval_24...
+[LOG] generator call logged to generator_test_eval_4_20260309_150151_562.json
+[GENERATOR] Starting call test_eval_25...
+[GENERATOR] Call test_eval_12 completed in 8.69s
+[LOG] generator call logged to generator_test_eval_12_20260309_150151_580.json
+[GENERATOR] Starting call test_eval_26...
+[GENERATOR] Call test_eval_10 completed in 8.85s
+[LOG] generator call logged to generator_test_eval_10_20260309_150151_741.json
+[GENERATOR] Starting call test_eval_27...
+[GENERATOR] Call test_eval_16 completed in 9.20s
+[LOG] generator call logged to generator_test_eval_16_20260309_150152_093.json
+[GENERATOR] Starting call test_eval_28...
+[GENERATOR] Call test_eval_9 completed in 9.31s
+[LOG] generator call logged to generator_test_eval_9_20260309_150152_201.json
+[GENERATOR] Starting call test_eval_29...
+[GENERATOR] Call test_eval_2 completed in 9.42s
+[LOG] generator call logged to generator_test_eval_2_20260309_150152_304.json
+[GENERATOR] Starting call test_eval_30...
+[GENERATOR] Call test_eval_3 completed in 10.12s
+[LOG] generator call logged to generator_test_eval_3_20260309_150153_007.json
+[GENERATOR] Starting call test_eval_31...
+[GENERATOR] Call test_eval_11 completed in 10.38s
+[LOG] generator call logged to generator_test_eval_11_20260309_150153_270.json
+[GENERATOR] Starting call test_eval_32...
+[GENERATOR] Call test_eval_14 completed in 10.85s
+[LOG] generator call logged to generator_test_eval_14_20260309_150153_740.json
+[GENERATOR] Starting call test_eval_33...
+[GENERATOR] Call test_eval_17 completed in 11.54s
+[LOG] generator call logged to generator_test_eval_17_20260309_150154_429.json
+[GENERATOR] Starting call test_eval_34...
+[GENERATOR] Call test_eval_5 completed in 12.55s
+[LOG] generator call logged to generator_test_eval_5_20260309_150155_435.json
+[GENERATOR] Starting call test_eval_35...
+[GENERATOR] Call test_eval_21 completed in 7.43s
+[LOG] generator call logged to generator_test_eval_21_20260309_150157_342.json
+[GENERATOR] Starting call test_eval_36...
+[GENERATOR] Call test_eval_29 completed in 5.39s
+[LOG] generator call logged to generator_test_eval_29_20260309_150157_594.json
+[GENERATOR] Starting call test_eval_37...
+[GENERATOR] Call test_eval_28 completed in 5.69s
+[LOG] generator call logged to generator_test_eval_28_20260309_150157_785.json
+[GENERATOR] Starting call test_eval_38...
+[GENERATOR] Call test_eval_24 completed in 6.44s
+[LOG] generator call logged to generator_test_eval_24_20260309_150158_011.json
+[GENERATOR] Starting call test_eval_39...
+[GENERATOR] Call test_eval_26 completed in 6.61s
+[LOG] generator call logged to generator_test_eval_26_20260309_150158_194.json
+[GENERATOR] Starting call test_eval_40...
+[GENERATOR] Call test_eval_25 completed in 6.90s
+[LOG] generator call logged to generator_test_eval_25_20260309_150158_467.json
+[GENERATOR] Starting call test_eval_41...
+[GENERATOR] Call test_eval_13 completed in 16.03s
+[LOG] generator call logged to generator_test_eval_13_20260309_150158_925.json
+[GENERATOR] Starting call test_eval_42...
+[GENERATOR] Call test_eval_1 completed in 16.16s
+[LOG] generator call logged to generator_test_eval_1_20260309_150159_047.json
+[GENERATOR] Starting call test_eval_43...
+[GENERATOR] Call test_eval_20 completed in 10.85s
+[LOG] generator call logged to generator_test_eval_20_20260309_150200_752.json
+[GENERATOR] Starting call test_eval_44...
+[GENERATOR] Call test_eval_31 completed in 8.33s
+[LOG] generator call logged to generator_test_eval_31_20260309_150201_348.json
+[GENERATOR] Starting call test_eval_45...
+[GENERATOR] Call test_eval_22 completed in 11.82s
+[LOG] generator call logged to generator_test_eval_22_20260309_150201_751.json
+[GENERATOR] Starting call test_eval_46...
+[GENERATOR] Call test_eval_27 completed in 10.40s
+[LOG] generator call logged to generator_test_eval_27_20260309_150202_145.json
+[GENERATOR] Starting call test_eval_47...
+[GENERATOR] Call test_eval_23 completed in 11.92s
+[LOG] generator call logged to generator_test_eval_23_20260309_150203_108.json
+[GENERATOR] Starting call test_eval_48...
+[GENERATOR] Call test_eval_32 completed in 9.87s
+[LOG] generator call logged to generator_test_eval_32_20260309_150203_137.json
+[GENERATOR] Starting call test_eval_49...
+[GENERATOR] Call test_eval_30 completed in 11.31s
+[LOG] generator call logged to generator_test_eval_30_20260309_150203_616.json
+[GENERATOR] Starting call test_eval_50...
+[GENERATOR] Call test_eval_43 completed in 6.14s
+[LOG] generator call logged to generator_test_eval_43_20260309_150205_187.json
+[GENERATOR] Starting call test_eval_51...
+[GENERATOR] Call test_eval_39 completed in 7.25s
+[LOG] generator call logged to generator_test_eval_39_20260309_150205_262.json
+[GENERATOR] Starting call test_eval_52...
+[GENERATOR] Call test_eval_37 completed in 7.94s
+[LOG] generator call logged to generator_test_eval_37_20260309_150205_540.json
+[GENERATOR] Starting call test_eval_53...
+[GENERATOR] Call test_eval_34 completed in 11.11s
+[LOG] generator call logged to generator_test_eval_34_20260309_150205_544.json
+[GENERATOR] Starting call test_eval_54...
+[GENERATOR] Call test_eval_36 completed in 8.62s
+[LOG] generator call logged to generator_test_eval_36_20260309_150205_963.json
+[GENERATOR] Starting call test_eval_55...
+[GENERATOR] Call test_eval_38 completed in 9.33s
+[LOG] generator call logged to generator_test_eval_38_20260309_150207_117.json
+[GENERATOR] Starting call test_eval_56...
+[GENERATOR] Call test_eval_33 completed in 13.39s
+[LOG] generator call logged to generator_test_eval_33_20260309_150207_135.json
+[GENERATOR] Starting call test_eval_57...
+[GENERATOR] Call test_eval_42 completed in 8.24s
+[LOG] generator call logged to generator_test_eval_42_20260309_150207_167.json
+[GENERATOR] Starting call test_eval_58...
+[GENERATOR] Call test_eval_41 completed in 9.57s
+[LOG] generator call logged to generator_test_eval_41_20260309_150208_035.json
+[GENERATOR] Starting call test_eval_59...
+[GENERATOR] Call test_eval_47 completed in 6.84s
+[LOG] generator call logged to generator_test_eval_47_20260309_150208_999.json
+[GENERATOR] Starting call test_eval_60...
+[GENERATOR] Call test_eval_40 completed in 10.96s
+[LOG] generator call logged to generator_test_eval_40_20260309_150209_158.json
+[GENERATOR] Starting call test_eval_61...
+[GENERATOR] Call test_eval_45 completed in 9.08s
+[LOG] generator call logged to generator_test_eval_45_20260309_150210_424.json
+[GENERATOR] Starting call test_eval_62...
+[GENERATOR] Call test_eval_0 completed in 27.70s
+[LOG] generator call logged to generator_test_eval_0_20260309_150210_586.json
+[GENERATOR] Starting call test_eval_63...
+[GENERATOR] Call test_eval_44 completed in 10.64s
+[LOG] generator call logged to generator_test_eval_44_20260309_150211_399.json
+[GENERATOR] Starting call test_eval_64...
+[GENERATOR] Call test_eval_46 completed in 9.75s
+[LOG] generator call logged to generator_test_eval_46_20260309_150211_520.json
+[GENERATOR] Starting call test_eval_65...
+[GENERATOR] Call test_eval_54 completed in 7.53s
+[GENERATOR] Call test_eval_48 completed in 9.95s
+[LOG] generator call logged to generator_test_eval_54_20260309_150213_071.json
+[GENERATOR] Starting call test_eval_66...
+[LOG] generator call logged to generator_test_eval_48_20260309_150213_071.json
+[GENERATOR] Starting call test_eval_67...
+[GENERATOR] Call test_eval_59 completed in 6.34s
+[LOG] generator call logged to generator_test_eval_59_20260309_150214_382.json
+[GENERATOR] Starting call test_eval_68...
+[GENERATOR] Call test_eval_53 completed in 9.41s
+[LOG] generator call logged to generator_test_eval_53_20260309_150214_946.json
+[GENERATOR] Starting call test_eval_69...
+Progress: 50/75, Accuracy: 0.000
+[GENERATOR] Call test_eval_51 completed in 10.01s
+[LOG] generator call logged to generator_test_eval_51_20260309_150215_202.json
+[GENERATOR] Starting call test_eval_70...
+[GENERATOR] Call test_eval_35 completed in 20.97s
+[LOG] generator call logged to generator_test_eval_35_20260309_150216_413.json
+[GENERATOR] Starting call test_eval_71...
+[GENERATOR] Call test_eval_61 completed in 8.71s
+[LOG] generator call logged to generator_test_eval_61_20260309_150217_868.json
+[GENERATOR] Starting call test_eval_72...
+[GENERATOR] Call test_eval_58 completed in 11.90s
+[LOG] generator call logged to generator_test_eval_58_20260309_150219_062.json
+[GENERATOR] Starting call test_eval_73...
+[GENERATOR] Call test_eval_64 completed in 7.88s
+[LOG] generator call logged to generator_test_eval_64_20260309_150219_284.json
+[GENERATOR] Starting call test_eval_74...
+[GENERATOR] Call test_eval_56 completed in 12.41s
+[LOG] generator call logged to generator_test_eval_56_20260309_150219_533.json
+[GENERATOR] Call test_eval_65 completed in 8.53s
+[LOG] generator call logged to generator_test_eval_65_20260309_150220_047.json
+[GENERATOR] Call test_eval_60 completed in 11.48s
+[LOG] generator call logged to generator_test_eval_60_20260309_150220_491.json
+[GENERATOR] Call test_eval_62 completed in 10.29s
+[LOG] generator call logged to generator_test_eval_62_20260309_150220_729.json
+[GENERATOR] Call test_eval_69 completed in 6.65s
+[LOG] generator call logged to generator_test_eval_69_20260309_150221_597.json
+[GENERATOR] Call test_eval_68 completed in 7.62s
+[LOG] generator call logged to generator_test_eval_68_20260309_150222_015.json
+[GENERATOR] Call test_eval_63 completed in 11.83s
+[LOG] generator call logged to generator_test_eval_63_20260309_150222_414.json
+[GENERATOR] Call test_eval_50 completed in 18.93s
+[LOG] generator call logged to generator_test_eval_50_20260309_150222_559.json
+[GENERATOR] Call test_eval_49 completed in 19.61s
+[LOG] generator call logged to generator_test_eval_49_20260309_150222_747.json
+[GENERATOR] Call test_eval_66 completed in 10.62s
+[LOG] generator call logged to generator_test_eval_66_20260309_150223_704.json
+[GENERATOR] Call test_eval_55 completed in 18.83s
+[LOG] generator call logged to generator_test_eval_55_20260309_150224_793.json
+[GENERATOR] Call test_eval_52 completed in 20.55s
+[LOG] generator call logged to generator_test_eval_52_20260309_150225_814.json
+[GENERATOR] Call test_eval_71 completed in 9.57s
+[LOG] generator call logged to generator_test_eval_71_20260309_150225_987.json
+[GENERATOR] Call test_eval_72 completed in 9.31s
+[LOG] generator call logged to generator_test_eval_72_20260309_150227_190.json
+[GENERATOR] Call test_eval_73 completed in 9.87s
+[LOG] generator call logged to generator_test_eval_73_20260309_150228_929.json
+[GENERATOR] Call test_eval_74 completed in 10.31s
+[LOG] generator call logged to generator_test_eval_74_20260309_150229_597.json
+[GENERATOR] Call test_eval_70 completed in 18.20s
+[LOG] generator call logged to generator_test_eval_70_20260309_150233_411.json
+[GENERATOR] Empty response for test_eval_15 (attempt 1/3), retrying in 5.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_15_20260309_150242_208.json
+[GENERATOR] Call test_eval_15 completed in 75.37s
+[LOG] generator call logged to generator_test_eval_15_20260309_150258_261.json
+[GENERATOR] Empty response for test_eval_57 (attempt 1/3), retrying in 8.0s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_57_20260309_150301_255.json
+[GENERATOR] Empty response for test_eval_67 (attempt 1/3), retrying in 8.6s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_67_20260309_150306_280.json
+[GENERATOR] Call test_eval_57 completed in 73.88s
+[LOG] generator call logged to generator_test_eval_57_20260309_150321_019.json
+[GENERATOR] Call test_eval_67 completed in 70.75s
+[LOG] generator call logged to generator_test_eval_67_20260309_150323_831.json
+
+Final Accuracy: 0.107 (0/75)
+Initial Test Accuracy: 0.107
+
+
+============================================================
+STARTING ONLINE TRAIN AND TEST
+============================================================
+
+Total samples: 75
+Window size: 15
+Number of windows: 5
+Curator frequency: every 1 steps
+
+============================================================
+WINDOW 1/5
+Samples 0 to 14
+============================================================
+
+--- Testing window 1 with current playbook ---
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_6 completed in 5.65s
+[LOG] generator call logged to generator_test_eval_6_20260309_150329_493.json
+[GENERATOR] Call test_eval_7 completed in 6.93s
+[LOG] generator call logged to generator_test_eval_7_20260309_150330_777.json
+[GENERATOR] Call test_eval_10 completed in 7.21s
+[LOG] generator call logged to generator_test_eval_10_20260309_150331_072.json
+[GENERATOR] Call test_eval_9 completed in 7.45s
+[LOG] generator call logged to generator_test_eval_9_20260309_150331_304.json
+[GENERATOR] Call test_eval_11 completed in 7.70s
+[LOG] generator call logged to generator_test_eval_11_20260309_150331_555.json
+[GENERATOR] Call test_eval_13 completed in 7.89s
+[LOG] generator call logged to generator_test_eval_13_20260309_150331_747.json
+[GENERATOR] Call test_eval_8 completed in 8.08s
+[LOG] generator call logged to generator_test_eval_8_20260309_150331_935.json
+[GENERATOR] Call test_eval_12 completed in 8.31s
+[LOG] generator call logged to generator_test_eval_12_20260309_150332_169.json
+[GENERATOR] Call test_eval_4 completed in 8.93s
+[GENERATOR] Call test_eval_14 completed in 8.93s
+[LOG] generator call logged to generator_test_eval_4_20260309_150332_770.json
+[LOG] generator call logged to generator_test_eval_14_20260309_150332_787.json
+[GENERATOR] Call test_eval_3 completed in 9.01s
+[LOG] generator call logged to generator_test_eval_3_20260309_150332_851.json
+[GENERATOR] Call test_eval_5 completed in 9.17s
+[LOG] generator call logged to generator_test_eval_5_20260309_150333_016.json
+[GENERATOR] Call test_eval_1 completed in 11.49s
+[LOG] generator call logged to generator_test_eval_1_20260309_150335_335.json
+[GENERATOR] Call test_eval_2 completed in 15.12s
+[LOG] generator call logged to generator_test_eval_2_20260309_150338_960.json
+[GENERATOR] Call test_eval_0 completed in 15.68s
+[LOG] generator call logged to generator_test_eval_0_20260309_150339_519.json
+
+Final Accuracy: 0.117 (0/15)
+Window 1 test accuracy: 0.117
+Cumulative test accuracy so far: 0.117 (15 samples)
+
+--- Training on window 1 ---
+
+--- Window 1, Step 1/15 (Global step 1) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_1_gen_initial...
+[GENERATOR] Empty response for online_train_s_1_gen_initial (attempt 1/3), retrying in 12.3s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_1_gen_initial_20260309_150431_199.json
+[GENERATOR] Empty response for online_train_s_1_gen_initial (attempt 2/3), retrying in 14.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_1_gen_initial_20260309_150535_639.json
+[GENERATOR] Empty response for online_train_s_1_gen_initial (attempt 3/3), retrying in 12.0s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_1_gen_initial_20260309_150641_949.json
+[GENERATOR] Empty response for online_train_s_1_gen_initial after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_1_gen_initial_20260309_150746_118.json
+[WARN] Skipping online training step 1: Exception: API returned None content
+
+--- Window 1, Step 2/15 (Global step 2) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_2_gen_initial...
+[GENERATOR] Call online_train_s_2_gen_initial completed in 13.49s
+[LOG] generator call logged to generator_online_train_s_2_gen_initial_20260309_150759_604.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_2_round_0...
+[REFLECTOR] Call online_train_s_2_round_0 completed in 12.60s
+[LOG] reflector call logged to reflector_online_train_s_2_round_0_20260309_150812_226.json
+[GENERATOR] Starting call online_train_s_2_post_reflect_round_0...
+[GENERATOR] Call online_train_s_2_post_reflect_round_0 completed in 11.26s
+[LOG] generator call logged to generator_online_train_s_2_post_reflect_round_0_20260309_150823_496.json
+
+--- Running Curator at step 2 ---
+[CURATOR] Starting call online_train_s_2...
+[CURATOR] Call online_train_s_2 completed in 8.83s
+[LOG] curator call logged to curator_online_train_s_2_20260309_150832_344.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00001 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_2_post_curate...
+[GENERATOR] Empty response for online_train_s_2_post_curate (attempt 1/3), retrying in 7.1s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_2_post_curate_20260309_150924_560.json
+[GENERATOR] Call online_train_s_2_post_curate completed in 68.37s
+[LOG] generator call logged to generator_online_train_s_2_post_curate_20260309_150940_713.json
+
+--- Window 1, Step 3/15 (Global step 3) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_3_gen_initial...
+[GENERATOR] Call online_train_s_3_gen_initial completed in 6.08s
+[LOG] generator call logged to generator_online_train_s_3_gen_initial_20260309_150946_793.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_3_round_0...
+[REFLECTOR] Call online_train_s_3_round_0 completed in 13.02s
+[LOG] reflector call logged to reflector_online_train_s_3_round_0_20260309_150959_821.json
+[GENERATOR] Starting call online_train_s_3_post_reflect_round_0...
+[GENERATOR] Call online_train_s_3_post_reflect_round_0 completed in 8.40s
+[LOG] generator call logged to generator_online_train_s_3_post_reflect_round_0_20260309_151008_221.json
+
+--- Running Curator at step 3 ---
+[CURATOR] Starting call online_train_s_3...
+[CURATOR] Call online_train_s_3 completed in 6.79s
+[LOG] curator call logged to curator_online_train_s_3_20260309_151015_037.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00002 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_3_post_curate...
+[GENERATOR] Call online_train_s_3_post_curate completed in 9.35s
+[LOG] generator call logged to generator_online_train_s_3_post_curate_20260309_151024_393.json
+
+--- Window 1, Step 4/15 (Global step 4) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_4_gen_initial...
+[GENERATOR] Call online_train_s_4_gen_initial completed in 18.49s
+[LOG] generator call logged to generator_online_train_s_4_gen_initial_20260309_151042_884.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_4_round_0...
+[REFLECTOR] Call online_train_s_4_round_0 completed in 8.78s
+[LOG] reflector call logged to reflector_online_train_s_4_round_0_20260309_151051_668.json
+[GENERATOR] Starting call online_train_s_4_post_reflect_round_0...
+[GENERATOR] Call online_train_s_4_post_reflect_round_0 completed in 10.91s
+[LOG] generator call logged to generator_online_train_s_4_post_reflect_round_0_20260309_151102_582.json
+
+--- Running Curator at step 4 ---
+[CURATOR] Starting call online_train_s_4...
+[CURATOR] Call online_train_s_4 completed in 8.70s
+[LOG] curator call logged to curator_online_train_s_4_20260309_151111_279.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00003 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_4_post_curate...
+[GENERATOR] Call online_train_s_4_post_curate completed in 7.57s
+[LOG] generator call logged to generator_online_train_s_4_post_curate_20260309_151118_844.json
+
+--- Window 1, Step 5/15 (Global step 5) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_5_gen_initial...
+[GENERATOR] Call online_train_s_5_gen_initial completed in 10.10s
+[LOG] generator call logged to generator_online_train_s_5_gen_initial_20260309_151128_944.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_5_round_0...
+[REFLECTOR] Call online_train_s_5_round_0 completed in 8.79s
+[LOG] reflector call logged to reflector_online_train_s_5_round_0_20260309_151137_748.json
+[GENERATOR] Starting call online_train_s_5_post_reflect_round_0...
+[GENERATOR] Call online_train_s_5_post_reflect_round_0 completed in 8.12s
+[LOG] generator call logged to generator_online_train_s_5_post_reflect_round_0_20260309_151145_873.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 5 ---
+[CURATOR] Starting call online_train_s_5...
+[CURATOR] Call online_train_s_5 completed in 11.68s
+[LOG] curator call logged to curator_online_train_s_5_20260309_151157_557.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00004 to section formulas_and_calculations
+  Added bullet calc-00005 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_5_post_curate...
+[GENERATOR] Call online_train_s_5_post_curate completed in 7.02s
+[LOG] generator call logged to generator_online_train_s_5_post_curate_20260309_151204_582.json
+
+--- Window 1, Step 6/15 (Global step 6) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_6_gen_initial...
+[GENERATOR] Call online_train_s_6_gen_initial completed in 5.59s
+[LOG] generator call logged to generator_online_train_s_6_gen_initial_20260309_151210_181.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_6_round_0...
+[REFLECTOR] Call online_train_s_6_round_0 completed in 8.80s
+[LOG] reflector call logged to reflector_online_train_s_6_round_0_20260309_151218_982.json
+[GENERATOR] Starting call online_train_s_6_post_reflect_round_0...
+[GENERATOR] Call online_train_s_6_post_reflect_round_0 completed in 6.42s
+[LOG] generator call logged to generator_online_train_s_6_post_reflect_round_0_20260309_151225_407.json
+
+--- Running Curator at step 6 ---
+[CURATOR] Starting call online_train_s_6...
+[CURATOR] Call online_train_s_6 completed in 7.20s
+[LOG] curator call logged to curator_online_train_s_6_20260309_151232_616.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00006 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_6_post_curate...
+[GENERATOR] Call online_train_s_6_post_curate completed in 5.99s
+[LOG] generator call logged to generator_online_train_s_6_post_curate_20260309_151238_613.json
+
+--- Window 1, Step 7/15 (Global step 7) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_7_gen_initial...
+[GENERATOR] Call online_train_s_7_gen_initial completed in 6.64s
+[LOG] generator call logged to generator_online_train_s_7_gen_initial_20260309_151245_257.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_7_round_0...
+[REFLECTOR] Call online_train_s_7_round_0 completed in 15.49s
+[LOG] reflector call logged to reflector_online_train_s_7_round_0_20260309_151300_755.json
+[GENERATOR] Starting call online_train_s_7_post_reflect_round_0...
+[GENERATOR] Call online_train_s_7_post_reflect_round_0 completed in 12.34s
+[LOG] generator call logged to generator_online_train_s_7_post_reflect_round_0_20260309_151313_099.json
+
+--- Running Curator at step 7 ---
+[CURATOR] Starting call online_train_s_7...
+[CURATOR] Call online_train_s_7 completed in 7.83s
+[LOG] curator call logged to curator_online_train_s_7_20260309_151320_934.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00007 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_7_post_curate...
+[GENERATOR] Call online_train_s_7_post_curate completed in 11.25s
+[LOG] generator call logged to generator_online_train_s_7_post_curate_20260309_151332_184.json
+
+--- Window 1, Step 8/15 (Global step 8) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_8_gen_initial...
+[GENERATOR] Call online_train_s_8_gen_initial completed in 5.42s
+[LOG] generator call logged to generator_online_train_s_8_gen_initial_20260309_151337_612.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_8_round_0...
+[REFLECTOR] Call online_train_s_8_round_0 completed in 8.79s
+[LOG] reflector call logged to reflector_online_train_s_8_round_0_20260309_151346_408.json
+[GENERATOR] Starting call online_train_s_8_post_reflect_round_0...
+[GENERATOR] Call online_train_s_8_post_reflect_round_0 completed in 6.32s
+[LOG] generator call logged to generator_online_train_s_8_post_reflect_round_0_20260309_151352_737.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 8 ---
+[CURATOR] Starting call online_train_s_8...
+[CURATOR] Call online_train_s_8 completed in 11.53s
+[LOG] curator call logged to curator_online_train_s_8_20260309_151404_267.json
+Curator JSON schema validated successfully: 3 operations
+  Added bullet calc-00008 to section formulas_and_calculations
+  Added bullet calc-00009 to section formulas_and_calculations
+  Added bullet calc-00010 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_8_post_curate...
+[GENERATOR] Call online_train_s_8_post_curate completed in 5.47s
+[LOG] generator call logged to generator_online_train_s_8_post_curate_20260309_151409_743.json
+
+--- Window 1, Step 9/15 (Global step 9) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_9_gen_initial...
+[GENERATOR] Call online_train_s_9_gen_initial completed in 5.87s
+[LOG] generator call logged to generator_online_train_s_9_gen_initial_20260309_151415_627.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_9_round_0...
+[REFLECTOR] Call online_train_s_9_round_0 completed in 10.95s
+[LOG] reflector call logged to reflector_online_train_s_9_round_0_20260309_151426_593.json
+[GENERATOR] Starting call online_train_s_9_post_reflect_round_0...
+[GENERATOR] Call online_train_s_9_post_reflect_round_0 completed in 6.35s
+[LOG] generator call logged to generator_online_train_s_9_post_reflect_round_0_20260309_151432_954.json
+
+--- Running Curator at step 9 ---
+[CURATOR] Starting call online_train_s_9...
+[CURATOR] Call online_train_s_9 completed in 8.67s
+[LOG] curator call logged to curator_online_train_s_9_20260309_151441_626.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00011 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_9_post_curate...
+[GENERATOR] Call online_train_s_9_post_curate completed in 7.48s
+[LOG] generator call logged to generator_online_train_s_9_post_curate_20260309_151449_106.json
+
+--- Window 1, Step 10/15 (Global step 10) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_10_gen_initial...
+[GENERATOR] Call online_train_s_10_gen_initial completed in 6.46s
+[LOG] generator call logged to generator_online_train_s_10_gen_initial_20260309_151455_573.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_10_round_0...
+[REFLECTOR] Call online_train_s_10_round_0 completed in 10.40s
+[LOG] reflector call logged to reflector_online_train_s_10_round_0_20260309_151505_976.json
+[GENERATOR] Starting call online_train_s_10_post_reflect_round_0...
+[GENERATOR] Call online_train_s_10_post_reflect_round_0 completed in 7.18s
+[LOG] generator call logged to generator_online_train_s_10_post_reflect_round_0_20260309_151513_167.json
+
+--- Running Curator at step 10 ---
+[CURATOR] Starting call online_train_s_10...
+[CURATOR] Call online_train_s_10 completed in 8.30s
+[LOG] curator call logged to curator_online_train_s_10_20260309_151521_470.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00012 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_10_post_curate...
+[GENERATOR] Call online_train_s_10_post_curate completed in 7.03s
+[LOG] generator call logged to generator_online_train_s_10_post_curate_20260309_151528_499.json
+
+--- Window 1, Step 11/15 (Global step 11) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_11_gen_initial...
+[GENERATOR] Call online_train_s_11_gen_initial completed in 7.38s
+[LOG] generator call logged to generator_online_train_s_11_gen_initial_20260309_151535_884.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_11_round_0...
+[REFLECTOR] Call online_train_s_11_round_0 completed in 10.22s
+[LOG] reflector call logged to reflector_online_train_s_11_round_0_20260309_151546_110.json
+[GENERATOR] Starting call online_train_s_11_post_reflect_round_0...
+[GENERATOR] Call online_train_s_11_post_reflect_round_0 completed in 7.61s
+[LOG] generator call logged to generator_online_train_s_11_post_reflect_round_0_20260309_151553_719.json
+
+--- Running Curator at step 11 ---
+[CURATOR] Starting call online_train_s_11...
+[CURATOR] Call online_train_s_11 completed in 7.98s
+[LOG] curator call logged to curator_online_train_s_11_20260309_151601_704.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00013 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_11_post_curate...
+[GENERATOR] Call online_train_s_11_post_curate completed in 7.85s
+[LOG] generator call logged to generator_online_train_s_11_post_curate_20260309_151609_557.json
+
+--- Window 1, Step 12/15 (Global step 12) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_12_gen_initial...
+[GENERATOR] Call online_train_s_12_gen_initial completed in 9.01s
+[LOG] generator call logged to generator_online_train_s_12_gen_initial_20260309_151618_584.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_12_round_0...
+[REFLECTOR] Call online_train_s_12_round_0 completed in 12.80s
+[LOG] reflector call logged to reflector_online_train_s_12_round_0_20260309_151631_381.json
+[GENERATOR] Starting call online_train_s_12_post_reflect_round_0...
+[GENERATOR] Call online_train_s_12_post_reflect_round_0 completed in 8.00s
+[LOG] generator call logged to generator_online_train_s_12_post_reflect_round_0_20260309_151639_394.json
+
+--- Running Curator at step 12 ---
+[CURATOR] Starting call online_train_s_12...
+[CURATOR] Call online_train_s_12 completed in 9.64s
+[LOG] curator call logged to curator_online_train_s_12_20260309_151649_033.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00014 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_12_post_curate...
+[GENERATOR] Call online_train_s_12_post_curate completed in 9.68s
+[LOG] generator call logged to generator_online_train_s_12_post_curate_20260309_151658_713.json
+
+--- Window 1, Step 13/15 (Global step 13) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_13_gen_initial...
+[GENERATOR] Call online_train_s_13_gen_initial completed in 6.12s
+[LOG] generator call logged to generator_online_train_s_13_gen_initial_20260309_151704_845.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_13_round_0...
+[REFLECTOR] Call online_train_s_13_round_0 completed in 10.76s
+[LOG] reflector call logged to reflector_online_train_s_13_round_0_20260309_151715_615.json
+[GENERATOR] Starting call online_train_s_13_post_reflect_round_0...
+[GENERATOR] Call online_train_s_13_post_reflect_round_0 completed in 8.11s
+[LOG] generator call logged to generator_online_train_s_13_post_reflect_round_0_20260309_151723_737.json
+
+--- Running Curator at step 13 ---
+[CURATOR] Starting call online_train_s_13...
+[CURATOR] Call online_train_s_13 completed in 7.56s
+[LOG] curator call logged to curator_online_train_s_13_20260309_151731_312.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00015 to section formulas_and_calculations
+  Added bullet calc-00016 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_13_post_curate...
+[GENERATOR] Empty response for online_train_s_13_post_curate (attempt 1/3), retrying in 12.8s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_13_post_curate_20260309_151823_560.json
+[GENERATOR] Call online_train_s_13_post_curate completed in 80.05s
+[LOG] generator call logged to generator_online_train_s_13_post_curate_20260309_151851_369.json
+
+--- Window 1, Step 14/15 (Global step 14) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_14_gen_initial...
+[GENERATOR] Call online_train_s_14_gen_initial completed in 6.18s
+[LOG] generator call logged to generator_online_train_s_14_gen_initial_20260309_151857_546.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_14_round_0...
+[REFLECTOR] Call online_train_s_14_round_0 completed in 10.52s
+[LOG] reflector call logged to reflector_online_train_s_14_round_0_20260309_151908_085.json
+[GENERATOR] Starting call online_train_s_14_post_reflect_round_0...
+[GENERATOR] Call online_train_s_14_post_reflect_round_0 completed in 7.77s
+[LOG] generator call logged to generator_online_train_s_14_post_reflect_round_0_20260309_151915_868.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 14 ---
+[CURATOR] Starting call online_train_s_14...
+[CURATOR] Call online_train_s_14 completed in 7.36s
+[LOG] curator call logged to curator_online_train_s_14_20260309_151923_228.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00017 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_14_post_curate...
+[GENERATOR] Call online_train_s_14_post_curate completed in 6.86s
+[LOG] generator call logged to generator_online_train_s_14_post_curate_20260309_151930_090.json
+
+--- Window 1, Step 15/15 (Global step 15) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_15_gen_initial...
+[GENERATOR] Call online_train_s_15_gen_initial completed in 7.90s
+[LOG] generator call logged to generator_online_train_s_15_gen_initial_20260309_151938_000.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_15_round_0...
+[REFLECTOR] Call online_train_s_15_round_0 completed in 14.19s
+[LOG] reflector call logged to reflector_online_train_s_15_round_0_20260309_151952_188.json
+[GENERATOR] Starting call online_train_s_15_post_reflect_round_0...
+[GENERATOR] Call online_train_s_15_post_reflect_round_0 completed in 11.94s
+[LOG] generator call logged to generator_online_train_s_15_post_reflect_round_0_20260309_152004_127.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 15 ---
+[CURATOR] Starting call online_train_s_15...
+[CURATOR] Call online_train_s_15 completed in 8.70s
+[LOG] curator call logged to curator_online_train_s_15_20260309_152012_826.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00018 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_15_post_curate...
+[GENERATOR] Call online_train_s_15_post_curate completed in 9.23s
+[LOG] generator call logged to generator_online_train_s_15_post_curate_20260309_152022_068.json
+
+Window 1 training complete:
+  Pre-train accuracy: 0.143
+  Post-train accuracy: 0.375
+
+============================================================
+WINDOW 2/5
+Samples 15 to 29
+============================================================
+
+--- Testing window 2 with current playbook ---
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_6 completed in 6.55s
+[LOG] generator call logged to generator_test_eval_6_20260309_152028_644.json
+[GENERATOR] Call test_eval_2 completed in 7.15s
+[LOG] generator call logged to generator_test_eval_2_20260309_152029_244.json
+[GENERATOR] Call test_eval_13 completed in 7.18s
+[LOG] generator call logged to generator_test_eval_13_20260309_152029_280.json
+[GENERATOR] Call test_eval_14 completed in 8.23s
+[LOG] generator call logged to generator_test_eval_14_20260309_152030_333.json
+[GENERATOR] Call test_eval_3 completed in 8.43s
+[LOG] generator call logged to generator_test_eval_3_20260309_152030_521.json
+[GENERATOR] Call test_eval_4 completed in 8.84s
+[LOG] generator call logged to generator_test_eval_4_20260309_152030_937.json
+[GENERATOR] Call test_eval_8 completed in 9.19s
+[LOG] generator call logged to generator_test_eval_8_20260309_152031_286.json
+[GENERATOR] Call test_eval_9 completed in 9.29s
+[LOG] generator call logged to generator_test_eval_9_20260309_152031_392.json
+[GENERATOR] Call test_eval_10 completed in 10.04s
+[LOG] generator call logged to generator_test_eval_10_20260309_152032_141.json
+[GENERATOR] Call test_eval_11 completed in 11.05s
+[LOG] generator call logged to generator_test_eval_11_20260309_152033_145.json
+[GENERATOR] Call test_eval_12 completed in 11.09s
+[LOG] generator call logged to generator_test_eval_12_20260309_152033_187.json
+[GENERATOR] Call test_eval_1 completed in 12.44s
+[LOG] generator call logged to generator_test_eval_1_20260309_152034_526.json
+[GENERATOR] Call test_eval_5 completed in 15.89s
+[LOG] generator call logged to generator_test_eval_5_20260309_152037_981.json
+[GENERATOR] Call test_eval_7 completed in 16.96s
+[LOG] generator call logged to generator_test_eval_7_20260309_152039_056.json
+[GENERATOR] Empty response for test_eval_0 (attempt 1/3), retrying in 10.8s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_0_20260309_152114_916.json
+[GENERATOR] Call test_eval_0 completed in 70.29s
+[LOG] generator call logged to generator_test_eval_0_20260309_152132_372.json
+
+Final Accuracy: 0.117 (0/15)
+Window 2 test accuracy: 0.117
+Cumulative test accuracy so far: 0.117 (30 samples)
+
+--- Training on window 2 ---
+
+--- Window 2, Step 1/15 (Global step 16) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_16_gen_initial...
+[GENERATOR] Call online_train_s_16_gen_initial completed in 5.86s
+[LOG] generator call logged to generator_online_train_s_16_gen_initial_20260309_152138_239.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_16_round_0...
+[REFLECTOR] Call online_train_s_16_round_0 completed in 9.05s
+[LOG] reflector call logged to reflector_online_train_s_16_round_0_20260309_152147_304.json
+[GENERATOR] Starting call online_train_s_16_post_reflect_round_0...
+[GENERATOR] Call online_train_s_16_post_reflect_round_0 completed in 7.06s
+[LOG] generator call logged to generator_online_train_s_16_post_reflect_round_0_20260309_152154_363.json
+
+--- Running Curator at step 16 ---
+[CURATOR] Starting call online_train_s_16...
+[CURATOR] Call online_train_s_16 completed in 8.46s
+[LOG] curator call logged to curator_online_train_s_16_20260309_152202_823.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00019 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_16_post_curate...
+[GENERATOR] Call online_train_s_16_post_curate completed in 8.22s
+[LOG] generator call logged to generator_online_train_s_16_post_curate_20260309_152211_061.json
+
+--- Window 2, Step 2/15 (Global step 17) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_17_gen_initial...
+[GENERATOR] Call online_train_s_17_gen_initial completed in 7.53s
+[LOG] generator call logged to generator_online_train_s_17_gen_initial_20260309_152218_596.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_17_round_0...
+[REFLECTOR] Call online_train_s_17_round_0 completed in 9.09s
+[LOG] reflector call logged to reflector_online_train_s_17_round_0_20260309_152227_693.json
+[GENERATOR] Starting call online_train_s_17_post_reflect_round_0...
+[GENERATOR] Call online_train_s_17_post_reflect_round_0 completed in 6.44s
+[LOG] generator call logged to generator_online_train_s_17_post_reflect_round_0_20260309_152234_134.json
+
+--- Running Curator at step 17 ---
+[CURATOR] Starting call online_train_s_17...
+[CURATOR] Call online_train_s_17 completed in 7.22s
+[LOG] curator call logged to curator_online_train_s_17_20260309_152241_361.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00020 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_17_post_curate...
+[GENERATOR] Call online_train_s_17_post_curate completed in 8.93s
+[LOG] generator call logged to generator_online_train_s_17_post_curate_20260309_152250_296.json
+
+--- Window 2, Step 3/15 (Global step 18) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_18_gen_initial...
+[GENERATOR] Call online_train_s_18_gen_initial completed in 7.89s
+[LOG] generator call logged to generator_online_train_s_18_gen_initial_20260309_152258_198.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_18_round_0...
+[REFLECTOR] Call online_train_s_18_round_0 completed in 8.23s
+[LOG] reflector call logged to reflector_online_train_s_18_round_0_20260309_152306_439.json
+[GENERATOR] Starting call online_train_s_18_post_reflect_round_0...
+[GENERATOR] Call online_train_s_18_post_reflect_round_0 completed in 5.43s
+[LOG] generator call logged to generator_online_train_s_18_post_reflect_round_0_20260309_152311_872.json
+
+--- Running Curator at step 18 ---
+[CURATOR] Starting call online_train_s_18...
+[CURATOR] Call online_train_s_18 completed in 6.06s
+[LOG] curator call logged to curator_online_train_s_18_20260309_152317_932.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00021 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_18_post_curate...
+[GENERATOR] Call online_train_s_18_post_curate completed in 7.56s
+[LOG] generator call logged to generator_online_train_s_18_post_curate_20260309_152325_496.json
+
+--- Window 2, Step 4/15 (Global step 19) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_19_gen_initial...
+[GENERATOR] Call online_train_s_19_gen_initial completed in 7.26s
+[LOG] generator call logged to generator_online_train_s_19_gen_initial_20260309_152332_760.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_19_round_0...
+[REFLECTOR] Call online_train_s_19_round_0 completed in 13.83s
+[LOG] reflector call logged to reflector_online_train_s_19_round_0_20260309_152346_594.json
+[GENERATOR] Starting call online_train_s_19_post_reflect_round_0...
+[GENERATOR] Call online_train_s_19_post_reflect_round_0 completed in 8.85s
+[LOG] generator call logged to generator_online_train_s_19_post_reflect_round_0_20260309_152355_447.json
+
+--- Running Curator at step 19 ---
+[CURATOR] Starting call online_train_s_19...
+[CURATOR] Call online_train_s_19 completed in 9.36s
+[LOG] curator call logged to curator_online_train_s_19_20260309_152404_806.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00022 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_19_post_curate...
+[GENERATOR] Call online_train_s_19_post_curate completed in 8.17s
+[LOG] generator call logged to generator_online_train_s_19_post_curate_20260309_152412_978.json
+
+--- Window 2, Step 5/15 (Global step 20) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_20_gen_initial...
+[GENERATOR] Call online_train_s_20_gen_initial completed in 7.49s
+[LOG] generator call logged to generator_online_train_s_20_gen_initial_20260309_152420_484.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_20_round_0...
+[REFLECTOR] Call online_train_s_20_round_0 completed in 12.20s
+[LOG] reflector call logged to reflector_online_train_s_20_round_0_20260309_152432_689.json
+[GENERATOR] Starting call online_train_s_20_post_reflect_round_0...
+[GENERATOR] Call online_train_s_20_post_reflect_round_0 completed in 7.16s
+[LOG] generator call logged to generator_online_train_s_20_post_reflect_round_0_20260309_152439_849.json
+
+--- Running Curator at step 20 ---
+[CURATOR] Starting call online_train_s_20...
+[CURATOR] Call online_train_s_20 completed in 8.28s
+[LOG] curator call logged to curator_online_train_s_20_20260309_152448_139.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00023 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_20_post_curate...
+[GENERATOR] Call online_train_s_20_post_curate completed in 7.08s
+[LOG] generator call logged to generator_online_train_s_20_post_curate_20260309_152455_228.json
+
+--- Window 2, Step 6/15 (Global step 21) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_21_gen_initial...
+[GENERATOR] Call online_train_s_21_gen_initial completed in 9.09s
+[LOG] generator call logged to generator_online_train_s_21_gen_initial_20260309_152504_319.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_21_round_0...
+[REFLECTOR] Call online_train_s_21_round_0 completed in 10.43s
+[LOG] reflector call logged to reflector_online_train_s_21_round_0_20260309_152514_750.json
+[GENERATOR] Starting call online_train_s_21_post_reflect_round_0...
+[GENERATOR] Call online_train_s_21_post_reflect_round_0 completed in 10.47s
+[LOG] generator call logged to generator_online_train_s_21_post_reflect_round_0_20260309_152525_215.json
+
+--- Running Curator at step 21 ---
+[CURATOR] Starting call online_train_s_21...
+[CURATOR] Call online_train_s_21 completed in 11.82s
+[LOG] curator call logged to curator_online_train_s_21_20260309_152537_038.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00024 to section formulas_and_calculations
+  Added bullet calc-00025 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_21_post_curate...
+[GENERATOR] Call online_train_s_21_post_curate completed in 8.08s
+[LOG] generator call logged to generator_online_train_s_21_post_curate_20260309_152545_117.json
+
+--- Window 2, Step 7/15 (Global step 22) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_22_gen_initial...
+[GENERATOR] Call online_train_s_22_gen_initial completed in 5.81s
+[LOG] generator call logged to generator_online_train_s_22_gen_initial_20260309_152550_943.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_22_round_0...
+[REFLECTOR] Call online_train_s_22_round_0 completed in 9.42s
+[LOG] reflector call logged to reflector_online_train_s_22_round_0_20260309_152600_365.json
+[GENERATOR] Starting call online_train_s_22_post_reflect_round_0...
+[GENERATOR] Call online_train_s_22_post_reflect_round_0 completed in 5.87s
+[LOG] generator call logged to generator_online_train_s_22_post_reflect_round_0_20260309_152606_236.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 22 ---
+[CURATOR] Starting call online_train_s_22...
+[CURATOR] Call online_train_s_22 completed in 9.88s
+[LOG] curator call logged to curator_online_train_s_22_20260309_152616_116.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00026 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_22_post_curate...
+[GENERATOR] Call online_train_s_22_post_curate completed in 7.00s
+[LOG] generator call logged to generator_online_train_s_22_post_curate_20260309_152623_131.json
+
+--- Window 2, Step 8/15 (Global step 23) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_23_gen_initial...
+[GENERATOR] Call online_train_s_23_gen_initial completed in 9.02s
+[LOG] generator call logged to generator_online_train_s_23_gen_initial_20260309_152632_160.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_23_round_0...
+[REFLECTOR] Call online_train_s_23_round_0 completed in 11.61s
+[LOG] reflector call logged to reflector_online_train_s_23_round_0_20260309_152643_770.json
+[GENERATOR] Starting call online_train_s_23_post_reflect_round_0...
+[GENERATOR] Call online_train_s_23_post_reflect_round_0 completed in 8.44s
+[LOG] generator call logged to generator_online_train_s_23_post_reflect_round_0_20260309_152652_215.json
+
+--- Running Curator at step 23 ---
+[CURATOR] Starting call online_train_s_23...
+[CURATOR] Call online_train_s_23 completed in 8.83s
+[LOG] curator call logged to curator_online_train_s_23_20260309_152701_057.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00027 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_23_post_curate...
+[GENERATOR] Call online_train_s_23_post_curate completed in 14.70s
+[LOG] generator call logged to generator_online_train_s_23_post_curate_20260309_152715_761.json
+
+--- Window 2, Step 9/15 (Global step 24) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_24_gen_initial...
+[GENERATOR] Call online_train_s_24_gen_initial completed in 8.97s
+[LOG] generator call logged to generator_online_train_s_24_gen_initial_20260309_152724_731.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_24_round_0...
+[REFLECTOR] Call online_train_s_24_round_0 completed in 11.72s
+[LOG] reflector call logged to reflector_online_train_s_24_round_0_20260309_152736_468.json
+[GENERATOR] Starting call online_train_s_24_post_reflect_round_0...
+[GENERATOR] Call online_train_s_24_post_reflect_round_0 completed in 8.51s
+[LOG] generator call logged to generator_online_train_s_24_post_reflect_round_0_20260309_152744_982.json
+
+--- Running Curator at step 24 ---
+[CURATOR] Starting call online_train_s_24...
+[CURATOR] Call online_train_s_24 completed in 10.03s
+[LOG] curator call logged to curator_online_train_s_24_20260309_152755_016.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00028 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_24_post_curate...
+[GENERATOR] Call online_train_s_24_post_curate completed in 9.60s
+[LOG] generator call logged to generator_online_train_s_24_post_curate_20260309_152804_614.json
+
+--- Window 2, Step 10/15 (Global step 25) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_25_gen_initial...
+[GENERATOR] Call online_train_s_25_gen_initial completed in 11.86s
+[LOG] generator call logged to generator_online_train_s_25_gen_initial_20260309_152816_484.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_25_round_0...
+[REFLECTOR] Call online_train_s_25_round_0 completed in 8.99s
+[LOG] reflector call logged to reflector_online_train_s_25_round_0_20260309_152825_479.json
+[GENERATOR] Starting call online_train_s_25_post_reflect_round_0...
+[GENERATOR] Call online_train_s_25_post_reflect_round_0 completed in 7.21s
+[LOG] generator call logged to generator_online_train_s_25_post_reflect_round_0_20260309_152832_703.json
+
+--- Running Curator at step 25 ---
+[CURATOR] Starting call online_train_s_25...
+[CURATOR] Call online_train_s_25 completed in 9.19s
+[LOG] curator call logged to curator_online_train_s_25_20260309_152841_898.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00029 to section formulas_and_calculations
+  Added bullet calc-00030 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_25_post_curate...
+[GENERATOR] Call online_train_s_25_post_curate completed in 7.12s
+[LOG] generator call logged to generator_online_train_s_25_post_curate_20260309_152849_022.json
+
+--- Window 2, Step 11/15 (Global step 26) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_26_gen_initial...
+[GENERATOR] Call online_train_s_26_gen_initial completed in 6.46s
+[LOG] generator call logged to generator_online_train_s_26_gen_initial_20260309_152855_494.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_26_round_0...
+[REFLECTOR] Call online_train_s_26_round_0 completed in 14.70s
+[LOG] reflector call logged to reflector_online_train_s_26_round_0_20260309_152910_211.json
+[GENERATOR] Starting call online_train_s_26_post_reflect_round_0...
+[GENERATOR] Call online_train_s_26_post_reflect_round_0 completed in 5.41s
+[LOG] generator call logged to generator_online_train_s_26_post_reflect_round_0_20260309_152915_621.json
+
+--- Running Curator at step 26 ---
+[CURATOR] Starting call online_train_s_26...
+[CURATOR] Call online_train_s_26 completed in 8.14s
+[LOG] curator call logged to curator_online_train_s_26_20260309_152923_766.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00031 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_26_post_curate...
+[GENERATOR] Call online_train_s_26_post_curate completed in 11.46s
+[LOG] generator call logged to generator_online_train_s_26_post_curate_20260309_152935_236.json
+
+--- Window 2, Step 12/15 (Global step 27) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_27_gen_initial...
+[GENERATOR] Call online_train_s_27_gen_initial completed in 8.39s
+[LOG] generator call logged to generator_online_train_s_27_gen_initial_20260309_152943_626.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_27_round_0...
+[REFLECTOR] Call online_train_s_27_round_0 completed in 11.20s
+[LOG] reflector call logged to reflector_online_train_s_27_round_0_20260309_152954_840.json
+[GENERATOR] Starting call online_train_s_27_post_reflect_round_0...
+[GENERATOR] Call online_train_s_27_post_reflect_round_0 completed in 8.20s
+[LOG] generator call logged to generator_online_train_s_27_post_reflect_round_0_20260309_153003_048.json
+
+--- Running Curator at step 27 ---
+[CURATOR] Starting call online_train_s_27...
+[CURATOR] Call online_train_s_27 completed in 8.98s
+[LOG] curator call logged to curator_online_train_s_27_20260309_153012_043.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00032 to section formulas_and_calculations
+  Added bullet calc-00033 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_27_post_curate...
+[GENERATOR] Call online_train_s_27_post_curate completed in 6.74s
+[LOG] generator call logged to generator_online_train_s_27_post_curate_20260309_153018_788.json
+
+--- Window 2, Step 13/15 (Global step 28) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_28_gen_initial...
+[GENERATOR] Call online_train_s_28_gen_initial completed in 6.59s
+[LOG] generator call logged to generator_online_train_s_28_gen_initial_20260309_153025_390.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_28_round_0...
+[REFLECTOR] Call online_train_s_28_round_0 completed in 13.90s
+[LOG] reflector call logged to reflector_online_train_s_28_round_0_20260309_153039_292.json
+[GENERATOR] Starting call online_train_s_28_post_reflect_round_0...
+[GENERATOR] Call online_train_s_28_post_reflect_round_0 completed in 7.58s
+[LOG] generator call logged to generator_online_train_s_28_post_reflect_round_0_20260309_153046_881.json
+
+--- Running Curator at step 28 ---
+[CURATOR] Starting call online_train_s_28...
+[CURATOR] Call online_train_s_28 completed in 9.05s
+[LOG] curator call logged to curator_online_train_s_28_20260309_153055_939.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00034 to section formulas_and_calculations
+  Added bullet calc-00035 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_28_post_curate...
+[GENERATOR] Call online_train_s_28_post_curate completed in 8.60s
+[LOG] generator call logged to generator_online_train_s_28_post_curate_20260309_153104_538.json
+
+--- Window 2, Step 14/15 (Global step 29) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_29_gen_initial...
+[GENERATOR] Call online_train_s_29_gen_initial completed in 12.90s
+[LOG] generator call logged to generator_online_train_s_29_gen_initial_20260309_153117_449.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_29_round_0...
+[REFLECTOR] Call online_train_s_29_round_0 completed in 10.73s
+[LOG] reflector call logged to reflector_online_train_s_29_round_0_20260309_153128_188.json
+[GENERATOR] Starting call online_train_s_29_post_reflect_round_0...
+[GENERATOR] Call online_train_s_29_post_reflect_round_0 completed in 8.87s
+[LOG] generator call logged to generator_online_train_s_29_post_reflect_round_0_20260309_153137_057.json
+
+--- Running Curator at step 29 ---
+[CURATOR] Starting call online_train_s_29...
+[CURATOR] Call online_train_s_29 completed in 8.28s
+[LOG] curator call logged to curator_online_train_s_29_20260309_153145_336.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00036 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_29_post_curate...
+[GENERATOR] Call online_train_s_29_post_curate completed in 7.18s
+[LOG] generator call logged to generator_online_train_s_29_post_curate_20260309_153152_539.json
+
+--- Window 2, Step 15/15 (Global step 30) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_30_gen_initial...
+[GENERATOR] Call online_train_s_30_gen_initial completed in 7.48s
+[LOG] generator call logged to generator_online_train_s_30_gen_initial_20260309_153200_027.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_30_round_0...
+[REFLECTOR] Call online_train_s_30_round_0 completed in 11.00s
+[LOG] reflector call logged to reflector_online_train_s_30_round_0_20260309_153211_031.json
+[GENERATOR] Starting call online_train_s_30_post_reflect_round_0...
+[GENERATOR] Call online_train_s_30_post_reflect_round_0 completed in 7.51s
+[LOG] generator call logged to generator_online_train_s_30_post_reflect_round_0_20260309_153218_561.json
+
+--- Running Curator at step 30 ---
+[CURATOR] Starting call online_train_s_30...
+[CURATOR] Call online_train_s_30 completed in 6.40s
+[LOG] curator call logged to curator_online_train_s_30_20260309_153224_972.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00037 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_30_post_curate...
+[GENERATOR] Call online_train_s_30_post_curate completed in 31.42s
+[LOG] generator call logged to generator_online_train_s_30_post_curate_20260309_153256_399.json
+
+Window 2 training complete:
+  Pre-train accuracy: 0.133
+  Post-train accuracy: 0.233
+
+============================================================
+WINDOW 3/5
+Samples 30 to 44
+============================================================
+
+--- Testing window 3 with current playbook ---
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_3 completed in 6.75s
+[LOG] generator call logged to generator_test_eval_3_20260309_153303_173.json
+[GENERATOR] Call test_eval_4 completed in 7.86s
+[LOG] generator call logged to generator_test_eval_4_20260309_153304_281.json
+[GENERATOR] Call test_eval_8 completed in 7.93s
+[LOG] generator call logged to generator_test_eval_8_20260309_153304_359.json
+[GENERATOR] Call test_eval_1 completed in 8.23s
+[LOG] generator call logged to generator_test_eval_1_20260309_153304_648.json
+[GENERATOR] Call test_eval_9 completed in 8.97s
+[LOG] generator call logged to generator_test_eval_9_20260309_153305_413.json
+[GENERATOR] Call test_eval_7 completed in 9.27s
+[LOG] generator call logged to generator_test_eval_7_20260309_153305_697.json
+[GENERATOR] Call test_eval_14 completed in 9.34s
+[LOG] generator call logged to generator_test_eval_14_20260309_153305_775.json
+[GENERATOR] Call test_eval_12 completed in 9.41s
+[LOG] generator call logged to generator_test_eval_12_20260309_153305_848.json
+[GENERATOR] Call test_eval_5 completed in 9.58s
+[LOG] generator call logged to generator_test_eval_5_20260309_153306_005.json
+[GENERATOR] Call test_eval_13 completed in 9.81s
+[LOG] generator call logged to generator_test_eval_13_20260309_153306_246.json
+[GENERATOR] Call test_eval_0 completed in 10.17s
+[LOG] generator call logged to generator_test_eval_0_20260309_153306_587.json
+[GENERATOR] Call test_eval_6 completed in 10.30s
+[LOG] generator call logged to generator_test_eval_6_20260309_153306_724.json
+[GENERATOR] Call test_eval_2 completed in 10.59s
+[LOG] generator call logged to generator_test_eval_2_20260309_153307_003.json
+[GENERATOR] Call test_eval_10 completed in 12.05s
+[LOG] generator call logged to generator_test_eval_10_20260309_153308_478.json
+[GENERATOR] Empty response for test_eval_11 (attempt 1/3), retrying in 14.7s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_11_20260309_153350_217.json
+[GENERATOR] Empty response for test_eval_11 (attempt 2/3), retrying in 6.2s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_11_20260309_153457_409.json
+[GENERATOR] Empty response for test_eval_11 (attempt 3/3), retrying in 10.5s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_11_20260309_153556_056.json
+[GENERATOR] Empty response for test_eval_11 after 3 attempts — giving up
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_11_20260309_153659_045.json
+Error evaluating sample 11: Exception: API returned None content
+
+Final Accuracy: 0.321 (1/14)
+Window 3 test accuracy: 0.321
+Cumulative test accuracy so far: 0.182 (44 samples)
+
+--- Training on window 3 ---
+
+--- Window 3, Step 1/15 (Global step 31) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_31_gen_initial...
+[GENERATOR] Call online_train_s_31_gen_initial completed in 8.53s
+[LOG] generator call logged to generator_online_train_s_31_gen_initial_20260309_153707_580.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_31_round_0...
+[REFLECTOR] Call online_train_s_31_round_0 completed in 10.01s
+[LOG] reflector call logged to reflector_online_train_s_31_round_0_20260309_153717_607.json
+[GENERATOR] Starting call online_train_s_31_post_reflect_round_0...
+[GENERATOR] Call online_train_s_31_post_reflect_round_0 completed in 8.14s
+[LOG] generator call logged to generator_online_train_s_31_post_reflect_round_0_20260309_153725_759.json
+
+--- Running Curator at step 31 ---
+[CURATOR] Starting call online_train_s_31...
+[CURATOR] Call online_train_s_31 completed in 9.18s
+[LOG] curator call logged to curator_online_train_s_31_20260309_153734_954.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00038 to section formulas_and_calculations
+  Added bullet calc-00039 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_31_post_curate...
+[GENERATOR] Call online_train_s_31_post_curate completed in 12.33s
+[LOG] generator call logged to generator_online_train_s_31_post_curate_20260309_153747_295.json
+
+--- Window 3, Step 2/15 (Global step 32) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_32_gen_initial...
+[GENERATOR] Call online_train_s_32_gen_initial completed in 6.43s
+[LOG] generator call logged to generator_online_train_s_32_gen_initial_20260309_153753_733.json
+Correct: True
+[REFLECTOR] Starting call online_train_s_32_reflect_on_correct...
+[REFLECTOR] Call online_train_s_32_reflect_on_correct completed in 9.25s
+[LOG] reflector call logged to reflector_online_train_s_32_reflect_on_correct_20260309_153802_983.json
+
+--- Running Curator at step 32 ---
+[CURATOR] Starting call online_train_s_32...
+[CURATOR] Call online_train_s_32 completed in 11.45s
+[LOG] curator call logged to curator_online_train_s_32_20260309_153814_444.json
+Curator JSON schema validated successfully: 3 operations
+  Added bullet calc-00040 to section formulas_and_calculations
+  Added bullet calc-00041 to section formulas_and_calculations
+  Added bullet calc-00042 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_32_post_curate...
+[GENERATOR] Call online_train_s_32_post_curate completed in 6.92s
+[LOG] generator call logged to generator_online_train_s_32_post_curate_20260309_153821_375.json
+
+--- Window 3, Step 3/15 (Global step 33) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_33_gen_initial...
+[GENERATOR] Call online_train_s_33_gen_initial completed in 11.53s
+[LOG] generator call logged to generator_online_train_s_33_gen_initial_20260309_153832_908.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_33_round_0...
+[REFLECTOR] Call online_train_s_33_round_0 completed in 12.87s
+[LOG] reflector call logged to reflector_online_train_s_33_round_0_20260309_153845_785.json
+[GENERATOR] Starting call online_train_s_33_post_reflect_round_0...
+[GENERATOR] Call online_train_s_33_post_reflect_round_0 completed in 8.05s
+[LOG] generator call logged to generator_online_train_s_33_post_reflect_round_0_20260309_153853_850.json
+
+--- Running Curator at step 33 ---
+[CURATOR] Starting call online_train_s_33...
+[CURATOR] Call online_train_s_33 completed in 10.74s
+[LOG] curator call logged to curator_online_train_s_33_20260309_153904_596.json
+Curator JSON schema validated successfully: 3 operations
+  Added bullet calc-00043 to section formulas_and_calculations
+  Added bullet calc-00044 to section formulas_and_calculations
+  Added bullet calc-00045 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_33_post_curate...
+[GENERATOR] Call online_train_s_33_post_curate completed in 9.55s
+[LOG] generator call logged to generator_online_train_s_33_post_curate_20260309_153914_151.json
+
+--- Window 3, Step 4/15 (Global step 34) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_34_gen_initial...
+[GENERATOR] Call online_train_s_34_gen_initial completed in 9.15s
+[LOG] generator call logged to generator_online_train_s_34_gen_initial_20260309_153923_307.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_34_round_0...
+[REFLECTOR] Call online_train_s_34_round_0 completed in 10.41s
+[LOG] reflector call logged to reflector_online_train_s_34_round_0_20260309_153933_731.json
+[GENERATOR] Starting call online_train_s_34_post_reflect_round_0...
+[GENERATOR] Call online_train_s_34_post_reflect_round_0 completed in 6.33s
+[LOG] generator call logged to generator_online_train_s_34_post_reflect_round_0_20260309_153940_077.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 34 ---
+[CURATOR] Starting call online_train_s_34...
+[CURATOR] Call online_train_s_34 completed in 7.57s
+[LOG] curator call logged to curator_online_train_s_34_20260309_153947_643.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00046 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_34_post_curate...
+[GENERATOR] Call online_train_s_34_post_curate completed in 7.08s
+[LOG] generator call logged to generator_online_train_s_34_post_curate_20260309_153954_734.json
+
+--- Window 3, Step 5/15 (Global step 35) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_35_gen_initial...
+[GENERATOR] Call online_train_s_35_gen_initial completed in 8.78s
+[LOG] generator call logged to generator_online_train_s_35_gen_initial_20260309_154003_513.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_35_round_0...
+[REFLECTOR] Call online_train_s_35_round_0 completed in 12.44s
+[LOG] reflector call logged to reflector_online_train_s_35_round_0_20260309_154015_966.json
+[GENERATOR] Starting call online_train_s_35_post_reflect_round_0...
+[GENERATOR] Call online_train_s_35_post_reflect_round_0 completed in 7.14s
+[LOG] generator call logged to generator_online_train_s_35_post_reflect_round_0_20260309_154023_120.json
+
+--- Running Curator at step 35 ---
+[CURATOR] Starting call online_train_s_35...
+[CURATOR] Call online_train_s_35 completed in 9.24s
+[LOG] curator call logged to curator_online_train_s_35_20260309_154032_359.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00047 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_35_post_curate...
+[GENERATOR] Call online_train_s_35_post_curate completed in 8.72s
+[LOG] generator call logged to generator_online_train_s_35_post_curate_20260309_154041_090.json
+
+--- Window 3, Step 6/15 (Global step 36) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_36_gen_initial...
+[GENERATOR] Call online_train_s_36_gen_initial completed in 7.97s
+[LOG] generator call logged to generator_online_train_s_36_gen_initial_20260309_154049_070.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_36_round_0...
+[REFLECTOR] Call online_train_s_36_round_0 completed in 9.01s
+[LOG] reflector call logged to reflector_online_train_s_36_round_0_20260309_154058_090.json
+[GENERATOR] Starting call online_train_s_36_post_reflect_round_0...
+[GENERATOR] Call online_train_s_36_post_reflect_round_0 completed in 10.92s
+[LOG] generator call logged to generator_online_train_s_36_post_reflect_round_0_20260309_154109_015.json
+
+--- Running Curator at step 36 ---
+[CURATOR] Starting call online_train_s_36...
+[CURATOR] Call online_train_s_36 completed in 7.00s
+[LOG] curator call logged to curator_online_train_s_36_20260309_154116_018.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00048 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_36_post_curate...
+[GENERATOR] Call online_train_s_36_post_curate completed in 7.07s
+[LOG] generator call logged to generator_online_train_s_36_post_curate_20260309_154123_096.json
+
+--- Window 3, Step 7/15 (Global step 37) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_37_gen_initial...
+[GENERATOR] Call online_train_s_37_gen_initial completed in 8.54s
+[LOG] generator call logged to generator_online_train_s_37_gen_initial_20260309_154131_639.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_37_round_0...
+[REFLECTOR] Call online_train_s_37_round_0 completed in 10.03s
+[LOG] reflector call logged to reflector_online_train_s_37_round_0_20260309_154141_666.json
+[GENERATOR] Starting call online_train_s_37_post_reflect_round_0...
+[GENERATOR] Call online_train_s_37_post_reflect_round_0 completed in 10.01s
+[LOG] generator call logged to generator_online_train_s_37_post_reflect_round_0_20260309_154151_679.json
+
+--- Running Curator at step 37 ---
+[CURATOR] Starting call online_train_s_37...
+[CURATOR] Call online_train_s_37 completed in 7.61s
+[LOG] curator call logged to curator_online_train_s_37_20260309_154159_301.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00049 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_37_post_curate...
+[GENERATOR] Call online_train_s_37_post_curate completed in 7.17s
+[LOG] generator call logged to generator_online_train_s_37_post_curate_20260309_154206_477.json
+
+--- Window 3, Step 8/15 (Global step 38) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_38_gen_initial...
+[GENERATOR] Call online_train_s_38_gen_initial completed in 7.16s
+[LOG] generator call logged to generator_online_train_s_38_gen_initial_20260309_154213_646.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_38_round_0...
+[REFLECTOR] Call online_train_s_38_round_0 completed in 10.32s
+[LOG] reflector call logged to reflector_online_train_s_38_round_0_20260309_154223_985.json
+[GENERATOR] Starting call online_train_s_38_post_reflect_round_0...
+[GENERATOR] Call online_train_s_38_post_reflect_round_0 completed in 7.76s
+[LOG] generator call logged to generator_online_train_s_38_post_reflect_round_0_20260309_154231_746.json
+
+--- Running Curator at step 38 ---
+[CURATOR] Starting call online_train_s_38...
+[CURATOR] Call online_train_s_38 completed in 8.56s
+[LOG] curator call logged to curator_online_train_s_38_20260309_154240_303.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00050 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_38_post_curate...
+[GENERATOR] Call online_train_s_38_post_curate completed in 8.43s
+[LOG] generator call logged to generator_online_train_s_38_post_curate_20260309_154248_731.json
+
+--- Window 3, Step 9/15 (Global step 39) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_39_gen_initial...
+[GENERATOR] Call online_train_s_39_gen_initial completed in 7.17s
+[LOG] generator call logged to generator_online_train_s_39_gen_initial_20260309_154255_920.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_39_round_0...
+[REFLECTOR] Call online_train_s_39_round_0 completed in 11.15s
+[LOG] reflector call logged to reflector_online_train_s_39_round_0_20260309_154307_079.json
+[GENERATOR] Starting call online_train_s_39_post_reflect_round_0...
+[GENERATOR] Call online_train_s_39_post_reflect_round_0 completed in 7.28s
+[LOG] generator call logged to generator_online_train_s_39_post_reflect_round_0_20260309_154314_383.json
+
+--- Running Curator at step 39 ---
+[CURATOR] Starting call online_train_s_39...
+[CURATOR] Call online_train_s_39 completed in 7.83s
+[LOG] curator call logged to curator_online_train_s_39_20260309_154322_227.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00051 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_39_post_curate...
+[GENERATOR] Call online_train_s_39_post_curate completed in 8.19s
+[LOG] generator call logged to generator_online_train_s_39_post_curate_20260309_154330_414.json
+
+--- Window 3, Step 10/15 (Global step 40) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_40_gen_initial...
+[GENERATOR] Call online_train_s_40_gen_initial completed in 5.87s
+[LOG] generator call logged to generator_online_train_s_40_gen_initial_20260309_154336_286.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_40_round_0...
+[REFLECTOR] Call online_train_s_40_round_0 completed in 11.48s
+[LOG] reflector call logged to reflector_online_train_s_40_round_0_20260309_154347_781.json
+[GENERATOR] Starting call online_train_s_40_post_reflect_round_0...
+[GENERATOR] Call online_train_s_40_post_reflect_round_0 completed in 7.61s
+[LOG] generator call logged to generator_online_train_s_40_post_reflect_round_0_20260309_154355_394.json
+
+--- Running Curator at step 40 ---
+[CURATOR] Starting call online_train_s_40...
+[CURATOR] Call online_train_s_40 completed in 6.24s
+[LOG] curator call logged to curator_online_train_s_40_20260309_154401_634.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00052 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_40_post_curate...
+[GENERATOR] Call online_train_s_40_post_curate completed in 6.05s
+[LOG] generator call logged to generator_online_train_s_40_post_curate_20260309_154407_681.json
+
+--- Window 3, Step 11/15 (Global step 41) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_41_gen_initial...
+[GENERATOR] Call online_train_s_41_gen_initial completed in 8.56s
+[LOG] generator call logged to generator_online_train_s_41_gen_initial_20260309_154416_247.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_41_round_0...
+[REFLECTOR] Call online_train_s_41_round_0 completed in 10.63s
+[LOG] reflector call logged to reflector_online_train_s_41_round_0_20260309_154426_893.json
+[GENERATOR] Starting call online_train_s_41_post_reflect_round_0...
+[GENERATOR] Call online_train_s_41_post_reflect_round_0 completed in 9.05s
+[LOG] generator call logged to generator_online_train_s_41_post_reflect_round_0_20260309_154435_947.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 41 ---
+[CURATOR] Starting call online_train_s_41...
+[CURATOR] Call online_train_s_41 completed in 10.79s
+[LOG] curator call logged to curator_online_train_s_41_20260309_154446_737.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00053 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_41_post_curate...
+[GENERATOR] Call online_train_s_41_post_curate completed in 7.55s
+[LOG] generator call logged to generator_online_train_s_41_post_curate_20260309_154454_289.json
+
+--- Window 3, Step 12/15 (Global step 42) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_42_gen_initial...
+[GENERATOR] Call online_train_s_42_gen_initial completed in 10.94s
+[LOG] generator call logged to generator_online_train_s_42_gen_initial_20260309_154505_231.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_42_round_0...
+[REFLECTOR] Call online_train_s_42_round_0 completed in 10.00s
+[LOG] reflector call logged to reflector_online_train_s_42_round_0_20260309_154515_232.json
+[GENERATOR] Starting call online_train_s_42_post_reflect_round_0...
+[GENERATOR] Call online_train_s_42_post_reflect_round_0 completed in 14.38s
+[LOG] generator call logged to generator_online_train_s_42_post_reflect_round_0_20260309_154529_623.json
+
+--- Running Curator at step 42 ---
+[CURATOR] Starting call online_train_s_42...
+[CURATOR] Call online_train_s_42 completed in 10.83s
+[LOG] curator call logged to curator_online_train_s_42_20260309_154540_470.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00054 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_42_post_curate...
+[GENERATOR] Empty response for online_train_s_42_post_curate (attempt 1/3), retrying in 11.8s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_42_post_curate_20260309_154633_373.json
+[GENERATOR] Call online_train_s_42_post_curate completed in 78.35s
+[LOG] generator call logged to generator_online_train_s_42_post_curate_20260309_154658_832.json
+
+--- Window 3, Step 13/15 (Global step 43) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_43_gen_initial...
+[GENERATOR] Call online_train_s_43_gen_initial completed in 13.08s
+[LOG] generator call logged to generator_online_train_s_43_gen_initial_20260309_154711_919.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_43_round_0...
+[REFLECTOR] Call online_train_s_43_round_0 completed in 13.02s
+[LOG] reflector call logged to reflector_online_train_s_43_round_0_20260309_154724_946.json
+[GENERATOR] Starting call online_train_s_43_post_reflect_round_0...
+[GENERATOR] Call online_train_s_43_post_reflect_round_0 completed in 12.67s
+[LOG] generator call logged to generator_online_train_s_43_post_reflect_round_0_20260309_154737_616.json
+
+--- Running Curator at step 43 ---
+[CURATOR] Starting call online_train_s_43...
+[CURATOR] Call online_train_s_43 completed in 9.52s
+[LOG] curator call logged to curator_online_train_s_43_20260309_154747_138.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00055 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_43_post_curate...
+[GENERATOR] Call online_train_s_43_post_curate completed in 10.71s
+[LOG] generator call logged to generator_online_train_s_43_post_curate_20260309_154757_864.json
+
+--- Window 3, Step 14/15 (Global step 44) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_44_gen_initial...
+[GENERATOR] Call online_train_s_44_gen_initial completed in 6.83s
+[LOG] generator call logged to generator_online_train_s_44_gen_initial_20260309_154804_702.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_44_round_0...
+[REFLECTOR] Call online_train_s_44_round_0 completed in 8.13s
+[LOG] reflector call logged to reflector_online_train_s_44_round_0_20260309_154812_832.json
+[GENERATOR] Starting call online_train_s_44_post_reflect_round_0...
+[GENERATOR] Call online_train_s_44_post_reflect_round_0 completed in 9.64s
+[LOG] generator call logged to generator_online_train_s_44_post_reflect_round_0_20260309_154822_473.json
+
+--- Running Curator at step 44 ---
+[CURATOR] Starting call online_train_s_44...
+[CURATOR] Call online_train_s_44 completed in 10.87s
+[LOG] curator call logged to curator_online_train_s_44_20260309_154833_348.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00056 to section formulas_and_calculations
+  Added bullet calc-00057 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_44_post_curate...
+[GENERATOR] Call online_train_s_44_post_curate completed in 7.52s
+[LOG] generator call logged to generator_online_train_s_44_post_curate_20260309_154840_882.json
+
+--- Window 3, Step 15/15 (Global step 45) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_45_gen_initial...
+[GENERATOR] Call online_train_s_45_gen_initial completed in 6.11s
+[LOG] generator call logged to generator_online_train_s_45_gen_initial_20260309_154847_001.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_45_round_0...
+[REFLECTOR] Call online_train_s_45_round_0 completed in 10.37s
+[LOG] reflector call logged to reflector_online_train_s_45_round_0_20260309_154857_383.json
+[GENERATOR] Starting call online_train_s_45_post_reflect_round_0...
+[GENERATOR] Call online_train_s_45_post_reflect_round_0 completed in 6.66s
+[LOG] generator call logged to generator_online_train_s_45_post_reflect_round_0_20260309_154904_057.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 45 ---
+[CURATOR] Starting call online_train_s_45...
+[CURATOR] Call online_train_s_45 completed in 8.59s
+[LOG] curator call logged to curator_online_train_s_45_20260309_154912_660.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00058 to section formulas_and_calculations
+  Added bullet calc-00059 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_45_post_curate...
+[GENERATOR] Call online_train_s_45_post_curate completed in 6.87s
+[LOG] generator call logged to generator_online_train_s_45_post_curate_20260309_154919_529.json
+
+Window 3 training complete:
+  Pre-train accuracy: 0.433
+  Post-train accuracy: 0.450
+
+============================================================
+WINDOW 4/5
+Samples 45 to 59
+============================================================
+
+--- Testing window 4 with current playbook ---
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_9 completed in 6.59s
+[LOG] generator call logged to generator_test_eval_9_20260309_154926_141.json
+[GENERATOR] Call test_eval_3 completed in 6.75s
+[LOG] generator call logged to generator_test_eval_3_20260309_154926_293.json
+[GENERATOR] Call test_eval_4 completed in 7.47s
+[LOG] generator call logged to generator_test_eval_4_20260309_154927_013.json
+[GENERATOR] Call test_eval_11 completed in 7.68s
+[LOG] generator call logged to generator_test_eval_11_20260309_154927_235.json
+[GENERATOR] Call test_eval_0 completed in 7.99s
+[LOG] generator call logged to generator_test_eval_0_20260309_154927_530.json
+[GENERATOR] Call test_eval_2 completed in 8.92s
+[LOG] generator call logged to generator_test_eval_2_20260309_154928_459.json
+[GENERATOR] Call test_eval_7 completed in 9.00s
+[LOG] generator call logged to generator_test_eval_7_20260309_154928_552.json
+[GENERATOR] Call test_eval_14 completed in 9.28s
+[LOG] generator call logged to generator_test_eval_14_20260309_154928_835.json
+[GENERATOR] Call test_eval_5 completed in 9.42s
+[LOG] generator call logged to generator_test_eval_5_20260309_154928_968.json
+[GENERATOR] Call test_eval_1 completed in 9.88s
+[LOG] generator call logged to generator_test_eval_1_20260309_154929_424.json
+[GENERATOR] Call test_eval_12 completed in 10.34s
+[LOG] generator call logged to generator_test_eval_12_20260309_154929_895.json
+[GENERATOR] Call test_eval_6 completed in 18.71s
+[LOG] generator call logged to generator_test_eval_6_20260309_154938_261.json
+[GENERATOR] Call test_eval_13 completed in 26.95s
+[LOG] generator call logged to generator_test_eval_13_20260309_154946_505.json
+[GENERATOR] Empty response for test_eval_8 (attempt 1/3), retrying in 12.3s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_8_20260309_155013_296.json
+[GENERATOR] Empty response for test_eval_10 (attempt 1/3), retrying in 5.9s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_test_eval_10_20260309_155013_368.json
+[GENERATOR] Call test_eval_10 completed in 73.32s
+[LOG] generator call logged to generator_test_eval_10_20260309_155032_872.json
+[GENERATOR] Call test_eval_8 completed in 73.71s
+[LOG] generator call logged to generator_test_eval_8_20260309_155033_258.json
+
+Final Accuracy: 0.183 (1/15)
+Window 4 test accuracy: 0.183
+Cumulative test accuracy so far: 0.182 (59 samples)
+
+--- Training on window 4 ---
+
+--- Window 4, Step 1/15 (Global step 46) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_46_gen_initial...
+[GENERATOR] Call online_train_s_46_gen_initial completed in 6.65s
+[LOG] generator call logged to generator_online_train_s_46_gen_initial_20260309_155039_917.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_46_round_0...
+[REFLECTOR] Call online_train_s_46_round_0 completed in 11.06s
+[LOG] reflector call logged to reflector_online_train_s_46_round_0_20260309_155050_977.json
+[GENERATOR] Starting call online_train_s_46_post_reflect_round_0...
+[GENERATOR] Call online_train_s_46_post_reflect_round_0 completed in 9.10s
+[LOG] generator call logged to generator_online_train_s_46_post_reflect_round_0_20260309_155100_088.json
+
+--- Running Curator at step 46 ---
+[CURATOR] Starting call online_train_s_46...
+[CURATOR] Call online_train_s_46 completed in 9.68s
+[LOG] curator call logged to curator_online_train_s_46_20260309_155109_777.json
+Curator JSON schema validated successfully: 3 operations
+  Added bullet calc-00060 to section formulas_and_calculations
+  Added bullet calc-00061 to section formulas_and_calculations
+  Added bullet calc-00062 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_46_post_curate...
+[GENERATOR] Call online_train_s_46_post_curate completed in 6.86s
+[LOG] generator call logged to generator_online_train_s_46_post_curate_20260309_155116_636.json
+
+--- Window 4, Step 2/15 (Global step 47) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_47_gen_initial...
+[GENERATOR] Call online_train_s_47_gen_initial completed in 7.73s
+[LOG] generator call logged to generator_online_train_s_47_gen_initial_20260309_155124_371.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_47_round_0...
+[REFLECTOR] Call online_train_s_47_round_0 completed in 9.73s
+[LOG] reflector call logged to reflector_online_train_s_47_round_0_20260309_155134_116.json
+[GENERATOR] Starting call online_train_s_47_post_reflect_round_0...
+[GENERATOR] Call online_train_s_47_post_reflect_round_0 completed in 8.56s
+[LOG] generator call logged to generator_online_train_s_47_post_reflect_round_0_20260309_155142_685.json
+
+--- Running Curator at step 47 ---
+[CURATOR] Starting call online_train_s_47...
+[CURATOR] Call online_train_s_47 completed in 7.16s
+[LOG] curator call logged to curator_online_train_s_47_20260309_155149_843.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00063 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_47_post_curate...
+[GENERATOR] Call online_train_s_47_post_curate completed in 8.51s
+[LOG] generator call logged to generator_online_train_s_47_post_curate_20260309_155158_358.json
+
+--- Window 4, Step 3/15 (Global step 48) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_48_gen_initial...
+[GENERATOR] Call online_train_s_48_gen_initial completed in 6.98s
+[LOG] generator call logged to generator_online_train_s_48_gen_initial_20260309_155205_346.json
+Correct: True
+[REFLECTOR] Starting call online_train_s_48_reflect_on_correct...
+[REFLECTOR] Call online_train_s_48_reflect_on_correct completed in 9.01s
+[LOG] reflector call logged to reflector_online_train_s_48_reflect_on_correct_20260309_155214_362.json
+
+--- Running Curator at step 48 ---
+[CURATOR] Starting call online_train_s_48...
+[CURATOR] Call online_train_s_48 completed in 5.94s
+[LOG] curator call logged to curator_online_train_s_48_20260309_155220_306.json
+Curator JSON schema validated successfully: 0 operations
+[GENERATOR] Starting call online_train_s_48_post_curate...
+[GENERATOR] Call online_train_s_48_post_curate completed in 7.36s
+[LOG] generator call logged to generator_online_train_s_48_post_curate_20260309_155227_668.json
+
+--- Window 4, Step 4/15 (Global step 49) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_49_gen_initial...
+[GENERATOR] Call online_train_s_49_gen_initial completed in 8.13s
+[LOG] generator call logged to generator_online_train_s_49_gen_initial_20260309_155235_803.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_49_round_0...
+[REFLECTOR] Call online_train_s_49_round_0 completed in 8.55s
+[LOG] reflector call logged to reflector_online_train_s_49_round_0_20260309_155244_364.json
+[GENERATOR] Starting call online_train_s_49_post_reflect_round_0...
+[GENERATOR] Call online_train_s_49_post_reflect_round_0 completed in 6.95s
+[LOG] generator call logged to generator_online_train_s_49_post_reflect_round_0_20260309_155251_320.json
+
+--- Running Curator at step 49 ---
+[CURATOR] Starting call online_train_s_49...
+[CURATOR] Call online_train_s_49 completed in 9.10s
+[LOG] curator call logged to curator_online_train_s_49_20260309_155300_427.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00064 to section formulas_and_calculations
+  Added bullet calc-00065 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_49_post_curate...
+[GENERATOR] Call online_train_s_49_post_curate completed in 5.63s
+[LOG] generator call logged to generator_online_train_s_49_post_curate_20260309_155306_069.json
+
+--- Window 4, Step 5/15 (Global step 50) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_50_gen_initial...
+[GENERATOR] Call online_train_s_50_gen_initial completed in 6.36s
+[LOG] generator call logged to generator_online_train_s_50_gen_initial_20260309_155312_433.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_50_round_0...
+[REFLECTOR] Call online_train_s_50_round_0 completed in 13.75s
+[LOG] reflector call logged to reflector_online_train_s_50_round_0_20260309_155326_192.json
+[GENERATOR] Starting call online_train_s_50_post_reflect_round_0...
+[GENERATOR] Call online_train_s_50_post_reflect_round_0 completed in 7.49s
+[LOG] generator call logged to generator_online_train_s_50_post_reflect_round_0_20260309_155333_691.json
+
+--- Running Curator at step 50 ---
+[CURATOR] Starting call online_train_s_50...
+[CURATOR] Call online_train_s_50 completed in 7.94s
+[LOG] curator call logged to curator_online_train_s_50_20260309_155341_654.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00066 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_50_post_curate...
+[GENERATOR] Call online_train_s_50_post_curate completed in 8.25s
+[LOG] generator call logged to generator_online_train_s_50_post_curate_20260309_155349_909.json
+
+--- Window 4, Step 6/15 (Global step 51) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_51_gen_initial...
+[GENERATOR] Call online_train_s_51_gen_initial completed in 6.80s
+[LOG] generator call logged to generator_online_train_s_51_gen_initial_20260309_155356_712.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_51_round_0...
+[REFLECTOR] Call online_train_s_51_round_0 completed in 11.34s
+[LOG] reflector call logged to reflector_online_train_s_51_round_0_20260309_155408_055.json
+[GENERATOR] Starting call online_train_s_51_post_reflect_round_0...
+[GENERATOR] Call online_train_s_51_post_reflect_round_0 completed in 12.82s
+[LOG] generator call logged to generator_online_train_s_51_post_reflect_round_0_20260309_155420_878.json
+
+--- Running Curator at step 51 ---
+[CURATOR] Starting call online_train_s_51...
+[CURATOR] Call online_train_s_51 completed in 9.61s
+[LOG] curator call logged to curator_online_train_s_51_20260309_155430_489.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00067 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_51_post_curate...
+[GENERATOR] Call online_train_s_51_post_curate completed in 7.53s
+[LOG] generator call logged to generator_online_train_s_51_post_curate_20260309_155438_025.json
+
+--- Window 4, Step 7/15 (Global step 52) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_52_gen_initial...
+[GENERATOR] Call online_train_s_52_gen_initial completed in 5.84s
+[LOG] generator call logged to generator_online_train_s_52_gen_initial_20260309_155443_870.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_52_round_0...
+[REFLECTOR] Call online_train_s_52_round_0 completed in 11.65s
+[LOG] reflector call logged to reflector_online_train_s_52_round_0_20260309_155455_522.json
+[GENERATOR] Starting call online_train_s_52_post_reflect_round_0...
+[GENERATOR] Call online_train_s_52_post_reflect_round_0 completed in 9.18s
+[LOG] generator call logged to generator_online_train_s_52_post_reflect_round_0_20260309_155504_709.json
+
+--- Running Curator at step 52 ---
+[CURATOR] Starting call online_train_s_52...
+[CURATOR] Call online_train_s_52 completed in 11.64s
+[LOG] curator call logged to curator_online_train_s_52_20260309_155516_357.json
+Curator JSON schema validated successfully: 4 operations
+  Added bullet calc-00068 to section formulas_and_calculations
+  Added bullet calc-00069 to section formulas_and_calculations
+  Added bullet calc-00070 to section formulas_and_calculations
+  Added bullet calc-00071 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_52_post_curate...
+[GENERATOR] Call online_train_s_52_post_curate completed in 8.75s
+[LOG] generator call logged to generator_online_train_s_52_post_curate_20260309_155525_107.json
+
+--- Window 4, Step 8/15 (Global step 53) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_53_gen_initial...
+[GENERATOR] Empty response for online_train_s_53_gen_initial (attempt 1/3), retrying in 7.4s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_53_gen_initial_20260309_155617_835.json
+[GENERATOR] Call online_train_s_53_gen_initial completed in 67.02s
+[LOG] generator call logged to generator_online_train_s_53_gen_initial_20260309_155632_133.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_53_round_0...
+[REFLECTOR] Call online_train_s_53_round_0 completed in 10.49s
+[LOG] reflector call logged to reflector_online_train_s_53_round_0_20260309_155642_625.json
+[GENERATOR] Starting call online_train_s_53_post_reflect_round_0...
+[GENERATOR] Call online_train_s_53_post_reflect_round_0 completed in 12.27s
+[LOG] generator call logged to generator_online_train_s_53_post_reflect_round_0_20260309_155654_904.json
+
+--- Running Curator at step 53 ---
+[CURATOR] Starting call online_train_s_53...
+[CURATOR] Call online_train_s_53 completed in 8.44s
+[LOG] curator call logged to curator_online_train_s_53_20260309_155703_350.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00072 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_53_post_curate...
+[GENERATOR] Empty response for online_train_s_53_post_curate (attempt 1/3), retrying in 9.1s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_53_post_curate_20260309_155756_505.json
+[GENERATOR] Call online_train_s_53_post_curate completed in 100.37s
+[LOG] generator call logged to generator_online_train_s_53_post_curate_20260309_155843_733.json
+
+--- Window 4, Step 9/15 (Global step 54) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_54_gen_initial...
+[GENERATOR] Call online_train_s_54_gen_initial completed in 6.54s
+[LOG] generator call logged to generator_online_train_s_54_gen_initial_20260309_155850_273.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_54_round_0...
+[REFLECTOR] Call online_train_s_54_round_0 completed in 9.65s
+[LOG] reflector call logged to reflector_online_train_s_54_round_0_20260309_155859_935.json
+[GENERATOR] Starting call online_train_s_54_post_reflect_round_0...
+[GENERATOR] Call online_train_s_54_post_reflect_round_0 completed in 7.41s
+[LOG] generator call logged to generator_online_train_s_54_post_reflect_round_0_20260309_155907_350.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 54 ---
+[CURATOR] Starting call online_train_s_54...
+[CURATOR] Call online_train_s_54 completed in 10.47s
+[LOG] curator call logged to curator_online_train_s_54_20260309_155917_833.json
+Curator JSON schema validated successfully: 3 operations
+  Added bullet calc-00073 to section formulas_and_calculations
+  Added bullet calc-00074 to section formulas_and_calculations
+  Added bullet calc-00075 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_54_post_curate...
+[GENERATOR] Call online_train_s_54_post_curate completed in 9.60s
+[LOG] generator call logged to generator_online_train_s_54_post_curate_20260309_155927_430.json
+
+--- Window 4, Step 10/15 (Global step 55) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_55_gen_initial...
+[GENERATOR] Call online_train_s_55_gen_initial completed in 7.51s
+[LOG] generator call logged to generator_online_train_s_55_gen_initial_20260309_155934_945.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_55_round_0...
+[REFLECTOR] Call online_train_s_55_round_0 completed in 13.10s
+[LOG] reflector call logged to reflector_online_train_s_55_round_0_20260309_155948_050.json
+[GENERATOR] Starting call online_train_s_55_post_reflect_round_0...
+[GENERATOR] Call online_train_s_55_post_reflect_round_0 completed in 9.00s
+[LOG] generator call logged to generator_online_train_s_55_post_reflect_round_0_20260309_155957_063.json
+
+--- Running Curator at step 55 ---
+[CURATOR] Starting call online_train_s_55...
+[CURATOR] Call online_train_s_55 completed in 12.65s
+[LOG] curator call logged to curator_online_train_s_55_20260309_160009_716.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00076 to section formulas_and_calculations
+  Added bullet calc-00077 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_55_post_curate...
+[GENERATOR] Call online_train_s_55_post_curate completed in 8.54s
+[LOG] generator call logged to generator_online_train_s_55_post_curate_20260309_160018_257.json
+
+--- Window 4, Step 11/15 (Global step 56) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_56_gen_initial...
+[GENERATOR] Call online_train_s_56_gen_initial completed in 19.29s
+[LOG] generator call logged to generator_online_train_s_56_gen_initial_20260309_160037_559.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_56_round_0...
+[REFLECTOR] Call online_train_s_56_round_0 completed in 9.24s
+[LOG] reflector call logged to reflector_online_train_s_56_round_0_20260309_160046_802.json
+[GENERATOR] Starting call online_train_s_56_post_reflect_round_0...
+[GENERATOR] Call online_train_s_56_post_reflect_round_0 completed in 7.94s
+[LOG] generator call logged to generator_online_train_s_56_post_reflect_round_0_20260309_160054_749.json
+
+--- Running Curator at step 56 ---
+[CURATOR] Starting call online_train_s_56...
+[CURATOR] Call online_train_s_56 completed in 8.61s
+[LOG] curator call logged to curator_online_train_s_56_20260309_160103_367.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00078 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_56_post_curate...
+[GENERATOR] Call online_train_s_56_post_curate completed in 7.24s
+[LOG] generator call logged to generator_online_train_s_56_post_curate_20260309_160110_614.json
+
+--- Window 4, Step 12/15 (Global step 57) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_57_gen_initial...
+[GENERATOR] Call online_train_s_57_gen_initial completed in 7.08s
+[LOG] generator call logged to generator_online_train_s_57_gen_initial_20260309_160117_696.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_57_round_0...
+[REFLECTOR] Call online_train_s_57_round_0 completed in 8.26s
+[LOG] reflector call logged to reflector_online_train_s_57_round_0_20260309_160125_963.json
+[GENERATOR] Starting call online_train_s_57_post_reflect_round_0...
+[GENERATOR] Call online_train_s_57_post_reflect_round_0 completed in 8.36s
+[LOG] generator call logged to generator_online_train_s_57_post_reflect_round_0_20260309_160134_328.json
+
+--- Running Curator at step 57 ---
+[CURATOR] Starting call online_train_s_57...
+[CURATOR] Call online_train_s_57 completed in 9.20s
+[LOG] curator call logged to curator_online_train_s_57_20260309_160143_537.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00079 to section formulas_and_calculations
+  Added bullet calc-00080 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_57_post_curate...
+[GENERATOR] Call online_train_s_57_post_curate completed in 8.79s
+[LOG] generator call logged to generator_online_train_s_57_post_curate_20260309_160152_330.json
+
+--- Window 4, Step 13/15 (Global step 58) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_58_gen_initial...
+[GENERATOR] Call online_train_s_58_gen_initial completed in 6.56s
+[LOG] generator call logged to generator_online_train_s_58_gen_initial_20260309_160158_899.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_58_round_0...
+[REFLECTOR] Call online_train_s_58_round_0 completed in 8.11s
+[LOG] reflector call logged to reflector_online_train_s_58_round_0_20260309_160207_018.json
+[GENERATOR] Starting call online_train_s_58_post_reflect_round_0...
+[GENERATOR] Call online_train_s_58_post_reflect_round_0 completed in 17.08s
+[LOG] generator call logged to generator_online_train_s_58_post_reflect_round_0_20260309_160224_100.json
+
+--- Running Curator at step 58 ---
+[CURATOR] Starting call online_train_s_58...
+[CURATOR] Call online_train_s_58 completed in 8.07s
+[LOG] curator call logged to curator_online_train_s_58_20260309_160232_178.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00081 to section formulas_and_calculations
+  Added bullet calc-00082 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_58_post_curate...
+[GENERATOR] Call online_train_s_58_post_curate completed in 4.74s
+[LOG] generator call logged to generator_online_train_s_58_post_curate_20260309_160236_920.json
+
+--- Window 4, Step 14/15 (Global step 59) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_59_gen_initial...
+[GENERATOR] Call online_train_s_59_gen_initial completed in 9.25s
+[LOG] generator call logged to generator_online_train_s_59_gen_initial_20260309_160246_170.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_59_round_0...
+[REFLECTOR] Call online_train_s_59_round_0 completed in 12.41s
+[LOG] reflector call logged to reflector_online_train_s_59_round_0_20260309_160258_586.json
+[GENERATOR] Starting call online_train_s_59_post_reflect_round_0...
+[GENERATOR] Call online_train_s_59_post_reflect_round_0 completed in 8.74s
+[LOG] generator call logged to generator_online_train_s_59_post_reflect_round_0_20260309_160307_338.json
+
+--- Running Curator at step 59 ---
+[CURATOR] Starting call online_train_s_59...
+[CURATOR] Call online_train_s_59 completed in 10.52s
+[LOG] curator call logged to curator_online_train_s_59_20260309_160317_866.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00083 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_59_post_curate...
+[GENERATOR] Call online_train_s_59_post_curate completed in 10.86s
+[LOG] generator call logged to generator_online_train_s_59_post_curate_20260309_160328_730.json
+
+--- Window 4, Step 15/15 (Global step 60) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_60_gen_initial...
+[GENERATOR] Call online_train_s_60_gen_initial completed in 6.54s
+[LOG] generator call logged to generator_online_train_s_60_gen_initial_20260309_160335_274.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_60_round_0...
+[REFLECTOR] Call online_train_s_60_round_0 completed in 11.39s
+[LOG] reflector call logged to reflector_online_train_s_60_round_0_20260309_160346_665.json
+[GENERATOR] Starting call online_train_s_60_post_reflect_round_0...
+[GENERATOR] Call online_train_s_60_post_reflect_round_0 completed in 13.35s
+[LOG] generator call logged to generator_online_train_s_60_post_reflect_round_0_20260309_160400_021.json
+
+--- Running Curator at step 60 ---
+[CURATOR] Starting call online_train_s_60...
+[CURATOR] Call online_train_s_60 completed in 7.35s
+[LOG] curator call logged to curator_online_train_s_60_20260309_160407_379.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00084 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_60_post_curate...
+[GENERATOR] Call online_train_s_60_post_curate completed in 12.69s
+[LOG] generator call logged to generator_online_train_s_60_post_curate_20260309_160420_076.json
+
+Window 4 training complete:
+  Pre-train accuracy: 0.183
+  Post-train accuracy: 0.250
+
+============================================================
+WINDOW 5/5
+Samples 60 to 74
+============================================================
+
+--- Testing window 5 with current playbook ---
+
+========================================
+EVALUATING TEST SET - 15 samples, 20 workers
+========================================
+[GENERATOR] Starting call test_eval_0...
+[GENERATOR] Starting call test_eval_1...
+[GENERATOR] Starting call test_eval_2...
+[GENERATOR] Starting call test_eval_3...
+[GENERATOR] Starting call test_eval_4...
+[GENERATOR] Starting call test_eval_5...
+[GENERATOR] Starting call test_eval_6...
+[GENERATOR] Starting call test_eval_7...
+[GENERATOR] Starting call test_eval_8...
+[GENERATOR] Starting call test_eval_9...
+[GENERATOR] Starting call test_eval_10...
+[GENERATOR] Starting call test_eval_11...
+[GENERATOR] Starting call test_eval_12...
+[GENERATOR] Starting call test_eval_13...
+[GENERATOR] Starting call test_eval_14...
+[GENERATOR] Call test_eval_1 completed in 7.23s
+[LOG] generator call logged to generator_test_eval_1_20260309_160427_327.json
+[GENERATOR] Call test_eval_3 completed in 8.20s
+[LOG] generator call logged to generator_test_eval_3_20260309_160428_299.json
+[GENERATOR] Call test_eval_11 completed in 8.52s
+[LOG] generator call logged to generator_test_eval_11_20260309_160428_625.json
+[GENERATOR] Call test_eval_5 completed in 10.21s
+[LOG] generator call logged to generator_test_eval_5_20260309_160430_312.json
+[GENERATOR] Call test_eval_6 completed in 10.24s
+[LOG] generator call logged to generator_test_eval_6_20260309_160430_347.json
+[GENERATOR] Call test_eval_14 completed in 10.68s
+[LOG] generator call logged to generator_test_eval_14_20260309_160430_791.json
+[GENERATOR] Call test_eval_7 completed in 11.29s
+[LOG] generator call logged to generator_test_eval_7_20260309_160431_396.json
+[GENERATOR] Call test_eval_9 completed in 11.80s
+[LOG] generator call logged to generator_test_eval_9_20260309_160431_910.json
+[GENERATOR] Call test_eval_12 completed in 12.27s
+[LOG] generator call logged to generator_test_eval_12_20260309_160432_385.json
+[GENERATOR] Call test_eval_10 completed in 12.41s
+[LOG] generator call logged to generator_test_eval_10_20260309_160432_520.json
+[GENERATOR] Call test_eval_13 completed in 12.49s
+[LOG] generator call logged to generator_test_eval_13_20260309_160432_597.json
+[GENERATOR] Call test_eval_8 completed in 13.37s
+[LOG] generator call logged to generator_test_eval_8_20260309_160433_479.json
+[GENERATOR] Call test_eval_4 completed in 14.27s
+[GENERATOR] Call test_eval_2 completed in 14.27s
+[LOG] generator call logged to generator_test_eval_2_20260309_160434_370.json
+[LOG] generator call logged to generator_test_eval_4_20260309_160434_370.json
+[GENERATOR] Call test_eval_0 completed in 15.56s
+[LOG] generator call logged to generator_test_eval_0_20260309_160435_653.json
+
+Final Accuracy: 0.183 (0/15)
+Window 5 test accuracy: 0.183
+Cumulative test accuracy so far: 0.182 (74 samples)
+
+--- Training on window 5 ---
+
+--- Window 5, Step 1/15 (Global step 61) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_61_gen_initial...
+[GENERATOR] Call online_train_s_61_gen_initial completed in 6.93s
+[LOG] generator call logged to generator_online_train_s_61_gen_initial_20260309_160442_592.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_61_round_0...
+[REFLECTOR] Call online_train_s_61_round_0 completed in 8.24s
+[LOG] reflector call logged to reflector_online_train_s_61_round_0_20260309_160450_856.json
+[GENERATOR] Starting call online_train_s_61_post_reflect_round_0...
+[GENERATOR] Call online_train_s_61_post_reflect_round_0 completed in 6.95s
+[LOG] generator call logged to generator_online_train_s_61_post_reflect_round_0_20260309_160457_820.json
+
+--- Running Curator at step 61 ---
+[CURATOR] Starting call online_train_s_61...
+[CURATOR] Call online_train_s_61 completed in 8.52s
+[LOG] curator call logged to curator_online_train_s_61_20260309_160506_345.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00085 to section formulas_and_calculations
+  Added bullet calc-00086 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_61_post_curate...
+[GENERATOR] Call online_train_s_61_post_curate completed in 76.23s
+[LOG] generator call logged to generator_online_train_s_61_post_curate_20260309_160622_581.json
+
+--- Window 5, Step 2/15 (Global step 62) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_62_gen_initial...
+[GENERATOR] Empty response for online_train_s_62_gen_initial (attempt 1/3), retrying in 8.6s...
+[PROBLEM LOG] Saved problematic request to: problematic_requests/empty_response_online_train_s_62_gen_initial_20260309_160949_047.json
+[GENERATOR] Call online_train_s_62_gen_initial completed in 222.39s
+[LOG] generator call logged to generator_online_train_s_62_gen_initial_20260309_161004_979.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_62_round_0...
+[REFLECTOR] Call online_train_s_62_round_0 completed in 9.98s
+[LOG] reflector call logged to reflector_online_train_s_62_round_0_20260309_161014_960.json
+[GENERATOR] Starting call online_train_s_62_post_reflect_round_0...
+[GENERATOR] Call online_train_s_62_post_reflect_round_0 completed in 7.66s
+[LOG] generator call logged to generator_online_train_s_62_post_reflect_round_0_20260309_161022_622.json
+
+--- Running Curator at step 62 ---
+[CURATOR] Starting call online_train_s_62...
+[CURATOR] Call online_train_s_62 completed in 9.79s
+[LOG] curator call logged to curator_online_train_s_62_20260309_161032_413.json
+Curator JSON schema validated successfully: 4 operations
+  Added bullet calc-00087 to section formulas_and_calculations
+  Added bullet calc-00088 to section formulas_and_calculations
+  Added bullet calc-00089 to section formulas_and_calculations
+  Added bullet calc-00090 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_62_post_curate...
+[GENERATOR] Call online_train_s_62_post_curate completed in 9.62s
+[LOG] generator call logged to generator_online_train_s_62_post_curate_20260309_161042_046.json
+
+--- Window 5, Step 3/15 (Global step 63) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_63_gen_initial...
+[GENERATOR] Call online_train_s_63_gen_initial completed in 7.23s
+[LOG] generator call logged to generator_online_train_s_63_gen_initial_20260309_161049_287.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_63_round_0...
+[REFLECTOR] Call online_train_s_63_round_0 completed in 9.61s
+[LOG] reflector call logged to reflector_online_train_s_63_round_0_20260309_161058_911.json
+[GENERATOR] Starting call online_train_s_63_post_reflect_round_0...
+[GENERATOR] Call online_train_s_63_post_reflect_round_0 completed in 8.56s
+[LOG] generator call logged to generator_online_train_s_63_post_reflect_round_0_20260309_161107_470.json
+
+--- Running Curator at step 63 ---
+[CURATOR] Starting call online_train_s_63...
+[CURATOR] Call online_train_s_63 completed in 8.92s
+[LOG] curator call logged to curator_online_train_s_63_20260309_161116_399.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00091 to section formulas_and_calculations
+  Added bullet calc-00092 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_63_post_curate...
+[GENERATOR] Call online_train_s_63_post_curate completed in 7.02s
+[LOG] generator call logged to generator_online_train_s_63_post_curate_20260309_161123_426.json
+
+--- Window 5, Step 4/15 (Global step 64) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_64_gen_initial...
+[GENERATOR] Call online_train_s_64_gen_initial completed in 5.77s
+[LOG] generator call logged to generator_online_train_s_64_gen_initial_20260309_161129_208.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_64_round_0...
+[REFLECTOR] Call online_train_s_64_round_0 completed in 11.65s
+[LOG] reflector call logged to reflector_online_train_s_64_round_0_20260309_161140_868.json
+[GENERATOR] Starting call online_train_s_64_post_reflect_round_0...
+[GENERATOR] Call online_train_s_64_post_reflect_round_0 completed in 9.71s
+[LOG] generator call logged to generator_online_train_s_64_post_reflect_round_0_20260309_161150_582.json
+
+--- Running Curator at step 64 ---
+[CURATOR] Starting call online_train_s_64...
+[CURATOR] Call online_train_s_64 completed in 6.14s
+[LOG] curator call logged to curator_online_train_s_64_20260309_161156_720.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00093 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_64_post_curate...
+[GENERATOR] Call online_train_s_64_post_curate completed in 7.41s
+[LOG] generator call logged to generator_online_train_s_64_post_curate_20260309_161204_135.json
+
+--- Window 5, Step 5/15 (Global step 65) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_65_gen_initial...
+[GENERATOR] Call online_train_s_65_gen_initial completed in 11.40s
+[LOG] generator call logged to generator_online_train_s_65_gen_initial_20260309_161215_539.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_65_round_0...
+[REFLECTOR] Call online_train_s_65_round_0 completed in 9.33s
+[LOG] reflector call logged to reflector_online_train_s_65_round_0_20260309_161224_879.json
+[GENERATOR] Starting call online_train_s_65_post_reflect_round_0...
+[GENERATOR] Call online_train_s_65_post_reflect_round_0 completed in 9.05s
+[LOG] generator call logged to generator_online_train_s_65_post_reflect_round_0_20260309_161233_937.json
+
+--- Running Curator at step 65 ---
+[CURATOR] Starting call online_train_s_65...
+[CURATOR] Call online_train_s_65 completed in 5.44s
+[LOG] curator call logged to curator_online_train_s_65_20260309_161239_381.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00094 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_65_post_curate...
+[GENERATOR] Call online_train_s_65_post_curate completed in 10.00s
+[LOG] generator call logged to generator_online_train_s_65_post_curate_20260309_161249_397.json
+
+--- Window 5, Step 6/15 (Global step 66) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_66_gen_initial...
+[GENERATOR] Call online_train_s_66_gen_initial completed in 4.83s
+[LOG] generator call logged to generator_online_train_s_66_gen_initial_20260309_161254_239.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_66_round_0...
+[REFLECTOR] Call online_train_s_66_round_0 completed in 9.42s
+[LOG] reflector call logged to reflector_online_train_s_66_round_0_20260309_161303_675.json
+[GENERATOR] Starting call online_train_s_66_post_reflect_round_0...
+[GENERATOR] Call online_train_s_66_post_reflect_round_0 completed in 7.81s
+[LOG] generator call logged to generator_online_train_s_66_post_reflect_round_0_20260309_161311_492.json
+
+--- Running Curator at step 66 ---
+[CURATOR] Starting call online_train_s_66...
+[CURATOR] Call online_train_s_66 completed in 7.80s
+[LOG] curator call logged to curator_online_train_s_66_20260309_161319_299.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00095 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_66_post_curate...
+[GENERATOR] Call online_train_s_66_post_curate completed in 7.78s
+[LOG] generator call logged to generator_online_train_s_66_post_curate_20260309_161327_083.json
+
+--- Window 5, Step 7/15 (Global step 67) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_67_gen_initial...
+[GENERATOR] Call online_train_s_67_gen_initial completed in 11.55s
+[LOG] generator call logged to generator_online_train_s_67_gen_initial_20260309_161338_637.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_67_round_0...
+[REFLECTOR] Call online_train_s_67_round_0 completed in 14.59s
+[LOG] reflector call logged to reflector_online_train_s_67_round_0_20260309_161353_236.json
+[GENERATOR] Starting call online_train_s_67_post_reflect_round_0...
+[GENERATOR] Call online_train_s_67_post_reflect_round_0 completed in 7.44s
+[LOG] generator call logged to generator_online_train_s_67_post_reflect_round_0_20260309_161400_680.json
+
+--- Running Curator at step 67 ---
+[CURATOR] Starting call online_train_s_67...
+[CURATOR] Call online_train_s_67 completed in 7.43s
+[LOG] curator call logged to curator_online_train_s_67_20260309_161408_110.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00096 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_67_post_curate...
+[GENERATOR] Call online_train_s_67_post_curate completed in 8.68s
+[LOG] generator call logged to generator_online_train_s_67_post_curate_20260309_161416_790.json
+
+--- Window 5, Step 8/15 (Global step 68) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_68_gen_initial...
+[GENERATOR] Call online_train_s_68_gen_initial completed in 6.15s
+[LOG] generator call logged to generator_online_train_s_68_gen_initial_20260309_161422_950.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_68_round_0...
+[REFLECTOR] Call online_train_s_68_round_0 completed in 10.59s
+[LOG] reflector call logged to reflector_online_train_s_68_round_0_20260309_161433_542.json
+[GENERATOR] Starting call online_train_s_68_post_reflect_round_0...
+[GENERATOR] Call online_train_s_68_post_reflect_round_0 completed in 7.66s
+[LOG] generator call logged to generator_online_train_s_68_post_reflect_round_0_20260309_161441_200.json
+
+--- Running Curator at step 68 ---
+[CURATOR] Starting call online_train_s_68...
+[CURATOR] Call online_train_s_68 completed in 8.70s
+[LOG] curator call logged to curator_online_train_s_68_20260309_161449_910.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00097 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_68_post_curate...
+[GENERATOR] Call online_train_s_68_post_curate completed in 4.69s
+[LOG] generator call logged to generator_online_train_s_68_post_curate_20260309_161454_610.json
+
+--- Window 5, Step 9/15 (Global step 69) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_69_gen_initial...
+[GENERATOR] Call online_train_s_69_gen_initial completed in 6.32s
+[LOG] generator call logged to generator_online_train_s_69_gen_initial_20260309_161500_947.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_69_round_0...
+[REFLECTOR] Call online_train_s_69_round_0 completed in 12.86s
+[LOG] reflector call logged to reflector_online_train_s_69_round_0_20260309_161513_818.json
+[GENERATOR] Starting call online_train_s_69_post_reflect_round_0...
+[GENERATOR] Call online_train_s_69_post_reflect_round_0 completed in 8.34s
+[LOG] generator call logged to generator_online_train_s_69_post_reflect_round_0_20260309_161522_160.json
+
+--- Running Curator at step 69 ---
+[CURATOR] Starting call online_train_s_69...
+[CURATOR] Call online_train_s_69 completed in 9.53s
+[LOG] curator call logged to curator_online_train_s_69_20260309_161531_698.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00098 to section formulas_and_calculations
+  Added bullet calc-00099 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_69_post_curate...
+[GENERATOR] Call online_train_s_69_post_curate completed in 5.76s
+[LOG] generator call logged to generator_online_train_s_69_post_curate_20260309_161537_471.json
+
+--- Window 5, Step 10/15 (Global step 70) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_70_gen_initial...
+[GENERATOR] Call online_train_s_70_gen_initial completed in 5.41s
+[LOG] generator call logged to generator_online_train_s_70_gen_initial_20260309_161542_886.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_70_round_0...
+[REFLECTOR] Call online_train_s_70_round_0 completed in 8.32s
+[LOG] reflector call logged to reflector_online_train_s_70_round_0_20260309_161551_224.json
+[GENERATOR] Starting call online_train_s_70_post_reflect_round_0...
+[GENERATOR] Call online_train_s_70_post_reflect_round_0 completed in 8.06s
+[LOG] generator call logged to generator_online_train_s_70_post_reflect_round_0_20260309_161559_289.json
+
+--- Running Curator at step 70 ---
+[CURATOR] Starting call online_train_s_70...
+[CURATOR] Call online_train_s_70 completed in 6.69s
+[LOG] curator call logged to curator_online_train_s_70_20260309_161605_975.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00100 to section formulas_and_calculations
+  Added bullet calc-00101 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_70_post_curate...
+[GENERATOR] Call online_train_s_70_post_curate completed in 6.05s
+[LOG] generator call logged to generator_online_train_s_70_post_curate_20260309_161612_027.json
+
+--- Window 5, Step 11/15 (Global step 71) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_71_gen_initial...
+[GENERATOR] Call online_train_s_71_gen_initial completed in 9.08s
+[LOG] generator call logged to generator_online_train_s_71_gen_initial_20260309_161621_118.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_71_round_0...
+[REFLECTOR] Call online_train_s_71_round_0 completed in 12.29s
+[LOG] reflector call logged to reflector_online_train_s_71_round_0_20260309_161633_418.json
+[GENERATOR] Starting call online_train_s_71_post_reflect_round_0...
+[GENERATOR] Call online_train_s_71_post_reflect_round_0 completed in 15.73s
+[LOG] generator call logged to generator_online_train_s_71_post_reflect_round_0_20260309_161649_154.json
+
+--- Running Curator at step 71 ---
+[CURATOR] Starting call online_train_s_71...
+[CURATOR] Call online_train_s_71 completed in 10.42s
+[LOG] curator call logged to curator_online_train_s_71_20260309_161659_586.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00102 to section formulas_and_calculations
+  Added bullet calc-00103 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_71_post_curate...
+[GENERATOR] Call online_train_s_71_post_curate completed in 9.67s
+[LOG] generator call logged to generator_online_train_s_71_post_curate_20260309_161709_269.json
+
+--- Window 5, Step 12/15 (Global step 72) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_72_gen_initial...
+[GENERATOR] Call online_train_s_72_gen_initial completed in 6.03s
+[LOG] generator call logged to generator_online_train_s_72_gen_initial_20260309_161715_312.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_72_round_0...
+[REFLECTOR] Call online_train_s_72_round_0 completed in 9.23s
+[LOG] reflector call logged to reflector_online_train_s_72_round_0_20260309_161724_554.json
+[GENERATOR] Starting call online_train_s_72_post_reflect_round_0...
+[GENERATOR] Call online_train_s_72_post_reflect_round_0 completed in 8.35s
+[LOG] generator call logged to generator_online_train_s_72_post_reflect_round_0_20260309_161732_902.json
+Corrected after reflection round 1!
+
+--- Running Curator at step 72 ---
+[CURATOR] Starting call online_train_s_72...
+[CURATOR] Call online_train_s_72 completed in 7.97s
+[LOG] curator call logged to curator_online_train_s_72_20260309_161740_870.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00104 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_72_post_curate...
+[GENERATOR] Call online_train_s_72_post_curate completed in 7.41s
+[LOG] generator call logged to generator_online_train_s_72_post_curate_20260309_161748_292.json
+
+--- Window 5, Step 13/15 (Global step 73) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_73_gen_initial...
+[GENERATOR] Call online_train_s_73_gen_initial completed in 9.06s
+[LOG] generator call logged to generator_online_train_s_73_gen_initial_20260309_161757_354.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_73_round_0...
+[REFLECTOR] Call online_train_s_73_round_0 completed in 9.26s
+[LOG] reflector call logged to reflector_online_train_s_73_round_0_20260309_161806_623.json
+[GENERATOR] Starting call online_train_s_73_post_reflect_round_0...
+[GENERATOR] Call online_train_s_73_post_reflect_round_0 completed in 7.93s
+[LOG] generator call logged to generator_online_train_s_73_post_reflect_round_0_20260309_161814_549.json
+
+--- Running Curator at step 73 ---
+[CURATOR] Starting call online_train_s_73...
+[CURATOR] Call online_train_s_73 completed in 5.75s
+[LOG] curator call logged to curator_online_train_s_73_20260309_161820_312.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00105 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_73_post_curate...
+[GENERATOR] Call online_train_s_73_post_curate completed in 6.81s
+[LOG] generator call logged to generator_online_train_s_73_post_curate_20260309_161827_120.json
+
+--- Window 5, Step 14/15 (Global step 74) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_74_gen_initial...
+[GENERATOR] Call online_train_s_74_gen_initial completed in 7.54s
+[LOG] generator call logged to generator_online_train_s_74_gen_initial_20260309_161834_661.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_74_round_0...
+[REFLECTOR] Call online_train_s_74_round_0 completed in 9.62s
+[LOG] reflector call logged to reflector_online_train_s_74_round_0_20260309_161844_297.json
+[GENERATOR] Starting call online_train_s_74_post_reflect_round_0...
+[GENERATOR] Call online_train_s_74_post_reflect_round_0 completed in 8.52s
+[LOG] generator call logged to generator_online_train_s_74_post_reflect_round_0_20260309_161852_822.json
+
+--- Running Curator at step 74 ---
+[CURATOR] Starting call online_train_s_74...
+[CURATOR] Call online_train_s_74 completed in 7.27s
+[LOG] curator call logged to curator_online_train_s_74_20260309_161900_096.json
+Curator JSON schema validated successfully: 1 operations
+  Added bullet calc-00106 to section formulas_and_calculations
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_74_post_curate...
+[GENERATOR] Call online_train_s_74_post_curate completed in 8.34s
+[LOG] generator call logged to generator_online_train_s_74_post_curate_20260309_161908_438.json
+
+--- Window 5, Step 15/15 (Global step 75) ---
+Generating initial answer...
+[GENERATOR] Starting call online_train_s_75_gen_initial...
+[GENERATOR] Call online_train_s_75_gen_initial completed in 6.46s
+[LOG] generator call logged to generator_online_train_s_75_gen_initial_20260309_161914_908.json
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_75_round_0...
+[REFLECTOR] Call online_train_s_75_round_0 completed in 7.79s
+[LOG] reflector call logged to reflector_online_train_s_75_round_0_20260309_161922_702.json
+[GENERATOR] Starting call online_train_s_75_post_reflect_round_0...Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Window\Desktop\gsam-rsh\eval\finance\run.py", line 264, in <module>
+    main()
+  File "C:\Users\Window\Desktop\gsam-rsh\eval\finance\run.py", line 253, in main
+    results = ace_system.run(
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\Window\Desktop\gsam-rsh\ace\ace.py", line 420, in run
+    online_results = self._online_train_and_test(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Window\Desktop\gsam-rsh\ace\ace.py", line 1299, in _online_train_and_test
+    assert total_count == len(test_samples)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+[GENERATOR] Call online_train_s_75_post_reflect_round_0 completed in 14.14s
+[LOG] generator call logged to generator_online_train_s_75_post_reflect_round_0_20260309_161936_847.json
+
+--- Running Curator at step 75 ---
+[CURATOR] Starting call online_train_s_75...
+[CURATOR] Call online_train_s_75 completed in 12.56s
+[LOG] curator call logged to curator_online_train_s_75_20260309_161949_418.json
+Curator JSON schema validated successfully: 2 operations
+  Added bullet calc-00107 to section formulas_and_calculations
+  Added bullet calc-00108 to section formulas_and_calculations
+  - ADD: No reason given
+  - ADD: No reason given
+[GENERATOR] Starting call online_train_s_75_post_curate...
+[GENERATOR] Call online_train_s_75_post_curate completed in 8.59s
+[LOG] generator call logged to generator_online_train_s_75_post_curate_20260309_161958_017.json
+
+Window 5 training complete:
+  Pre-train accuracy: 0.100
+  Post-train accuracy: 0.117
+
+============================================================
+ONLINE TRAIN AND TEST COMPLETE
+============================================================

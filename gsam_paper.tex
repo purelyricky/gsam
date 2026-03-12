@@ -459,7 +459,7 @@ We construct FiNER-Transfer as follows:
 
 \subsection{Baselines and Methods}
 
-All methods use DeepSeek-V3.1~\cite{deepseek2024} as the base LLM, consistent with ACE's evaluation.
+All GSAM and ACE baseline experiments use \textbf{DeepSeek-R1-Distill-Qwen-7B}~\cite{deepseek2024} served via a self-hosted vLLM endpoint on Modal.com (1$\times$ A100-40GB GPU). We use the same model for both GSAM and ACE to ensure fair comparison. Note that the ACE paper~\cite{ace2025} reported results with DeepSeek-V3.1; our baseline ACE numbers are therefore independently measured with the R1-Distill-Qwen-7B model and will differ from those reported in~\cite{ace2025}.
 
 \begin{itemize}[leftmargin=*]
 \item \textbf{Base LLM}: Direct evaluation without context engineering.
@@ -519,7 +519,7 @@ Based on the structural advantages described in \S\ref{sec:method}, we formulate
 
 \textbf{H3 (Retrieval Quality).} GSAM's retrieval precision should exceed ACE's (predicted: $>$70\% vs.\ $\sim$42\%) because graph traversal filters by structural relevance, not just embedding similarity. This should reduce prompt noise and improve Generator performance.
 
-\textbf{Overall Accuracy.} We predict modest but consistent gains on FiNER (+2--4\%) and Formula (+3--5\%) over ACE, driven primarily by improved retrieval precision and failure prevention. The gains should be larger in online adaptation, where the graph's structure helps manage growing knowledge more efficiently than flat storage.
+\textbf{Overall Accuracy.} We predict modest but consistent gains on FiNER (+2--4\%) and Formula (+3--5\%) over ACE, driven primarily by improved retrieval precision and failure prevention. The gains should be larger in online adaptation, where the graph's structure helps manage growing knowledge more efficiently than flat storage. Note that absolute accuracy values depend on the base model; all comparisons in this paper are relative to our own ACE baseline measured with the same model (DeepSeek-R1-Distill-Qwen-7B).
 
 
 %==============================================================================
@@ -558,7 +558,7 @@ De-duplication & 0.3 & 0.4$^*$ \\
 
 The key insight is that GSAM's overhead is \textit{front-loaded}: the Graph Constructor adds $\sim$1.0s per task for entity/relationship extraction. However, this is partially offset by two savings downstream:
 
-\textbf{Shorter Generator Context.} Because graph retrieval is more precise (fewer irrelevant items), the Generator receives a shorter, more focused context. On FiNER, we estimate ACE retrieves $\sim$10 bullets averaging $\sim$150 tokens each (1,500 tokens total), while GSAM retrieves a subgraph serialized to $\sim$900 tokens. This reduces Generator inference latency.
+\textbf{Shorter Generator Context.} Because graph retrieval is more precise (fewer irrelevant items), the Generator receives a more focused context. Without a node budget, the serialized subgraph grows unboundedly as the graph accumulates knowledge---in our pilot run, evaluation prompt lengths grew from $\sim$2,600 tokens early in adaptation to over 20,000 tokens by step 100 before the context limit was reached. With the $N_{\max} = 30$ node budget enforced (see \S\ref{sec:retrieval}), the graph context is bounded and the prompt lengths are controlled. We project that ACE retrieves $\sim$10 bullets averaging $\sim$150 tokens each (1,500 tokens total), while GSAM with the node budget serializes to approximately 1,200--2,000 tokens depending on node content length. The exact savings will be measured empirically.
 
 \textbf{Faster Retrieval at Scale.} ACE computes cosine similarity against all bullets: $O(M \cdot d)$ where $M$ is the number of bullets. GSAM first matches concepts ($O(|V_{\textsc{Concept}}| \cdot d)$, typically $\sim$139 for FiNER), then performs BFS on the subgraph, which is bounded by the graph's local density rather than total size.
 
@@ -575,7 +575,7 @@ The primary cost driver in context adaptation is LLM token consumption. Table~\r
 \toprule
 \textbf{Cost Component} & \textbf{ACE} & \textbf{GSAM} \\
 \midrule
-Generator input tokens/task & $\sim$2,800 & $\sim$2,200$^*$ \\
+Generator input tokens/task & $\sim$2,800 & $\sim$2,200--3,500$^*$ \\
 Generator output tokens/task & $\sim$600 & $\sim$600 \\
 Reflector tokens/task & $\sim$1,800 & $\sim$1,800 \\
 Curator tokens/task & $\sim$1,200 & $\sim$1,200 \\
@@ -960,7 +960,7 @@ Table~\ref{tab:projected-overall} presents projected results based on our theore
 
 \begin{table}[h]
 \centering
-\caption{Projected Overall Performance on Financial Benchmarks. Values for Base LLM, ICL, GEPA, and ACE are from~\cite{ace2025}. GSAM values are projected.}
+\caption{Projected Overall Performance on Financial Benchmarks. All values are projected; ACE and baseline values will be measured empirically using DeepSeek-R1-Distill-Qwen-7B, which differs from the V3.1 results in~\cite{ace2025}. GSAM gains are expressed relative to our own ACE baseline.}
 \label{tab:projected-overall}
 \small
 \begin{tabular}{@{}lccc@{}}

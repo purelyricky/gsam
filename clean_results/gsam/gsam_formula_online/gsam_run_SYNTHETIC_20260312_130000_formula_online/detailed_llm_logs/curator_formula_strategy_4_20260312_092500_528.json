@@ -1,0 +1,12 @@
+{
+  "synthetic_reference": true,
+  "role": "curator",
+  "content": "Gross Margin: GrossProfit / RevenueFromContractWithCustomerExcludingAssessedTax. GrossProfit = Revenue - CostOfRevenue. Do not include SG&A or R&D in COGS for gross margin calculation.",
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "Gross Margin: GrossProfit / RevenueFromContractWithCustomerExcludingAssessedTax. GrossProfit = Revenue - CostOfRevenue. Do not include SG&A or R&D in COGS for gross margin calculation.",
+      "target_concept": "LiabilitiesAndStockholdersEquity"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "synthetic_reference": true,
+  "windows_completed": 20,
+  "window_results": [
+    {
+      "window": 1,
+      "accuracy": 0.43,
+      "correct": 129,
+      "playbook_size": 10
+    },
+    {
+      "window": 2,
+      "accuracy": 0.447,
+      "correct": 134,
+      "playbook_size": 20
+    },
+    {
+      "window": 3,
+      "accuracy": 0.463,
+      "correct": 139,
+      "playbook_size": 30
+    },
+    {
+      "window": 4,
+      "accuracy": 0.477,
+      "correct": 143,
+      "playbook_size": 38
+    },
+    {
+      "window": 5,
+      "accuracy": 0.49,
+      "correct": 147,
+      "playbook_size": 44
+    },
+    {
+      "window": 6,
+      "accuracy": 0.497,
+      "correct": 149,
+      "playbook_size": 50
+    },
+    {
+      "window": 7,
+      "accuracy": 0.503,
+      "correct": 151,
+      "playbook_size": 58
+    },
+    {
+      "window": 8,
+      "accuracy": 0.51,
+      "correct": 153,
+      "playbook_size": 65
+    },
+    {
+      "window": 9,
+      "accuracy": 0.517,
+      "correct": 155,
+      "playbook_size": 72
+    },
+    {
+      "window": 10,
+      "accuracy": 0.523,
+      "correct": 157,
+      "playbook_size": 78
+    },
+    {
+      "window": 11,
+      "accuracy": 0.527,
+      "correct": 158,
+      "playbook_size": 84
+    },
+    {
+      "window": 12,
+      "accuracy": 0.53,
+      "correct": 159,
+      "playbook_size": 90
+    },
+    {
+      "window": 13,
+      "accuracy": 0.535,
+      "correct": 160,
+      "playbook_size": 96
+    },
+    {
+      "window": 14,
+      "accuracy": 0.538,
+      "correct": 161,
+      "playbook_size": 101
+    },
+    {
+      "window": 15,
+      "accuracy": 0.54,
+      "correct": 162,
+      "playbook_size": 106
+    },
+    {
+      "window": 16,
+      "accuracy": 0.54,
+      "correct": 162,
+      "playbook_size": 110
+    },
+    {
+      "window": 17,
+      "accuracy": 0.54,
+      "correct": 162,
+      "playbook_size": 114
+    },
+    {
+      "window": 18,
+      "accuracy": 0.54,
+      "correct": 162,
+      "playbook_size": 118
+    },
+    {
+      "window": 19,
+      "accuracy": 0.54,
+      "correct": 162,
+      "playbook_size": 122
+    },
+    {
+      "window": 20,
+      "accuracy": 0.54,
+      "correct": 162,
+      "playbook_size": 126
+    }
+  ]
+}

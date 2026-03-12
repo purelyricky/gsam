@@ -1,0 +1,19 @@
+{
+  "final_node_counts": {
+    "Strategy": 67,
+    "AntiPattern": 39,
+    "Confusion": 53,
+    "Formula": 39,
+    "Concept": 0
+  },
+  "total_nodes": 198,
+  "total_edges": 252,
+  "is_a_edges": 0,
+  "applies_to_edges": 53,
+  "fails_for_edges": 0,
+  "confused_with_edges": 22,
+  "avg_retrieval_precision_window_1": 0.15,
+  "avg_retrieval_precision_window_20": 0.08,
+  "ablation": "gsam_embedding_only",
+  "note": "Retrieval uses cosine similarity only. Precision degrades as embedding space crowds with more nodes. BFS and Stage 3 taxonomy expansion completely bypassed."
+}

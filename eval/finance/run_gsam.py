@@ -81,6 +81,11 @@ def parse_args():
     parser.add_argument("--max_samples", type=int, default=None,
                         help="Limit number of samples (for smoke testing)")
 
+    # Resume support
+    parser.add_argument("--resume_path", type=str, default=None,
+                        help="Path to a partial run directory to resume from "
+                             "(e.g. results/gsam_finer_online/gsam_run_20260306_...)")
+
     return parser.parse_args()
 
 
@@ -135,6 +140,11 @@ def main():
     """Main execution function."""
     args = parse_args()
 
+    # Online mode always processes each sample exactly once
+    if args.mode == "online" and args.num_epochs != 1:
+        print(f"[INFO] Online mode requires num_epochs=1; overriding from {args.num_epochs} to 1")
+        args.num_epochs = 1
+
     print(f"\n{'='*60}")
     print(f"GSAM SYSTEM")
     print(f"{'='*60}")
@@ -158,9 +168,9 @@ def main():
         args.max_samples,
     )
 
-    # Determine formula data path for ontology
+    # Determine formula data path for ontology (only for the formula task)
     formula_data_path = None
-    if args.task_name == "formula" or "formula" in task_config:
+    if args.task_name == "formula":
         formula_data_path = task_config.get("formula", {}).get("train_data")
 
     # Create GSAM system
@@ -207,6 +217,7 @@ def main():
         'embedding_only_retrieval': args.embedding_only_retrieval,
         'untyped_edges': args.untyped_edges,
         'no_multi_epoch_refinement': args.no_multi_epoch_refinement,
+        'resume_path': args.resume_path,
     }
 
     # Run

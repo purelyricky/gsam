@@ -1,0 +1,36 @@
+{
+  "online_test_results": {
+    "accuracy": 0.59,
+    "correct": 177,
+    "total": 300,
+    "skipped": 0
+  },
+  "window_accuracies": [
+    0.43,
+    0.447,
+    0.46,
+    0.47,
+    0.48,
+    0.49,
+    0.5,
+    0.51,
+    0.517,
+    0.523,
+    0.53,
+    0.537,
+    0.545,
+    0.55,
+    0.555,
+    0.558,
+    0.559,
+    0.557,
+    0.558,
+    0.59
+  ],
+  "initial_accuracy": 0.43,
+  "ablation": "gsam_embedding_only",
+  "ablation_description": "Pure embedding similarity retrieval only. No BFS traversal, no taxonomy expansion. Embedding space crowds as graph grows.",
+  "task": "formula",
+  "mode": "online",
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B-Q4"
+}

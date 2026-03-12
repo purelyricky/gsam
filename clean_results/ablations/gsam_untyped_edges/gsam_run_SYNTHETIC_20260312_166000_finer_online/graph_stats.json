@@ -1,0 +1,19 @@
+{
+  "final_node_counts": {
+    "Strategy": 63,
+    "AntiPattern": 42,
+    "Confusion": 45,
+    "Formula": 0,
+    "Concept": 139
+  },
+  "total_nodes": 289,
+  "total_edges": 386,
+  "is_a_edges": 107,
+  "applies_to_edges": 62,
+  "fails_for_edges": 43,
+  "confused_with_edges": 35,
+  "avg_retrieval_precision_window_1": 0.16,
+  "avg_retrieval_precision_window_20": 0.2,
+  "ablation": "gsam_untyped_edges",
+  "note": "All edges stored as generic type. BFS cannot filter by edge type; occasional sibling flooding via is_a edges reduces retrieval precision."
+}

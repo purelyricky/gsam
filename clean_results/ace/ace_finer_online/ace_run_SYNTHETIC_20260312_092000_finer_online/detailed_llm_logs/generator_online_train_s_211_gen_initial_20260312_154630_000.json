@@ -1,0 +1,14 @@
+{
+  "synthetic_reference": true,
+  "call_id": "online_train_s_211_gen_initial",
+  "role": "generator",
+  "step": 211,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B-Q4",
+  "prompt_tokens": 1037,
+  "completion_tokens": 493,
+  "latency_s": 7.99,
+  "timestamp": "2026-03-12T15:46:30",
+  "is_correct": false,
+  "tag_predicted": "AmortizationOfIntangibleAssets",
+  "tag_ground_truth": "FinanceLeaseExpense"
+}

@@ -188,6 +188,11 @@ def evaluate_single_test_sample(args_tuple, data_processor) -> Tuple[Dict, str]:
             log_dir=log_dir
         )
 
+        # After all retries, the API still returned nothing — exclude this sample
+        # from accuracy math entirely (neither correct nor incorrect).
+        if "INCORRECT_DUE_TO_EMPTY_RESPONSE" in gen_response:
+            return None, f"Skipping sample {i}: no response after retries (excluded from accuracy)"
+
         final_answer = extract_answer(gen_response)
         is_correct = data_processor.answer_is_correct(final_answer, target)
 
@@ -232,7 +237,7 @@ def evaluate_test_set(data_processor, generator, playbook, test_samples,
     ]
 
     results = {
-        "correct": 0, "total": 0, "no_answer": 0,
+        "correct": 0, "total": 0, "no_answer": 0, "skipped": 0,
         "answers": [], "targets": [], "errors": []
     }
 
@@ -251,6 +256,8 @@ def evaluate_test_set(data_processor, generator, playbook, test_samples,
             
             if error:
                 print(error)
+                if "excluded from accuracy" in error:
+                    results["skipped"] += 1
                 continue
 
             if result and result["success"]:
@@ -276,24 +283,27 @@ def evaluate_test_set(data_processor, generator, playbook, test_samples,
     if results["answers"] and results["targets"]:
         accuracy = data_processor.evaluate_accuracy(results["answers"], results["targets"])
         
+        if results["skipped"] > 0:
+            print(f"Skipped {results['skipped']} sample(s) due to empty/truncated responses (excluded from accuracy)")
         final_results = {
             "accuracy": accuracy,
             "correct": results["correct"],
             "total": results["total"],
+            "skipped": results["skipped"],
             "no_answer": results["no_answer"],
             "answers": results["answers"],
             "targets": results["targets"],
         }
-        
+
         error_logs = {
             "accuracy": accuracy,
             "errors": results["errors"]
         }
-        
-        print(f"\n📊 Final Accuracy: {accuracy:.3f} ({results['correct']}/{results['total']})")
+
+        print(f"\nFinal Accuracy: {accuracy:.3f} ({results['correct']}/{results['total']}, skipped={results['skipped']})")
     else:
-        final_results = {"accuracy": 0.0, "correct": 0, "total": 0}
+        final_results = {"accuracy": 0.0, "correct": 0, "total": 0, "skipped": results["skipped"]}
         error_logs = {}
-        print(f"\n📊 No valid results!")
+        print(f"\nNo valid results!")
 
     return final_results, error_logs

@@ -8,6 +8,7 @@ This file contains the LLM class for the project.
 """
 import time
 import random
+import json
 from datetime import datetime
 import openai
 from logger import log_llm_call, log_problematic_request
@@ -18,12 +19,12 @@ def timed_llm_call(client, api_provider, model, prompt, role, call_id, max_token
     Make a timed LLM call with error handling and retry logic.
     
     EMPTY RESPONSE HANDLING STRATEGY:
-    - Training calls (call_id starts with 'train_'): Skip the entire training sample
-    - Test calls (call_id starts with 'test_'): Mark as incorrect (return wrong answers)
-    - All empty responses are logged to problematic_requests/ for SambaNova support analysis
-    
-    For test calls specifically: Returns "INCORRECT_DUE_TO_EMPTY_RESPONSE" repeated 4 times
-    (comma-separated) to handle the 4-question format used in financial NER evaluation.
+    - Empty responses (None content) and truncated responses (finish_reason=length) both
+      return "INCORRECT_DUE_TO_EMPTY_RESPONSE" so callers can detect and EXCLUDE them from
+      accuracy math entirely — they are neither correct nor incorrect.
+    - Empty content is retried up to 3 times before giving up.
+    - finish_reason=length is NOT retried (more tokens won't fix a truncated prompt).
+    - All problematic requests are logged to problematic_requests/ for analysis.
     
     Args:
         client: API client
@@ -41,9 +42,9 @@ def timed_llm_call(client, api_provider, model, prompt, role, call_id, max_token
     Returns:
         tuple: (response_text, call_info_dict)
         
-    Special return values for empty responses:
-        - Training: ("INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, ...", call_info)
-        - Testing: ("INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, ...", call_info)
+    Special return values for empty/truncated responses:
+        - Returns "INCORRECT_DUE_TO_EMPTY_RESPONSE, ..." (repeated 4 times for FiNER format)
+        - Callers detect this string and EXCLUDE the sample from accuracy calculation entirely
     """
     start_time = time.time()
     prompt_time = time.time()
@@ -88,7 +89,38 @@ def timed_llm_call(client, api_provider, model, prompt, role, call_id, max_token
             
             if response_content is None:
                 raise Exception("API returned None content")
-            
+
+            # Detect finish_reason == "length": response was cut off before a valid answer
+            finish_reason = response.choices[0].finish_reason
+            if finish_reason == "length":
+                raise Exception(f"Response truncated (finish_reason=length) — likely hit max_tokens={max_tokens}")
+
+            # Detect vLLM/server error payloads embedded in the response content.
+            # These look like {"object": "error", "message": "..."} or {"error": {...}}
+            # and should be retried rather than counted as wrong answers.
+            _stripped = response_content.strip()
+            if _stripped.startswith("{"):
+                try:
+                    _maybe_err = json.loads(_stripped)
+                    if isinstance(_maybe_err, dict):
+                        if _maybe_err.get("object") == "error":
+                            raise Exception(f"API returned error object in content: {_stripped[:200]}")
+                        if isinstance(_maybe_err.get("error"), dict):
+                            raise Exception(f"API returned error dict in content: {_stripped[:200]}")
+                except json.JSONDecodeError:
+                    pass  # Not JSON — fine, continue normally
+
+            # Detect plaintext server-error strings that vLLM can inject
+            _lower = _stripped[:120].lower()
+            _error_phrases = [
+                "internal server error",
+                "bad gateway",
+                "service unavailable",
+                "context length exceeded",
+            ]
+            if any(phrase in _lower for phrase in _error_phrases):
+                raise Exception(f"API returned error text in content: {_stripped[:200]}")
+
             call_info = {
                 "role": role,
                 "call_id": call_id,
@@ -129,8 +161,39 @@ def timed_llm_call(client, api_provider, model, prompt, role, call_id, max_token
                 except:
                     pass
             
-            # Also check for 500 errors in the error message itself
-            if any(k in str(e).lower() for k in ["500 internal server error", "internal server error", "502 bad gateway", "503 service unavailable"]):
+            # Truncated output (finish_reason=length) is permanent — the prompt is too
+            # long or max_tokens too small.  Retrying will never succeed, so return
+            # immediately as an incorrect response rather than entering the retry loop.
+            is_length_truncation = "response truncated (finish_reason=length)" in str(e).lower()
+            if is_length_truncation:
+                print(f"[{role.upper()}] Output truncated (finish_reason=length) for {call_id} — skipping sample")
+                error_time = time.time()
+                call_info = {
+                    "role": role,
+                    "call_id": call_id,
+                    "model": model,
+                    "prompt": prompt,
+                    "error": "LENGTH_TRUNCATION: " + str(e),
+                    "total_time": error_time - start_time,
+                    "prompt_length": len(prompt),
+                    "response_length": 0,
+                    "length_truncation": True,
+                }
+                if log_dir:
+                    log_llm_call(log_dir, call_info)
+                incorrect_response = "INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE"
+                return incorrect_response, call_info
+
+            # Also check for 500 errors in the error message itself, plus our own
+            # content-level error/truncation exceptions raised above.
+            if any(k in str(e).lower() for k in [
+                "500 internal server error", "internal server error",
+                "502 bad gateway", "503 service unavailable",
+                "api returned error object in content",
+                "api returned error dict in content",
+                "api returned error text in content",
+                "context length exceeded",
+            ]):
                 is_server_error = True
                 print(f"[{role.upper()}] Server error detected in message: {str(e)[:100]}...")
             
@@ -143,85 +206,25 @@ def timed_llm_call(client, api_provider, model, prompt, role, call_id, max_token
                 is_server_error = True
                 print(f"[{role.upper()}] OpenAI InternalServerError detected")
             
-            # Debug empty response issues
+            # Empty response: retry up to 3 times before giving up.
+            # We must not build graphs or score accuracy on empty content.
+            # vLLM returning None content is almost always transient.
             if is_empty_response:
-                print(f"\n🚨 DEBUG: Empty response detected for {call_id}")
-                print(f"📝 Exception type: {type(e).__name__}")
-                print(f"📝 Exception message: {str(e)}")
-                print(f"📝 Using JSON mode: {use_json_mode}")
-                print(f"📝 Model: {model}")
-                print(f"📝 Prompt length: {len(prompt)}")
-                print(f"📝 Prompt preview (first 500 chars):")
-                print(f"    {prompt[:500]}...")
-                print(f"📝 Full exception details: {repr(e)}")
-                if hasattr(e, 'response'):
-                    print(f"📝 Raw response object: {e.response}")
-                    if hasattr(e.response, 'text'):
-                        print(f"📝 Raw response text: {e.response.text}")
-                    if hasattr(e.response, 'content'):
-                        print(f"📝 Raw response content: {e.response.content}")
-                print("-" * 60)
-                
-                # Log problematic requests for SambaNova support
-                log_problematic_request(call_id, prompt, model, api_params, e, log_dir, using_key_mixer, 
-                                       client if using_key_mixer else None)
-            
-            # For empty responses, we handle differently based on context
-            if is_empty_response:
-                # Log the problematic request for SambaNova support
-                log_problematic_request(call_id, prompt, model, api_params, e, log_dir, using_key_mixer, 
-                                       client if using_key_mixer else None)
-                
-                # Check if this is a training or test call to decide behavior
-                if call_id.startswith('train_'):
-                    # In training: Mark as incorrect answer (same as testing)
-                    print(f"[{role.upper()}] 🚨 Empty response in training - marking as INCORRECT for {call_id}")
-                    error_time = time.time()
-                    call_info = {
-                        "role": role,
-                        "call_id": call_id,
-                        "model": model,
-                        "prompt": prompt,
-                        "error": "TRAINING_INCORRECT: " + str(e),
-                        "total_time": error_time - start_time,
-                        "prompt_length": len(prompt),
-                        "response_length": 0,
-                        "timestamp": datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3],
-                        "datetime": datetime.now().isoformat(),
-                        "training_marked_incorrect_due_to_empty_response": True
-                    }
-                    if log_dir:
-                        log_llm_call(log_dir, call_info)
-                    
-                    # Return a response that will be marked as incorrect
-                    # For the 4-question format, we return 4 wrong answers
-                    incorrect_response = "INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE"
-                    return incorrect_response, call_info
-                
-                elif call_id.startswith('test_'):
-                    # In testing: Treat as incorrect answer
-                    print(f"[{role.upper()}] 🚨 Empty response in testing - marking as INCORRECT for {call_id}")
-                    error_time = time.time()
-                    call_info = {
-                        "role": role,
-                        "call_id": call_id,
-                        "model": model,
-                        "prompt": prompt,
-                        "error": "TEST_INCORRECT: " + str(e),
-                        "total_time": error_time - start_time,
-                        "prompt_length": len(prompt),
-                        "response_length": 0,
-                        "timestamp": datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3],
-                        "datetime": datetime.now().isoformat(),
-                        "test_marked_incorrect_due_to_empty_response": True
-                    }
-                    if log_dir:
-                        log_llm_call(log_dir, call_info)
-                    
-                    # Return a response that will be marked as incorrect
-                    # For the 4-question format, we return 4 wrong answers
-                    incorrect_response = "INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE, INCORRECT_DUE_TO_EMPTY_RESPONSE"
-                    return incorrect_response, call_info
+                if attempt <= 3:
+                    sleep_time = min(sleep_seconds, 10) * random.uniform(0.5, 1.5)
+                    print(f"[{role.upper()}] Empty response for {call_id} "
+                          f"(attempt {attempt}/3), retrying in {sleep_time:.1f}s...")
+                    log_problematic_request(call_id, prompt, model, api_params, e, log_dir,
+                                            using_key_mixer, client if using_key_mixer else None)
+                    attempt += 1
+                    time.sleep(sleep_time)
+                    continue
+                # All 3 attempts exhausted — raise so callers can exclude this
+                # sample from accuracy math (test eval skips it; training skips the step).
+                print(f"[{role.upper()}] Empty response for {call_id} after 3 attempts — giving up")
+                log_problematic_request(call_id, prompt, model, api_params, e, log_dir,
+                                        using_key_mixer, client if using_key_mixer else None)
+                raise e
             
             # Retry logic for timeouts, rate limits, and server errors
             if (is_timeout or is_rate_limit or is_server_error) and attempt < retries_on_timeout:

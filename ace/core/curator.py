@@ -107,7 +107,7 @@ class Curator:
         
         # Check for empty response error
         if response.startswith("INCORRECT_DUE_TO_EMPTY_RESPONSE"):
-            print(f"⏭️  Skipping curator operation due to empty response")
+            print(f"Skipping curator operation due to empty response")
             log_curator_failure(log_dir, current_step, "empty_response", 
                                     response[:200], 0)
             return current_playbook, next_global_id, [], call_info
@@ -117,7 +117,7 @@ class Curator:
             operations_info = self._extract_and_validate_operations(response)
             
             operations = operations_info["operations"]
-            print(f"✅ Curator JSON schema validated successfully: {len(operations)} operations")
+            print(f"Curator JSON schema validated successfully: {len(operations)} operations")
             
             # Log detailed diff for each operation before applying
             for op in operations:
@@ -143,23 +143,23 @@ class Curator:
             return updated_playbook, next_global_id, operations, call_info
             
         except (ValueError, KeyError, TypeError, json.JSONDecodeError) as e:
-            print(f"❌ Curator JSON parsing failed: {e}")
-            print(f"📄 Raw curator response preview: {response[:300]}...")
+            print(f"Curator JSON parsing failed: {e}")
+            print(f"Raw curator response preview: {response[:300]}...")
             
             log_curator_failure(log_dir, current_step, "json_parse_error", 
                                 response, 0, str(e))
             
-            print("⏭️  Skipping curator operation due to invalid JSON format")
+            print("Skipping curator operation due to invalid JSON format")
             return current_playbook, next_global_id, [], call_info
             
         except Exception as e:
-            print(f"❌ Curator operation failed: {e}")
-            print(f"📄 Raw curator response preview: {response[:300]}...")
+            print(f"Curator operation failed: {e}")
+            print(f"Raw curator response preview: {response[:300]}...")
             
             log_curator_failure(log_dir, current_step, "operation_error", 
                                 response, 0, str(e))
             
-            print("⏭️  Skipping curator operation and continuing training")
+            print("Skipping curator operation and continuing training")
             return current_playbook, next_global_id, [], call_info
     
     def _extract_and_validate_operations(

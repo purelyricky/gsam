@@ -250,7 +250,10 @@ class KnowledgeGraph:
             return None
 
         target_type = node_type.value if isinstance(node_type, NodeType) else node_type
+        if not isinstance(content, str):
+            content = str(content)
         query_emb = self.embedding_model.encode(content, convert_to_numpy=True)
+        query_emb = query_emb.ravel()
         query_emb = query_emb / (np.linalg.norm(query_emb) + 1e-9)
 
         best_id = None
@@ -261,7 +264,8 @@ class KnowledgeGraph:
                 continue
             if nid not in self.embeddings:
                 continue
-            sim = float(np.dot(query_emb, self.embeddings[nid]))
+            emb = self.embeddings[nid].ravel()
+            sim = float(np.dot(query_emb, emb))
             if sim > threshold and sim > best_sim:
                 best_sim = sim
                 best_id = nid
@@ -376,6 +380,7 @@ class KnowledgeGraph:
             return []
 
         query_emb = self.embedding_model.encode(text, convert_to_numpy=True)
+        query_emb = query_emb.ravel()
         query_emb = query_emb / (np.linalg.norm(query_emb) + 1e-9)
 
         concept_ids = self.get_nodes_by_type(NodeType.CONCEPT)
@@ -384,7 +389,7 @@ class KnowledgeGraph:
         for cid in concept_ids:
             if cid not in self.embeddings:
                 continue
-            sim = float(np.dot(query_emb, self.embeddings[cid]))
+            sim = float(np.dot(query_emb, self.embeddings[cid].ravel()))
             if sim >= threshold:
                 scores.append((cid, sim))
 
@@ -823,13 +828,7 @@ class KnowledgeGraph:
 
             for tgt in new_targets:
                 if tgt in self.graph:
-                    self.graph.add_edge(
-                        sid, tgt,
-                        type=EdgeType.APPLIES_TO.value,
-                        weight=0.5,
-                        tentative=True,
-                        created_at=time.time(),
-                    )
+                    self.add_edge(sid, tgt, EdgeType.APPLIES_TO, weight=0.5, tentative=True)
                     stats["edges_discovered"] += 1
 
         # --- 2. Edge Weight Reinforcement ---
@@ -860,7 +859,7 @@ class KnowledgeGraph:
                 if sid_b in merged or sid_b not in self.embeddings:
                     continue
 
-                sim = float(np.dot(self.embeddings[sid_a], self.embeddings[sid_b]))
+                sim = float(np.dot(self.embeddings[sid_a].ravel(), self.embeddings[sid_b].ravel()))
                 if sim < edge_similarity_threshold:
                     continue
 
@@ -959,7 +958,10 @@ class KnowledgeGraph:
         if not EMBEDDINGS_AVAILABLE or self.embedding_model is None:
             return
         try:
+            if not isinstance(content, str):
+                content = str(content)
             emb = self.embedding_model.encode(content, convert_to_numpy=True)
+            emb = emb.ravel()
             emb = emb / (np.linalg.norm(emb) + 1e-9)
             self.embeddings[node_id] = emb
         except Exception:

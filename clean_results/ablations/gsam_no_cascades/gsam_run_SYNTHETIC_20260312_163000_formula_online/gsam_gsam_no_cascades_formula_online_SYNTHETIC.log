@@ -1,0 +1,2260 @@
+[INFO] Online mode requires num_epochs=1; overriding from 5 to 1
+
+============================================================
+GSAM SYSTEM
+============================================================
+Task: formula
+Mode: ONLINE
+Generator Model: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B-Q4
+Max Samples: 300
+Ablation: gsam_no_cascades
+  Failure Cascades: DISABLED (ablation: no_cascades)
+============================================================
+
+Loaded 300 samples from ./eval/finance/data/formula_test.json
+Online mode: Training and testing on 300 examples
+Loading XBRL ontology... 139 concept nodes, 118 is_a edges
+Using MODAL API  (https://xxxx--gsam-deepseek-serve-deepseekserver-serve.modal.run/v1)
+
+============================================================
+INITIAL TEST (before training)
+============================================================
+Final Accuracy: 0.430 (129/300)
+
+============================================================
+WINDOW 1/20 (samples 0-14)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.430 (129/300)
+Window 1 accuracy: 0.430 | Cumulative: 0.430
+Retrieved: 30 nodes | Precision: 0.190
+--- Window 1, Step 1/15 (Global 1) ---
+[GENERATOR] Starting call online_train_s_1_gen_initial...
+[GENERATOR] Call online_train_s_1_gen_initial completed in 9.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_1_round_0...
+[REFLECTOR] Call online_train_s_1_round_0 completed in 10.89s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_1...
+[GRAPH_CONSTRUCTOR] Call online_train_s_1 completed in 8.62s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 1, Step 2/15 (Global 2) ---
+[GENERATOR] Starting call online_train_s_2_gen_initial...
+[GENERATOR] Call online_train_s_2_gen_initial completed in 8.65s
+Correct: True
+--- Window 1, Step 3/15 (Global 3) ---
+[GENERATOR] Starting call online_train_s_3_gen_initial...
+[GENERATOR] Call online_train_s_3_gen_initial completed in 10.28s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_3_round_0...
+[REFLECTOR] Call online_train_s_3_round_0 completed in 7.21s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_3...
+[GRAPH_CONSTRUCTOR] Call online_train_s_3 completed in 8.04s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 1, Step 4/15 (Global 4) ---
+[GENERATOR] Starting call online_train_s_4_gen_initial...
+[GENERATOR] Call online_train_s_4_gen_initial completed in 10.97s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_4_round_0...
+[REFLECTOR] Call online_train_s_4_round_0 completed in 7.93s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_4...
+[GRAPH_CONSTRUCTOR] Call online_train_s_4 completed in 6.1s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 1, Step 5/15 (Global 5) ---
+[GENERATOR] Starting call online_train_s_5_gen_initial...
+[GENERATOR] Call online_train_s_5_gen_initial completed in 13.53s
+Correct: True
+--- Window 1, Step 6/15 (Global 6) ---
+[GENERATOR] Starting call online_train_s_6_gen_initial...
+[GENERATOR] Call online_train_s_6_gen_initial completed in 12.46s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_6_round_0...
+[REFLECTOR] Call online_train_s_6_round_0 completed in 10.96s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_6...
+[GRAPH_CONSTRUCTOR] Call online_train_s_6 completed in 10.0s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 1, Step 7/15 (Global 7) ---
+[GENERATOR] Starting call online_train_s_7_gen_initial...
+[GENERATOR] Call online_train_s_7_gen_initial completed in 11.28s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_7_round_0...
+[REFLECTOR] Call online_train_s_7_round_0 completed in 11.96s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_7...
+[GRAPH_CONSTRUCTOR] Call online_train_s_7 completed in 6.27s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 1, Step 8/15 (Global 8) ---
+[GENERATOR] Starting call online_train_s_8_gen_initial...
+[GENERATOR] Call online_train_s_8_gen_initial completed in 9.84s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_8_round_0...
+[REFLECTOR] Call online_train_s_8_round_0 completed in 9.04s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_8...
+[GRAPH_CONSTRUCTOR] Call online_train_s_8 completed in 9.93s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 1, Step 9/15 (Global 9) ---
+[GENERATOR] Starting call online_train_s_9_gen_initial...
+[GENERATOR] Call online_train_s_9_gen_initial completed in 12.56s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_9_round_0...
+[REFLECTOR] Call online_train_s_9_round_0 completed in 8.47s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_9...
+[GRAPH_CONSTRUCTOR] Call online_train_s_9 completed in 9.15s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 1, Step 10/15 (Global 10) ---
+[GENERATOR] Starting call online_train_s_10_gen_initial...
+[GENERATOR] Call online_train_s_10_gen_initial completed in 8.87s
+Correct: True
+--- Window 1, Step 11/15 (Global 11) ---
+[GENERATOR] Starting call online_train_s_11_gen_initial...
+[GENERATOR] Call online_train_s_11_gen_initial completed in 8.09s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_11_round_0...
+[REFLECTOR] Call online_train_s_11_round_0 completed in 8.71s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_11...
+[GRAPH_CONSTRUCTOR] Call online_train_s_11 completed in 6.86s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 1, Step 12/15 (Global 12) ---
+[GENERATOR] Starting call online_train_s_12_gen_initial...
+[GENERATOR] Call online_train_s_12_gen_initial completed in 8.49s
+Correct: True
+--- Window 1, Step 13/15 (Global 13) ---
+[GENERATOR] Starting call online_train_s_13_gen_initial...
+[GENERATOR] Call online_train_s_13_gen_initial completed in 13.48s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_13_round_0...
+[REFLECTOR] Call online_train_s_13_round_0 completed in 10.32s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_13...
+[GRAPH_CONSTRUCTOR] Call online_train_s_13 completed in 6.07s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 1, Step 14/15 (Global 14) ---
+[GENERATOR] Starting call online_train_s_14_gen_initial...
+[GENERATOR] Call online_train_s_14_gen_initial completed in 12.94s
+Correct: True
+--- Window 1, Step 15/15 (Global 15) ---
+[GENERATOR] Starting call online_train_s_15_gen_initial...
+[GENERATOR] Call online_train_s_15_gen_initial completed in 10.85s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_15_round_0...
+[REFLECTOR] Call online_train_s_15_round_0 completed in 7.9s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_15...
+[GRAPH_CONSTRUCTOR] Call online_train_s_15 completed in 8.47s
+Applied 1 graph operation (ADD_STRATEGY=1)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 2/20 (samples 15-29)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.447 (134/300)
+Window 2 accuracy: 0.447 | Cumulative: 0.447
+Retrieved: 30 nodes | Precision: 0.195
+--- Window 2, Step 1/15 (Global 16) ---
+[GENERATOR] Starting call online_train_s_16_gen_initial...
+[GENERATOR] Call online_train_s_16_gen_initial completed in 10.52s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_16_round_0...
+[REFLECTOR] Call online_train_s_16_round_0 completed in 10.13s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_16...
+[GRAPH_CONSTRUCTOR] Call online_train_s_16 completed in 7.26s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 2, Step 2/15 (Global 17) ---
+[GENERATOR] Starting call online_train_s_17_gen_initial...
+[GENERATOR] Call online_train_s_17_gen_initial completed in 10.82s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_17_round_0...
+[REFLECTOR] Call online_train_s_17_round_0 completed in 7.39s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_17...
+[GRAPH_CONSTRUCTOR] Call online_train_s_17 completed in 7.86s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 2, Step 3/15 (Global 18) ---
+[GENERATOR] Starting call online_train_s_18_gen_initial...
+[GENERATOR] Call online_train_s_18_gen_initial completed in 8.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_18_round_0...
+[REFLECTOR] Call online_train_s_18_round_0 completed in 11.85s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_18...
+[GRAPH_CONSTRUCTOR] Call online_train_s_18 completed in 6.54s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 2, Step 4/15 (Global 19) ---
+[GENERATOR] Starting call online_train_s_19_gen_initial...
+[GENERATOR] Call online_train_s_19_gen_initial completed in 10.15s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_19_round_0...
+[REFLECTOR] Call online_train_s_19_round_0 completed in 9.7s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_19...
+[GRAPH_CONSTRUCTOR] Call online_train_s_19 completed in 6.45s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 2, Step 5/15 (Global 20) ---
+[GENERATOR] Starting call online_train_s_20_gen_initial...
+[GENERATOR] Call online_train_s_20_gen_initial completed in 8.64s
+Correct: True
+--- Window 2, Step 6/15 (Global 21) ---
+[GENERATOR] Starting call online_train_s_21_gen_initial...
+[GENERATOR] Call online_train_s_21_gen_initial completed in 9.92s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_21_round_0...
+[REFLECTOR] Call online_train_s_21_round_0 completed in 11.65s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_21...
+[GRAPH_CONSTRUCTOR] Call online_train_s_21 completed in 8.33s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 2, Step 7/15 (Global 22) ---
+[GENERATOR] Starting call online_train_s_22_gen_initial...
+[GENERATOR] Call online_train_s_22_gen_initial completed in 10.58s
+Correct: True
+--- Window 2, Step 8/15 (Global 23) ---
+[GENERATOR] Starting call online_train_s_23_gen_initial...
+[GENERATOR] Call online_train_s_23_gen_initial completed in 13.96s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_23_round_0...
+[REFLECTOR] Call online_train_s_23_round_0 completed in 10.52s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_23...
+[GRAPH_CONSTRUCTOR] Call online_train_s_23 completed in 8.93s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 2, Step 9/15 (Global 24) ---
+[GENERATOR] Starting call online_train_s_24_gen_initial...
+[GENERATOR] Call online_train_s_24_gen_initial completed in 9.53s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_24_round_0...
+[REFLECTOR] Call online_train_s_24_round_0 completed in 9.78s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_24...
+[GRAPH_CONSTRUCTOR] Call online_train_s_24 completed in 9.16s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 2, Step 10/15 (Global 25) ---
+[GENERATOR] Starting call online_train_s_25_gen_initial...
+[GENERATOR] Call online_train_s_25_gen_initial completed in 8.76s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_25_round_0...
+[REFLECTOR] Call online_train_s_25_round_0 completed in 9.32s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_25...
+[GRAPH_CONSTRUCTOR] Call online_train_s_25 completed in 10.0s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 2, Step 11/15 (Global 26) ---
+[GENERATOR] Starting call online_train_s_26_gen_initial...
+[GENERATOR] Call online_train_s_26_gen_initial completed in 9.62s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_26_round_0...
+[REFLECTOR] Call online_train_s_26_round_0 completed in 9.28s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_26...
+[GRAPH_CONSTRUCTOR] Call online_train_s_26 completed in 6.09s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 2, Step 12/15 (Global 27) ---
+[GENERATOR] Starting call online_train_s_27_gen_initial...
+[GENERATOR] Call online_train_s_27_gen_initial completed in 12.93s
+Correct: True
+--- Window 2, Step 13/15 (Global 28) ---
+[GENERATOR] Starting call online_train_s_28_gen_initial...
+[GENERATOR] Call online_train_s_28_gen_initial completed in 8.53s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_28_round_0...
+[REFLECTOR] Call online_train_s_28_round_0 completed in 9.82s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_28...
+[GRAPH_CONSTRUCTOR] Call online_train_s_28 completed in 8.29s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 2, Step 14/15 (Global 29) ---
+[GENERATOR] Starting call online_train_s_29_gen_initial...
+[GENERATOR] Call online_train_s_29_gen_initial completed in 13.08s
+Correct: True
+--- Window 2, Step 15/15 (Global 30) ---
+[GENERATOR] Starting call online_train_s_30_gen_initial...
+[GENERATOR] Call online_train_s_30_gen_initial completed in 10.62s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 3/20 (samples 30-44)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.460 (138/300)
+Window 3 accuracy: 0.460 | Cumulative: 0.460
+Retrieved: 30 nodes | Precision: 0.199
+--- Window 3, Step 1/15 (Global 31) ---
+[GENERATOR] Starting call online_train_s_31_gen_initial...
+[GENERATOR] Call online_train_s_31_gen_initial completed in 10.42s
+Correct: True
+--- Window 3, Step 2/15 (Global 32) ---
+[GENERATOR] Starting call online_train_s_32_gen_initial...
+[GENERATOR] Call online_train_s_32_gen_initial completed in 12.58s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_32_round_0...
+[REFLECTOR] Call online_train_s_32_round_0 completed in 11.67s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_32...
+[GRAPH_CONSTRUCTOR] Call online_train_s_32 completed in 9.07s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 3, Step 3/15 (Global 33) ---
+[GENERATOR] Starting call online_train_s_33_gen_initial...
+[GENERATOR] Call online_train_s_33_gen_initial completed in 13.77s
+Correct: True
+--- Window 3, Step 4/15 (Global 34) ---
+[GENERATOR] Starting call online_train_s_34_gen_initial...
+[GENERATOR] Call online_train_s_34_gen_initial completed in 13.0s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_34_round_0...
+[REFLECTOR] Call online_train_s_34_round_0 completed in 10.93s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_34...
+[GRAPH_CONSTRUCTOR] Call online_train_s_34 completed in 9.92s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 3, Step 5/15 (Global 35) ---
+[GENERATOR] Starting call online_train_s_35_gen_initial...
+[GENERATOR] Call online_train_s_35_gen_initial completed in 11.06s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_35_round_0...
+[REFLECTOR] Call online_train_s_35_round_0 completed in 8.35s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_35...
+[GRAPH_CONSTRUCTOR] Call online_train_s_35 completed in 9.78s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 3, Step 6/15 (Global 36) ---
+[GENERATOR] Starting call online_train_s_36_gen_initial...
+[GENERATOR] Call online_train_s_36_gen_initial completed in 8.7s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_36_round_0...
+[REFLECTOR] Call online_train_s_36_round_0 completed in 9.87s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_36...
+[GRAPH_CONSTRUCTOR] Call online_train_s_36 completed in 8.11s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 3, Step 7/15 (Global 37) ---
+[GENERATOR] Starting call online_train_s_37_gen_initial...
+[GENERATOR] Call online_train_s_37_gen_initial completed in 9.12s
+Correct: True
+--- Window 3, Step 8/15 (Global 38) ---
+[GENERATOR] Starting call online_train_s_38_gen_initial...
+[GENERATOR] Call online_train_s_38_gen_initial completed in 8.06s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_38_round_0...
+[REFLECTOR] Call online_train_s_38_round_0 completed in 7.33s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_38...
+[GRAPH_CONSTRUCTOR] Call online_train_s_38 completed in 6.67s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 3, Step 9/15 (Global 39) ---
+[GENERATOR] Starting call online_train_s_39_gen_initial...
+[GENERATOR] Call online_train_s_39_gen_initial completed in 12.12s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_39_round_0...
+[REFLECTOR] Call online_train_s_39_round_0 completed in 10.71s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_39...
+[GRAPH_CONSTRUCTOR] Call online_train_s_39 completed in 9.46s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 3, Step 10/15 (Global 40) ---
+[GENERATOR] Starting call online_train_s_40_gen_initial...
+[GENERATOR] Call online_train_s_40_gen_initial completed in 8.01s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_40_round_0...
+[REFLECTOR] Call online_train_s_40_round_0 completed in 8.04s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_40...
+[GRAPH_CONSTRUCTOR] Call online_train_s_40 completed in 6.87s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 3, Step 11/15 (Global 41) ---
+[GENERATOR] Starting call online_train_s_41_gen_initial...
+[GENERATOR] Call online_train_s_41_gen_initial completed in 11.29s
+Correct: True
+--- Window 3, Step 12/15 (Global 42) ---
+[GENERATOR] Starting call online_train_s_42_gen_initial...
+[GENERATOR] Call online_train_s_42_gen_initial completed in 12.76s
+Correct: True
+--- Window 3, Step 13/15 (Global 43) ---
+[GENERATOR] Starting call online_train_s_43_gen_initial...
+[GENERATOR] Call online_train_s_43_gen_initial completed in 13.96s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_43_round_0...
+[REFLECTOR] Call online_train_s_43_round_0 completed in 9.27s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_43...
+[GRAPH_CONSTRUCTOR] Call online_train_s_43 completed in 8.37s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 3, Step 14/15 (Global 44) ---
+[GENERATOR] Starting call online_train_s_44_gen_initial...
+[GENERATOR] Call online_train_s_44_gen_initial completed in 11.1s
+Correct: True
+--- Window 3, Step 15/15 (Global 45) ---
+[GENERATOR] Starting call online_train_s_45_gen_initial...
+[GENERATOR] Call online_train_s_45_gen_initial completed in 12.67s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_45_round_0...
+[REFLECTOR] Call online_train_s_45_round_0 completed in 12.0s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_45...
+[GRAPH_CONSTRUCTOR] Call online_train_s_45 completed in 6.49s
+Applied 1 graph operation (ADD_STRATEGY=1)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 4/20 (samples 45-59)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.470 (141/300)
+Window 4 accuracy: 0.470 | Cumulative: 0.470
+Retrieved: 30 nodes | Precision: 0.204
+--- Window 4, Step 1/15 (Global 46) ---
+[GENERATOR] Starting call online_train_s_46_gen_initial...
+[GENERATOR] Call online_train_s_46_gen_initial completed in 8.02s
+Correct: True
+--- Window 4, Step 2/15 (Global 47) ---
+[GENERATOR] Starting call online_train_s_47_gen_initial...
+[GENERATOR] Call online_train_s_47_gen_initial completed in 13.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_47_round_0...
+[REFLECTOR] Call online_train_s_47_round_0 completed in 7.46s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_47...
+[GRAPH_CONSTRUCTOR] Call online_train_s_47 completed in 8.27s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 4, Step 3/15 (Global 48) ---
+[GENERATOR] Starting call online_train_s_48_gen_initial...
+[GENERATOR] Call online_train_s_48_gen_initial completed in 12.92s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_48_round_0...
+[REFLECTOR] Call online_train_s_48_round_0 completed in 7.69s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_48...
+[GRAPH_CONSTRUCTOR] Call online_train_s_48 completed in 7.98s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 4, Step 4/15 (Global 49) ---
+[GENERATOR] Starting call online_train_s_49_gen_initial...
+[GENERATOR] Call online_train_s_49_gen_initial completed in 11.49s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_49_round_0...
+[REFLECTOR] Call online_train_s_49_round_0 completed in 9.66s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_49...
+[GRAPH_CONSTRUCTOR] Call online_train_s_49 completed in 9.09s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 4, Step 5/15 (Global 50) ---
+[GENERATOR] Starting call online_train_s_50_gen_initial...
+[GENERATOR] Call online_train_s_50_gen_initial completed in 12.3s
+Correct: True
+--- Window 4, Step 6/15 (Global 51) ---
+[GENERATOR] Starting call online_train_s_51_gen_initial...
+[GENERATOR] Call online_train_s_51_gen_initial completed in 8.05s
+Correct: True
+--- Window 4, Step 7/15 (Global 52) ---
+[GENERATOR] Starting call online_train_s_52_gen_initial...
+[GENERATOR] Call online_train_s_52_gen_initial completed in 10.02s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_52_round_0...
+[REFLECTOR] Call online_train_s_52_round_0 completed in 9.72s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_52...
+[GRAPH_CONSTRUCTOR] Call online_train_s_52 completed in 9.37s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 4, Step 8/15 (Global 53) ---
+[GENERATOR] Starting call online_train_s_53_gen_initial...
+[GENERATOR] Call online_train_s_53_gen_initial completed in 13.2s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_53_round_0...
+[REFLECTOR] Call online_train_s_53_round_0 completed in 9.74s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_53...
+[GRAPH_CONSTRUCTOR] Call online_train_s_53 completed in 7.92s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 4, Step 9/15 (Global 54) ---
+[GENERATOR] Starting call online_train_s_54_gen_initial...
+[GENERATOR] Call online_train_s_54_gen_initial completed in 8.24s
+Correct: True
+--- Window 4, Step 10/15 (Global 55) ---
+[GENERATOR] Starting call online_train_s_55_gen_initial...
+[GENERATOR] Call online_train_s_55_gen_initial completed in 11.58s
+Correct: True
+--- Window 4, Step 11/15 (Global 56) ---
+[GENERATOR] Starting call online_train_s_56_gen_initial...
+[GENERATOR] Call online_train_s_56_gen_initial completed in 11.54s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_56_round_0...
+[REFLECTOR] Call online_train_s_56_round_0 completed in 8.39s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_56...
+[GRAPH_CONSTRUCTOR] Call online_train_s_56 completed in 6.88s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 4, Step 12/15 (Global 57) ---
+[GENERATOR] Starting call online_train_s_57_gen_initial...
+[GENERATOR] Call online_train_s_57_gen_initial completed in 8.58s
+Correct: True
+--- Window 4, Step 13/15 (Global 58) ---
+[GENERATOR] Starting call online_train_s_58_gen_initial...
+[GENERATOR] Call online_train_s_58_gen_initial completed in 13.72s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_58_round_0...
+[REFLECTOR] Call online_train_s_58_round_0 completed in 7.41s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_58...
+[GRAPH_CONSTRUCTOR] Call online_train_s_58 completed in 6.38s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 4, Step 14/15 (Global 59) ---
+[GENERATOR] Starting call online_train_s_59_gen_initial...
+[GENERATOR] Call online_train_s_59_gen_initial completed in 11.97s
+Correct: True
+--- Window 4, Step 15/15 (Global 60) ---
+[GENERATOR] Starting call online_train_s_60_gen_initial...
+[GENERATOR] Call online_train_s_60_gen_initial completed in 10.22s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_60_round_0...
+[REFLECTOR] Call online_train_s_60_round_0 completed in 8.3s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_60...
+[GRAPH_CONSTRUCTOR] Call online_train_s_60 completed in 8.0s
+Applied 3 graph operations (ADD_STRATEGY=3)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 5/20 (samples 60-74)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.480 (144/300)
+Window 5 accuracy: 0.480 | Cumulative: 0.480
+Retrieved: 30 nodes | Precision: 0.209
+--- Window 5, Step 1/15 (Global 61) ---
+[GENERATOR] Starting call online_train_s_61_gen_initial...
+[GENERATOR] Call online_train_s_61_gen_initial completed in 9.85s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_61_round_0...
+[REFLECTOR] Call online_train_s_61_round_0 completed in 11.86s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_61...
+[GRAPH_CONSTRUCTOR] Call online_train_s_61 completed in 6.76s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 5, Step 2/15 (Global 62) ---
+[GENERATOR] Starting call online_train_s_62_gen_initial...
+[GENERATOR] Call online_train_s_62_gen_initial completed in 11.99s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_62_round_0...
+[REFLECTOR] Call online_train_s_62_round_0 completed in 7.34s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_62...
+[GRAPH_CONSTRUCTOR] Call online_train_s_62 completed in 6.81s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 5, Step 3/15 (Global 63) ---
+[GENERATOR] Starting call online_train_s_63_gen_initial...
+[GENERATOR] Call online_train_s_63_gen_initial completed in 10.47s
+Correct: True
+--- Window 5, Step 4/15 (Global 64) ---
+[GENERATOR] Starting call online_train_s_64_gen_initial...
+[GENERATOR] Call online_train_s_64_gen_initial completed in 10.25s
+Correct: True
+--- Window 5, Step 5/15 (Global 65) ---
+[GENERATOR] Starting call online_train_s_65_gen_initial...
+[GENERATOR] Call online_train_s_65_gen_initial completed in 11.58s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_65_round_0...
+[REFLECTOR] Call online_train_s_65_round_0 completed in 8.42s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_65...
+[GRAPH_CONSTRUCTOR] Call online_train_s_65 completed in 9.56s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 5, Step 6/15 (Global 66) ---
+[GENERATOR] Starting call online_train_s_66_gen_initial...
+[GENERATOR] Call online_train_s_66_gen_initial completed in 10.59s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_66_round_0...
+[REFLECTOR] Call online_train_s_66_round_0 completed in 7.74s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_66...
+[GRAPH_CONSTRUCTOR] Call online_train_s_66 completed in 6.21s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 5, Step 7/15 (Global 67) ---
+[GENERATOR] Starting call online_train_s_67_gen_initial...
+[GENERATOR] Call online_train_s_67_gen_initial completed in 9.6s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_67_round_0...
+[REFLECTOR] Call online_train_s_67_round_0 completed in 10.22s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_67...
+[GRAPH_CONSTRUCTOR] Call online_train_s_67 completed in 6.06s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 5, Step 8/15 (Global 68) ---
+[GENERATOR] Starting call online_train_s_68_gen_initial...
+[GENERATOR] Call online_train_s_68_gen_initial completed in 11.23s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_68_round_0...
+[REFLECTOR] Call online_train_s_68_round_0 completed in 7.46s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_68...
+[GRAPH_CONSTRUCTOR] Call online_train_s_68 completed in 8.03s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 5, Step 9/15 (Global 69) ---
+[GENERATOR] Starting call online_train_s_69_gen_initial...
+[GENERATOR] Call online_train_s_69_gen_initial completed in 11.08s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_69_round_0...
+[REFLECTOR] Call online_train_s_69_round_0 completed in 9.98s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_69...
+[GRAPH_CONSTRUCTOR] Call online_train_s_69 completed in 9.07s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 5, Step 10/15 (Global 70) ---
+[GENERATOR] Starting call online_train_s_70_gen_initial...
+[GENERATOR] Call online_train_s_70_gen_initial completed in 13.34s
+Correct: True
+--- Window 5, Step 11/15 (Global 71) ---
+[GENERATOR] Starting call online_train_s_71_gen_initial...
+[GENERATOR] Call online_train_s_71_gen_initial completed in 11.19s
+Correct: True
+--- Window 5, Step 12/15 (Global 72) ---
+[GENERATOR] Starting call online_train_s_72_gen_initial...
+[GENERATOR] Call online_train_s_72_gen_initial completed in 8.42s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_72_round_0...
+[REFLECTOR] Call online_train_s_72_round_0 completed in 8.31s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_72...
+[GRAPH_CONSTRUCTOR] Call online_train_s_72 completed in 7.3s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 5, Step 13/15 (Global 73) ---
+[GENERATOR] Starting call online_train_s_73_gen_initial...
+[GENERATOR] Call online_train_s_73_gen_initial completed in 12.74s
+Correct: True
+--- Window 5, Step 14/15 (Global 74) ---
+[GENERATOR] Starting call online_train_s_74_gen_initial...
+[GENERATOR] Call online_train_s_74_gen_initial completed in 13.83s
+Correct: True
+--- Window 5, Step 15/15 (Global 75) ---
+[GENERATOR] Starting call online_train_s_75_gen_initial...
+[GENERATOR] Call online_train_s_75_gen_initial completed in 8.96s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 6/20 (samples 75-89)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.487 (146/300)
+Window 6 accuracy: 0.487 | Cumulative: 0.487
+Retrieved: 30 nodes | Precision: 0.214
+--- Window 6, Step 1/15 (Global 76) ---
+[GENERATOR] Starting call online_train_s_76_gen_initial...
+[GENERATOR] Call online_train_s_76_gen_initial completed in 10.07s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_76_round_0...
+[REFLECTOR] Call online_train_s_76_round_0 completed in 9.27s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_76...
+[GRAPH_CONSTRUCTOR] Call online_train_s_76 completed in 6.03s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 6, Step 2/15 (Global 77) ---
+[GENERATOR] Starting call online_train_s_77_gen_initial...
+[GENERATOR] Call online_train_s_77_gen_initial completed in 8.57s
+Correct: True
+--- Window 6, Step 3/15 (Global 78) ---
+[GENERATOR] Starting call online_train_s_78_gen_initial...
+[GENERATOR] Call online_train_s_78_gen_initial completed in 13.7s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_78_round_0...
+[REFLECTOR] Call online_train_s_78_round_0 completed in 9.76s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_78...
+[GRAPH_CONSTRUCTOR] Call online_train_s_78 completed in 7.33s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 6, Step 4/15 (Global 79) ---
+[GENERATOR] Starting call online_train_s_79_gen_initial...
+[GENERATOR] Call online_train_s_79_gen_initial completed in 10.51s
+Correct: True
+--- Window 6, Step 5/15 (Global 80) ---
+[GENERATOR] Starting call online_train_s_80_gen_initial...
+[GENERATOR] Call online_train_s_80_gen_initial completed in 9.06s
+Correct: True
+--- Window 6, Step 6/15 (Global 81) ---
+[GENERATOR] Starting call online_train_s_81_gen_initial...
+[GENERATOR] Call online_train_s_81_gen_initial completed in 9.96s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_81_round_0...
+[REFLECTOR] Call online_train_s_81_round_0 completed in 9.82s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_81...
+[GRAPH_CONSTRUCTOR] Call online_train_s_81 completed in 7.15s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 6, Step 7/15 (Global 82) ---
+[GENERATOR] Starting call online_train_s_82_gen_initial...
+[GENERATOR] Call online_train_s_82_gen_initial completed in 8.19s
+Correct: True
+--- Window 6, Step 8/15 (Global 83) ---
+[GENERATOR] Starting call online_train_s_83_gen_initial...
+[GENERATOR] Call online_train_s_83_gen_initial completed in 9.04s
+Correct: True
+--- Window 6, Step 9/15 (Global 84) ---
+[GENERATOR] Starting call online_train_s_84_gen_initial...
+[GENERATOR] Call online_train_s_84_gen_initial completed in 10.56s
+Correct: True
+--- Window 6, Step 10/15 (Global 85) ---
+[GENERATOR] Starting call online_train_s_85_gen_initial...
+[GENERATOR] Call online_train_s_85_gen_initial completed in 8.51s
+Correct: True
+--- Window 6, Step 11/15 (Global 86) ---
+[GENERATOR] Starting call online_train_s_86_gen_initial...
+[GENERATOR] Call online_train_s_86_gen_initial completed in 11.13s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_86_round_0...
+[REFLECTOR] Call online_train_s_86_round_0 completed in 9.29s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_86...
+[GRAPH_CONSTRUCTOR] Call online_train_s_86 completed in 6.12s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 6, Step 12/15 (Global 87) ---
+[GENERATOR] Starting call online_train_s_87_gen_initial...
+[GENERATOR] Call online_train_s_87_gen_initial completed in 13.44s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_87_round_0...
+[REFLECTOR] Call online_train_s_87_round_0 completed in 8.0s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_87...
+[GRAPH_CONSTRUCTOR] Call online_train_s_87 completed in 9.62s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 6, Step 13/15 (Global 88) ---
+[GENERATOR] Starting call online_train_s_88_gen_initial...
+[GENERATOR] Call online_train_s_88_gen_initial completed in 13.55s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_88_round_0...
+[REFLECTOR] Call online_train_s_88_round_0 completed in 9.14s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_88...
+[GRAPH_CONSTRUCTOR] Call online_train_s_88 completed in 7.4s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 6, Step 14/15 (Global 89) ---
+[GENERATOR] Starting call online_train_s_89_gen_initial...
+[GENERATOR] Call online_train_s_89_gen_initial completed in 13.43s
+Correct: True
+--- Window 6, Step 15/15 (Global 90) ---
+[GENERATOR] Starting call online_train_s_90_gen_initial...
+[GENERATOR] Call online_train_s_90_gen_initial completed in 12.29s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_90_round_0...
+[REFLECTOR] Call online_train_s_90_round_0 completed in 7.06s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_90...
+[GRAPH_CONSTRUCTOR] Call online_train_s_90 completed in 8.94s
+Applied 2 graph operations (ADD_STRATEGY=2)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 7/20 (samples 90-104)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.493 (148/300)
+Window 7 accuracy: 0.493 | Cumulative: 0.493
+Retrieved: 30 nodes | Precision: 0.218
+--- Window 7, Step 1/15 (Global 91) ---
+[GENERATOR] Starting call online_train_s_91_gen_initial...
+[GENERATOR] Call online_train_s_91_gen_initial completed in 9.35s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_91_round_0...
+[REFLECTOR] Call online_train_s_91_round_0 completed in 11.07s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_91...
+[GRAPH_CONSTRUCTOR] Call online_train_s_91 completed in 9.56s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 7, Step 2/15 (Global 92) ---
+[GENERATOR] Starting call online_train_s_92_gen_initial...
+[GENERATOR] Call online_train_s_92_gen_initial completed in 12.35s
+Correct: True
+--- Window 7, Step 3/15 (Global 93) ---
+[GENERATOR] Starting call online_train_s_93_gen_initial...
+[GENERATOR] Call online_train_s_93_gen_initial completed in 9.83s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_93_round_0...
+[REFLECTOR] Call online_train_s_93_round_0 completed in 7.89s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_93...
+[GRAPH_CONSTRUCTOR] Call online_train_s_93 completed in 6.58s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 7, Step 4/15 (Global 94) ---
+[GENERATOR] Starting call online_train_s_94_gen_initial...
+[GENERATOR] Call online_train_s_94_gen_initial completed in 9.31s
+Correct: True
+--- Window 7, Step 5/15 (Global 95) ---
+[GENERATOR] Starting call online_train_s_95_gen_initial...
+[GENERATOR] Call online_train_s_95_gen_initial completed in 10.3s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_95_round_0...
+[REFLECTOR] Call online_train_s_95_round_0 completed in 11.83s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_95...
+[GRAPH_CONSTRUCTOR] Call online_train_s_95 completed in 6.43s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 7, Step 6/15 (Global 96) ---
+[GENERATOR] Starting call online_train_s_96_gen_initial...
+[GENERATOR] Call online_train_s_96_gen_initial completed in 8.04s
+Correct: True
+--- Window 7, Step 7/15 (Global 97) ---
+[GENERATOR] Starting call online_train_s_97_gen_initial...
+[GENERATOR] Call online_train_s_97_gen_initial completed in 12.46s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_97_round_0...
+[REFLECTOR] Call online_train_s_97_round_0 completed in 10.13s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_97...
+[GRAPH_CONSTRUCTOR] Call online_train_s_97 completed in 6.82s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 7, Step 8/15 (Global 98) ---
+[GENERATOR] Starting call online_train_s_98_gen_initial...
+[GENERATOR] Call online_train_s_98_gen_initial completed in 13.07s
+Correct: True
+--- Window 7, Step 9/15 (Global 99) ---
+[GENERATOR] Starting call online_train_s_99_gen_initial...
+[GENERATOR] Call online_train_s_99_gen_initial completed in 10.1s
+Correct: True
+--- Window 7, Step 10/15 (Global 100) ---
+[GENERATOR] Starting call online_train_s_100_gen_initial...
+[GENERATOR] Call online_train_s_100_gen_initial completed in 8.5s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_100_round_0...
+[REFLECTOR] Call online_train_s_100_round_0 completed in 12.0s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_100...
+[GRAPH_CONSTRUCTOR] Call online_train_s_100 completed in 8.14s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 7, Step 11/15 (Global 101) ---
+[GENERATOR] Starting call online_train_s_101_gen_initial...
+[GENERATOR] Call online_train_s_101_gen_initial completed in 12.54s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_101_round_0...
+[REFLECTOR] Call online_train_s_101_round_0 completed in 10.75s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_101...
+[GRAPH_CONSTRUCTOR] Call online_train_s_101 completed in 6.5s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 7, Step 12/15 (Global 102) ---
+[GENERATOR] Starting call online_train_s_102_gen_initial...
+[GENERATOR] Call online_train_s_102_gen_initial completed in 9.1s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_102_round_0...
+[REFLECTOR] Call online_train_s_102_round_0 completed in 9.27s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_102...
+[GRAPH_CONSTRUCTOR] Call online_train_s_102 completed in 6.02s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 7, Step 13/15 (Global 103) ---
+[GENERATOR] Starting call online_train_s_103_gen_initial...
+[GENERATOR] Call online_train_s_103_gen_initial completed in 12.22s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_103_round_0...
+[REFLECTOR] Call online_train_s_103_round_0 completed in 8.94s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_103...
+[GRAPH_CONSTRUCTOR] Call online_train_s_103 completed in 7.4s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 7, Step 14/15 (Global 104) ---
+[GENERATOR] Starting call online_train_s_104_gen_initial...
+[GENERATOR] Call online_train_s_104_gen_initial completed in 13.72s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_104_round_0...
+[REFLECTOR] Call online_train_s_104_round_0 completed in 11.28s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_104...
+[GRAPH_CONSTRUCTOR] Call online_train_s_104 completed in 7.1s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 7, Step 15/15 (Global 105) ---
+[GENERATOR] Starting call online_train_s_105_gen_initial...
+[GENERATOR] Call online_train_s_105_gen_initial completed in 11.73s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_105_round_0...
+[REFLECTOR] Call online_train_s_105_round_0 completed in 9.21s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_105...
+[GRAPH_CONSTRUCTOR] Call online_train_s_105 completed in 9.99s
+Applied 3 graph operations (ADD_STRATEGY=3)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 8/20 (samples 105-119)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.500 (150/300)
+Window 8 accuracy: 0.500 | Cumulative: 0.500
+Retrieved: 30 nodes | Precision: 0.223
+--- Window 8, Step 1/15 (Global 106) ---
+[GENERATOR] Starting call online_train_s_106_gen_initial...
+[GENERATOR] Call online_train_s_106_gen_initial completed in 13.14s
+Correct: True
+--- Window 8, Step 2/15 (Global 107) ---
+[GENERATOR] Starting call online_train_s_107_gen_initial...
+[GENERATOR] Call online_train_s_107_gen_initial completed in 11.74s
+Correct: True
+--- Window 8, Step 3/15 (Global 108) ---
+[GENERATOR] Starting call online_train_s_108_gen_initial...
+[GENERATOR] Call online_train_s_108_gen_initial completed in 12.98s
+Correct: True
+--- Window 8, Step 4/15 (Global 109) ---
+[GENERATOR] Starting call online_train_s_109_gen_initial...
+[GENERATOR] Call online_train_s_109_gen_initial completed in 11.47s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_109_round_0...
+[REFLECTOR] Call online_train_s_109_round_0 completed in 10.2s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_109...
+[GRAPH_CONSTRUCTOR] Call online_train_s_109 completed in 7.45s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 8, Step 5/15 (Global 110) ---
+[GENERATOR] Starting call online_train_s_110_gen_initial...
+[GENERATOR] Call online_train_s_110_gen_initial completed in 13.6s
+Correct: True
+--- Window 8, Step 6/15 (Global 111) ---
+[GENERATOR] Starting call online_train_s_111_gen_initial...
+[GENERATOR] Call online_train_s_111_gen_initial completed in 9.82s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_111_round_0...
+[REFLECTOR] Call online_train_s_111_round_0 completed in 9.83s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_111...
+[GRAPH_CONSTRUCTOR] Call online_train_s_111 completed in 9.97s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 8, Step 7/15 (Global 112) ---
+[GENERATOR] Starting call online_train_s_112_gen_initial...
+[GENERATOR] Call online_train_s_112_gen_initial completed in 9.88s
+Correct: True
+--- Window 8, Step 8/15 (Global 113) ---
+[GENERATOR] Starting call online_train_s_113_gen_initial...
+[GENERATOR] Call online_train_s_113_gen_initial completed in 9.26s
+Correct: True
+--- Window 8, Step 9/15 (Global 114) ---
+[GENERATOR] Starting call online_train_s_114_gen_initial...
+[GENERATOR] Call online_train_s_114_gen_initial completed in 12.36s
+Correct: True
+--- Window 8, Step 10/15 (Global 115) ---
+[GENERATOR] Starting call online_train_s_115_gen_initial...
+[GENERATOR] Call online_train_s_115_gen_initial completed in 12.52s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_115_round_0...
+[REFLECTOR] Call online_train_s_115_round_0 completed in 9.74s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_115...
+[GRAPH_CONSTRUCTOR] Call online_train_s_115 completed in 9.79s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 8, Step 11/15 (Global 116) ---
+[GENERATOR] Starting call online_train_s_116_gen_initial...
+[GENERATOR] Call online_train_s_116_gen_initial completed in 12.74s
+Correct: True
+--- Window 8, Step 12/15 (Global 117) ---
+[GENERATOR] Starting call online_train_s_117_gen_initial...
+[GENERATOR] Call online_train_s_117_gen_initial completed in 9.52s
+Correct: True
+--- Window 8, Step 13/15 (Global 118) ---
+[GENERATOR] Starting call online_train_s_118_gen_initial...
+[GENERATOR] Call online_train_s_118_gen_initial completed in 10.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_118_round_0...
+[REFLECTOR] Call online_train_s_118_round_0 completed in 8.78s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_118...
+[GRAPH_CONSTRUCTOR] Call online_train_s_118 completed in 8.3s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 8, Step 14/15 (Global 119) ---
+[GENERATOR] Starting call online_train_s_119_gen_initial...
+[GENERATOR] Call online_train_s_119_gen_initial completed in 10.4s
+Correct: True
+--- Window 8, Step 15/15 (Global 120) ---
+[GENERATOR] Starting call online_train_s_120_gen_initial...
+[GENERATOR] Call online_train_s_120_gen_initial completed in 12.81s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_120_round_0...
+[REFLECTOR] Call online_train_s_120_round_0 completed in 10.21s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_120...
+[GRAPH_CONSTRUCTOR] Call online_train_s_120 completed in 6.35s
+Applied 1 graph operation (ADD_STRATEGY=1)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 9/20 (samples 120-134)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.507 (152/300)
+Window 9 accuracy: 0.507 | Cumulative: 0.507
+Retrieved: 30 nodes | Precision: 0.228
+--- Window 9, Step 1/15 (Global 121) ---
+[GENERATOR] Starting call online_train_s_121_gen_initial...
+[GENERATOR] Call online_train_s_121_gen_initial completed in 12.26s
+Correct: True
+--- Window 9, Step 2/15 (Global 122) ---
+[GENERATOR] Starting call online_train_s_122_gen_initial...
+[GENERATOR] Call online_train_s_122_gen_initial completed in 9.17s
+Correct: True
+--- Window 9, Step 3/15 (Global 123) ---
+[GENERATOR] Starting call online_train_s_123_gen_initial...
+[GENERATOR] Call online_train_s_123_gen_initial completed in 11.19s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_123_round_0...
+[REFLECTOR] Call online_train_s_123_round_0 completed in 9.32s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_123...
+[GRAPH_CONSTRUCTOR] Call online_train_s_123 completed in 6.01s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 9, Step 4/15 (Global 124) ---
+[GENERATOR] Starting call online_train_s_124_gen_initial...
+[GENERATOR] Call online_train_s_124_gen_initial completed in 9.84s
+Correct: True
+--- Window 9, Step 5/15 (Global 125) ---
+[GENERATOR] Starting call online_train_s_125_gen_initial...
+[GENERATOR] Call online_train_s_125_gen_initial completed in 11.52s
+Correct: True
+--- Window 9, Step 6/15 (Global 126) ---
+[GENERATOR] Starting call online_train_s_126_gen_initial...
+[GENERATOR] Call online_train_s_126_gen_initial completed in 13.25s
+Correct: True
+--- Window 9, Step 7/15 (Global 127) ---
+[GENERATOR] Starting call online_train_s_127_gen_initial...
+[GENERATOR] Call online_train_s_127_gen_initial completed in 9.07s
+Correct: True
+--- Window 9, Step 8/15 (Global 128) ---
+[GENERATOR] Starting call online_train_s_128_gen_initial...
+[GENERATOR] Call online_train_s_128_gen_initial completed in 11.1s
+Correct: True
+--- Window 9, Step 9/15 (Global 129) ---
+[GENERATOR] Starting call online_train_s_129_gen_initial...
+[GENERATOR] Call online_train_s_129_gen_initial completed in 10.52s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_129_round_0...
+[REFLECTOR] Call online_train_s_129_round_0 completed in 7.12s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_129...
+[GRAPH_CONSTRUCTOR] Call online_train_s_129 completed in 7.62s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 9, Step 10/15 (Global 130) ---
+[GENERATOR] Starting call online_train_s_130_gen_initial...
+[GENERATOR] Call online_train_s_130_gen_initial completed in 8.11s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_130_round_0...
+[REFLECTOR] Call online_train_s_130_round_0 completed in 11.23s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_130...
+[GRAPH_CONSTRUCTOR] Call online_train_s_130 completed in 9.27s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 9, Step 11/15 (Global 131) ---
+[GENERATOR] Starting call online_train_s_131_gen_initial...
+[GENERATOR] Call online_train_s_131_gen_initial completed in 8.97s
+Correct: True
+--- Window 9, Step 12/15 (Global 132) ---
+[GENERATOR] Starting call online_train_s_132_gen_initial...
+[GENERATOR] Call online_train_s_132_gen_initial completed in 9.87s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_132_round_0...
+[REFLECTOR] Call online_train_s_132_round_0 completed in 10.28s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_132...
+[GRAPH_CONSTRUCTOR] Call online_train_s_132 completed in 7.12s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 9, Step 13/15 (Global 133) ---
+[GENERATOR] Starting call online_train_s_133_gen_initial...
+[GENERATOR] Call online_train_s_133_gen_initial completed in 13.18s
+Correct: True
+--- Window 9, Step 14/15 (Global 134) ---
+[GENERATOR] Starting call online_train_s_134_gen_initial...
+[GENERATOR] Call online_train_s_134_gen_initial completed in 10.41s
+Correct: True
+--- Window 9, Step 15/15 (Global 135) ---
+[GENERATOR] Starting call online_train_s_135_gen_initial...
+[GENERATOR] Call online_train_s_135_gen_initial completed in 12.46s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 10/20 (samples 135-149)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.513 (154/300)
+Window 10 accuracy: 0.513 | Cumulative: 0.513
+Retrieved: 30 nodes | Precision: 0.233
+--- Window 10, Step 1/15 (Global 136) ---
+[GENERATOR] Starting call online_train_s_136_gen_initial...
+[GENERATOR] Call online_train_s_136_gen_initial completed in 8.03s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_136_round_0...
+[REFLECTOR] Call online_train_s_136_round_0 completed in 11.73s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_136...
+[GRAPH_CONSTRUCTOR] Call online_train_s_136 completed in 7.99s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 10, Step 2/15 (Global 137) ---
+[GENERATOR] Starting call online_train_s_137_gen_initial...
+[GENERATOR] Call online_train_s_137_gen_initial completed in 11.85s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_137_round_0...
+[REFLECTOR] Call online_train_s_137_round_0 completed in 9.53s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_137...
+[GRAPH_CONSTRUCTOR] Call online_train_s_137 completed in 6.21s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 10, Step 3/15 (Global 138) ---
+[GENERATOR] Starting call online_train_s_138_gen_initial...
+[GENERATOR] Call online_train_s_138_gen_initial completed in 8.37s
+Correct: True
+--- Window 10, Step 4/15 (Global 139) ---
+[GENERATOR] Starting call online_train_s_139_gen_initial...
+[GENERATOR] Call online_train_s_139_gen_initial completed in 8.63s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_139_round_0...
+[REFLECTOR] Call online_train_s_139_round_0 completed in 9.23s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_139...
+[GRAPH_CONSTRUCTOR] Call online_train_s_139 completed in 9.31s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 10, Step 5/15 (Global 140) ---
+[GENERATOR] Starting call online_train_s_140_gen_initial...
+[GENERATOR] Call online_train_s_140_gen_initial completed in 13.75s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_140_round_0...
+[REFLECTOR] Call online_train_s_140_round_0 completed in 7.4s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_140...
+[GRAPH_CONSTRUCTOR] Call online_train_s_140 completed in 9.23s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 10, Step 6/15 (Global 141) ---
+[GENERATOR] Starting call online_train_s_141_gen_initial...
+[GENERATOR] Call online_train_s_141_gen_initial completed in 9.26s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_141_round_0...
+[REFLECTOR] Call online_train_s_141_round_0 completed in 11.59s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_141...
+[GRAPH_CONSTRUCTOR] Call online_train_s_141 completed in 7.9s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 10, Step 7/15 (Global 142) ---
+[GENERATOR] Starting call online_train_s_142_gen_initial...
+[GENERATOR] Call online_train_s_142_gen_initial completed in 12.5s
+Correct: True
+--- Window 10, Step 8/15 (Global 143) ---
+[GENERATOR] Starting call online_train_s_143_gen_initial...
+[GENERATOR] Call online_train_s_143_gen_initial completed in 8.59s
+Correct: True
+--- Window 10, Step 9/15 (Global 144) ---
+[GENERATOR] Starting call online_train_s_144_gen_initial...
+[GENERATOR] Call online_train_s_144_gen_initial completed in 12.57s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_144_round_0...
+[REFLECTOR] Call online_train_s_144_round_0 completed in 9.77s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_144...
+[GRAPH_CONSTRUCTOR] Call online_train_s_144 completed in 6.18s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 10, Step 10/15 (Global 145) ---
+[GENERATOR] Starting call online_train_s_145_gen_initial...
+[GENERATOR] Call online_train_s_145_gen_initial completed in 11.78s
+Correct: True
+--- Window 10, Step 11/15 (Global 146) ---
+[GENERATOR] Starting call online_train_s_146_gen_initial...
+[GENERATOR] Call online_train_s_146_gen_initial completed in 13.56s
+Correct: True
+--- Window 10, Step 12/15 (Global 147) ---
+[GENERATOR] Starting call online_train_s_147_gen_initial...
+[GENERATOR] Call online_train_s_147_gen_initial completed in 13.64s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_147_round_0...
+[REFLECTOR] Call online_train_s_147_round_0 completed in 10.42s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_147...
+[GRAPH_CONSTRUCTOR] Call online_train_s_147 completed in 8.47s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 10, Step 13/15 (Global 148) ---
+[GENERATOR] Starting call online_train_s_148_gen_initial...
+[GENERATOR] Call online_train_s_148_gen_initial completed in 9.55s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_148_round_0...
+[REFLECTOR] Call online_train_s_148_round_0 completed in 9.91s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_148...
+[GRAPH_CONSTRUCTOR] Call online_train_s_148 completed in 7.14s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 10, Step 14/15 (Global 149) ---
+[GENERATOR] Starting call online_train_s_149_gen_initial...
+[GENERATOR] Call online_train_s_149_gen_initial completed in 11.14s
+Correct: True
+--- Window 10, Step 15/15 (Global 150) ---
+[GENERATOR] Starting call online_train_s_150_gen_initial...
+[GENERATOR] Call online_train_s_150_gen_initial completed in 13.53s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_150_round_0...
+[REFLECTOR] Call online_train_s_150_round_0 completed in 10.14s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_150...
+[GRAPH_CONSTRUCTOR] Call online_train_s_150 completed in 6.31s
+Applied 2 graph operations (ADD_STRATEGY=2)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 11/20 (samples 150-164)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.520 (156/300)
+Window 11 accuracy: 0.520 | Cumulative: 0.520
+Retrieved: 30 nodes | Precision: 0.237
+--- Window 11, Step 1/15 (Global 151) ---
+[GENERATOR] Starting call online_train_s_151_gen_initial...
+[GENERATOR] Call online_train_s_151_gen_initial completed in 10.03s
+Correct: True
+--- Window 11, Step 2/15 (Global 152) ---
+[GENERATOR] Starting call online_train_s_152_gen_initial...
+[GENERATOR] Call online_train_s_152_gen_initial completed in 8.72s
+Correct: True
+--- Window 11, Step 3/15 (Global 153) ---
+[GENERATOR] Starting call online_train_s_153_gen_initial...
+[GENERATOR] Call online_train_s_153_gen_initial completed in 9.0s
+Correct: True
+--- Window 11, Step 4/15 (Global 154) ---
+[GENERATOR] Starting call online_train_s_154_gen_initial...
+[GENERATOR] Call online_train_s_154_gen_initial completed in 13.2s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_154_round_0...
+[REFLECTOR] Call online_train_s_154_round_0 completed in 9.22s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_154...
+[GRAPH_CONSTRUCTOR] Call online_train_s_154 completed in 8.98s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 11, Step 5/15 (Global 155) ---
+[GENERATOR] Starting call online_train_s_155_gen_initial...
+[GENERATOR] Call online_train_s_155_gen_initial completed in 10.81s
+Correct: True
+--- Window 11, Step 6/15 (Global 156) ---
+[GENERATOR] Starting call online_train_s_156_gen_initial...
+[GENERATOR] Call online_train_s_156_gen_initial completed in 12.29s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_156_round_0...
+[REFLECTOR] Call online_train_s_156_round_0 completed in 9.34s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_156...
+[GRAPH_CONSTRUCTOR] Call online_train_s_156 completed in 9.78s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 11, Step 7/15 (Global 157) ---
+[GENERATOR] Starting call online_train_s_157_gen_initial...
+[GENERATOR] Call online_train_s_157_gen_initial completed in 11.32s
+Correct: True
+--- Window 11, Step 8/15 (Global 158) ---
+[GENERATOR] Starting call online_train_s_158_gen_initial...
+[GENERATOR] Call online_train_s_158_gen_initial completed in 12.68s
+Correct: True
+--- Window 11, Step 9/15 (Global 159) ---
+[GENERATOR] Starting call online_train_s_159_gen_initial...
+[GENERATOR] Call online_train_s_159_gen_initial completed in 13.01s
+Correct: True
+--- Window 11, Step 10/15 (Global 160) ---
+[GENERATOR] Starting call online_train_s_160_gen_initial...
+[GENERATOR] Call online_train_s_160_gen_initial completed in 9.22s
+Correct: True
+--- Window 11, Step 11/15 (Global 161) ---
+[GENERATOR] Starting call online_train_s_161_gen_initial...
+[GENERATOR] Call online_train_s_161_gen_initial completed in 12.55s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_161_round_0...
+[REFLECTOR] Call online_train_s_161_round_0 completed in 10.17s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_161...
+[GRAPH_CONSTRUCTOR] Call online_train_s_161 completed in 7.54s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 11, Step 12/15 (Global 162) ---
+[GENERATOR] Starting call online_train_s_162_gen_initial...
+[GENERATOR] Call online_train_s_162_gen_initial completed in 8.72s
+Correct: True
+--- Window 11, Step 13/15 (Global 163) ---
+[GENERATOR] Starting call online_train_s_163_gen_initial...
+[GENERATOR] Call online_train_s_163_gen_initial completed in 10.03s
+Correct: True
+--- Window 11, Step 14/15 (Global 164) ---
+[GENERATOR] Starting call online_train_s_164_gen_initial...
+[GENERATOR] Call online_train_s_164_gen_initial completed in 10.68s
+Correct: True
+--- Window 11, Step 15/15 (Global 165) ---
+[GENERATOR] Starting call online_train_s_165_gen_initial...
+[GENERATOR] Call online_train_s_165_gen_initial completed in 13.18s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 12/20 (samples 165-179)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.527 (158/300)
+Window 12 accuracy: 0.527 | Cumulative: 0.527
+Retrieved: 30 nodes | Precision: 0.242
+--- Window 12, Step 1/15 (Global 166) ---
+[GENERATOR] Starting call online_train_s_166_gen_initial...
+[GENERATOR] Call online_train_s_166_gen_initial completed in 8.04s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_166_round_0...
+[REFLECTOR] Call online_train_s_166_round_0 completed in 10.99s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_166...
+[GRAPH_CONSTRUCTOR] Call online_train_s_166 completed in 8.19s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 12, Step 2/15 (Global 167) ---
+[GENERATOR] Starting call online_train_s_167_gen_initial...
+[GENERATOR] Call online_train_s_167_gen_initial completed in 11.29s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_167_round_0...
+[REFLECTOR] Call online_train_s_167_round_0 completed in 10.92s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_167...
+[GRAPH_CONSTRUCTOR] Call online_train_s_167 completed in 7.86s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 12, Step 3/15 (Global 168) ---
+[GENERATOR] Starting call online_train_s_168_gen_initial...
+[GENERATOR] Call online_train_s_168_gen_initial completed in 9.02s
+Correct: True
+--- Window 12, Step 4/15 (Global 169) ---
+[GENERATOR] Starting call online_train_s_169_gen_initial...
+[GENERATOR] Call online_train_s_169_gen_initial completed in 13.21s
+Correct: True
+--- Window 12, Step 5/15 (Global 170) ---
+[GENERATOR] Starting call online_train_s_170_gen_initial...
+[GENERATOR] Call online_train_s_170_gen_initial completed in 12.61s
+Correct: True
+--- Window 12, Step 6/15 (Global 171) ---
+[GENERATOR] Starting call online_train_s_171_gen_initial...
+[GENERATOR] Call online_train_s_171_gen_initial completed in 10.37s
+Correct: True
+--- Window 12, Step 7/15 (Global 172) ---
+[GENERATOR] Starting call online_train_s_172_gen_initial...
+[GENERATOR] Call online_train_s_172_gen_initial completed in 13.82s
+Correct: True
+--- Window 12, Step 8/15 (Global 173) ---
+[GENERATOR] Starting call online_train_s_173_gen_initial...
+[GENERATOR] Call online_train_s_173_gen_initial completed in 11.51s
+Correct: True
+--- Window 12, Step 9/15 (Global 174) ---
+[GENERATOR] Starting call online_train_s_174_gen_initial...
+[GENERATOR] Call online_train_s_174_gen_initial completed in 10.31s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_174_round_0...
+[REFLECTOR] Call online_train_s_174_round_0 completed in 10.34s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_174...
+[GRAPH_CONSTRUCTOR] Call online_train_s_174 completed in 7.53s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 12, Step 10/15 (Global 175) ---
+[GENERATOR] Starting call online_train_s_175_gen_initial...
+[GENERATOR] Call online_train_s_175_gen_initial completed in 9.56s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_175_round_0...
+[REFLECTOR] Call online_train_s_175_round_0 completed in 10.33s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_175...
+[GRAPH_CONSTRUCTOR] Call online_train_s_175 completed in 6.08s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 12, Step 11/15 (Global 176) ---
+[GENERATOR] Starting call online_train_s_176_gen_initial...
+[GENERATOR] Call online_train_s_176_gen_initial completed in 10.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_176_round_0...
+[REFLECTOR] Call online_train_s_176_round_0 completed in 9.18s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_176...
+[GRAPH_CONSTRUCTOR] Call online_train_s_176 completed in 8.76s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 12, Step 12/15 (Global 177) ---
+[GENERATOR] Starting call online_train_s_177_gen_initial...
+[GENERATOR] Call online_train_s_177_gen_initial completed in 13.9s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_177_round_0...
+[REFLECTOR] Call online_train_s_177_round_0 completed in 11.66s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_177...
+[GRAPH_CONSTRUCTOR] Call online_train_s_177 completed in 8.79s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 12, Step 13/15 (Global 178) ---
+[GENERATOR] Starting call online_train_s_178_gen_initial...
+[GENERATOR] Call online_train_s_178_gen_initial completed in 8.33s
+Correct: True
+--- Window 12, Step 14/15 (Global 179) ---
+[GENERATOR] Starting call online_train_s_179_gen_initial...
+[GENERATOR] Call online_train_s_179_gen_initial completed in 10.44s
+Correct: True
+--- Window 12, Step 15/15 (Global 180) ---
+[GENERATOR] Starting call online_train_s_180_gen_initial...
+[GENERATOR] Call online_train_s_180_gen_initial completed in 8.87s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 13/20 (samples 180-194)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.533 (160/300)
+Window 13 accuracy: 0.533 | Cumulative: 0.533
+Retrieved: 30 nodes | Precision: 0.247
+--- Window 13, Step 1/15 (Global 181) ---
+[GENERATOR] Starting call online_train_s_181_gen_initial...
+[GENERATOR] Call online_train_s_181_gen_initial completed in 10.88s
+Correct: True
+--- Window 13, Step 2/15 (Global 182) ---
+[GENERATOR] Starting call online_train_s_182_gen_initial...
+[GENERATOR] Call online_train_s_182_gen_initial completed in 9.19s
+Correct: True
+--- Window 13, Step 3/15 (Global 183) ---
+[GENERATOR] Starting call online_train_s_183_gen_initial...
+[GENERATOR] Call online_train_s_183_gen_initial completed in 13.65s
+Correct: True
+--- Window 13, Step 4/15 (Global 184) ---
+[GENERATOR] Starting call online_train_s_184_gen_initial...
+[GENERATOR] Call online_train_s_184_gen_initial completed in 11.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_184_round_0...
+[REFLECTOR] Call online_train_s_184_round_0 completed in 8.29s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_184...
+[GRAPH_CONSTRUCTOR] Call online_train_s_184 completed in 9.13s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 13, Step 5/15 (Global 185) ---
+[GENERATOR] Starting call online_train_s_185_gen_initial...
+[GENERATOR] Call online_train_s_185_gen_initial completed in 12.22s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_185_round_0...
+[REFLECTOR] Call online_train_s_185_round_0 completed in 10.47s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_185...
+[GRAPH_CONSTRUCTOR] Call online_train_s_185 completed in 8.48s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 13, Step 6/15 (Global 186) ---
+[GENERATOR] Starting call online_train_s_186_gen_initial...
+[GENERATOR] Call online_train_s_186_gen_initial completed in 9.73s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_186_round_0...
+[REFLECTOR] Call online_train_s_186_round_0 completed in 11.28s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_186...
+[GRAPH_CONSTRUCTOR] Call online_train_s_186 completed in 8.01s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 13, Step 7/15 (Global 187) ---
+[GENERATOR] Starting call online_train_s_187_gen_initial...
+[GENERATOR] Call online_train_s_187_gen_initial completed in 9.81s
+Correct: True
+--- Window 13, Step 8/15 (Global 188) ---
+[GENERATOR] Starting call online_train_s_188_gen_initial...
+[GENERATOR] Call online_train_s_188_gen_initial completed in 10.55s
+Correct: True
+--- Window 13, Step 9/15 (Global 189) ---
+[GENERATOR] Starting call online_train_s_189_gen_initial...
+[GENERATOR] Call online_train_s_189_gen_initial completed in 8.45s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_189_round_0...
+[REFLECTOR] Call online_train_s_189_round_0 completed in 7.08s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_189...
+[GRAPH_CONSTRUCTOR] Call online_train_s_189 completed in 9.43s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 13, Step 10/15 (Global 190) ---
+[GENERATOR] Starting call online_train_s_190_gen_initial...
+[GENERATOR] Call online_train_s_190_gen_initial completed in 10.21s
+Correct: True
+--- Window 13, Step 11/15 (Global 191) ---
+[GENERATOR] Starting call online_train_s_191_gen_initial...
+[GENERATOR] Call online_train_s_191_gen_initial completed in 10.86s
+Correct: True
+--- Window 13, Step 12/15 (Global 192) ---
+[GENERATOR] Starting call online_train_s_192_gen_initial...
+[GENERATOR] Call online_train_s_192_gen_initial completed in 12.85s
+Correct: True
+--- Window 13, Step 13/15 (Global 193) ---
+[GENERATOR] Starting call online_train_s_193_gen_initial...
+[GENERATOR] Call online_train_s_193_gen_initial completed in 10.33s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_193_round_0...
+[REFLECTOR] Call online_train_s_193_round_0 completed in 8.45s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_193...
+[GRAPH_CONSTRUCTOR] Call online_train_s_193 completed in 8.85s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 13, Step 14/15 (Global 194) ---
+[GENERATOR] Starting call online_train_s_194_gen_initial...
+[GENERATOR] Call online_train_s_194_gen_initial completed in 13.21s
+Correct: True
+--- Window 13, Step 15/15 (Global 195) ---
+[GENERATOR] Starting call online_train_s_195_gen_initial...
+[GENERATOR] Call online_train_s_195_gen_initial completed in 9.98s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_195_round_0...
+[REFLECTOR] Call online_train_s_195_round_0 completed in 8.55s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_195...
+[GRAPH_CONSTRUCTOR] Call online_train_s_195 completed in 6.36s
+Applied 1 graph operation (ADD_STRATEGY=1)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 14/20 (samples 195-209)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.540 (162/300)
+Window 14 accuracy: 0.540 | Cumulative: 0.540
+Retrieved: 30 nodes | Precision: 0.252
+--- Window 14, Step 1/15 (Global 196) ---
+[GENERATOR] Starting call online_train_s_196_gen_initial...
+[GENERATOR] Call online_train_s_196_gen_initial completed in 12.92s
+Correct: True
+--- Window 14, Step 2/15 (Global 197) ---
+[GENERATOR] Starting call online_train_s_197_gen_initial...
+[GENERATOR] Call online_train_s_197_gen_initial completed in 9.66s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_197_round_0...
+[REFLECTOR] Call online_train_s_197_round_0 completed in 9.49s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_197...
+[GRAPH_CONSTRUCTOR] Call online_train_s_197 completed in 7.04s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 14, Step 3/15 (Global 198) ---
+[GENERATOR] Starting call online_train_s_198_gen_initial...
+[GENERATOR] Call online_train_s_198_gen_initial completed in 12.92s
+Correct: True
+--- Window 14, Step 4/15 (Global 199) ---
+[GENERATOR] Starting call online_train_s_199_gen_initial...
+[GENERATOR] Call online_train_s_199_gen_initial completed in 10.55s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_199_round_0...
+[REFLECTOR] Call online_train_s_199_round_0 completed in 11.8s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_199...
+[GRAPH_CONSTRUCTOR] Call online_train_s_199 completed in 7.28s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 14, Step 5/15 (Global 200) ---
+[GENERATOR] Starting call online_train_s_200_gen_initial...
+[GENERATOR] Call online_train_s_200_gen_initial completed in 9.93s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_200_round_0...
+[REFLECTOR] Call online_train_s_200_round_0 completed in 10.82s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_200...
+[GRAPH_CONSTRUCTOR] Call online_train_s_200 completed in 9.46s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 14, Step 6/15 (Global 201) ---
+[GENERATOR] Starting call online_train_s_201_gen_initial...
+[GENERATOR] Call online_train_s_201_gen_initial completed in 8.46s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_201_round_0...
+[REFLECTOR] Call online_train_s_201_round_0 completed in 9.25s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_201...
+[GRAPH_CONSTRUCTOR] Call online_train_s_201 completed in 7.97s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 14, Step 7/15 (Global 202) ---
+[GENERATOR] Starting call online_train_s_202_gen_initial...
+[GENERATOR] Call online_train_s_202_gen_initial completed in 11.55s
+Correct: True
+--- Window 14, Step 8/15 (Global 203) ---
+[GENERATOR] Starting call online_train_s_203_gen_initial...
+[GENERATOR] Call online_train_s_203_gen_initial completed in 10.99s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_203_round_0...
+[REFLECTOR] Call online_train_s_203_round_0 completed in 7.49s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_203...
+[GRAPH_CONSTRUCTOR] Call online_train_s_203 completed in 7.45s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 14, Step 9/15 (Global 204) ---
+[GENERATOR] Starting call online_train_s_204_gen_initial...
+[GENERATOR] Call online_train_s_204_gen_initial completed in 13.63s
+Correct: True
+--- Window 14, Step 10/15 (Global 205) ---
+[GENERATOR] Starting call online_train_s_205_gen_initial...
+[GENERATOR] Call online_train_s_205_gen_initial completed in 12.03s
+Correct: True
+--- Window 14, Step 11/15 (Global 206) ---
+[GENERATOR] Starting call online_train_s_206_gen_initial...
+[GENERATOR] Call online_train_s_206_gen_initial completed in 8.96s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_206_round_0...
+[REFLECTOR] Call online_train_s_206_round_0 completed in 10.67s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_206...
+[GRAPH_CONSTRUCTOR] Call online_train_s_206 completed in 6.08s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 14, Step 12/15 (Global 207) ---
+[GENERATOR] Starting call online_train_s_207_gen_initial...
+[GENERATOR] Call online_train_s_207_gen_initial completed in 10.61s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_207_round_0...
+[REFLECTOR] Call online_train_s_207_round_0 completed in 10.69s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_207...
+[GRAPH_CONSTRUCTOR] Call online_train_s_207 completed in 9.96s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 14, Step 13/15 (Global 208) ---
+[GENERATOR] Starting call online_train_s_208_gen_initial...
+[GENERATOR] Call online_train_s_208_gen_initial completed in 10.78s
+Correct: True
+--- Window 14, Step 14/15 (Global 209) ---
+[GENERATOR] Starting call online_train_s_209_gen_initial...
+[GENERATOR] Call online_train_s_209_gen_initial completed in 10.15s
+Correct: True
+--- Window 14, Step 15/15 (Global 210) ---
+[GENERATOR] Starting call online_train_s_210_gen_initial...
+[GENERATOR] Call online_train_s_210_gen_initial completed in 8.16s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 15/20 (samples 210-224)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.550 (165/300)
+Window 15 accuracy: 0.550 | Cumulative: 0.550
+Retrieved: 30 nodes | Precision: 0.256
+--- Window 15, Step 1/15 (Global 211) ---
+[GENERATOR] Starting call online_train_s_211_gen_initial...
+[GENERATOR] Call online_train_s_211_gen_initial completed in 12.96s
+Correct: True
+--- Window 15, Step 2/15 (Global 212) ---
+[GENERATOR] Starting call online_train_s_212_gen_initial...
+[GENERATOR] Call online_train_s_212_gen_initial completed in 10.17s
+Correct: True
+--- Window 15, Step 3/15 (Global 213) ---
+[GENERATOR] Starting call online_train_s_213_gen_initial...
+[GENERATOR] Call online_train_s_213_gen_initial completed in 12.53s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_213_round_0...
+[REFLECTOR] Call online_train_s_213_round_0 completed in 9.4s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_213...
+[GRAPH_CONSTRUCTOR] Call online_train_s_213 completed in 9.98s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 15, Step 4/15 (Global 214) ---
+[GENERATOR] Starting call online_train_s_214_gen_initial...
+[GENERATOR] Call online_train_s_214_gen_initial completed in 12.34s
+Correct: True
+--- Window 15, Step 5/15 (Global 215) ---
+[GENERATOR] Starting call online_train_s_215_gen_initial...
+[GENERATOR] Call online_train_s_215_gen_initial completed in 10.92s
+Correct: True
+--- Window 15, Step 6/15 (Global 216) ---
+[GENERATOR] Starting call online_train_s_216_gen_initial...
+[GENERATOR] Call online_train_s_216_gen_initial completed in 9.37s
+Correct: True
+--- Window 15, Step 7/15 (Global 217) ---
+[GENERATOR] Starting call online_train_s_217_gen_initial...
+[GENERATOR] Call online_train_s_217_gen_initial completed in 9.11s
+Correct: True
+--- Window 15, Step 8/15 (Global 218) ---
+[GENERATOR] Starting call online_train_s_218_gen_initial...
+[GENERATOR] Call online_train_s_218_gen_initial completed in 12.93s
+Correct: True
+--- Window 15, Step 9/15 (Global 219) ---
+[GENERATOR] Starting call online_train_s_219_gen_initial...
+[GENERATOR] Call online_train_s_219_gen_initial completed in 11.02s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_219_round_0...
+[REFLECTOR] Call online_train_s_219_round_0 completed in 8.62s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_219...
+[GRAPH_CONSTRUCTOR] Call online_train_s_219 completed in 7.84s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 15, Step 10/15 (Global 220) ---
+[GENERATOR] Starting call online_train_s_220_gen_initial...
+[GENERATOR] Call online_train_s_220_gen_initial completed in 8.97s
+Correct: True
+--- Window 15, Step 11/15 (Global 221) ---
+[GENERATOR] Starting call online_train_s_221_gen_initial...
+[GENERATOR] Call online_train_s_221_gen_initial completed in 9.56s
+Correct: True
+--- Window 15, Step 12/15 (Global 222) ---
+[GENERATOR] Starting call online_train_s_222_gen_initial...
+[GENERATOR] Call online_train_s_222_gen_initial completed in 12.11s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_222_round_0...
+[REFLECTOR] Call online_train_s_222_round_0 completed in 9.01s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_222...
+[GRAPH_CONSTRUCTOR] Call online_train_s_222 completed in 6.59s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 15, Step 13/15 (Global 223) ---
+[GENERATOR] Starting call online_train_s_223_gen_initial...
+[GENERATOR] Call online_train_s_223_gen_initial completed in 11.1s
+Correct: True
+--- Window 15, Step 14/15 (Global 224) ---
+[GENERATOR] Starting call online_train_s_224_gen_initial...
+[GENERATOR] Call online_train_s_224_gen_initial completed in 8.27s
+Correct: True
+--- Window 15, Step 15/15 (Global 225) ---
+[GENERATOR] Starting call online_train_s_225_gen_initial...
+[GENERATOR] Call online_train_s_225_gen_initial completed in 9.5s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 16/20 (samples 225-239)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.560 (168/300)
+Window 16 accuracy: 0.560 | Cumulative: 0.560
+Retrieved: 30 nodes | Precision: 0.261
+--- Window 16, Step 1/15 (Global 226) ---
+[GENERATOR] Starting call online_train_s_226_gen_initial...
+[GENERATOR] Call online_train_s_226_gen_initial completed in 11.92s
+Correct: True
+--- Window 16, Step 2/15 (Global 227) ---
+[GENERATOR] Starting call online_train_s_227_gen_initial...
+[GENERATOR] Call online_train_s_227_gen_initial completed in 9.24s
+Correct: True
+--- Window 16, Step 3/15 (Global 228) ---
+[GENERATOR] Starting call online_train_s_228_gen_initial...
+[GENERATOR] Call online_train_s_228_gen_initial completed in 8.41s
+Correct: True
+--- Window 16, Step 4/15 (Global 229) ---
+[GENERATOR] Starting call online_train_s_229_gen_initial...
+[GENERATOR] Call online_train_s_229_gen_initial completed in 9.24s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_229_round_0...
+[REFLECTOR] Call online_train_s_229_round_0 completed in 8.69s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_229...
+[GRAPH_CONSTRUCTOR] Call online_train_s_229 completed in 8.91s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 16, Step 5/15 (Global 230) ---
+[GENERATOR] Starting call online_train_s_230_gen_initial...
+[GENERATOR] Call online_train_s_230_gen_initial completed in 12.15s
+Correct: True
+--- Window 16, Step 6/15 (Global 231) ---
+[GENERATOR] Starting call online_train_s_231_gen_initial...
+[GENERATOR] Call online_train_s_231_gen_initial completed in 8.75s
+Correct: True
+--- Window 16, Step 7/15 (Global 232) ---
+[GENERATOR] Starting call online_train_s_232_gen_initial...
+[GENERATOR] Call online_train_s_232_gen_initial completed in 10.59s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_232_round_0...
+[REFLECTOR] Call online_train_s_232_round_0 completed in 9.52s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_232...
+[GRAPH_CONSTRUCTOR] Call online_train_s_232 completed in 7.9s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 16, Step 8/15 (Global 233) ---
+[GENERATOR] Starting call online_train_s_233_gen_initial...
+[GENERATOR] Call online_train_s_233_gen_initial completed in 12.03s
+Correct: True
+--- Window 16, Step 9/15 (Global 234) ---
+[GENERATOR] Starting call online_train_s_234_gen_initial...
+[GENERATOR] Call online_train_s_234_gen_initial completed in 9.58s
+Correct: True
+--- Window 16, Step 10/15 (Global 235) ---
+[GENERATOR] Starting call online_train_s_235_gen_initial...
+[GENERATOR] Call online_train_s_235_gen_initial completed in 11.14s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_235_round_0...
+[REFLECTOR] Call online_train_s_235_round_0 completed in 8.97s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_235...
+[GRAPH_CONSTRUCTOR] Call online_train_s_235 completed in 8.72s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 16, Step 11/15 (Global 236) ---
+[GENERATOR] Starting call online_train_s_236_gen_initial...
+[GENERATOR] Call online_train_s_236_gen_initial completed in 10.01s
+Correct: True
+--- Window 16, Step 12/15 (Global 237) ---
+[GENERATOR] Starting call online_train_s_237_gen_initial...
+[GENERATOR] Call online_train_s_237_gen_initial completed in 9.41s
+Correct: True
+--- Window 16, Step 13/15 (Global 238) ---
+[GENERATOR] Starting call online_train_s_238_gen_initial...
+[GENERATOR] Call online_train_s_238_gen_initial completed in 12.73s
+Correct: True
+--- Window 16, Step 14/15 (Global 239) ---
+[GENERATOR] Starting call online_train_s_239_gen_initial...
+[GENERATOR] Call online_train_s_239_gen_initial completed in 13.66s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_239_round_0...
+[REFLECTOR] Call online_train_s_239_round_0 completed in 10.02s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_239...
+[GRAPH_CONSTRUCTOR] Call online_train_s_239 completed in 6.58s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 16, Step 15/15 (Global 240) ---
+[GENERATOR] Starting call online_train_s_240_gen_initial...
+[GENERATOR] Call online_train_s_240_gen_initial completed in 12.45s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_240_round_0...
+[REFLECTOR] Call online_train_s_240_round_0 completed in 11.78s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_240...
+[GRAPH_CONSTRUCTOR] Call online_train_s_240 completed in 7.31s
+Applied 2 graph operations (ADD_STRATEGY=2)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 17/20 (samples 240-254)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.573 (172/300)
+Window 17 accuracy: 0.573 | Cumulative: 0.573
+Retrieved: 30 nodes | Precision: 0.266
+--- Window 17, Step 1/15 (Global 241) ---
+[GENERATOR] Starting call online_train_s_241_gen_initial...
+[GENERATOR] Call online_train_s_241_gen_initial completed in 9.54s
+Correct: True
+--- Window 17, Step 2/15 (Global 242) ---
+[GENERATOR] Starting call online_train_s_242_gen_initial...
+[GENERATOR] Call online_train_s_242_gen_initial completed in 9.15s
+Correct: True
+--- Window 17, Step 3/15 (Global 243) ---
+[GENERATOR] Starting call online_train_s_243_gen_initial...
+[GENERATOR] Call online_train_s_243_gen_initial completed in 9.93s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_243_round_0...
+[REFLECTOR] Call online_train_s_243_round_0 completed in 9.25s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_243...
+[GRAPH_CONSTRUCTOR] Call online_train_s_243 completed in 8.95s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 17, Step 4/15 (Global 244) ---
+[GENERATOR] Starting call online_train_s_244_gen_initial...
+[GENERATOR] Call online_train_s_244_gen_initial completed in 10.78s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_244_round_0...
+[REFLECTOR] Call online_train_s_244_round_0 completed in 10.55s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_244...
+[GRAPH_CONSTRUCTOR] Call online_train_s_244 completed in 7.38s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 17, Step 5/15 (Global 245) ---
+[GENERATOR] Starting call online_train_s_245_gen_initial...
+[GENERATOR] Call online_train_s_245_gen_initial completed in 8.46s
+Correct: True
+--- Window 17, Step 6/15 (Global 246) ---
+[GENERATOR] Starting call online_train_s_246_gen_initial...
+[GENERATOR] Call online_train_s_246_gen_initial completed in 8.17s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_246_round_0...
+[REFLECTOR] Call online_train_s_246_round_0 completed in 11.16s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_246...
+[GRAPH_CONSTRUCTOR] Call online_train_s_246 completed in 8.11s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 17, Step 7/15 (Global 247) ---
+[GENERATOR] Starting call online_train_s_247_gen_initial...
+[GENERATOR] Call online_train_s_247_gen_initial completed in 10.86s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_247_round_0...
+[REFLECTOR] Call online_train_s_247_round_0 completed in 11.3s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_247...
+[GRAPH_CONSTRUCTOR] Call online_train_s_247 completed in 9.0s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 17, Step 8/15 (Global 248) ---
+[GENERATOR] Starting call online_train_s_248_gen_initial...
+[GENERATOR] Call online_train_s_248_gen_initial completed in 9.24s
+Correct: True
+--- Window 17, Step 9/15 (Global 249) ---
+[GENERATOR] Starting call online_train_s_249_gen_initial...
+[GENERATOR] Call online_train_s_249_gen_initial completed in 9.06s
+Correct: True
+--- Window 17, Step 10/15 (Global 250) ---
+[GENERATOR] Starting call online_train_s_250_gen_initial...
+[GENERATOR] Call online_train_s_250_gen_initial completed in 8.88s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_250_round_0...
+[REFLECTOR] Call online_train_s_250_round_0 completed in 7.52s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_250...
+[GRAPH_CONSTRUCTOR] Call online_train_s_250 completed in 9.05s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 17, Step 11/15 (Global 251) ---
+[GENERATOR] Starting call online_train_s_251_gen_initial...
+[GENERATOR] Call online_train_s_251_gen_initial completed in 11.91s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_251_round_0...
+[REFLECTOR] Call online_train_s_251_round_0 completed in 9.45s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_251...
+[GRAPH_CONSTRUCTOR] Call online_train_s_251 completed in 8.43s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 17, Step 12/15 (Global 252) ---
+[GENERATOR] Starting call online_train_s_252_gen_initial...
+[GENERATOR] Call online_train_s_252_gen_initial completed in 8.99s
+Correct: True
+--- Window 17, Step 13/15 (Global 253) ---
+[GENERATOR] Starting call online_train_s_253_gen_initial...
+[GENERATOR] Call online_train_s_253_gen_initial completed in 8.95s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_253_round_0...
+[REFLECTOR] Call online_train_s_253_round_0 completed in 11.42s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_253...
+[GRAPH_CONSTRUCTOR] Call online_train_s_253 completed in 7.49s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 17, Step 14/15 (Global 254) ---
+[GENERATOR] Starting call online_train_s_254_gen_initial...
+[GENERATOR] Call online_train_s_254_gen_initial completed in 11.31s
+Correct: True
+--- Window 17, Step 15/15 (Global 255) ---
+[GENERATOR] Starting call online_train_s_255_gen_initial...
+[GENERATOR] Call online_train_s_255_gen_initial completed in 9.4s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_255_round_0...
+[REFLECTOR] Call online_train_s_255_round_0 completed in 8.87s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_255...
+[GRAPH_CONSTRUCTOR] Call online_train_s_255 completed in 9.76s
+Applied 2 graph operations (ADD_STRATEGY=2)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 18/20 (samples 255-269)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.583 (175/300)
+Window 18 accuracy: 0.583 | Cumulative: 0.583
+Retrieved: 30 nodes | Precision: 0.271
+--- Window 18, Step 1/15 (Global 256) ---
+[GENERATOR] Starting call online_train_s_256_gen_initial...
+[GENERATOR] Call online_train_s_256_gen_initial completed in 8.05s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_256_round_0...
+[REFLECTOR] Call online_train_s_256_round_0 completed in 9.92s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_256...
+[GRAPH_CONSTRUCTOR] Call online_train_s_256 completed in 9.23s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 18, Step 2/15 (Global 257) ---
+[GENERATOR] Starting call online_train_s_257_gen_initial...
+[GENERATOR] Call online_train_s_257_gen_initial completed in 9.08s
+Correct: True
+--- Window 18, Step 3/15 (Global 258) ---
+[GENERATOR] Starting call online_train_s_258_gen_initial...
+[GENERATOR] Call online_train_s_258_gen_initial completed in 13.77s
+Correct: True
+--- Window 18, Step 4/15 (Global 259) ---
+[GENERATOR] Starting call online_train_s_259_gen_initial...
+[GENERATOR] Call online_train_s_259_gen_initial completed in 11.3s
+Correct: True
+--- Window 18, Step 5/15 (Global 260) ---
+[GENERATOR] Starting call online_train_s_260_gen_initial...
+[GENERATOR] Call online_train_s_260_gen_initial completed in 13.88s
+Correct: True
+--- Window 18, Step 6/15 (Global 261) ---
+[GENERATOR] Starting call online_train_s_261_gen_initial...
+[GENERATOR] Call online_train_s_261_gen_initial completed in 12.07s
+Correct: True
+--- Window 18, Step 7/15 (Global 262) ---
+[GENERATOR] Starting call online_train_s_262_gen_initial...
+[GENERATOR] Call online_train_s_262_gen_initial completed in 12.97s
+Correct: True
+--- Window 18, Step 8/15 (Global 263) ---
+[GENERATOR] Starting call online_train_s_263_gen_initial...
+[GENERATOR] Call online_train_s_263_gen_initial completed in 11.28s
+Correct: True
+--- Window 18, Step 9/15 (Global 264) ---
+[GENERATOR] Starting call online_train_s_264_gen_initial...
+[GENERATOR] Call online_train_s_264_gen_initial completed in 10.7s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_264_round_0...
+[REFLECTOR] Call online_train_s_264_round_0 completed in 11.42s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_264...
+[GRAPH_CONSTRUCTOR] Call online_train_s_264 completed in 9.04s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 18, Step 10/15 (Global 265) ---
+[GENERATOR] Starting call online_train_s_265_gen_initial...
+[GENERATOR] Call online_train_s_265_gen_initial completed in 8.48s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_265_round_0...
+[REFLECTOR] Call online_train_s_265_round_0 completed in 11.62s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_265...
+[GRAPH_CONSTRUCTOR] Call online_train_s_265 completed in 7.78s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 18, Step 11/15 (Global 266) ---
+[GENERATOR] Starting call online_train_s_266_gen_initial...
+[GENERATOR] Call online_train_s_266_gen_initial completed in 12.11s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_266_round_0...
+[REFLECTOR] Call online_train_s_266_round_0 completed in 11.71s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_266...
+[GRAPH_CONSTRUCTOR] Call online_train_s_266 completed in 7.16s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 18, Step 12/15 (Global 267) ---
+[GENERATOR] Starting call online_train_s_267_gen_initial...
+[GENERATOR] Call online_train_s_267_gen_initial completed in 10.48s
+Correct: True
+--- Window 18, Step 13/15 (Global 268) ---
+[GENERATOR] Starting call online_train_s_268_gen_initial...
+[GENERATOR] Call online_train_s_268_gen_initial completed in 9.52s
+Correct: True
+--- Window 18, Step 14/15 (Global 269) ---
+[GENERATOR] Starting call online_train_s_269_gen_initial...
+[GENERATOR] Call online_train_s_269_gen_initial completed in 11.47s
+Correct: True
+--- Window 18, Step 15/15 (Global 270) ---
+[GENERATOR] Starting call online_train_s_270_gen_initial...
+[GENERATOR] Call online_train_s_270_gen_initial completed in 13.18s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_270_round_0...
+[REFLECTOR] Call online_train_s_270_round_0 completed in 9.2s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_270...
+[GRAPH_CONSTRUCTOR] Call online_train_s_270 completed in 8.25s
+Applied 2 graph operations (ADD_STRATEGY=2)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 19/20 (samples 270-284)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.600 (180/300)
+Window 19 accuracy: 0.600 | Cumulative: 0.600
+Retrieved: 30 nodes | Precision: 0.275
+--- Window 19, Step 1/15 (Global 271) ---
+[GENERATOR] Starting call online_train_s_271_gen_initial...
+[GENERATOR] Call online_train_s_271_gen_initial completed in 9.45s
+Correct: True
+--- Window 19, Step 2/15 (Global 272) ---
+[GENERATOR] Starting call online_train_s_272_gen_initial...
+[GENERATOR] Call online_train_s_272_gen_initial completed in 11.24s
+Correct: True
+--- Window 19, Step 3/15 (Global 273) ---
+[GENERATOR] Starting call online_train_s_273_gen_initial...
+[GENERATOR] Call online_train_s_273_gen_initial completed in 8.2s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_273_round_0...
+[REFLECTOR] Call online_train_s_273_round_0 completed in 8.99s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_273...
+[GRAPH_CONSTRUCTOR] Call online_train_s_273 completed in 9.72s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 19, Step 4/15 (Global 274) ---
+[GENERATOR] Starting call online_train_s_274_gen_initial...
+[GENERATOR] Call online_train_s_274_gen_initial completed in 13.29s
+Correct: True
+--- Window 19, Step 5/15 (Global 275) ---
+[GENERATOR] Starting call online_train_s_275_gen_initial...
+[GENERATOR] Call online_train_s_275_gen_initial completed in 11.68s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_275_round_0...
+[REFLECTOR] Call online_train_s_275_round_0 completed in 11.93s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_275...
+[GRAPH_CONSTRUCTOR] Call online_train_s_275 completed in 7.3s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 19, Step 6/15 (Global 276) ---
+[GENERATOR] Starting call online_train_s_276_gen_initial...
+[GENERATOR] Call online_train_s_276_gen_initial completed in 12.43s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_276_round_0...
+[REFLECTOR] Call online_train_s_276_round_0 completed in 8.12s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_276...
+[GRAPH_CONSTRUCTOR] Call online_train_s_276 completed in 7.85s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 19, Step 7/15 (Global 277) ---
+[GENERATOR] Starting call online_train_s_277_gen_initial...
+[GENERATOR] Call online_train_s_277_gen_initial completed in 10.96s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_277_round_0...
+[REFLECTOR] Call online_train_s_277_round_0 completed in 9.7s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_277...
+[GRAPH_CONSTRUCTOR] Call online_train_s_277 completed in 6.35s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 19, Step 8/15 (Global 278) ---
+[GENERATOR] Starting call online_train_s_278_gen_initial...
+[GENERATOR] Call online_train_s_278_gen_initial completed in 10.33s
+Correct: True
+--- Window 19, Step 9/15 (Global 279) ---
+[GENERATOR] Starting call online_train_s_279_gen_initial...
+[GENERATOR] Call online_train_s_279_gen_initial completed in 8.29s
+Correct: True
+--- Window 19, Step 10/15 (Global 280) ---
+[GENERATOR] Starting call online_train_s_280_gen_initial...
+[GENERATOR] Call online_train_s_280_gen_initial completed in 11.38s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_280_round_0...
+[REFLECTOR] Call online_train_s_280_round_0 completed in 9.15s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_280...
+[GRAPH_CONSTRUCTOR] Call online_train_s_280 completed in 6.5s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 19, Step 11/15 (Global 281) ---
+[GENERATOR] Starting call online_train_s_281_gen_initial...
+[GENERATOR] Call online_train_s_281_gen_initial completed in 10.72s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_281_round_0...
+[REFLECTOR] Call online_train_s_281_round_0 completed in 10.23s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_281...
+[GRAPH_CONSTRUCTOR] Call online_train_s_281 completed in 9.3s
+Applied 2 graph operations (ADD_STRATEGY=2)
+--- Window 19, Step 12/15 (Global 282) ---
+[GENERATOR] Starting call online_train_s_282_gen_initial...
+[GENERATOR] Call online_train_s_282_gen_initial completed in 11.32s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_282_round_0...
+[REFLECTOR] Call online_train_s_282_round_0 completed in 8.52s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_282...
+[GRAPH_CONSTRUCTOR] Call online_train_s_282 completed in 9.91s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 19, Step 13/15 (Global 283) ---
+[GENERATOR] Starting call online_train_s_283_gen_initial...
+[GENERATOR] Call online_train_s_283_gen_initial completed in 11.74s
+Correct: True
+--- Window 19, Step 14/15 (Global 284) ---
+[GENERATOR] Starting call online_train_s_284_gen_initial...
+[GENERATOR] Call online_train_s_284_gen_initial completed in 10.24s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_284_round_0...
+[REFLECTOR] Call online_train_s_284_round_0 completed in 9.26s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_284...
+[GRAPH_CONSTRUCTOR] Call online_train_s_284 completed in 6.0s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 19, Step 15/15 (Global 285) ---
+[GENERATOR] Starting call online_train_s_285_gen_initial...
+[GENERATOR] Call online_train_s_285_gen_initial completed in 12.9s
+Correct: True
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+============================================================
+WINDOW 20/20 (samples 285-299)
+============================================================
+
+========================================
+EVALUATING TEST SET - 300 samples, 20 workers
+========================================
+Final Accuracy: 0.610 (183/300)
+Window 20 accuracy: 0.610 | Cumulative: 0.610
+Retrieved: 30 nodes | Precision: 0.280
+--- Window 20, Step 1/15 (Global 286) ---
+[GENERATOR] Starting call online_train_s_286_gen_initial...
+[GENERATOR] Call online_train_s_286_gen_initial completed in 10.97s
+Correct: True
+--- Window 20, Step 2/15 (Global 287) ---
+[GENERATOR] Starting call online_train_s_287_gen_initial...
+[GENERATOR] Call online_train_s_287_gen_initial completed in 10.48s
+Correct: True
+--- Window 20, Step 3/15 (Global 288) ---
+[GENERATOR] Starting call online_train_s_288_gen_initial...
+[GENERATOR] Call online_train_s_288_gen_initial completed in 9.02s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_288_round_0...
+[REFLECTOR] Call online_train_s_288_round_0 completed in 9.73s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_288...
+[GRAPH_CONSTRUCTOR] Call online_train_s_288 completed in 8.66s
+Applied 1 graph operation (ADD_STRATEGY=1)
+--- Window 20, Step 4/15 (Global 289) ---
+[GENERATOR] Starting call online_train_s_289_gen_initial...
+[GENERATOR] Call online_train_s_289_gen_initial completed in 13.05s
+Correct: True
+--- Window 20, Step 5/15 (Global 290) ---
+[GENERATOR] Starting call online_train_s_290_gen_initial...
+[GENERATOR] Call online_train_s_290_gen_initial completed in 8.28s
+Correct: True
+--- Window 20, Step 6/15 (Global 291) ---
+[GENERATOR] Starting call online_train_s_291_gen_initial...
+[GENERATOR] Call online_train_s_291_gen_initial completed in 8.47s
+Correct: True
+--- Window 20, Step 7/15 (Global 292) ---
+[GENERATOR] Starting call online_train_s_292_gen_initial...
+[GENERATOR] Call online_train_s_292_gen_initial completed in 12.95s
+Correct: True
+--- Window 20, Step 8/15 (Global 293) ---
+[GENERATOR] Starting call online_train_s_293_gen_initial...
+[GENERATOR] Call online_train_s_293_gen_initial completed in 12.88s
+Correct: True
+--- Window 20, Step 9/15 (Global 294) ---
+[GENERATOR] Starting call online_train_s_294_gen_initial...
+[GENERATOR] Call online_train_s_294_gen_initial completed in 9.68s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_294_round_0...
+[REFLECTOR] Call online_train_s_294_round_0 completed in 9.71s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_294...
+[GRAPH_CONSTRUCTOR] Call online_train_s_294 completed in 9.66s
+Applied 3 graph operations (ADD_STRATEGY=3)
+--- Window 20, Step 10/15 (Global 295) ---
+[GENERATOR] Starting call online_train_s_295_gen_initial...
+[GENERATOR] Call online_train_s_295_gen_initial completed in 13.39s
+Correct: True
+--- Window 20, Step 11/15 (Global 296) ---
+[GENERATOR] Starting call online_train_s_296_gen_initial...
+[GENERATOR] Call online_train_s_296_gen_initial completed in 9.15s
+Correct: True
+--- Window 20, Step 12/15 (Global 297) ---
+[GENERATOR] Starting call online_train_s_297_gen_initial...
+[GENERATOR] Call online_train_s_297_gen_initial completed in 8.04s
+Correct: True
+--- Window 20, Step 13/15 (Global 298) ---
+[GENERATOR] Starting call online_train_s_298_gen_initial...
+[GENERATOR] Call online_train_s_298_gen_initial completed in 10.15s
+Correct: True
+--- Window 20, Step 14/15 (Global 299) ---
+[GENERATOR] Starting call online_train_s_299_gen_initial...
+[GENERATOR] Call online_train_s_299_gen_initial completed in 12.86s
+Correct: True
+--- Window 20, Step 15/15 (Global 300) ---
+[GENERATOR] Starting call online_train_s_300_gen_initial...
+[GENERATOR] Call online_train_s_300_gen_initial completed in 12.83s
+Correct: False
+Reflection round 1/1
+[REFLECTOR] Starting call online_train_s_300_round_0...
+[REFLECTOR] Call online_train_s_300_round_0 completed in 8.72s
+[GRAPH_CONSTRUCTOR] Starting call online_train_s_300...
+[GRAPH_CONSTRUCTOR] Call online_train_s_300 completed in 9.89s
+Applied 1 graph operation (ADD_STRATEGY=1)
+Graph state: Strategy=59, AntiPattern=40, Confusion=58, Concept=139
+
+Final Online Test Accuracy: 0.610
+
+============================================================
+GSAM RUN COMPLETE
+============================================================
+Ablation: gsam_no_cascades
+  Failure Cascades: DISABLED (ablation: no_cascades)
+Final accuracy: 0.610 (183/300)
+Graph: 316 nodes
+Avg retrieval precision: 0.235
+Results saved to: C:/Users/Window/Desktop/gsam-rsh/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_163000_formula_online
+============================================================

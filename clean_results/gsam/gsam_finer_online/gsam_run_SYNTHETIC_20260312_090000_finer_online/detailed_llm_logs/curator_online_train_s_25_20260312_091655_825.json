@@ -1,0 +1,41 @@
+{
+  "synthetic_reference": true,
+  "call_id": "online_train_s_25",
+  "role": "curator",
+  "step": 25,
+  "window": 2,
+  "timestamp": "2026-03-12T09:16:55.000000",
+  "input_tokens": 1734,
+  "output_tokens": 350,
+  "latency_s": 13.23,
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying.",
+      "target_concept": "EarningsPerShareBasic"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "S:0025",
+      "relation": "applies_to",
+      "target": "C:0052"
+    },
+    {
+      "op": "ADD_ANTIPATTERN",
+      "content": "Confusing DebtInstrumentFaceAmount with DebtInstrumentCarryingAmount. Face amount is the stated principal; carrying amount includes unamortized discount/premium. The model defaults to FaceAmount even when the text discusses book value after discount amortization.",
+      "target_concept": "DebtInstrumentFaceAmount"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "A:0025",
+      "relation": "fails_for",
+      "target": "C:0004"
+    },
+    {
+      "op": "UPDATE_ATTR",
+      "node": "C:0057",
+      "attr": "harmful_count",
+      "delta": 1
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "total_nodes": 175,
+  "total_edges": 2,
+  "node_counts": {
+    "Strategy": 70,
+    "AntiPattern": 48,
+    "Confusion": 52,
+    "Concept": 5
+  },
+  "edge_counts": {
+    "conflicts_with": 2
+  },
+  "density": 6.568144499178982e-05,
+  "concept_coverage": 0.0,
+  "concepts_with_strategy": 0,
+  "total_concepts": 5,
+  "tasks_processed": 67
+}
