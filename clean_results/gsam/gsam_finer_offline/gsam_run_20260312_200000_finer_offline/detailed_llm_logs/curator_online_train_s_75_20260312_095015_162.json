@@ -1,0 +1,40 @@
+{
+  "call_id": "online_train_s_75",
+  "role": "curator",
+  "step": 75,
+  "window": 5,
+  "timestamp": "2026-03-12T09:50:15.000000",
+  "input_tokens": 2470,
+  "output_tokens": 345,
+  "latency_s": 14.12,
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying.",
+      "target_concept": "EarningsPerShareBasic"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "S:0075",
+      "relation": "applies_to",
+      "target": "C:0052"
+    },
+    {
+      "op": "ADD_ANTIPATTERN",
+      "content": "Defaulting to OperatingLeaseCost when the text explicitly says 'finance lease'. This is a high-confidence signal: if 'finance' or 'capital' is adjacent to 'lease cost', use FinanceLeaseCost.",
+      "target_concept": "OperatingLeaseCost"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "A:0075",
+      "relation": "fails_for",
+      "target": "C:0032"
+    },
+    {
+      "op": "UPDATE_ATTR",
+      "node": "C:0005",
+      "attr": "harmful_count",
+      "delta": 1
+    }
+  ]
+}

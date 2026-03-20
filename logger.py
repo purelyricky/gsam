@@ -16,17 +16,17 @@ def log_llm_call(log_dir, call_info):
     """Log detailed information about each LLM call"""
     if not os.path.exists(log_dir):
         os.makedirs(log_dir, exist_ok=True)
-    
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]
+
+    now = datetime.now()
+    timestamp = now.strftime("%Y%m%d_%H%M%S_%f")[:-3]  # used only for filename uniqueness
     filename = f"{call_info['role']}_{call_info['call_id']}_{timestamp}.json"
     filepath = os.path.join(log_dir, filename)
-    
-    call_info['timestamp'] = timestamp
-    call_info['datetime'] = datetime.now().isoformat()
-    
+
+    call_info['timestamp'] = now.isoformat(timespec='seconds')  # ISO-8601, e.g. 2026-03-12T09:58:10
+
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(call_info, f, indent=2, ensure_ascii=False)
-    
+
     print(f"[LOG] {call_info['role']} call logged to {filename}")
 
 def log_bullet_usage(usage_log_path, epoch, step, sample_data, bullet_ids_used, playbook=None, reflection_content=None, is_correct=None):

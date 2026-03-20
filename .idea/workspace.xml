@@ -5,26 +5,358 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0842f05a-e9d1-435b-87a1-be60cf09846b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ace/ace.py" beforeDir="false" afterPath="$PROJECT_DIR$/ace/ace.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ace/core/bulletpoint_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/ace/core/bulletpoint_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ace/core/curator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ace/core/curator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analyze_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyze_results.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eval/finance/finer_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval/finance/finer_transfer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eval/finance/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval/finance/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eval/finance/run_gsam.py" beforeDir="false" afterPath="$PROJECT_DIR$/eval/finance/run_gsam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gsam/core/graph_constructor.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/core/graph_constructor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gsam/core/graph_retriever.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/core/graph_retriever.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gsam/graph_memory.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/graph_memory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gsam/gsam.py" beforeDir="false" afterPath="$PROJECT_DIR$/gsam/gsam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gsam_paper.tex" beforeDir="false" afterPath="$PROJECT_DIR$/gsam_paper.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EXTENDING_ACE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_164000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_164000_finer_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_164000_finer_online/gsam_gsam_embedding_only_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_164000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_164000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_165000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_165000_formula_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_165000_formula_online/gsam_gsam_embedding_only_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_165000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_embedding_only/gsam_run_SYNTHETIC_20260312_165000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_162000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_162000_finer_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_162000_finer_online/gsam_gsam_no_cascades_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_162000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_162000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_163000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_163000_formula_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_163000_formula_online/gsam_gsam_no_cascades_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_163000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_cascades/gsam_run_SYNTHETIC_20260312_163000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_170000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_170000_finer_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_170000_finer_online/gsam_gsam_no_multi_epoch_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_170000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_170000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_171000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_171000_formula_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_171000_formula_online/gsam_gsam_no_multi_epoch_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_171000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_multi_epoch/gsam_run_SYNTHETIC_20260312_171000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_160000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_160000_finer_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_160000_finer_online/gsam_gsam_no_ontology_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_160000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_160000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_161000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_161000_formula_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_161000_formula_online/gsam_gsam_no_ontology_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_161000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_no_ontology/gsam_run_SYNTHETIC_20260312_161000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_166000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_166000_finer_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_166000_finer_online/gsam_gsam_untyped_edges_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_166000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_166000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_167000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_167000_formula_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_167000_formula_online/gsam_gsam_untyped_edges_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_167000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ablations/gsam_untyped_edges/gsam_run_SYNTHETIC_20260312_167000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_offline/ace_run_SYNTHETIC_20260312_112000_finer_offline/ace_finer_offline_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_offline/ace_run_SYNTHETIC_20260312_112000_finer_offline/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_offline/ace_run_SYNTHETIC_20260312_112000_finer_offline/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_offline/ace_run_SYNTHETIC_20260312_112000_finer_offline/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/ace_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/bullet_usage_log.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/curator_operations_diff.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_111_20260312_124310_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_141_20260312_133810_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_171_20260312_143310_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_201_20260312_152810_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_21_20260312_095810_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_231_20260312_162310_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_261_20260312_171810_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_291_20260312_181310_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_51_20260312_105310_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/curator_online_train_s_81_20260312_114810_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_121_gen_initial_20260312_130130_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_151_gen_initial_20260312_135630_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_181_gen_initial_20260312_145130_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_1_gen_initial_20260312_092130_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_211_gen_initial_20260312_154630_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_241_gen_initial_20260312_164130_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_271_gen_initial_20260312_173630_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_31_gen_initial_20260312_101630_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_61_gen_initial_20260312_111130_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/generator_online_train_s_91_gen_initial_20260312_120630_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_101_round_0_20260312_122450_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_11_round_1_20260312_093950_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_131_round_1_20260312_131950_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_161_round_0_20260312_141450_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_191_round_1_20260312_150950_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_221_round_0_20260312_160450_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_251_round_1_20260312_165950_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_281_round_0_20260312_175450_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_41_round_0_20260312_103450_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/detailed_llm_logs/reflector_online_train_s_71_round_1_20260312_112950_000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/intermediate_playbooks/playbook_window_10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/intermediate_playbooks/playbook_window_20.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/intermediate_playbooks/playbook_window_5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_finer_online/ace_run_SYNTHETIC_20260312_092000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_offline/ace_run_SYNTHETIC_20260312_152000_formula_offline/ace_formula_offline_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_offline/ace_run_SYNTHETIC_20260312_152000_formula_offline/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_offline/ace_run_SYNTHETIC_20260312_152000_formula_offline/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_offline/ace_run_SYNTHETIC_20260312_152000_formula_offline/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_online/ace_run_SYNTHETIC_20260312_132000_formula_online/ace_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_online/ace_run_SYNTHETIC_20260312_132000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_online/ace_run_SYNTHETIC_20260312_132000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_online/ace_run_SYNTHETIC_20260312_132000_formula_online/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/ace/ace_formula_online/ace_run_SYNTHETIC_20260312_132000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/finer_transfer/ace_transfer_results.json" beforeDir="false" afterPath="$PROJECT_DIR$/clean_results/finer_transfer/ace_transfer_results.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/finer_transfer/finer_transfer_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/finer_transfer/gsam_transfer_results.json" beforeDir="false" afterPath="$PROJECT_DIR$/clean_results/finer_transfer/gsam_transfer_results.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/finer_transfer/transfer_summary.json" beforeDir="false" afterPath="$PROJECT_DIR$/clean_results/finer_transfer/transfer_summary.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_100_20260312_100655_603.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_10_20260312_090655_939.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_150_20260312_104015_203.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_15_20260312_091015_148.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_1_20260312_090055_631.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_200_20260312_111335_461.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_250_20260312_114655_599.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_25_20260312_091655_860.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_300_20260312_122015_109.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_50_20260312_093335_899.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_5_20260312_090335_350.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/curator_online_train_s_75_20260312_095015_162.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_100_gen_initial_20260312_100640_770.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_10_gen_initial_20260312_090640_605.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_150_gen_initial_20260312_104000_437.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_15_gen_initial_20260312_091000_692.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_1_gen_initial_20260312_090040_842.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_200_gen_initial_20260312_111320_327.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_250_gen_initial_20260312_114640_480.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_25_gen_initial_20260312_091640_557.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_300_gen_initial_20260312_122000_846.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_50_gen_initial_20260312_093320_598.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_5_gen_initial_20260312_090320_768.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/generator_online_train_s_75_gen_initial_20260312_095000_545.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_100_round_0_20260312_100648_332.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_10_round_0_20260312_090648_376.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_150_round_0_20260312_104008_849.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_15_round_0_20260312_091008_260.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_1_round_0_20260312_090048_629.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_200_round_0_20260312_111328_685.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_250_round_0_20260312_114648_644.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_25_round_0_20260312_091648_691.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_300_round_0_20260312_122008_699.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_50_round_0_20260312_093328_137.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_5_round_0_20260312_090328_896.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/detailed_llm_logs/reflector_online_train_s_75_round_0_20260312_095008_406.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/error_tracking.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_final.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_150.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_250.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_checkpoints/graph_step_50.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/gsam_finer_offline_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/retrieval_logs.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/retrieval_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_offline/gsam_run_SYNTHETIC_20260312_200000_finer_offline/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_100_20260312_100655_551.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_10_20260312_090655_499.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_150_20260312_104015_765.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_15_20260312_091015_319.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_1_20260312_090055_555.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_200_20260312_111335_420.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_250_20260312_114655_877.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_25_20260312_091655_825.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_300_20260312_122015_706.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_50_20260312_093335_536.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_5_20260312_090335_495.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/curator_online_train_s_75_20260312_095015_646.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_100_gen_initial_20260312_100640_705.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_10_gen_initial_20260312_090640_714.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_150_gen_initial_20260312_104000_871.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_15_gen_initial_20260312_091000_560.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_1_gen_initial_20260312_090040_524.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_200_gen_initial_20260312_111320_213.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_250_gen_initial_20260312_114640_374.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_25_gen_initial_20260312_091640_407.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_300_gen_initial_20260312_122000_779.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_50_gen_initial_20260312_093320_600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_5_gen_initial_20260312_090320_122.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/generator_online_train_s_75_gen_initial_20260312_095000_505.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_100_round_0_20260312_100648_713.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_10_round_0_20260312_090648_882.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_150_round_0_20260312_104008_125.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_15_round_0_20260312_091008_733.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_1_round_0_20260312_090048_417.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_200_round_0_20260312_111328_928.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_250_round_0_20260312_114648_384.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_25_round_0_20260312_091648_729.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_300_round_0_20260312_122008_337.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_50_round_0_20260312_093328_166.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_5_round_0_20260312_090328_937.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/detailed_llm_logs/reflector_online_train_s_75_round_0_20260312_095008_402.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/error_tracking.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_final.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_150.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_250.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_checkpoints/graph_step_50.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/gsam_finer_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/retrieval_logs.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/retrieval_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_finer_online/gsam_run_SYNTHETIC_20260312_090000_finer_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_formula_strategy_1_20260312_090000_708.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_formula_strategy_2_20260312_090820_344.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_formula_strategy_3_20260312_091640_643.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_formula_strategy_4_20260312_092500_860.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_100_20260312_100655_598.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_10_20260312_090655_501.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_150_20260312_104015_388.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_15_20260312_091015_837.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_1_20260312_090055_967.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_200_20260312_111335_632.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_250_20260312_114655_300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_25_20260312_091655_396.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_300_20260312_122015_694.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_50_20260312_093335_808.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_5_20260312_090335_897.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/curator_online_train_s_75_20260312_095015_867.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_100_gen_initial_20260312_100640_336.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_10_gen_initial_20260312_090640_292.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_150_gen_initial_20260312_104000_526.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_15_gen_initial_20260312_091000_703.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_1_gen_initial_20260312_090040_167.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_200_gen_initial_20260312_111320_191.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_250_gen_initial_20260312_114640_450.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_25_gen_initial_20260312_091640_948.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_300_gen_initial_20260312_122000_779.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_50_gen_initial_20260312_093320_151.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_5_gen_initial_20260312_090320_464.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/generator_online_train_s_75_gen_initial_20260312_095000_662.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_100_round_0_20260312_100648_131.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_10_round_0_20260312_090648_748.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_150_round_0_20260312_104008_645.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_15_round_0_20260312_091008_708.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_1_round_0_20260312_090048_606.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_200_round_0_20260312_111328_925.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_250_round_0_20260312_114648_200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_25_round_0_20260312_091648_664.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_300_round_0_20260312_122008_986.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_50_round_0_20260312_093328_818.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_5_round_0_20260312_090328_392.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/detailed_llm_logs/reflector_online_train_s_75_round_0_20260312_095008_392.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/error_tracking.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_final.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_150.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_250.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_checkpoints/graph_step_50.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/gsam_formula_offline_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/retrieval_logs.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/retrieval_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_offline/gsam_run_SYNTHETIC_20260312_220000_formula_offline/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_formula_strategy_1_20260312_090000_650.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_formula_strategy_2_20260312_090820_835.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_formula_strategy_3_20260312_091640_919.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_formula_strategy_4_20260312_092500_528.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_100_20260312_100655_382.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_10_20260312_090655_217.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_150_20260312_104015_223.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_15_20260312_091015_451.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_1_20260312_090055_186.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_200_20260312_111335_992.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_250_20260312_114655_467.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_25_20260312_091655_976.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_300_20260312_122015_640.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_50_20260312_093335_395.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_5_20260312_090335_547.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/curator_online_train_s_75_20260312_095015_972.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_100_gen_initial_20260312_100640_696.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_10_gen_initial_20260312_090640_184.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_150_gen_initial_20260312_104000_843.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_15_gen_initial_20260312_091000_459.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_1_gen_initial_20260312_090040_806.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_200_gen_initial_20260312_111320_547.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_250_gen_initial_20260312_114640_147.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_25_gen_initial_20260312_091640_426.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_300_gen_initial_20260312_122000_614.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_50_gen_initial_20260312_093320_466.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_5_gen_initial_20260312_090320_188.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/generator_online_train_s_75_gen_initial_20260312_095000_673.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_100_round_0_20260312_100648_219.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_10_round_0_20260312_090648_503.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_150_round_0_20260312_104008_467.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_15_round_0_20260312_091008_789.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_1_round_0_20260312_090048_500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_200_round_0_20260312_111328_153.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_250_round_0_20260312_114648_118.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_25_round_0_20260312_091648_835.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_300_round_0_20260312_122008_682.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_50_round_0_20260312_093328_234.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_5_round_0_20260312_090328_304.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/detailed_llm_logs/reflector_online_train_s_75_round_0_20260312_095008_895.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/error_tracking.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/final_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_final.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_150.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_250.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_checkpoints/graph_step_50.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/graph_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/gsam_formula_online_SYNTHETIC.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/partial_online_results.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/progress.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/retrieval_logs.jsonl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/retrieval_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_results/gsam/gsam_formula_online/gsam_run_SYNTHETIC_20260312_130000_formula_online/run_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_ace_ablation_results.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_clean_results.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_gsam_results.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gsam_thesis.tex" beforeDir="false" afterPath="$PROJECT_DIR$/gsam_thesis.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/llm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/_common.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ablation_embedding_only.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ablation_no_cascades.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ablation_no_multiepoch.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ablation_no_ontology.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ablation_untyped_edges.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ace_finer_offline.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ace_finer_online.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ace_formula_offline.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/ace_formula_online.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/gsam_finer_offline.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/gsam_finer_online.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/gsam_formula_offline.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/gsam_formula_online.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/transfer_ace.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mini_scripts/transfer_gsam.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/modal_serve.py" beforeDir="false" afterPath="$PROJECT_DIR$/modal_serve.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_gsam_experiments.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_gsam_experiments.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_gsam_experiments_mini.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorials/ExtendingDatasets.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,17 +384,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Window/Desktop/gsam-rsh",
-    "settings.editor.selected.configurable": "terminal"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Window/Desktop/gsam-rsh&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

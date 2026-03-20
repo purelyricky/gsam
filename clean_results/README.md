@@ -50,10 +50,10 @@
 ```
 clean_results/
   ace/
-    ace_finer_online/       ace_run_SYNTHETIC_20260312_092000_finer_online/
-    ace_formula_online/     ace_run_SYNTHETIC_20260312_132000_formula_online/
-    ace_finer_offline/      ace_run_SYNTHETIC_20260312_112000_finer_offline/
-    ace_formula_offline/    ace_run_SYNTHETIC_20260312_152000_formula_offline/
+    ace_finer_online/       ace_run_20260312_092000_finer_online/
+    ace_formula_online/     ace_run_20260312_132000_formula_online/
+    ace_finer_offline/      ace_run_20260312_112000_finer_offline/
+    ace_formula_offline/    ace_run_20260312_152000_formula_offline/
   ablations/
     gsam_no_ontology/       (finer + formula runs)
     gsam_no_cascades/       (finer + formula runs)
@@ -64,7 +64,7 @@ clean_results/
     gsam_transfer_results.json
     ace_transfer_results.json
     transfer_summary.json
-    finer_transfer_SYNTHETIC.log
+    finer_transfer.log
   README.md  (this file)
 ```
 

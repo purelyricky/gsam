@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_101_round_0",
+  "role": "reflector",
+  "step": 101,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 865,
+  "completion_tokens": 265,
+  "latency_s": 9.23,
+  "timestamp": "2026-03-12T12:24:50",
+  "is_correct": true,
+  "tag_predicted": "DeferredFinanceCostsNet",
+  "tag_ground_truth": "RetainedEarningsAccumulatedDeficit"
+}

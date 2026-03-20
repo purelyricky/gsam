@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_91_gen_initial",
+  "role": "generator",
+  "step": 91,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 1093,
+  "completion_tokens": 466,
+  "latency_s": 12.82,
+  "timestamp": "2026-03-12T12:06:30",
+  "is_correct": false,
+  "tag_predicted": "AdditionalPaidInCapital",
+  "tag_ground_truth": "InterestPaid"
+}

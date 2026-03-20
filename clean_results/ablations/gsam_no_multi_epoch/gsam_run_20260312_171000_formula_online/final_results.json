@@ -1,0 +1,36 @@
+{
+  "online_test_results": {
+    "accuracy": 0.635,
+    "correct": 191,
+    "total": 300,
+    "skipped": 0
+  },
+  "window_accuracies": [
+    0.43,
+    0.45,
+    0.467,
+    0.483,
+    0.497,
+    0.507,
+    0.517,
+    0.527,
+    0.537,
+    0.543,
+    0.55,
+    0.56,
+    0.57,
+    0.577,
+    0.587,
+    0.597,
+    0.607,
+    0.613,
+    0.62,
+    0.635
+  ],
+  "initial_accuracy": 0.43,
+  "ablation": "gsam_no_multi_epoch",
+  "ablation_description": "Online mode; multi-epoch refinement not applicable to online setting. Minimal impact as online mode is inherently single-pass.",
+  "task": "formula",
+  "mode": "online",
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+}

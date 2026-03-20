@@ -1,0 +1,12 @@
+{
+  "call_id": "online_train_s_1_round_0",
+  "role": "reflector",
+  "step": 1,
+  "window": 1,
+  "timestamp": "2026-03-12T09:00:48.000000",
+  "input_tokens": 1929,
+  "output_tokens": 470,
+  "latency_s": 11.58,
+  "is_correct_before": false,
+  "reflection_output": "When the sentence contains 'principal amount of $X' or 'face value of $X' or 'aggregate principal', tag as DebtInstrumentFaceAmount. Use DebtInstrumentCarryingAmount only when the text explicitly discusses book value after unamortized discount/premium adjustments."
+}

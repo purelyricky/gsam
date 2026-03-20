@@ -1,0 +1,40 @@
+{
+  "call_id": "online_train_s_150",
+  "role": "curator",
+  "step": 150,
+  "window": 10,
+  "timestamp": "2026-03-12T10:40:15.000000",
+  "input_tokens": 2045,
+  "output_tokens": 270,
+  "latency_s": 10.03,
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "target_concept": "LineOfCreditFacilityMaximumBorrowingCapacity"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "S:0150",
+      "relation": "applies_to",
+      "target": "C:0014"
+    },
+    {
+      "op": "ADD_ANTIPATTERN",
+      "content": "Predicting EarningsPerShareDiluted for sentences that only contain 'per share' without specifying diluted. When ambiguous, prefer EarningsPerShareBasic as it is always reported alongside diluted.",
+      "target_concept": "EarningsPerShareDiluted"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "A:0150",
+      "relation": "fails_for",
+      "target": "C:0053"
+    },
+    {
+      "op": "UPDATE_ATTR",
+      "node": "C:0005",
+      "attr": "harmful_count",
+      "delta": 1
+    }
+  ]
+}

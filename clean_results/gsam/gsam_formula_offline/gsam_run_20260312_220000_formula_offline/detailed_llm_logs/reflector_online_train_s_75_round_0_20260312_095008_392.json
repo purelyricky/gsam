@@ -1,0 +1,12 @@
+{
+  "call_id": "online_train_s_75_round_0",
+  "role": "reflector",
+  "step": 75,
+  "window": 5,
+  "timestamp": "2026-03-12T09:50:08.000000",
+  "input_tokens": 2343,
+  "output_tokens": 482,
+  "latency_s": 11.59,
+  "is_correct_before": false,
+  "reflection_output": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying."
+}

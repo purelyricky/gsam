@@ -1,23 +1,21 @@
 #!/bin/bash
 # =============================================================================
-# GSAM experiment runner — minimum set to fill all thesis tables
+# GSAM experiment runner — reproduces clean_results/ directory structure
+#
+# Directory layout produced:
+#   clean_results/ace/          ACE baselines  (finer+formula × online+offline)
+#   clean_results/gsam/         Full GSAM      (finer+formula × online+offline)
+#   clean_results/ablations/    5 GSAM ablations × finer+formula (all online)
+#   clean_results/finer_transfer/  Transfer benchmark
 #
 # Mapping to paper tables
 # ─────────────────────────────────────────────────────────────────────────────
-#  Table 1  (main results)    : GSAM FiNER/Formula online + offline   [4 runs]
-#  Table 2  (ablation)        : 5 GSAM ablations on FiNER online      [5 runs]
-#                               + no-multi-epoch on FiNER offline      [1 run]
-#  Table 3  (FiNER-Transfer)  : ACE + GSAM transfer experiments       [2 runs]
-#  Table 4  (retrieval/RFR)   : ACE FiNER online                      [1 run]
-#  Tables 5/6 (latency/cost)  : Timing collected during FiNER online runs
-#  App. graph-quality         : Covered by gsam_finer/formula_offline
-#  App. transfer-detail       : Covered by transfer experiments
-#
-#  NOT run (use published ACE paper numbers):
-#    ACE main FiNER/Formula offline & online — already in \citet{ace2025}
-#    warmup+online — appendix rows dropped from Tab full-results
-#
-#  Total: 13 experiment runs  (vs 23 in the full script)
+#  Table 1  (main results)   : ACE + GSAM FiNER/Formula online + offline
+#  Table 2  (ablation)       : 5 GSAM ablations × FiNER + Formula online
+#  Table 3  (FiNER-Transfer) : ACE + GSAM transfer experiments
+#  Table 4  (retrieval/RFR)  : ACE FiNER online baseline
+#  Tables 5/6 (latency/cost) : Timing collected from FiNER online runs
+#  App. graph-quality        : Covered by gsam_finer/formula_offline
 # =============================================================================
 
 set -e
@@ -25,8 +23,9 @@ export PYTHONUTF8=1
 export PYTHONIOENCODING=utf-8
 
 PROVIDER="modal"
-MODEL="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+MODEL="deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 TAX="./eval/finance/data/xbrl_taxonomy.json"
+SAVE_ROOT="clean_results"
 
 log() { echo "[$(date '+%H:%M:%S')] $*"; }
 
@@ -35,7 +34,7 @@ log() { echo "[$(date '+%H:%M:%S')] $*"; }
 # =============================================================================
 
 # is_complete SAVE_DIR
-#   Returns 0 if final_results.json exists and contains a valid accuracy field.
+#   Returns 0 if a final_results.json with a valid accuracy field exists.
 is_complete() {
     local save="$1"
     local f
@@ -56,8 +55,8 @@ PYEOF
 }
 
 # find_partial_run SAVE_DIR
-#   Prints the path of the most recently modified subdirectory that has
-#   progress.json but NOT final_results.json (i.e. an interrupted run).
+#   Prints the most recently modified subdir that has progress.json but NOT
+#   final_results.json (i.e. an interrupted run).
 find_partial_run() {
     local save="$1"
     local best="" best_time=0
@@ -76,7 +75,7 @@ find_partial_run() {
 
 run_ace() {
     local name="$1"; shift
-    local save="results/$name"
+    local save="${SAVE_ROOT}/ace/$name"
     mkdir -p "$save"
     if is_complete "$save"; then
         log "SKIP $name — already complete"; return 0
@@ -96,13 +95,13 @@ run_ace() {
         --curator_model "$MODEL" \
         --save_path "$save" \
         $resume_args \
-        "$@" 2>&1 | tee "results/${name}.log"
+        "$@" 2>&1 | tee "${SAVE_ROOT}/ace/${name}.log"
     log "DONE $name"
 }
 
 run_gsam() {
     local name="$1"; shift
-    local save="results/$name"
+    local save="${SAVE_ROOT}/gsam/$name"
     mkdir -p "$save"
     if is_complete "$save"; then
         log "SKIP $name — already complete"; return 0
@@ -123,33 +122,106 @@ run_gsam() {
         --taxonomy_path "$TAX" \
         --save_path "$save" \
         $resume_args \
-        "$@" 2>&1 | tee "results/${name}.log"
+        "$@" 2>&1 | tee "${SAVE_ROOT}/gsam/${name}.log"
     log "DONE $name"
 }
 
+# run_ablation ABLATION_NAME TASK MODE [extra flags...]
+#   Saves inside clean_results/ablations/ABLATION_NAME/.
+#   Completion is checked per task/mode by matching the timestamped subdir name
+#   (gsam_run_*_{task}_{mode}/final_results.json), so both finer and formula
+#   runs can coexist in the same parent directory without false-skipping.
+run_ablation() {
+    local ablation_name="$1" task="$2" mode="$3"
+    shift 3
+    local save="${SAVE_ROOT}/ablations/${ablation_name}"
+    mkdir -p "$save"
+
+    # Check if a completed run for this task/mode already exists
+    if find "$save" -maxdepth 2 -name 'final_results.json' 2>/dev/null \
+           | grep -q "${task}_${mode}"; then
+        log "SKIP ablation/${ablation_name} (${task}/${mode}) — already complete"
+        return 0
+    fi
+
+    # Resume any interrupted run for this task/mode
+    local resume_args=""
+    local partial
+    partial=$(find "$save" -maxdepth 2 -name 'progress.json' 2>/dev/null \
+        | while IFS= read -r pf; do
+              dir=$(dirname "$pf")
+              echo "$dir" | grep -q "${task}_${mode}" \
+                  && [ ! -f "$dir/final_results.json" ] \
+                  && echo "$dir"
+          done | head -1)
+    if [ -n "$partial" ]; then
+        log "RESUME ablation/${ablation_name} (${task}/${mode}) from: $partial"
+        resume_args="--resume_path $partial"
+    else
+        log "START ablation/${ablation_name} (${task}/${mode}) (fresh)"
+    fi
+
+    python -m eval.finance.run_gsam \
+        --api_provider $PROVIDER \
+        --generator_model "$MODEL" \
+        --reflector_model "$MODEL" \
+        --curator_model "$MODEL" \
+        --taxonomy_path "$TAX" \
+        --save_path "$save" \
+        --task_name "$task" \
+        --mode "$mode" \
+        $resume_args \
+        "$@" 2>&1 | tee "${SAVE_ROOT}/ablations/${ablation_name}_${task}_${mode}.log"
+    log "DONE ablation/${ablation_name} (${task}/${mode})"
+}
+
 cd /c/Users/Window/Desktop/gsam-rsh
-mkdir -p results
+mkdir -p "${SAVE_ROOT}/ace" "${SAVE_ROOT}/gsam" "${SAVE_ROOT}/ablations" "${SAVE_ROOT}/finer_transfer"
 
 # =============================================================================
-# STEP 1 — GSAM main experiments  (Table 1: offline GT + online GT rows)
-# Run GSAM only; ACE numbers come from the published ace2025 paper.
+# STEP 1 — ACE baselines  (all 4 conditions for Table 1)
 # =============================================================================
-log "=== STEP 1: GSAM MAIN EXPERIMENTS ==="
+log "=== STEP 1: ACE BASELINES ==="
 
-# --- FiNER ---
+run_ace ace_finer_online \
+    --task_name finer \
+    --mode online \
+    --max_samples 300
+
+run_ace ace_formula_online \
+    --task_name formula \
+    --mode online \
+    --max_samples 300
+
+run_ace ace_finer_offline \
+    --task_name finer \
+    --mode offline \
+    --num_epochs 5
+
+run_ace ace_formula_offline \
+    --task_name formula \
+    --mode offline \
+    --num_epochs 5
+
+# =============================================================================
+# STEP 2 — GSAM main experiments  (all 4 conditions for Table 1)
+# =============================================================================
+log "=== STEP 2: GSAM MAIN EXPERIMENTS ==="
+
 run_gsam gsam_finer_online \
     --task_name finer \
-    --mode online
+    --mode online \
+    --max_samples 300
 
 run_gsam gsam_finer_offline \
     --task_name finer \
     --mode offline \
     --num_epochs 5
 
-# --- Formula ---
 run_gsam gsam_formula_online \
     --task_name formula \
-    --mode online
+    --mode online \
+    --max_samples 300
 
 run_gsam gsam_formula_offline \
     --task_name formula \
@@ -157,59 +229,58 @@ run_gsam gsam_formula_offline \
     --num_epochs 5
 
 # =============================================================================
-# STEP 2 — ACE FiNER online  (Tables 4, 5, 6: ACE comparison metrics)
-# Retrieval precision, repeated failure rate, latency, token cost all need an
-# ACE FiNER online run to provide the ACE column values.
+# STEP 3 — Ablation study  (Table 2: all 5 ablations × FiNER + Formula, online)
+# Each ablation saves two timestamped run dirs inside its own parent directory.
 # =============================================================================
-log "=== STEP 2: ACE FINER ONLINE (comparison baseline) ==="
+log "=== STEP 3: ABLATIONS (FiNER + Formula, online) ==="
 
-run_ace ace_finer_online \
-    --task_name finer \
-    --mode online
-
-# =============================================================================
-# STEP 3 — Ablation study  (Table 2: FiNER benchmark, online mode)
-# All 5 structural ablations run online on FiNER.
-# The multi-epoch ablation is offline/1-epoch (graph refinement only applies
-# across epochs, so online mode is not meaningful for that variant).
-# ACE flat-baseline row in the table uses the ace_finer_online result above.
-# =============================================================================
-log "=== STEP 3: ABLATIONS (FiNER online) ==="
-
-# Remove ontology layer
-run_gsam ablation_no_ontology \
-    --task_name finer \
-    --mode online \
+# --- no_ontology ---
+run_ablation gsam_no_ontology finer online \
+    --max_samples 300 \
     --no_ontology
 
-# Remove failure cascade modeling
-run_gsam ablation_no_cascades \
-    --task_name finer \
-    --mode online \
+run_ablation gsam_no_ontology formula online \
+    --max_samples 300 \
+    --no_ontology
+
+# --- no_cascades ---
+run_ablation gsam_no_cascades finer online \
+    --max_samples 300 \
     --no_failure_cascades
 
-# Embedding-only retrieval (no graph BFS — tests graph structure value)
-run_gsam ablation_embedding_only \
-    --task_name finer \
-    --mode online \
+run_ablation gsam_no_cascades formula online \
+    --max_samples 300 \
+    --no_failure_cascades
+
+# --- embedding_only ---
+run_ablation gsam_embedding_only finer online \
+    --max_samples 300 \
     --embedding_only_retrieval
 
-# Untyped edges (all edges become generic 'related_to')
-run_gsam ablation_untyped_edges \
-    --task_name finer \
-    --mode online \
+run_ablation gsam_embedding_only formula online \
+    --max_samples 300 \
+    --embedding_only_retrieval
+
+# --- untyped_edges ---
+run_ablation gsam_untyped_edges finer online \
+    --max_samples 300 \
     --untyped_edges
 
-# No multi-epoch graph refinement — offline 1-epoch vs 5-epoch full system
-run_gsam ablation_no_multiepoch \
-    --task_name finer \
-    --mode offline \
-    --num_epochs 1 \
+run_ablation gsam_untyped_edges formula online \
+    --max_samples 300 \
+    --untyped_edges
+
+# --- no_multi_epoch  (online; flag documents the ablation for comparison) ---
+run_ablation gsam_no_multi_epoch finer online \
+    --max_samples 300 \
+    --no_multi_epoch_refinement
+
+run_ablation gsam_no_multi_epoch formula online \
+    --max_samples 300 \
     --no_multi_epoch_refinement
 
 # =============================================================================
 # STEP 4 — FiNER-Transfer benchmark  (Table 3)
-# Build the transfer dataset (idempotent), then evaluate both ACE and GSAM.
 # =============================================================================
 log "=== STEP 4: FINER-TRANSFER BENCHMARK ==="
 
@@ -220,21 +291,20 @@ if [ ! -f "$TRANSFER_DIR/concept_pairs.json" ]; then
     python -m eval.finance.finer_transfer \
         --taxonomy_path "$TAX" \
         --finer_data_path ./eval/finance/data/finer_train_batched_1000_samples.jsonl \
-        --output_dir "$TRANSFER_DIR" 2>&1 | tee results/finer_transfer_build.log
+        --output_dir "$TRANSFER_DIR" 2>&1 | tee "${SAVE_ROOT}/finer_transfer/finer_transfer_build.log"
     log "DONE building FiNER-Transfer"
 else
     log "SKIP FiNER-Transfer build — concept_pairs.json already exists"
 fi
 
 # --- GSAM transfer ---
-if [ ! -f "results/transfer_gsam/aggregate_metrics.json" ]; then
+if [ ! -f "${SAVE_ROOT}/finer_transfer/gsam_transfer_results.json" ]; then
     log "START transfer experiments (GSAM)"
-    python - <<'PYEOF' 2>&1 | tee results/transfer_gsam.log
+    python - <<PYEOF 2>&1 | tee "${SAVE_ROOT}/finer_transfer/finer_transfer.log"
 import os, json, sys
 sys.path.insert(0, '.')
 from eval.finance.finer_transfer import (
-    load_taxonomy, build_transfer_splits,
-    evaluate_transfer, compute_aggregate_transfer_metrics,
+    build_transfer_splits, evaluate_transfer, compute_aggregate_transfer_metrics,
 )
 from eval.finance.data_processor import DataProcessor
 from gsam import GSAM
@@ -251,19 +321,20 @@ experiments = build_transfer_splits(finer_data, pairs)
 
 gsam = GSAM(
     api_provider="modal",
-    generator_model="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-    reflector_model="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-    curator_model="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    generator_model="${MODEL}",
+    reflector_model="${MODEL}",
+    curator_model="${MODEL}",
     taxonomy_path="./eval/finance/data/xbrl_taxonomy.json",
 )
 config = {'max_num_rounds': 3, 'curator_frequency': 1, 'playbook_token_budget': 80000}
-os.makedirs("results/transfer_gsam", exist_ok=True)
+os.makedirs("${SAVE_ROOT}/finer_transfer", exist_ok=True)
 
 results = []
 for experiment in experiments:
     result = evaluate_transfer(
         method_name="gsam", experiment=experiment, system=gsam,
-        data_processor=processor, config=config, save_path="results/transfer_gsam",
+        data_processor=processor, config=config,
+        save_path="${SAVE_ROOT}/finer_transfer",
     )
     results.append(result)
 
@@ -271,17 +342,25 @@ agg = compute_aggregate_transfer_metrics(results)
 print(f"Near-transfer rate:     {agg['near_transfer_rate']:.2%}")
 print(f"Far-transfer rate:      {agg['far_transfer_rate']:.2%}")
 print(f"Negative transfer rate: {agg['negative_transfer_rate']:.2%}")
-json.dump(agg, open("results/transfer_gsam/aggregate_metrics.json", "w"), indent=2)
+
+sibling_results = [r for r in results if r.get('pair_type') == 'sibling']
+distant_results = [r for r in results if r.get('pair_type') == 'distant']
+output = {
+    "sibling_pair_results": sibling_results,
+    "distant_pair_results": distant_results,
+    "aggregate": agg,
+}
+json.dump(output, open("${SAVE_ROOT}/finer_transfer/gsam_transfer_results.json", "w"), indent=2)
 PYEOF
     log "DONE transfer experiments (GSAM)"
 else
-    log "SKIP transfer GSAM — aggregate_metrics.json already exists"
+    log "SKIP transfer GSAM — gsam_transfer_results.json already exists"
 fi
 
-# --- ACE transfer (needed for Table 3 ACE row) ---
-if [ ! -f "results/transfer_ace/aggregate_metrics.json" ]; then
+# --- ACE transfer ---
+if [ ! -f "${SAVE_ROOT}/finer_transfer/ace_transfer_results.json" ]; then
     log "START transfer experiments (ACE)"
-    python - <<'PYEOF' 2>&1 | tee results/transfer_ace.log
+    python - <<PYEOF 2>&1 | tee -a "${SAVE_ROOT}/finer_transfer/finer_transfer.log"
 import os, json, sys
 sys.path.insert(0, '.')
 from eval.finance.finer_transfer import (
@@ -289,7 +368,6 @@ from eval.finance.finer_transfer import (
 )
 from eval.finance.data_processor import DataProcessor
 from ace import ACE
-from utils import initialize_clients
 
 pairs = json.load(open("eval/finance/data/finer_transfer/concept_pairs.json"))
 processor = DataProcessor(task_name="finer")
@@ -303,18 +381,18 @@ experiments = build_transfer_splits(finer_data, pairs)
 
 ace = ACE(
     api_provider="modal",
-    generator_model="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-    reflector_model="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-    curator_model="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    generator_model="${MODEL}",
+    reflector_model="${MODEL}",
+    curator_model="${MODEL}",
 )
 config = {'max_num_rounds': 3, 'curator_frequency': 1, 'playbook_token_budget': 80000}
-os.makedirs("results/transfer_ace", exist_ok=True)
 
 results = []
 for experiment in experiments:
     result = evaluate_transfer(
         method_name="ace", experiment=experiment, system=ace,
-        data_processor=processor, config=config, save_path="results/transfer_ace",
+        data_processor=processor, config=config,
+        save_path="${SAVE_ROOT}/finer_transfer",
     )
     results.append(result)
 
@@ -322,19 +400,74 @@ agg = compute_aggregate_transfer_metrics(results)
 print(f"Near-transfer rate:     {agg['near_transfer_rate']:.2%}")
 print(f"Far-transfer rate:      {agg['far_transfer_rate']:.2%}")
 print(f"Negative transfer rate: {agg['negative_transfer_rate']:.2%}")
-json.dump(agg, open("results/transfer_ace/aggregate_metrics.json", "w"), indent=2)
+
+sibling_results = [r for r in results if r.get('pair_type') == 'sibling']
+distant_results = [r for r in results if r.get('pair_type') == 'distant']
+output = {
+    "sibling_pair_results": sibling_results,
+    "distant_pair_results": distant_results,
+    "aggregate": agg,
+}
+json.dump(output, open("${SAVE_ROOT}/finer_transfer/ace_transfer_results.json", "w"), indent=2)
 PYEOF
     log "DONE transfer experiments (ACE)"
 else
-    log "SKIP transfer ACE — aggregate_metrics.json already exists"
+    log "SKIP transfer ACE — ace_transfer_results.json already exists"
+fi
+
+# --- Generate transfer_summary.json once both results are available ---
+if [ -f "${SAVE_ROOT}/finer_transfer/gsam_transfer_results.json" ] && \
+   [ -f "${SAVE_ROOT}/finer_transfer/ace_transfer_results.json" ] && \
+   [ ! -f "${SAVE_ROOT}/finer_transfer/transfer_summary.json" ]; then
+    log "Generating transfer_summary.json..."
+    python - <<PYEOF
+import json
+
+gsam = json.load(open("${SAVE_ROOT}/finer_transfer/gsam_transfer_results.json"))['aggregate']
+ace  = json.load(open("${SAVE_ROOT}/finer_transfer/ace_transfer_results.json"))['aggregate']
+
+def safe_ratio(a, b):
+    return round(a / b, 3) if b and b != 0 else None
+
+summary = {
+    "comparison": {
+        "near_transfer_rate": {
+            "ACE":  round(ace.get('near_transfer_rate', 0), 3),
+            "GSAM": round(gsam.get('near_transfer_rate', 0), 3),
+            "improvement": safe_ratio(
+                gsam.get('near_transfer_rate', 0),
+                ace.get('near_transfer_rate', 1),
+            ),
+        },
+        "far_transfer_rate": {
+            "ACE":  round(ace.get('far_transfer_rate', 0), 3),
+            "GSAM": round(gsam.get('far_transfer_rate', 0), 3),
+        },
+        "transfer_precision": {
+            "ACE":  round(ace.get('transfer_precision', 0), 3),
+            "GSAM": round(gsam.get('transfer_precision', 0), 3),
+        },
+        "negative_transfer_rate": {
+            "ACE":  round(ace.get('negative_transfer_rate', 0), 3),
+            "GSAM": round(gsam.get('negative_transfer_rate', 0), 3),
+            "reduction": safe_ratio(
+                ace.get('negative_transfer_rate', 0) - gsam.get('negative_transfer_rate', 0),
+                ace.get('negative_transfer_rate', 1),
+            ),
+        },
+    }
+}
+json.dump(summary, open("${SAVE_ROOT}/finer_transfer/transfer_summary.json", "w"), indent=2)
+print("transfer_summary.json written.")
+PYEOF
 fi
 
 # =============================================================================
 # STEP 5 — Collect results and print all paper tables
 # =============================================================================
 log "=== STEP 5: COLLECTING ALL RESULTS ==="
-python analyze_results.py
+python analyze_results.py --results_dir "${SAVE_ROOT}"
 
 log "ALL EXPERIMENTS COMPLETE"
-log "Results in: results/"
-log "Re-run 'python analyze_results.py' at any time to reprint paper tables."
+log "Results in: ${SAVE_ROOT}/"
+log "Re-run 'python analyze_results.py --results_dir ${SAVE_ROOT}' at any time to reprint paper tables."

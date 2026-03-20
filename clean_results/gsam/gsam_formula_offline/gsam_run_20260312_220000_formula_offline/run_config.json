@@ -1,0 +1,33 @@
+{
+  "task_name": "formula",
+  "mode": "offline",
+  "run_id": "gsam_run_20260312_220000_formula_offline",
+  "config": {
+    "num_epochs": 5,
+    "max_num_rounds": 3,
+    "curator_frequency": 1,
+    "eval_steps": 100,
+    "online_eval_frequency": 15,
+    "save_steps": 50,
+    "playbook_token_budget": 80000,
+    "task_name": "formula",
+    "mode": "offline",
+    "json_mode": false,
+    "no_ground_truth": false,
+    "save_dir": "clean_results/gsam/gsam_formula_offline",
+    "test_workers": 20,
+    "api_provider": "modal",
+    "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+    "max_samples": 300,
+    "taxonomy_path": "./eval/finance/data/xbrl_taxonomy.json",
+    "merge_threshold": 0.9,
+    "retrieval_depth": 2,
+    "prune_frequency": 50,
+    "no_ontology": false,
+    "no_failure_cascades": false,
+    "embedding_only_retrieval": false,
+    "untyped_edges": false,
+    "no_multi_epoch_refinement": false,
+    "resume_path": null
+  }
+}

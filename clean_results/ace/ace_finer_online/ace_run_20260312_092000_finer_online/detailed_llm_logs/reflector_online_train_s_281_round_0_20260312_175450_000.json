@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_281_round_0",
+  "role": "reflector",
+  "step": 281,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 1455,
+  "completion_tokens": 358,
+  "latency_s": 9.27,
+  "timestamp": "2026-03-12T17:54:50",
+  "is_correct": false,
+  "tag_predicted": "LineOfCreditFacilityCurrentBorrowingCapacity",
+  "tag_ground_truth": "IncomeTaxExpenseBenefit"
+}

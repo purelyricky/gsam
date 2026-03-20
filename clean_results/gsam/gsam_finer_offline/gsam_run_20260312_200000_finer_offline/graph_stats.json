@@ -1,0 +1,60 @@
+{
+  "task": "finer",
+  "mode": "offline",
+  "final_node_counts": {
+    "Concept": 139,
+    "Strategy": 280,
+    "AntiPattern": 115,
+    "Confusion": 95,
+    "Formula": 0,
+    "total": 629
+  },
+  "final_edge_counts": {
+    "is_a": 201,
+    "applies_to": 420,
+    "fails_for": 179,
+    "confused_with": 95,
+    "fixes": 35,
+    "depends_on": 0,
+    "conflicts_with": 1
+  },
+  "concept_coverage_final": 0.927,
+  "concepts_with_strategy": 129,
+  "growth_by_step": {
+    "step_0": {
+      "Strategy": 0,
+      "AntiPattern": 0,
+      "Confusion": 0
+    },
+    "step_50": {
+      "Strategy": 15,
+      "AntiPattern": 5,
+      "Confusion": 3
+    },
+    "step_100": {
+      "Strategy": 56,
+      "AntiPattern": 25,
+      "Confusion": 18
+    },
+    "step_150": {
+      "Strategy": 102,
+      "AntiPattern": 48,
+      "Confusion": 35
+    },
+    "step_200": {
+      "Strategy": 185,
+      "AntiPattern": 82,
+      "Confusion": 68
+    },
+    "step_250": {
+      "Strategy": 245,
+      "AntiPattern": 105,
+      "Confusion": 87
+    },
+    "step_300": {
+      "Strategy": 280,
+      "AntiPattern": 115,
+      "Confusion": 95
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "ace_run_20260312_092000_finer_online",
+  "task": "finer",
+  "mode": "online",
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "max_samples": 300,
+  "num_windows": 20,
+  "window_size": 15,
+  "max_rounds": 1,
+  "num_epochs": 1,
+  "use_typed_edges": false,
+  "use_ontology": false,
+  "use_cascades": false,
+  "system": "ACE",
+  "modal_url": "https://bata24941--gsam-deepseek-serve-deepseekserver-serve.modal.run/v1",
+  "started_at": "2026-03-12T09:20:00",
+  "completed_at": "2026-03-12T12:42:00",
+  "git_hash": "c99514f"
+}

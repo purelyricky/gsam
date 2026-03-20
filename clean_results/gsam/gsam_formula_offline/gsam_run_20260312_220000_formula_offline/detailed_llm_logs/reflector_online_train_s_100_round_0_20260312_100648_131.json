@@ -1,0 +1,12 @@
+{
+  "call_id": "online_train_s_100_round_0",
+  "role": "reflector",
+  "step": 100,
+  "window": 7,
+  "timestamp": "2026-03-12T10:06:48.000000",
+  "input_tokens": 2627,
+  "output_tokens": 396,
+  "latency_s": 9.51,
+  "is_correct_before": false,
+  "reflection_output": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw."
+}

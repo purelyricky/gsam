@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_171",
+  "role": "curator",
+  "step": 171,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 1979,
+  "completion_tokens": 592,
+  "latency_s": 13.28,
+  "timestamp": "2026-03-12T14:33:10",
+  "is_correct": true,
+  "tag_predicted": "NumberOfReportableSegments",
+  "tag_ground_truth": "AmortizationOfIntangibleAssets"
+}

@@ -1,0 +1,4034 @@
+{
+  "step": 100,
+  "task": "formula",
+  "timestamp": "2026-03-12T10:06:40.000000",
+  "node_counts": {
+    "Concept": 136,
+    "Strategy": 32,
+    "AntiPattern": 13,
+    "Confusion": 11,
+    "total": 192
+  },
+  "edge_counts": {
+    "is_a": 201,
+    "applies_to": 44,
+    "fails_for": 13,
+    "fixes": 4,
+    "confused_with": 11,
+    "total": 273
+  },
+  "concept_coverage": 0.31,
+  "nodes": [
+    {
+      "id": "C:0001",
+      "type": "Concept",
+      "content": "XBRL concept: RevenueFromContractWithCustomerExcludingAssessedTax. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "taxonomy_path": "RevenueAndIncome > RevenueRecognition > RevenueFromContractWithCustomerExcludingAssessedTax"
+    },
+    {
+      "id": "C:0002",
+      "type": "Concept",
+      "content": "XBRL concept: ContractWithCustomerLiability. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ContractWithCustomerLiability",
+      "taxonomy_path": "XBRLTaxonomy > ContractWithCustomerLiability > ContractWithCustomerLiability"
+    },
+    {
+      "id": "C:0003",
+      "type": "Concept",
+      "content": "XBRL concept: ContractWithCustomerLiabilityRevenueRecognized. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ContractWithCustomerLiabilityRevenueRecognized",
+      "taxonomy_path": "XBRLTaxonomy > ContractWithCustomerLiabilityRevenueRecognized > ContractWithCustomerLiabilityRevenueRecognized"
+    },
+    {
+      "id": "C:0004",
+      "type": "Concept",
+      "content": "XBRL concept: DebtInstrumentFaceAmount. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DebtInstrumentFaceAmount",
+      "taxonomy_path": "Debt > DebtInstruments > DebtInstrumentFaceAmount"
+    },
+    {
+      "id": "C:0005",
+      "type": "Concept",
+      "content": "XBRL concept: DebtInstrumentCarryingAmount. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DebtInstrumentCarryingAmount",
+      "taxonomy_path": "XBRLTaxonomy > DebtInstrumentCarryingAmount > DebtInstrumentCarryingAmount"
+    },
+    {
+      "id": "C:0006",
+      "type": "Concept",
+      "content": "XBRL concept: DebtInstrumentInterestRateStatedPercentage. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DebtInstrumentInterestRateStatedPercentage",
+      "taxonomy_path": "XBRLTaxonomy > DebtInstrumentInterestRateStatedPercentage > DebtInstrumentInterestRateStatedPercentage"
+    },
+    {
+      "id": "C:0007",
+      "type": "Concept",
+      "content": "XBRL concept: DebtInstrumentMaturityDate. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DebtInstrumentMaturityDate",
+      "taxonomy_path": "XBRLTaxonomy > DebtInstrumentMaturityDate > DebtInstrumentMaturityDate"
+    },
+    {
+      "id": "C:0008",
+      "type": "Concept",
+      "content": "XBRL concept: DebtInstrumentTerm. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DebtInstrumentTerm",
+      "taxonomy_path": "XBRLTaxonomy > DebtInstrumentTerm > DebtInstrumentTerm"
+    },
+    {
+      "id": "C:0009",
+      "type": "Concept",
+      "content": "XBRL concept: DebtInstrumentRedemptionPricePercentage. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DebtInstrumentRedemptionPricePercentage",
+      "taxonomy_path": "XBRLTaxonomy > DebtInstrumentRedemptionPricePercentage > DebtInstrumentRedemptionPricePercentage"
+    },
+    {
+      "id": "C:0010",
+      "type": "Concept",
+      "content": "XBRL concept: LongTermDebtFairValue. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LongTermDebtFairValue",
+      "taxonomy_path": "XBRLTaxonomy > LongTermDebtFairValue > LongTermDebtFairValue"
+    },
+    {
+      "id": "C:0011",
+      "type": "Concept",
+      "content": "XBRL concept: LongTermDebt. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LongTermDebt",
+      "taxonomy_path": "XBRLTaxonomy > LongTermDebt > LongTermDebt"
+    },
+    {
+      "id": "C:0012",
+      "type": "Concept",
+      "content": "XBRL concept: LongTermDebtCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LongTermDebtCurrent",
+      "taxonomy_path": "XBRLTaxonomy > LongTermDebtCurrent > LongTermDebtCurrent"
+    },
+    {
+      "id": "C:0013",
+      "type": "Concept",
+      "content": "XBRL concept: ShortTermBorrowings. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ShortTermBorrowings",
+      "taxonomy_path": "XBRLTaxonomy > ShortTermBorrowings > ShortTermBorrowings"
+    },
+    {
+      "id": "C:0014",
+      "type": "Concept",
+      "content": "XBRL concept: LineOfCreditFacilityMaximumBorrowingCapacity. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LineOfCreditFacilityMaximumBorrowingCapacity",
+      "taxonomy_path": "Debt > CreditFacilities > LineOfCreditFacilityMaximumBorrowingCapacity"
+    },
+    {
+      "id": "C:0015",
+      "type": "Concept",
+      "content": "XBRL concept: LineOfCreditFacilityCurrentBorrowingCapacity. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LineOfCreditFacilityCurrentBorrowingCapacity",
+      "taxonomy_path": "XBRLTaxonomy > LineOfCreditFacilityCurrentBorrowingCapacity > LineOfCreditFacilityCurrentBorrowingCapacity"
+    },
+    {
+      "id": "C:0016",
+      "type": "Concept",
+      "content": "XBRL concept: LineOfCreditFacilityRemainingBorrowingCapacity. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LineOfCreditFacilityRemainingBorrowingCapacity",
+      "taxonomy_path": "XBRLTaxonomy > LineOfCreditFacilityRemainingBorrowingCapacity > LineOfCreditFacilityRemainingBorrowingCapacity"
+    },
+    {
+      "id": "C:0017",
+      "type": "Concept",
+      "content": "XBRL concept: CommonStockSharesAuthorized. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CommonStockSharesAuthorized",
+      "taxonomy_path": "Equity > CommonStock > CommonStockSharesAuthorized"
+    },
+    {
+      "id": "C:0018",
+      "type": "Concept",
+      "content": "XBRL concept: CommonStockSharesOutstanding. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CommonStockSharesOutstanding",
+      "taxonomy_path": "XBRLTaxonomy > CommonStockSharesOutstanding > CommonStockSharesOutstanding"
+    },
+    {
+      "id": "C:0019",
+      "type": "Concept",
+      "content": "XBRL concept: CommonStockParOrStatedValuePerShare. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CommonStockParOrStatedValuePerShare",
+      "taxonomy_path": "XBRLTaxonomy > CommonStockParOrStatedValuePerShare > CommonStockParOrStatedValuePerShare"
+    },
+    {
+      "id": "C:0020",
+      "type": "Concept",
+      "content": "XBRL concept: PreferredStockSharesAuthorized. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "PreferredStockSharesAuthorized",
+      "taxonomy_path": "XBRLTaxonomy > PreferredStockSharesAuthorized > PreferredStockSharesAuthorized"
+    },
+    {
+      "id": "C:0021",
+      "type": "Concept",
+      "content": "XBRL concept: PreferredStockSharesOutstanding. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "PreferredStockSharesOutstanding",
+      "taxonomy_path": "XBRLTaxonomy > PreferredStockSharesOutstanding > PreferredStockSharesOutstanding"
+    },
+    {
+      "id": "C:0022",
+      "type": "Concept",
+      "content": "XBRL concept: TreasuryStockShares. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "TreasuryStockShares",
+      "taxonomy_path": "XBRLTaxonomy > TreasuryStockShares > TreasuryStockShares"
+    },
+    {
+      "id": "C:0023",
+      "type": "Concept",
+      "content": "XBRL concept: AllocatedShareBasedCompensationExpense. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AllocatedShareBasedCompensationExpense",
+      "taxonomy_path": "Compensation > StockBased > AllocatedShareBasedCompensationExpense"
+    },
+    {
+      "id": "C:0024",
+      "type": "Concept",
+      "content": "XBRL concept: EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized",
+      "taxonomy_path": "XBRLTaxonomy > EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized > EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized"
+    },
+    {
+      "id": "C:0025",
+      "type": "Concept",
+      "content": "XBRL concept: ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1",
+      "taxonomy_path": "XBRLTaxonomy > ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 > ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1"
+    },
+    {
+      "id": "C:0026",
+      "type": "Concept",
+      "content": "XBRL concept: ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber",
+      "taxonomy_path": "XBRLTaxonomy > ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber > ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber"
+    },
+    {
+      "id": "C:0027",
+      "type": "Concept",
+      "content": "XBRL concept: ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue",
+      "taxonomy_path": "XBRLTaxonomy > ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue > ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue"
+    },
+    {
+      "id": "C:0028",
+      "type": "Concept",
+      "content": "XBRL concept: ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized",
+      "taxonomy_path": "XBRLTaxonomy > ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized > ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized"
+    },
+    {
+      "id": "C:0029",
+      "type": "Concept",
+      "content": "XBRL concept: ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross",
+      "taxonomy_path": "XBRLTaxonomy > ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross > ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross"
+    },
+    {
+      "id": "C:0030",
+      "type": "Concept",
+      "content": "XBRL concept: NumberOfOperatingSegments. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NumberOfOperatingSegments",
+      "taxonomy_path": "SegmentReporting > NumberOfOperatingSegments"
+    },
+    {
+      "id": "C:0031",
+      "type": "Concept",
+      "content": "XBRL concept: NumberOfReportableSegments. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NumberOfReportableSegments",
+      "taxonomy_path": "XBRLTaxonomy > NumberOfReportableSegments > NumberOfReportableSegments"
+    },
+    {
+      "id": "C:0032",
+      "type": "Concept",
+      "content": "XBRL concept: OperatingLeaseCost. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OperatingLeaseCost",
+      "taxonomy_path": "Leases > OperatingLeases > OperatingLeaseCost"
+    },
+    {
+      "id": "C:0033",
+      "type": "Concept",
+      "content": "XBRL concept: FinanceLeaseCost. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "FinanceLeaseCost",
+      "taxonomy_path": "XBRLTaxonomy > FinanceLeaseCost > FinanceLeaseCost"
+    },
+    {
+      "id": "C:0034",
+      "type": "Concept",
+      "content": "XBRL concept: OperatingLeaseRightOfUseAsset. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OperatingLeaseRightOfUseAsset",
+      "taxonomy_path": "XBRLTaxonomy > OperatingLeaseRightOfUseAsset > OperatingLeaseRightOfUseAsset"
+    },
+    {
+      "id": "C:0035",
+      "type": "Concept",
+      "content": "XBRL concept: OperatingLeaseLiability. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OperatingLeaseLiability",
+      "taxonomy_path": "XBRLTaxonomy > OperatingLeaseLiability > OperatingLeaseLiability"
+    },
+    {
+      "id": "C:0036",
+      "type": "Concept",
+      "content": "XBRL concept: OperatingLeaseWeightedAverageRemainingLeaseTerm1. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OperatingLeaseWeightedAverageRemainingLeaseTerm1",
+      "taxonomy_path": "XBRLTaxonomy > OperatingLeaseWeightedAverageRemainingLeaseTerm1 > OperatingLeaseWeightedAverageRemainingLeaseTerm1"
+    },
+    {
+      "id": "C:0037",
+      "type": "Concept",
+      "content": "XBRL concept: OperatingLeaseWeightedAverageDiscountRatePercent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OperatingLeaseWeightedAverageDiscountRatePercent",
+      "taxonomy_path": "XBRLTaxonomy > OperatingLeaseWeightedAverageDiscountRatePercent > OperatingLeaseWeightedAverageDiscountRatePercent"
+    },
+    {
+      "id": "C:0038",
+      "type": "Concept",
+      "content": "XBRL concept: FinanceLeaseRightOfUseAsset. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "FinanceLeaseRightOfUseAsset",
+      "taxonomy_path": "XBRLTaxonomy > FinanceLeaseRightOfUseAsset > FinanceLeaseRightOfUseAsset"
+    },
+    {
+      "id": "C:0039",
+      "type": "Concept",
+      "content": "XBRL concept: FinanceLeaseLiability. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "FinanceLeaseLiability",
+      "taxonomy_path": "XBRLTaxonomy > FinanceLeaseLiability > FinanceLeaseLiability"
+    },
+    {
+      "id": "C:0040",
+      "type": "Concept",
+      "content": "XBRL concept: GoodwillImpairmentLoss. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "GoodwillImpairmentLoss",
+      "taxonomy_path": "XBRLTaxonomy > GoodwillImpairmentLoss > GoodwillImpairmentLoss"
+    },
+    {
+      "id": "C:0041",
+      "type": "Concept",
+      "content": "XBRL concept: Goodwill. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "Goodwill",
+      "taxonomy_path": "Assets > IntangibleAssets > Goodwill"
+    },
+    {
+      "id": "C:0042",
+      "type": "Concept",
+      "content": "XBRL concept: AmortizationOfIntangibleAssets. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AmortizationOfIntangibleAssets",
+      "taxonomy_path": "XBRLTaxonomy > AmortizationOfIntangibleAssets > AmortizationOfIntangibleAssets"
+    },
+    {
+      "id": "C:0043",
+      "type": "Concept",
+      "content": "XBRL concept: FiniteLivedIntangibleAssetsNet. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "FiniteLivedIntangibleAssetsNet",
+      "taxonomy_path": "XBRLTaxonomy > FiniteLivedIntangibleAssetsNet > FiniteLivedIntangibleAssetsNet"
+    },
+    {
+      "id": "C:0044",
+      "type": "Concept",
+      "content": "XBRL concept: IndefiniteLivedIntangibleAssetsExcludingGoodwill. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "IndefiniteLivedIntangibleAssetsExcludingGoodwill",
+      "taxonomy_path": "XBRLTaxonomy > IndefiniteLivedIntangibleAssetsExcludingGoodwill > IndefiniteLivedIntangibleAssetsExcludingGoodwill"
+    },
+    {
+      "id": "C:0045",
+      "type": "Concept",
+      "content": "XBRL concept: RestructuringCharges. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RestructuringCharges",
+      "taxonomy_path": "XBRLTaxonomy > RestructuringCharges > RestructuringCharges"
+    },
+    {
+      "id": "C:0046",
+      "type": "Concept",
+      "content": "XBRL concept: RestructuringAndRelatedCostExpectedCost1. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RestructuringAndRelatedCostExpectedCost1",
+      "taxonomy_path": "XBRLTaxonomy > Restructuring > RestructuringAndRelatedCostExpectedCost1"
+    },
+    {
+      "id": "C:0047",
+      "type": "Concept",
+      "content": "XBRL concept: BusinessAcquisitionCostOfAcquiredEntityTransactionCosts. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "BusinessAcquisitionCostOfAcquiredEntityTransactionCosts",
+      "taxonomy_path": "XBRLTaxonomy > BusinessAcquisitionCostOfAcquiredEntityTransactionCosts > BusinessAcquisitionCostOfAcquiredEntityTransactionCosts"
+    },
+    {
+      "id": "C:0048",
+      "type": "Concept",
+      "content": "XBRL concept: BusinessCombinationConsiderationTransferred1. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "BusinessCombinationConsiderationTransferred1",
+      "taxonomy_path": "XBRLTaxonomy > BusinessCombinationConsiderationTransferred1 > BusinessCombinationConsiderationTransferred1"
+    },
+    {
+      "id": "C:0049",
+      "type": "Concept",
+      "content": "XBRL concept: NetIncomeLoss. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NetIncomeLoss",
+      "taxonomy_path": "Income > NetIncome > NetIncomeLoss"
+    },
+    {
+      "id": "C:0050",
+      "type": "Concept",
+      "content": "XBRL concept: ComprehensiveIncomeNetOfTax. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ComprehensiveIncomeNetOfTax",
+      "taxonomy_path": "XBRLTaxonomy > ComprehensiveIncomeNetOfTax > ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "id": "C:0051",
+      "type": "Concept",
+      "content": "XBRL concept: OtherComprehensiveIncomeLossNetOfTax. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OtherComprehensiveIncomeLossNetOfTax",
+      "taxonomy_path": "XBRLTaxonomy > OtherComprehensiveIncomeLossNetOfTax > OtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "id": "C:0052",
+      "type": "Concept",
+      "content": "XBRL concept: EarningsPerShareBasic. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "EarningsPerShareBasic",
+      "taxonomy_path": "XBRLTaxonomy > EarningsPerShareBasic > EarningsPerShareBasic"
+    },
+    {
+      "id": "C:0053",
+      "type": "Concept",
+      "content": "XBRL concept: EarningsPerShareDiluted. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "EarningsPerShareDiluted",
+      "taxonomy_path": "XBRLTaxonomy > EarningsPerShareDiluted > EarningsPerShareDiluted"
+    },
+    {
+      "id": "C:0054",
+      "type": "Concept",
+      "content": "XBRL concept: WeightedAverageNumberOfSharesOutstandingBasic. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "WeightedAverageNumberOfSharesOutstandingBasic",
+      "taxonomy_path": "XBRLTaxonomy > WeightedAverageNumberOfSharesOutstandingBasic > WeightedAverageNumberOfSharesOutstandingBasic"
+    },
+    {
+      "id": "C:0055",
+      "type": "Concept",
+      "content": "XBRL concept: WeightedAverageNumberOfSharesDiluted. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "WeightedAverageNumberOfSharesDiluted",
+      "taxonomy_path": "XBRLTaxonomy > WeightedAverageNumberOfSharesDiluted > WeightedAverageNumberOfSharesDiluted"
+    },
+    {
+      "id": "C:0056",
+      "type": "Concept",
+      "content": "XBRL concept: Depreciation. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "Depreciation",
+      "taxonomy_path": "OperatingExpenses > DepreciationAmortization > Depreciation"
+    },
+    {
+      "id": "C:0057",
+      "type": "Concept",
+      "content": "XBRL concept: DepreciationDepletionAndAmortization. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DepreciationDepletionAndAmortization",
+      "taxonomy_path": "XBRLTaxonomy > DepreciationDepletion > DepreciationDepletionAndAmortization"
+    },
+    {
+      "id": "C:0058",
+      "type": "Concept",
+      "content": "XBRL concept: CapitalExpendituresIncurredButNotYetPaid. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CapitalExpendituresIncurredButNotYetPaid",
+      "taxonomy_path": "XBRLTaxonomy > CapitalExpendituresIncurredButNotYetPaid > CapitalExpendituresIncurredButNotYetPaid"
+    },
+    {
+      "id": "C:0059",
+      "type": "Concept",
+      "content": "XBRL concept: PaymentsToAcquirePropertyPlantAndEquipment. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "taxonomy_path": "XBRLTaxonomy > PaymentsToAcquirePropertyPlant > PaymentsToAcquirePropertyPlantAndEquipment"
+    },
+    {
+      "id": "C:0060",
+      "type": "Concept",
+      "content": "XBRL concept: PropertyPlantAndEquipmentNet. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "PropertyPlantAndEquipmentNet",
+      "taxonomy_path": "XBRLTaxonomy > PropertyPlant > PropertyPlantAndEquipmentNet"
+    },
+    {
+      "id": "C:0061",
+      "type": "Concept",
+      "content": "XBRL concept: DeferredFinanceCostsNet. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DeferredFinanceCostsNet",
+      "taxonomy_path": "XBRLTaxonomy > DeferredFinanceCostsNet > DeferredFinanceCostsNet"
+    },
+    {
+      "id": "C:0062",
+      "type": "Concept",
+      "content": "XBRL concept: DeferredTaxLiabilitiesGross. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DeferredTaxLiabilitiesGross",
+      "taxonomy_path": "XBRLTaxonomy > DeferredTaxLiabilitiesGross > DeferredTaxLiabilitiesGross"
+    },
+    {
+      "id": "C:0063",
+      "type": "Concept",
+      "content": "XBRL concept: UnrecognizedTaxBenefits. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "UnrecognizedTaxBenefits",
+      "taxonomy_path": "XBRLTaxonomy > UnrecognizedTaxBenefits > UnrecognizedTaxBenefits"
+    },
+    {
+      "id": "C:0064",
+      "type": "Concept",
+      "content": "XBRL concept: EffectiveIncomeTaxRateContinuingOperations. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "EffectiveIncomeTaxRateContinuingOperations",
+      "taxonomy_path": "XBRLTaxonomy > EffectiveIncomeTaxRateContinuingOperations > EffectiveIncomeTaxRateContinuingOperations"
+    },
+    {
+      "id": "C:0065",
+      "type": "Concept",
+      "content": "XBRL concept: IncomeTaxExpenseBenefit. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "IncomeTaxExpenseBenefit",
+      "taxonomy_path": "XBRLTaxonomy > IncomeTaxExpenseBenefit > IncomeTaxExpenseBenefit"
+    },
+    {
+      "id": "C:0066",
+      "type": "Concept",
+      "content": "XBRL concept: LossContingencyEstimateOfPossibleLoss. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LossContingencyEstimateOfPossibleLoss",
+      "taxonomy_path": "XBRLTaxonomy > LossContingencyEstimateOfPossibleLoss > LossContingencyEstimateOfPossibleLoss"
+    },
+    {
+      "id": "C:0067",
+      "type": "Concept",
+      "content": "XBRL concept: LitigationSettlementAmount. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LitigationSettlementAmount",
+      "taxonomy_path": "XBRLTaxonomy > LitigationSettlementAmount > LitigationSettlementAmount"
+    },
+    {
+      "id": "C:0068",
+      "type": "Concept",
+      "content": "XBRL concept: GainsLossesOnExtinguishmentOfDebt. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "GainsLossesOnExtinguishmentOfDebt",
+      "taxonomy_path": "XBRLTaxonomy > GainsLossesOnExtinguishmentOfDebt > GainsLossesOnExtinguishmentOfDebt"
+    },
+    {
+      "id": "C:0069",
+      "type": "Concept",
+      "content": "XBRL concept: RelatedPartyTransactionAmountsOfTransaction. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RelatedPartyTransactionAmountsOfTransaction",
+      "taxonomy_path": "XBRLTaxonomy > RelatedPartyTransactionAmountsOfTransaction > RelatedPartyTransactionAmountsOfTransaction"
+    },
+    {
+      "id": "C:0070",
+      "type": "Concept",
+      "content": "XBRL concept: DefinedBenefitPlanContributionsByEmployer. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DefinedBenefitPlanContributionsByEmployer",
+      "taxonomy_path": "XBRLTaxonomy > DefinedBenefitPlanContributionsByEmployer > DefinedBenefitPlanContributionsByEmployer"
+    },
+    {
+      "id": "C:0071",
+      "type": "Concept",
+      "content": "XBRL concept: DefinedContributionPlanCostRecognized. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DefinedContributionPlanCostRecognized",
+      "taxonomy_path": "XBRLTaxonomy > DefinedContributionPlanCostRecognized > DefinedContributionPlanCostRecognized"
+    },
+    {
+      "id": "C:0072",
+      "type": "Concept",
+      "content": "XBRL concept: AssetImpairmentCharges. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AssetImpairmentCharges",
+      "taxonomy_path": "XBRLTaxonomy > AssetImpairmentCharges > AssetImpairmentCharges"
+    },
+    {
+      "id": "C:0073",
+      "type": "Concept",
+      "content": "XBRL concept: ImpairmentOfLongLivedAssetsHeldForUse. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ImpairmentOfLongLivedAssetsHeldForUse",
+      "taxonomy_path": "XBRLTaxonomy > ImpairmentOfLongLivedAssetsHeldForUse > ImpairmentOfLongLivedAssetsHeldForUse"
+    },
+    {
+      "id": "C:0074",
+      "type": "Concept",
+      "content": "XBRL concept: CashAndCashEquivalentsAtCarryingValue. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CashAndCashEquivalentsAtCarryingValue",
+      "taxonomy_path": "XBRLTaxonomy > Cash > CashAndCashEquivalentsAtCarryingValue"
+    },
+    {
+      "id": "C:0075",
+      "type": "Concept",
+      "content": "XBRL concept: RestrictedCash. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RestrictedCash",
+      "taxonomy_path": "XBRLTaxonomy > RestrictedCash > RestrictedCash"
+    },
+    {
+      "id": "C:0076",
+      "type": "Concept",
+      "content": "XBRL concept: InvestmentsAndAdvances. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "InvestmentsAndAdvances",
+      "taxonomy_path": "XBRLTaxonomy > Investments > InvestmentsAndAdvances"
+    },
+    {
+      "id": "C:0077",
+      "type": "Concept",
+      "content": "XBRL concept: AvailableForSaleSecurities. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AvailableForSaleSecurities",
+      "taxonomy_path": "XBRLTaxonomy > AvailableForSaleSecurities > AvailableForSaleSecurities"
+    },
+    {
+      "id": "C:0078",
+      "type": "Concept",
+      "content": "XBRL concept: InventoryNet. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "InventoryNet",
+      "taxonomy_path": "XBRLTaxonomy > InventoryNet > InventoryNet"
+    },
+    {
+      "id": "C:0079",
+      "type": "Concept",
+      "content": "XBRL concept: AccountsReceivableNetCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AccountsReceivableNetCurrent",
+      "taxonomy_path": "XBRLTaxonomy > AccountsReceivableNetCurrent > AccountsReceivableNetCurrent"
+    },
+    {
+      "id": "C:0080",
+      "type": "Concept",
+      "content": "XBRL concept: AccountsPayableCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AccountsPayableCurrent",
+      "taxonomy_path": "XBRLTaxonomy > AccountsPayableCurrent > AccountsPayableCurrent"
+    },
+    {
+      "id": "C:0081",
+      "type": "Concept",
+      "content": "XBRL concept: AccruedLiabilitiesCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AccruedLiabilitiesCurrent",
+      "taxonomy_path": "XBRLTaxonomy > AccruedLiabilitiesCurrent > AccruedLiabilitiesCurrent"
+    },
+    {
+      "id": "C:0082",
+      "type": "Concept",
+      "content": "XBRL concept: DeferredRevenueCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DeferredRevenueCurrent",
+      "taxonomy_path": "XBRLTaxonomy > DeferredRevenueCurrent > DeferredRevenueCurrent"
+    },
+    {
+      "id": "C:0083",
+      "type": "Concept",
+      "content": "XBRL concept: DeferredRevenueNoncurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DeferredRevenueNoncurrent",
+      "taxonomy_path": "XBRLTaxonomy > DeferredRevenueNoncurrent > DeferredRevenueNoncurrent"
+    },
+    {
+      "id": "C:0084",
+      "type": "Concept",
+      "content": "XBRL concept: StockRepurchasedDuringPeriodShares. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "StockRepurchasedDuringPeriodShares",
+      "taxonomy_path": "XBRLTaxonomy > StockRepurchasedDuringPeriodShares > StockRepurchasedDuringPeriodShares"
+    },
+    {
+      "id": "C:0085",
+      "type": "Concept",
+      "content": "XBRL concept: StockRepurchasedDuringPeriodValue. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "StockRepurchasedDuringPeriodValue",
+      "taxonomy_path": "XBRLTaxonomy > StockRepurchasedDuringPeriodValue > StockRepurchasedDuringPeriodValue"
+    },
+    {
+      "id": "C:0086",
+      "type": "Concept",
+      "content": "XBRL concept: DividendsCommonStockCash. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DividendsCommonStockCash",
+      "taxonomy_path": "XBRLTaxonomy > DividendsCommonStockCash > DividendsCommonStockCash"
+    },
+    {
+      "id": "C:0087",
+      "type": "Concept",
+      "content": "XBRL concept: NumberOfCountriesInWhichEntityOperates. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NumberOfCountriesInWhichEntityOperates",
+      "taxonomy_path": "XBRLTaxonomy > NumberOfCountriesInWhichEntityOperates > NumberOfCountriesInWhichEntityOperates"
+    },
+    {
+      "id": "C:0088",
+      "type": "Concept",
+      "content": "XBRL concept: NumberOfEmployees. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NumberOfEmployees",
+      "taxonomy_path": "XBRLTaxonomy > NumberOfEmployees > NumberOfEmployees"
+    },
+    {
+      "id": "C:0089",
+      "type": "Concept",
+      "content": "XBRL concept: NumberOfStores. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NumberOfStores",
+      "taxonomy_path": "XBRLTaxonomy > NumberOfStores > NumberOfStores"
+    },
+    {
+      "id": "C:0090",
+      "type": "Concept",
+      "content": "XBRL concept: AreaOfRealEstateProperty. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AreaOfRealEstateProperty",
+      "taxonomy_path": "XBRLTaxonomy > AreaOfRealEstateProperty > AreaOfRealEstateProperty"
+    },
+    {
+      "id": "C:0091",
+      "type": "Concept",
+      "content": "XBRL concept: ClassOfWarrantOrRightExercisePrice. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ClassOfWarrantOrRightExercisePrice",
+      "taxonomy_path": "XBRLTaxonomy > ClassOfWarrantOrRightExercisePrice > ClassOfWarrantOrRightExercisePrice"
+    },
+    {
+      "id": "C:0092",
+      "type": "Concept",
+      "content": "XBRL concept: ClassOfWarrantOrRightNumberOfSecuritiesCalledByWarrantsOrRights. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ClassOfWarrantOrRightNumberOfSecuritiesCalledByWarrantsOrRights",
+      "taxonomy_path": "XBRLTaxonomy > ClassOfWarrantOrRightNumberOfSecuritiesCalledByWarrantsOrRights > ClassOfWarrantOrRightNumberOfSecuritiesCalledByWarrantsOrRights"
+    },
+    {
+      "id": "C:0093",
+      "type": "Concept",
+      "content": "XBRL concept: ConvertibleDebtFairValueDisclosures. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ConvertibleDebtFairValueDisclosures",
+      "taxonomy_path": "XBRLTaxonomy > ConvertibleDebtFairValueDisclosures > ConvertibleDebtFairValueDisclosures"
+    },
+    {
+      "id": "C:0094",
+      "type": "Concept",
+      "content": "XBRL concept: SeniorNotesMember. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "SeniorNotesMember",
+      "taxonomy_path": "XBRLTaxonomy > SeniorNotesMember > SeniorNotesMember"
+    },
+    {
+      "id": "C:0095",
+      "type": "Concept",
+      "content": "XBRL concept: SubordinatedDebt. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "SubordinatedDebt",
+      "taxonomy_path": "XBRLTaxonomy > SubordinatedDebt > SubordinatedDebt"
+    },
+    {
+      "id": "C:0096",
+      "type": "Concept",
+      "content": "XBRL concept: CapitalLeaseObligations. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CapitalLeaseObligations",
+      "taxonomy_path": "XBRLTaxonomy > CapitalLeaseObligations > CapitalLeaseObligations"
+    },
+    {
+      "id": "C:0097",
+      "type": "Concept",
+      "content": "XBRL concept: SaleLeasebackTransactionNetBookValue. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "SaleLeasebackTransactionNetBookValue",
+      "taxonomy_path": "XBRLTaxonomy > SaleLeasebackTransactionNetBookValue > SaleLeasebackTransactionNetBookValue"
+    },
+    {
+      "id": "C:0098",
+      "type": "Concept",
+      "content": "XBRL concept: VariableInterestEntityConsolidatedCarryingAmountAssets. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "VariableInterestEntityConsolidatedCarryingAmountAssets",
+      "taxonomy_path": "XBRLTaxonomy > VariableInterestEntityConsolidatedCarryingAmountAssets > VariableInterestEntityConsolidatedCarryingAmountAssets"
+    },
+    {
+      "id": "C:0099",
+      "type": "Concept",
+      "content": "XBRL concept: MinorityInterest. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "MinorityInterest",
+      "taxonomy_path": "XBRLTaxonomy > MinorityInterest > MinorityInterest"
+    },
+    {
+      "id": "C:0100",
+      "type": "Concept",
+      "content": "XBRL concept: RetainedEarningsAccumulatedDeficit. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RetainedEarningsAccumulatedDeficit",
+      "taxonomy_path": "XBRLTaxonomy > RetainedEarningsAccumulatedDeficit > RetainedEarningsAccumulatedDeficit"
+    },
+    {
+      "id": "C:0101",
+      "type": "Concept",
+      "content": "XBRL concept: AdditionalPaidInCapital. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AdditionalPaidInCapital",
+      "taxonomy_path": "XBRLTaxonomy > AdditionalPaidInCapital > AdditionalPaidInCapital"
+    },
+    {
+      "id": "C:0102",
+      "type": "Concept",
+      "content": "XBRL concept: AccumulatedOtherComprehensiveIncomeLossNetOfTax. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+      "taxonomy_path": "XBRLTaxonomy > AccumulatedOtherComprehensiveIncomeLossNetOfTax > AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    },
+    {
+      "id": "C:0103",
+      "type": "Concept",
+      "content": "XBRL concept: StockholdersEquity. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "StockholdersEquity",
+      "taxonomy_path": "XBRLTaxonomy > StockholdersEquity > StockholdersEquity"
+    },
+    {
+      "id": "C:0104",
+      "type": "Concept",
+      "content": "XBRL concept: StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+      "taxonomy_path": "XBRLTaxonomy > StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest > StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
+    },
+    {
+      "id": "C:0105",
+      "type": "Concept",
+      "content": "XBRL concept: Assets. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "Assets",
+      "taxonomy_path": "XBRLTaxonomy > Assets > Assets"
+    },
+    {
+      "id": "C:0106",
+      "type": "Concept",
+      "content": "XBRL concept: Liabilities. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "Liabilities",
+      "taxonomy_path": "XBRLTaxonomy > Liabilities > Liabilities"
+    },
+    {
+      "id": "C:0107",
+      "type": "Concept",
+      "content": "XBRL concept: LiabilitiesAndStockholdersEquity. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LiabilitiesAndStockholdersEquity",
+      "taxonomy_path": "XBRLTaxonomy > Liabilities > LiabilitiesAndStockholdersEquity"
+    },
+    {
+      "id": "C:0108",
+      "type": "Concept",
+      "content": "XBRL concept: AssetsCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AssetsCurrent",
+      "taxonomy_path": "XBRLTaxonomy > AssetsCurrent > AssetsCurrent"
+    },
+    {
+      "id": "C:0109",
+      "type": "Concept",
+      "content": "XBRL concept: AssetsNoncurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "AssetsNoncurrent",
+      "taxonomy_path": "XBRLTaxonomy > AssetsNoncurrent > AssetsNoncurrent"
+    },
+    {
+      "id": "C:0110",
+      "type": "Concept",
+      "content": "XBRL concept: LiabilitiesCurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LiabilitiesCurrent",
+      "taxonomy_path": "XBRLTaxonomy > LiabilitiesCurrent > LiabilitiesCurrent"
+    },
+    {
+      "id": "C:0111",
+      "type": "Concept",
+      "content": "XBRL concept: LiabilitiesNoncurrent. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "LiabilitiesNoncurrent",
+      "taxonomy_path": "XBRLTaxonomy > LiabilitiesNoncurrent > LiabilitiesNoncurrent"
+    },
+    {
+      "id": "C:0112",
+      "type": "Concept",
+      "content": "XBRL concept: CashFlowFromOperations. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CashFlowFromOperations",
+      "taxonomy_path": "XBRLTaxonomy > CashFlowFromOperations > CashFlowFromOperations"
+    },
+    {
+      "id": "C:0113",
+      "type": "Concept",
+      "content": "XBRL concept: NetCashProvidedByUsedInOperatingActivities. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NetCashProvidedByUsedInOperatingActivities",
+      "taxonomy_path": "XBRLTaxonomy > NetCashProvidedByUsedInOperatingActivities > NetCashProvidedByUsedInOperatingActivities"
+    },
+    {
+      "id": "C:0114",
+      "type": "Concept",
+      "content": "XBRL concept: NetCashProvidedByUsedInInvestingActivities. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NetCashProvidedByUsedInInvestingActivities",
+      "taxonomy_path": "XBRLTaxonomy > NetCashProvidedByUsedInInvestingActivities > NetCashProvidedByUsedInInvestingActivities"
+    },
+    {
+      "id": "C:0115",
+      "type": "Concept",
+      "content": "XBRL concept: NetCashProvidedByUsedInFinancingActivities. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "NetCashProvidedByUsedInFinancingActivities",
+      "taxonomy_path": "XBRLTaxonomy > NetCashProvidedByUsedInFinancingActivities > NetCashProvidedByUsedInFinancingActivities"
+    },
+    {
+      "id": "C:0116",
+      "type": "Concept",
+      "content": "XBRL concept: IncreaseDecreaseInAccountsReceivable. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "IncreaseDecreaseInAccountsReceivable",
+      "taxonomy_path": "XBRLTaxonomy > IncreaseDecreaseInAccountsReceivable > IncreaseDecreaseInAccountsReceivable"
+    },
+    {
+      "id": "C:0117",
+      "type": "Concept",
+      "content": "XBRL concept: IncreaseDecreaseInInventories. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "IncreaseDecreaseInInventories",
+      "taxonomy_path": "XBRLTaxonomy > IncreaseDecreaseInInventories > IncreaseDecreaseInInventories"
+    },
+    {
+      "id": "C:0118",
+      "type": "Concept",
+      "content": "XBRL concept: IncreaseDecreaseInAccountsPayable. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "IncreaseDecreaseInAccountsPayable",
+      "taxonomy_path": "XBRLTaxonomy > IncreaseDecreaseInAccountsPayable > IncreaseDecreaseInAccountsPayable"
+    },
+    {
+      "id": "C:0119",
+      "type": "Concept",
+      "content": "XBRL concept: OperatingIncomeLoss. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OperatingIncomeLoss",
+      "taxonomy_path": "XBRLTaxonomy > OperatingIncomeLoss > OperatingIncomeLoss"
+    },
+    {
+      "id": "C:0120",
+      "type": "Concept",
+      "content": "XBRL concept: GrossProfit. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "GrossProfit",
+      "taxonomy_path": "XBRLTaxonomy > GrossProfit > GrossProfit"
+    },
+    {
+      "id": "C:0121",
+      "type": "Concept",
+      "content": "XBRL concept: CostOfRevenue. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "CostOfRevenue",
+      "taxonomy_path": "XBRLTaxonomy > CostOfRevenue > CostOfRevenue"
+    },
+    {
+      "id": "C:0122",
+      "type": "Concept",
+      "content": "XBRL concept: SellingGeneralAndAdministrativeExpense. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "SellingGeneralAndAdministrativeExpense",
+      "taxonomy_path": "XBRLTaxonomy > SellingGeneral > SellingGeneralAndAdministrativeExpense"
+    },
+    {
+      "id": "C:0123",
+      "type": "Concept",
+      "content": "XBRL concept: ResearchAndDevelopmentExpense. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ResearchAndDevelopmentExpense",
+      "taxonomy_path": "XBRLTaxonomy > Research > ResearchAndDevelopmentExpense"
+    },
+    {
+      "id": "C:0124",
+      "type": "Concept",
+      "content": "XBRL concept: InterestExpense. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "InterestExpense",
+      "taxonomy_path": "XBRLTaxonomy > InterestExpense > InterestExpense"
+    },
+    {
+      "id": "C:0125",
+      "type": "Concept",
+      "content": "XBRL concept: InterestIncomeExpenseNet. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "InterestIncomeExpenseNet",
+      "taxonomy_path": "XBRLTaxonomy > InterestIncomeExpenseNet > InterestIncomeExpenseNet"
+    },
+    {
+      "id": "C:0126",
+      "type": "Concept",
+      "content": "XBRL concept: OtherNonoperatingIncomeExpense. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "OtherNonoperatingIncomeExpense",
+      "taxonomy_path": "XBRLTaxonomy > OtherNonoperatingIncomeExpense > OtherNonoperatingIncomeExpense"
+    },
+    {
+      "id": "C:0127",
+      "type": "Concept",
+      "content": "XBRL concept: IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "taxonomy_path": "XBRLTaxonomy > IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest > IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+    },
+    {
+      "id": "C:0128",
+      "type": "Concept",
+      "content": "XBRL concept: DiscontinuedOperationGainLossOnDisposalOfDiscontinuedOperationNetOfTax. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DiscontinuedOperationGainLossOnDisposalOfDiscontinuedOperationNetOfTax",
+      "taxonomy_path": "XBRLTaxonomy > DiscontinuedOperationGainLossOnDisposalOfDiscontinuedOperationNetOfTax > DiscontinuedOperationGainLossOnDisposalOfDiscontinuedOperationNetOfTax"
+    },
+    {
+      "id": "C:0129",
+      "type": "Concept",
+      "content": "XBRL concept: GainLossOnSaleOfBusiness. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "GainLossOnSaleOfBusiness",
+      "taxonomy_path": "XBRLTaxonomy > GainLossOnSaleOfBusiness > GainLossOnSaleOfBusiness"
+    },
+    {
+      "id": "C:0130",
+      "type": "Concept",
+      "content": "XBRL concept: ForeignCurrencyTransactionGainLossBeforeTax. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ForeignCurrencyTransactionGainLossBeforeTax",
+      "taxonomy_path": "XBRLTaxonomy > ForeignCurrencyTransactionGainLossBeforeTax > ForeignCurrencyTransactionGainLossBeforeTax"
+    },
+    {
+      "id": "C:0131",
+      "type": "Concept",
+      "content": "XBRL concept: DerivativeGainLossOnDerivativeNet. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "DerivativeGainLossOnDerivativeNet",
+      "taxonomy_path": "XBRLTaxonomy > DerivativeGainLossOnDerivativeNet > DerivativeGainLossOnDerivativeNet"
+    },
+    {
+      "id": "C:0132",
+      "type": "Concept",
+      "content": "XBRL concept: PaymentsForRepurchaseOfCommonStock. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "PaymentsForRepurchaseOfCommonStock",
+      "taxonomy_path": "XBRLTaxonomy > PaymentsForRepurchaseOfCommonStock > PaymentsForRepurchaseOfCommonStock"
+    },
+    {
+      "id": "C:0133",
+      "type": "Concept",
+      "content": "XBRL concept: ProceedsFromIssuanceOfCommonStock. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ProceedsFromIssuanceOfCommonStock",
+      "taxonomy_path": "XBRLTaxonomy > ProceedsFromIssuanceOfCommonStock > ProceedsFromIssuanceOfCommonStock"
+    },
+    {
+      "id": "C:0134",
+      "type": "Concept",
+      "content": "XBRL concept: ProceedsFromLongTermDebt. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ProceedsFromLongTermDebt",
+      "taxonomy_path": "XBRLTaxonomy > ProceedsFromLongTermDebt > ProceedsFromLongTermDebt"
+    },
+    {
+      "id": "C:0135",
+      "type": "Concept",
+      "content": "XBRL concept: RepaymentsOfLongTermDebt. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "RepaymentsOfLongTermDebt",
+      "taxonomy_path": "XBRLTaxonomy > RepaymentsOfLongTermDebt > RepaymentsOfLongTermDebt"
+    },
+    {
+      "id": "C:0136",
+      "type": "Concept",
+      "content": "XBRL concept: ProceedsFromDivestitureOfBusinesses. Represents a standardized financial disclosure element as defined in the US-GAAP taxonomy.",
+      "helpful_count": 0,
+      "harmful_count": 0,
+      "confidence": 1.0,
+      "created_at": 1773316800.0,
+      "last_used": 1773316800.0,
+      "use_count": 0,
+      "name": "ProceedsFromDivestitureOfBusinesses",
+      "taxonomy_path": "XBRLTaxonomy > ProceedsFromDivestitureOfBusinesses > ProceedsFromDivestitureOfBusinesses"
+    },
+    {
+      "id": "S:0001",
+      "type": "Strategy",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "helpful_count": 4,
+      "harmful_count": 0,
+      "confidence": 0.8,
+      "created_at": 1773319800.0,
+      "last_used": 1773320152.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0002",
+      "type": "Strategy",
+      "content": "When the sentence contains 'principal amount of $X' or 'face value of $X' or 'aggregate principal', tag as DebtInstrumentFaceAmount. Use DebtInstrumentCarryingAmount only when the text explicitly discusses book value after unamortized discount/premium adjustments.",
+      "helpful_count": 5,
+      "harmful_count": 0,
+      "confidence": 0.75,
+      "created_at": 1773319810.0,
+      "last_used": 1773320164.0,
+      "use_count": 5
+    },
+    {
+      "id": "S:0003",
+      "type": "Strategy",
+      "content": "Distinguish NetIncomeLoss from ComprehensiveIncomeNetOfTax by looking for OCI components. If the sentence mentions 'other comprehensive income', 'AOCI', 'unrealized gains/losses on securities', or 'foreign currency translation', prefer ComprehensiveIncomeNetOfTax.",
+      "helpful_count": 3,
+      "harmful_count": 1,
+      "confidence": 0.78,
+      "created_at": 1773319820.0,
+      "last_used": 1773319926.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0004",
+      "type": "Strategy",
+      "content": "NumberOfOperatingSegments counts all segments management monitors internally; NumberOfReportableSegments counts only those disclosed externally. Use NumberOfReportableSegments when the text says 'we report X segments' and NumberOfOperatingSegments when it says 'we operate X segments'.",
+      "helpful_count": 3,
+      "harmful_count": 1,
+      "confidence": 0.78,
+      "created_at": 1773319830.0,
+      "last_used": 1773320036.0,
+      "use_count": 3
+    },
+    {
+      "id": "S:0005",
+      "type": "Strategy",
+      "content": "Classify as FinanceLeaseCost when the text explicitly says 'finance lease' or 'capital lease'. Use OperatingLeaseCost for all other lease cost disclosures. Finance leases have separate interest and amortization components.",
+      "helpful_count": 6,
+      "harmful_count": 1,
+      "confidence": 0.84,
+      "created_at": 1773319840.0,
+      "last_used": 1773320299.0,
+      "use_count": 8
+    },
+    {
+      "id": "S:0006",
+      "type": "Strategy",
+      "content": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying.",
+      "helpful_count": 5,
+      "harmful_count": 0,
+      "confidence": 0.78,
+      "created_at": 1773319850.0,
+      "last_used": 1773320069.0,
+      "use_count": 5
+    },
+    {
+      "id": "S:0007",
+      "type": "Strategy",
+      "content": "Authorized shares are the charter maximum; outstanding shares are currently issued minus repurchased. 'The company is authorized to issue X shares' \u2192 CommonStockSharesAuthorized. 'X shares were outstanding as of [date]' \u2192 CommonStockSharesOutstanding.",
+      "helpful_count": 3,
+      "harmful_count": 1,
+      "confidence": 0.73,
+      "created_at": 1773319860.0,
+      "last_used": 1773320240.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0008",
+      "type": "Strategy",
+      "content": "GoodwillImpairmentLoss is a one-time write-down from an impairment test failure. AmortizationOfIntangibleAssets is periodic, systematic expensing of finite-lived intangibles. Do not confuse an impairment charge with routine amortization.",
+      "helpful_count": 8,
+      "harmful_count": 0,
+      "confidence": 0.89,
+      "created_at": 1773319870.0,
+      "last_used": 1773320283.0,
+      "use_count": 11
+    },
+    {
+      "id": "S:0009",
+      "type": "Strategy",
+      "content": "AllocatedShareBasedCompensationExpense is what was recognized in the current period P&L. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the future unrecognized cost of unvested awards. 'Stock-based compensation expense was $X' \u2192 Allocated. 'Unrecognized compensation cost of $X will be recognized over X years' \u2192 NotYetRecognized.",
+      "helpful_count": 7,
+      "harmful_count": 1,
+      "confidence": 0.9,
+      "created_at": 1773319880.0,
+      "last_used": 1773320210.0,
+      "use_count": 7
+    },
+    {
+      "id": "S:0010",
+      "type": "Strategy",
+      "content": "Use Depreciation for pure property/equipment depreciation disclosures. Use DepreciationDepletionAndAmortization when the disclosure groups depreciation + depletion + amortization together or when the entity is in extractive industries.",
+      "helpful_count": 2,
+      "harmful_count": 0,
+      "confidence": 0.69,
+      "created_at": 1773319890.0,
+      "last_used": 1773320332.0,
+      "use_count": 3
+    },
+    {
+      "id": "S:0011",
+      "type": "Strategy",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "helpful_count": 3,
+      "harmful_count": 1,
+      "confidence": 0.7,
+      "created_at": 1773319900.0,
+      "last_used": 1773320088.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0012",
+      "type": "Strategy",
+      "content": "When the sentence contains 'principal amount of $X' or 'face value of $X' or 'aggregate principal', tag as DebtInstrumentFaceAmount. Use DebtInstrumentCarryingAmount only when the text explicitly discusses book value after unamortized discount/premium adjustments.",
+      "helpful_count": 1,
+      "harmful_count": 1,
+      "confidence": 0.68,
+      "created_at": 1773319910.0,
+      "last_used": 1773320214.0,
+      "use_count": 2
+    },
+    {
+      "id": "S:0013",
+      "type": "Strategy",
+      "content": "Distinguish NetIncomeLoss from ComprehensiveIncomeNetOfTax by looking for OCI components. If the sentence mentions 'other comprehensive income', 'AOCI', 'unrealized gains/losses on securities', or 'foreign currency translation', prefer ComprehensiveIncomeNetOfTax.",
+      "helpful_count": 7,
+      "harmful_count": 1,
+      "confidence": 0.86,
+      "created_at": 1773319920.0,
+      "last_used": 1773320004.0,
+      "use_count": 7
+    },
+    {
+      "id": "S:0014",
+      "type": "Strategy",
+      "content": "NumberOfOperatingSegments counts all segments management monitors internally; NumberOfReportableSegments counts only those disclosed externally. Use NumberOfReportableSegments when the text says 'we report X segments' and NumberOfOperatingSegments when it says 'we operate X segments'.",
+      "helpful_count": 8,
+      "harmful_count": 0,
+      "confidence": 0.89,
+      "created_at": 1773319930.0,
+      "last_used": 1773320048.0,
+      "use_count": 10
+    },
+    {
+      "id": "S:0015",
+      "type": "Strategy",
+      "content": "Classify as FinanceLeaseCost when the text explicitly says 'finance lease' or 'capital lease'. Use OperatingLeaseCost for all other lease cost disclosures. Finance leases have separate interest and amortization components.",
+      "helpful_count": 1,
+      "harmful_count": 0,
+      "confidence": 0.69,
+      "created_at": 1773319940.0,
+      "last_used": 1773320032.0,
+      "use_count": 2
+    },
+    {
+      "id": "S:0016",
+      "type": "Strategy",
+      "content": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying.",
+      "helpful_count": 4,
+      "harmful_count": 0,
+      "confidence": 0.82,
+      "created_at": 1773319950.0,
+      "last_used": 1773320232.0,
+      "use_count": 5
+    },
+    {
+      "id": "S:0017",
+      "type": "Strategy",
+      "content": "Authorized shares are the charter maximum; outstanding shares are currently issued minus repurchased. 'The company is authorized to issue X shares' \u2192 CommonStockSharesAuthorized. 'X shares were outstanding as of [date]' \u2192 CommonStockSharesOutstanding.",
+      "helpful_count": 1,
+      "harmful_count": 0,
+      "confidence": 0.7,
+      "created_at": 1773319960.0,
+      "last_used": 1773320415.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0018",
+      "type": "Strategy",
+      "content": "GoodwillImpairmentLoss is a one-time write-down from an impairment test failure. AmortizationOfIntangibleAssets is periodic, systematic expensing of finite-lived intangibles. Do not confuse an impairment charge with routine amortization.",
+      "helpful_count": 7,
+      "harmful_count": 0,
+      "confidence": 0.89,
+      "created_at": 1773319970.0,
+      "last_used": 1773320218.0,
+      "use_count": 8
+    },
+    {
+      "id": "S:0019",
+      "type": "Strategy",
+      "content": "AllocatedShareBasedCompensationExpense is what was recognized in the current period P&L. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the future unrecognized cost of unvested awards. 'Stock-based compensation expense was $X' \u2192 Allocated. 'Unrecognized compensation cost of $X will be recognized over X years' \u2192 NotYetRecognized.",
+      "helpful_count": 1,
+      "harmful_count": 0,
+      "confidence": 0.67,
+      "created_at": 1773319980.0,
+      "last_used": 1773320107.0,
+      "use_count": 3
+    },
+    {
+      "id": "S:0020",
+      "type": "Strategy",
+      "content": "Use Depreciation for pure property/equipment depreciation disclosures. Use DepreciationDepletionAndAmortization when the disclosure groups depreciation + depletion + amortization together or when the entity is in extractive industries.",
+      "helpful_count": 2,
+      "harmful_count": 0,
+      "confidence": 0.7,
+      "created_at": 1773319990.0,
+      "last_used": 1773320471.0,
+      "use_count": 5
+    },
+    {
+      "id": "S:0021",
+      "type": "Strategy",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "helpful_count": 1,
+      "harmful_count": 1,
+      "confidence": 0.73,
+      "created_at": 1773320000.0,
+      "last_used": 1773320266.0,
+      "use_count": 1
+    },
+    {
+      "id": "S:0022",
+      "type": "Strategy",
+      "content": "When the sentence contains 'principal amount of $X' or 'face value of $X' or 'aggregate principal', tag as DebtInstrumentFaceAmount. Use DebtInstrumentCarryingAmount only when the text explicitly discusses book value after unamortized discount/premium adjustments.",
+      "helpful_count": 2,
+      "harmful_count": 0,
+      "confidence": 0.72,
+      "created_at": 1773320010.0,
+      "last_used": 1773320060.0,
+      "use_count": 3
+    },
+    {
+      "id": "S:0023",
+      "type": "Strategy",
+      "content": "Distinguish NetIncomeLoss from ComprehensiveIncomeNetOfTax by looking for OCI components. If the sentence mentions 'other comprehensive income', 'AOCI', 'unrealized gains/losses on securities', or 'foreign currency translation', prefer ComprehensiveIncomeNetOfTax.",
+      "helpful_count": 1,
+      "harmful_count": 0,
+      "confidence": 0.7,
+      "created_at": 1773320020.0,
+      "last_used": 1773320413.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0024",
+      "type": "Strategy",
+      "content": "NumberOfOperatingSegments counts all segments management monitors internally; NumberOfReportableSegments counts only those disclosed externally. Use NumberOfReportableSegments when the text says 'we report X segments' and NumberOfOperatingSegments when it says 'we operate X segments'.",
+      "helpful_count": 7,
+      "harmful_count": 1,
+      "confidence": 0.83,
+      "created_at": 1773320030.0,
+      "last_used": 1773320290.0,
+      "use_count": 7
+    },
+    {
+      "id": "S:0025",
+      "type": "Strategy",
+      "content": "Classify as FinanceLeaseCost when the text explicitly says 'finance lease' or 'capital lease'. Use OperatingLeaseCost for all other lease cost disclosures. Finance leases have separate interest and amortization components.",
+      "helpful_count": 7,
+      "harmful_count": 0,
+      "confidence": 0.9,
+      "created_at": 1773320040.0,
+      "last_used": 1773320195.0,
+      "use_count": 8
+    },
+    {
+      "id": "S:0026",
+      "type": "Strategy",
+      "content": "EarningsPerShareBasic uses only actual shares outstanding. EarningsPerShareDiluted includes dilutive options, warrants, and convertibles. Look for keywords 'diluted' vs 'basic' in the sentence. When both appear together, tag based on which value the sentence is quantifying.",
+      "helpful_count": 6,
+      "harmful_count": 0,
+      "confidence": 0.82,
+      "created_at": 1773320050.0,
+      "last_used": 1773320459.0,
+      "use_count": 9
+    },
+    {
+      "id": "S:0027",
+      "type": "Strategy",
+      "content": "Authorized shares are the charter maximum; outstanding shares are currently issued minus repurchased. 'The company is authorized to issue X shares' \u2192 CommonStockSharesAuthorized. 'X shares were outstanding as of [date]' \u2192 CommonStockSharesOutstanding.",
+      "helpful_count": 8,
+      "harmful_count": 1,
+      "confidence": 0.84,
+      "created_at": 1773320060.0,
+      "last_used": 1773320476.0,
+      "use_count": 10
+    },
+    {
+      "id": "S:0028",
+      "type": "Strategy",
+      "content": "GoodwillImpairmentLoss is a one-time write-down from an impairment test failure. AmortizationOfIntangibleAssets is periodic, systematic expensing of finite-lived intangibles. Do not confuse an impairment charge with routine amortization.",
+      "helpful_count": 6,
+      "harmful_count": 0,
+      "confidence": 0.83,
+      "created_at": 1773320070.0,
+      "last_used": 1773320133.0,
+      "use_count": 6
+    },
+    {
+      "id": "S:0029",
+      "type": "Strategy",
+      "content": "AllocatedShareBasedCompensationExpense is what was recognized in the current period P&L. EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized is the future unrecognized cost of unvested awards. 'Stock-based compensation expense was $X' \u2192 Allocated. 'Unrecognized compensation cost of $X will be recognized over X years' \u2192 NotYetRecognized.",
+      "helpful_count": 6,
+      "harmful_count": 0,
+      "confidence": 0.85,
+      "created_at": 1773320080.0,
+      "last_used": 1773320157.0,
+      "use_count": 7
+    },
+    {
+      "id": "S:0030",
+      "type": "Strategy",
+      "content": "Use Depreciation for pure property/equipment depreciation disclosures. Use DepreciationDepletionAndAmortization when the disclosure groups depreciation + depletion + amortization together or when the entity is in extractive industries.",
+      "helpful_count": 1,
+      "harmful_count": 1,
+      "confidence": 0.69,
+      "created_at": 1773320090.0,
+      "last_used": 1773320235.0,
+      "use_count": 3
+    },
+    {
+      "id": "S:0031",
+      "type": "Strategy",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "helpful_count": 1,
+      "harmful_count": 0,
+      "confidence": 0.67,
+      "created_at": 1773320100.0,
+      "last_used": 1773320339.0,
+      "use_count": 4
+    },
+    {
+      "id": "S:0032",
+      "type": "Strategy",
+      "content": "When the sentence contains 'principal amount of $X' or 'face value of $X' or 'aggregate principal', tag as DebtInstrumentFaceAmount. Use DebtInstrumentCarryingAmount only when the text explicitly discusses book value after unamortized discount/premium adjustments.",
+      "helpful_count": 5,
+      "harmful_count": 1,
+      "confidence": 0.83,
+      "created_at": 1773320110.0,
+      "last_used": 1773320459.0,
+      "use_count": 7
+    },
+    {
+      "id": "A:0001",
+      "type": "AntiPattern",
+      "content": "Confusing NetIncomeLoss with ComprehensiveIncomeNetOfTax. Root cause: both appear near income statement references, but ComprehensiveIncome includes unrealized gains/losses on available-for-sale securities and foreign currency translation adjustments. Look for phrases like 'other comprehensive income' or 'AOCI' to distinguish.",
+      "failure_count": 1,
+      "severity": "high",
+      "confidence": 0.7,
+      "created_at": 1773319805.0,
+      "last_used": 1773320332.0
+    },
+    {
+      "id": "A:0002",
+      "type": "AntiPattern",
+      "content": "Confusing DebtInstrumentFaceAmount with DebtInstrumentCarryingAmount. Face amount is the stated principal; carrying amount includes unamortized discount/premium. The model defaults to FaceAmount even when the text discusses book value after discount amortization.",
+      "failure_count": 1,
+      "severity": "medium",
+      "confidence": 0.66,
+      "created_at": 1773319820.0,
+      "last_used": 1773319933.0
+    },
+    {
+      "id": "A:0003",
+      "type": "AntiPattern",
+      "content": "Confusing ContractWithCustomerLiability (deferred revenue balance) with ContractWithCustomerLiabilityRevenueRecognized (revenue recognized FROM deferred revenue). The former is a balance sheet item; the latter is a flow item recognized in the period.",
+      "failure_count": 2,
+      "severity": "low",
+      "confidence": 0.78,
+      "created_at": 1773319835.0,
+      "last_used": 1773320533.0
+    },
+    {
+      "id": "A:0004",
+      "type": "AntiPattern",
+      "content": "Defaulting to OperatingLeaseCost when the text explicitly says 'finance lease'. This is a high-confidence signal: if 'finance' or 'capital' is adjacent to 'lease cost', use FinanceLeaseCost.",
+      "failure_count": 5,
+      "severity": "high",
+      "confidence": 0.74,
+      "created_at": 1773319850.0,
+      "last_used": 1773320044.0
+    },
+    {
+      "id": "A:0005",
+      "type": "AntiPattern",
+      "content": "Conflating operating segments with reportable segments. The model tends to always predict NumberOfOperatingSegments even when the disclosure explicitly discusses external reporting thresholds (10% rules).",
+      "failure_count": 5,
+      "severity": "high",
+      "confidence": 0.8,
+      "created_at": 1773319865.0,
+      "last_used": 1773320481.0
+    },
+    {
+      "id": "A:0006",
+      "type": "AntiPattern",
+      "content": "Confusing maximum borrowing capacity (ceiling set in agreement) with remaining borrowing capacity (currently available). 'Up to $500M' \u2192 Maximum. 'We had $123M available' \u2192 Remaining.",
+      "failure_count": 1,
+      "severity": "low",
+      "confidence": 0.83,
+      "created_at": 1773319880.0,
+      "last_used": 1773320297.0
+    },
+    {
+      "id": "A:0007",
+      "type": "AntiPattern",
+      "content": "Predicting EarningsPerShareDiluted for sentences that only contain 'per share' without specifying diluted. When ambiguous, prefer EarningsPerShareBasic as it is always reported alongside diluted.",
+      "failure_count": 5,
+      "severity": "low",
+      "confidence": 0.69,
+      "created_at": 1773319895.0,
+      "last_used": 1773320500.0
+    },
+    {
+      "id": "A:0008",
+      "type": "AntiPattern",
+      "content": "Confusing non-current long-term debt with the current portion. Always check if the sentence mentions 'current portion', 'due within one year', or 'classified as current'. These signal LongTermDebtCurrent.",
+      "failure_count": 5,
+      "severity": "medium",
+      "confidence": 0.77,
+      "created_at": 1773319910.0,
+      "last_used": 1773320252.0
+    },
+    {
+      "id": "A:0009",
+      "type": "AntiPattern",
+      "content": "Confusing NetIncomeLoss with ComprehensiveIncomeNetOfTax. Root cause: both appear near income statement references, but ComprehensiveIncome includes unrealized gains/losses on available-for-sale securities and foreign currency translation adjustments. Look for phrases like 'other comprehensive income' or 'AOCI' to distinguish.",
+      "failure_count": 2,
+      "severity": "high",
+      "confidence": 0.74,
+      "created_at": 1773319925.0,
+      "last_used": 1773320310.0
+    },
+    {
+      "id": "A:0010",
+      "type": "AntiPattern",
+      "content": "Confusing DebtInstrumentFaceAmount with DebtInstrumentCarryingAmount. Face amount is the stated principal; carrying amount includes unamortized discount/premium. The model defaults to FaceAmount even when the text discusses book value after discount amortization.",
+      "failure_count": 5,
+      "severity": "low",
+      "confidence": 0.67,
+      "created_at": 1773319940.0,
+      "last_used": 1773320161.0
+    },
+    {
+      "id": "A:0011",
+      "type": "AntiPattern",
+      "content": "Confusing ContractWithCustomerLiability (deferred revenue balance) with ContractWithCustomerLiabilityRevenueRecognized (revenue recognized FROM deferred revenue). The former is a balance sheet item; the latter is a flow item recognized in the period.",
+      "failure_count": 4,
+      "severity": "medium",
+      "confidence": 0.74,
+      "created_at": 1773319955.0,
+      "last_used": 1773320435.0
+    },
+    {
+      "id": "A:0012",
+      "type": "AntiPattern",
+      "content": "Defaulting to OperatingLeaseCost when the text explicitly says 'finance lease'. This is a high-confidence signal: if 'finance' or 'capital' is adjacent to 'lease cost', use FinanceLeaseCost.",
+      "failure_count": 1,
+      "severity": "low",
+      "confidence": 0.85,
+      "created_at": 1773319970.0,
+      "last_used": 1773320111.0
+    },
+    {
+      "id": "A:0013",
+      "type": "AntiPattern",
+      "content": "Conflating operating segments with reportable segments. The model tends to always predict NumberOfOperatingSegments even when the disclosure explicitly discusses external reporting thresholds (10% rules).",
+      "failure_count": 3,
+      "severity": "high",
+      "confidence": 0.82,
+      "created_at": 1773319985.0,
+      "last_used": 1773320432.0
+    },
+    {
+      "id": "CF:0001",
+      "type": "Confusion",
+      "content": "Frequent confusion between DebtInstrumentFaceAmount and DebtInstrumentCarryingAmount. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 6,
+      "confidence": 0.77,
+      "created_at": 1773319810.0,
+      "last_used": 1773320765.0,
+      "concept_a": "DebtInstrumentFaceAmount",
+      "concept_b": "DebtInstrumentCarryingAmount"
+    },
+    {
+      "id": "CF:0002",
+      "type": "Confusion",
+      "content": "Frequent confusion between NetIncomeLoss and ComprehensiveIncomeNetOfTax. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 1,
+      "confidence": 0.67,
+      "created_at": 1773319830.0,
+      "last_used": 1773320486.0,
+      "concept_a": "NetIncomeLoss",
+      "concept_b": "ComprehensiveIncomeNetOfTax"
+    },
+    {
+      "id": "CF:0003",
+      "type": "Confusion",
+      "content": "Frequent confusion between RevenueFromContractWithCustomerExcludingAssessedTax and ContractWithCustomerLiabilityRevenueRecognized. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 3,
+      "confidence": 0.73,
+      "created_at": 1773319850.0,
+      "last_used": 1773320730.0,
+      "concept_a": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "concept_b": "ContractWithCustomerLiabilityRevenueRecognized"
+    },
+    {
+      "id": "CF:0004",
+      "type": "Confusion",
+      "content": "Frequent confusion between OperatingLeaseCost and FinanceLeaseCost. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 2,
+      "confidence": 0.78,
+      "created_at": 1773319870.0,
+      "last_used": 1773320705.0,
+      "concept_a": "OperatingLeaseCost",
+      "concept_b": "FinanceLeaseCost"
+    },
+    {
+      "id": "CF:0005",
+      "type": "Confusion",
+      "content": "Frequent confusion between NumberOfOperatingSegments and NumberOfReportableSegments. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 3,
+      "confidence": 0.61,
+      "created_at": 1773319890.0,
+      "last_used": 1773320641.0,
+      "concept_a": "NumberOfOperatingSegments",
+      "concept_b": "NumberOfReportableSegments"
+    },
+    {
+      "id": "CF:0006",
+      "type": "Confusion",
+      "content": "Frequent confusion between LineOfCreditFacilityMaximumBorrowingCapacity and LineOfCreditFacilityCurrentBorrowingCapacity. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 2,
+      "confidence": 0.76,
+      "created_at": 1773319910.0,
+      "last_used": 1773320513.0,
+      "concept_a": "LineOfCreditFacilityMaximumBorrowingCapacity",
+      "concept_b": "LineOfCreditFacilityCurrentBorrowingCapacity"
+    },
+    {
+      "id": "CF:0007",
+      "type": "Confusion",
+      "content": "Frequent confusion between EarningsPerShareBasic and EarningsPerShareDiluted. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 1,
+      "confidence": 0.78,
+      "created_at": 1773319930.0,
+      "last_used": 1773320727.0,
+      "concept_a": "EarningsPerShareBasic",
+      "concept_b": "EarningsPerShareDiluted"
+    },
+    {
+      "id": "CF:0008",
+      "type": "Confusion",
+      "content": "Frequent confusion between GoodwillImpairmentLoss and AssetImpairmentCharges. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 1,
+      "confidence": 0.64,
+      "created_at": 1773319950.0,
+      "last_used": 1773320657.0,
+      "concept_a": "GoodwillImpairmentLoss",
+      "concept_b": "AssetImpairmentCharges"
+    },
+    {
+      "id": "CF:0009",
+      "type": "Confusion",
+      "content": "Frequent confusion between CommonStockSharesAuthorized and CommonStockSharesOutstanding. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 3,
+      "confidence": 0.71,
+      "created_at": 1773319970.0,
+      "last_used": 1773320622.0,
+      "concept_a": "CommonStockSharesAuthorized",
+      "concept_b": "CommonStockSharesOutstanding"
+    },
+    {
+      "id": "CF:0010",
+      "type": "Confusion",
+      "content": "Frequent confusion between AllocatedShareBasedCompensationExpense and EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 3,
+      "confidence": 0.78,
+      "created_at": 1773319990.0,
+      "last_used": 1773320673.0,
+      "concept_a": "AllocatedShareBasedCompensationExpense",
+      "concept_b": "EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized"
+    },
+    {
+      "id": "CF:0011",
+      "type": "Confusion",
+      "content": "Frequent confusion between Depreciation and DepreciationDepletionAndAmortization. The model tends to conflate these in contexts where both concepts appear in the same financial disclosure.",
+      "occurrence_count": 3,
+      "confidence": 0.77,
+      "created_at": 1773320010.0,
+      "last_used": 1773321000.0,
+      "concept_a": "Depreciation",
+      "concept_b": "DepreciationDepletionAndAmortization"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C:0002",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0003",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0004",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0005",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0006",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0007",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0008",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0009",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0010",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0011",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0012",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0013",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0014",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0015",
+      "target": "C:0001",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0017",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0018",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0019",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0020",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0021",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0022",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0023",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0024",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0025",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0026",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0027",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0028",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0029",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0030",
+      "target": "C:0016",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0032",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0033",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0034",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0035",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0036",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0037",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0038",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0039",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0040",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0041",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0042",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0043",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0044",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0045",
+      "target": "C:0031",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0047",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0048",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0049",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0050",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0051",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0052",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0053",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0054",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0055",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0056",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0057",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0058",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0059",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0060",
+      "target": "C:0046",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0062",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0063",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0064",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0065",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0066",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0067",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0068",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0069",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0070",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0071",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0072",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0073",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0074",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0075",
+      "target": "C:0061",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0077",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0078",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0079",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0080",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0081",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0082",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0083",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0084",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0085",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0086",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0087",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0088",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0089",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0090",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0092",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0093",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0094",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0095",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0096",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0097",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0098",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0099",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0100",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0101",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0102",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0103",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0104",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0105",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0107",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0108",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0109",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0110",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0111",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0112",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0113",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0114",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0115",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0116",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0117",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0118",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0119",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0120",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0122",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0123",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0124",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0125",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0126",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0127",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0128",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0129",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0130",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0131",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0132",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0133",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0134",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0135",
+      "target": "C:0121",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0137",
+      "target": "C:0136",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0138",
+      "target": "C:0136",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0139",
+      "target": "C:0136",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0084",
+      "target": "C:0020",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0081",
+      "target": "C:0064",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0067",
+      "target": "C:0127",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0073",
+      "target": "C:0052",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0035",
+      "target": "C:0128",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0001",
+      "target": "C:0133",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0027",
+      "target": "C:0044",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0015",
+      "target": "C:0118",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0012",
+      "target": "C:0007",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0054",
+      "target": "C:0127",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0139",
+      "target": "C:0023",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0001",
+      "target": "C:0030",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0001",
+      "target": "C:0064",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0037",
+      "target": "C:0002",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0129",
+      "target": "C:0039",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0062",
+      "target": "C:0066",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0025",
+      "target": "C:0104",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0003",
+      "target": "C:0007",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0119",
+      "target": "C:0089",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0126",
+      "target": "C:0134",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0137",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0030",
+      "target": "C:0103",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0103",
+      "target": "C:0022",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0005",
+      "target": "C:0128",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0102",
+      "target": "C:0067",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0080",
+      "target": "C:0069",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0013",
+      "target": "C:0072",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0058",
+      "target": "C:0074",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0103",
+      "target": "C:0020",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0112",
+      "target": "C:0037",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0033",
+      "target": "C:0044",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0120",
+      "target": "C:0114",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0034",
+      "target": "C:0111",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0027",
+      "target": "C:0005",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0088",
+      "target": "C:0069",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0010",
+      "target": "C:0044",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0098",
+      "target": "C:0005",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0047",
+      "target": "C:0134",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0078",
+      "target": "C:0106",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0092",
+      "target": "C:0085",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0037",
+      "target": "C:0024",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0136",
+      "target": "C:0082",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0099",
+      "target": "C:0139",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0130",
+      "target": "C:0103",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0065",
+      "target": "C:0056",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0050",
+      "target": "C:0116",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0071",
+      "target": "C:0091",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0049",
+      "target": "C:0017",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0137",
+      "target": "C:0011",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0046",
+      "target": "C:0060",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0139",
+      "target": "C:0076",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0022",
+      "target": "C:0078",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0078",
+      "target": "C:0066",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0113",
+      "target": "C:0060",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0097",
+      "target": "C:0010",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0016",
+      "target": "C:0132",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0085",
+      "target": "C:0113",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0087",
+      "target": "C:0058",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0120",
+      "target": "C:0079",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0114",
+      "target": "C:0101",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0056",
+      "target": "C:0027",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0136",
+      "target": "C:0056",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0066",
+      "target": "C:0047",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0005",
+      "target": "C:0004",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0041",
+      "target": "C:0074",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0043",
+      "target": "C:0125",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0138",
+      "target": "C:0088",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0041",
+      "target": "C:0052",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0076",
+      "target": "C:0103",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0021",
+      "target": "C:0082",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0018",
+      "target": "C:0041",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "C:0029",
+      "target": "C:0110",
+      "type": "is_a",
+      "weight": 1.0
+    },
+    {
+      "source": "S:0001",
+      "target": "C:0126",
+      "type": "applies_to",
+      "weight": 0.8
+    },
+    {
+      "source": "S:0001",
+      "target": "C:0002",
+      "type": "applies_to",
+      "weight": 0.64
+    },
+    {
+      "source": "S:0002",
+      "target": "C:0134",
+      "type": "applies_to",
+      "weight": 0.75
+    },
+    {
+      "source": "S:0003",
+      "target": "C:0105",
+      "type": "applies_to",
+      "weight": 0.78
+    },
+    {
+      "source": "S:0003",
+      "target": "C:0006",
+      "type": "applies_to",
+      "weight": 0.62
+    },
+    {
+      "source": "S:0004",
+      "target": "C:0097",
+      "type": "applies_to",
+      "weight": 0.78
+    },
+    {
+      "source": "S:0005",
+      "target": "C:0110",
+      "type": "applies_to",
+      "weight": 0.84
+    },
+    {
+      "source": "S:0006",
+      "target": "C:0130",
+      "type": "applies_to",
+      "weight": 0.78
+    },
+    {
+      "source": "S:0007",
+      "target": "C:0115",
+      "type": "applies_to",
+      "weight": 0.73
+    },
+    {
+      "source": "S:0008",
+      "target": "C:0041",
+      "type": "applies_to",
+      "weight": 0.89
+    },
+    {
+      "source": "S:0009",
+      "target": "C:0034",
+      "type": "applies_to",
+      "weight": 0.9
+    },
+    {
+      "source": "S:0010",
+      "target": "C:0108",
+      "type": "applies_to",
+      "weight": 0.69
+    },
+    {
+      "source": "S:0010",
+      "target": "C:0034",
+      "type": "applies_to",
+      "weight": 0.55
+    },
+    {
+      "source": "S:0011",
+      "target": "C:0056",
+      "type": "applies_to",
+      "weight": 0.7
+    },
+    {
+      "source": "S:0012",
+      "target": "C:0085",
+      "type": "applies_to",
+      "weight": 0.68
+    },
+    {
+      "source": "S:0012",
+      "target": "C:0011",
+      "type": "applies_to",
+      "weight": 0.54
+    },
+    {
+      "source": "S:0013",
+      "target": "C:0077",
+      "type": "applies_to",
+      "weight": 0.86
+    },
+    {
+      "source": "S:0014",
+      "target": "C:0087",
+      "type": "applies_to",
+      "weight": 0.89
+    },
+    {
+      "source": "S:0014",
+      "target": "C:0060",
+      "type": "applies_to",
+      "weight": 0.71
+    },
+    {
+      "source": "S:0015",
+      "target": "C:0103",
+      "type": "applies_to",
+      "weight": 0.69
+    },
+    {
+      "source": "S:0015",
+      "target": "C:0051",
+      "type": "applies_to",
+      "weight": 0.55
+    },
+    {
+      "source": "S:0016",
+      "target": "C:0065",
+      "type": "applies_to",
+      "weight": 0.82
+    },
+    {
+      "source": "S:0016",
+      "target": "C:0100",
+      "type": "applies_to",
+      "weight": 0.66
+    },
+    {
+      "source": "S:0017",
+      "target": "C:0006",
+      "type": "applies_to",
+      "weight": 0.7
+    },
+    {
+      "source": "S:0018",
+      "target": "C:0066",
+      "type": "applies_to",
+      "weight": 0.89
+    },
+    {
+      "source": "S:0018",
+      "target": "C:0136",
+      "type": "applies_to",
+      "weight": 0.71
+    },
+    {
+      "source": "S:0019",
+      "target": "C:0101",
+      "type": "applies_to",
+      "weight": 0.67
+    },
+    {
+      "source": "S:0020",
+      "target": "C:0036",
+      "type": "applies_to",
+      "weight": 0.7
+    },
+    {
+      "source": "S:0021",
+      "target": "C:0104",
+      "type": "applies_to",
+      "weight": 0.73
+    },
+    {
+      "source": "S:0022",
+      "target": "C:0058",
+      "type": "applies_to",
+      "weight": 0.72
+    },
+    {
+      "source": "S:0022",
+      "target": "C:0058",
+      "type": "applies_to",
+      "weight": 0.58
+    },
+    {
+      "source": "S:0023",
+      "target": "C:0020",
+      "type": "applies_to",
+      "weight": 0.7
+    },
+    {
+      "source": "S:0023",
+      "target": "C:0052",
+      "type": "applies_to",
+      "weight": 0.56
+    },
+    {
+      "source": "S:0024",
+      "target": "C:0006",
+      "type": "applies_to",
+      "weight": 0.83
+    },
+    {
+      "source": "S:0024",
+      "target": "C:0120",
+      "type": "applies_to",
+      "weight": 0.66
+    },
+    {
+      "source": "S:0025",
+      "target": "C:0027",
+      "type": "applies_to",
+      "weight": 0.9
+    },
+    {
+      "source": "S:0026",
+      "target": "C:0075",
+      "type": "applies_to",
+      "weight": 0.82
+    },
+    {
+      "source": "S:0027",
+      "target": "C:0128",
+      "type": "applies_to",
+      "weight": 0.84
+    },
+    {
+      "source": "S:0028",
+      "target": "C:0006",
+      "type": "applies_to",
+      "weight": 0.83
+    },
+    {
+      "source": "S:0028",
+      "target": "C:0016",
+      "type": "applies_to",
+      "weight": 0.66
+    },
+    {
+      "source": "S:0029",
+      "target": "C:0132",
+      "type": "applies_to",
+      "weight": 0.85
+    },
+    {
+      "source": "S:0030",
+      "target": "C:0058",
+      "type": "applies_to",
+      "weight": 0.69
+    },
+    {
+      "source": "S:0031",
+      "target": "C:0062",
+      "type": "applies_to",
+      "weight": 0.67
+    },
+    {
+      "source": "S:0032",
+      "target": "C:0071",
+      "type": "applies_to",
+      "weight": 0.83
+    },
+    {
+      "source": "A:0001",
+      "target": "C:0019",
+      "type": "fails_for",
+      "weight": 0.7
+    },
+    {
+      "source": "S:0010",
+      "target": "A:0001",
+      "type": "fixes",
+      "weight": 0.8
+    },
+    {
+      "source": "A:0002",
+      "target": "C:0065",
+      "type": "fails_for",
+      "weight": 0.66
+    },
+    {
+      "source": "A:0003",
+      "target": "C:0023",
+      "type": "fails_for",
+      "weight": 0.78
+    },
+    {
+      "source": "A:0004",
+      "target": "C:0052",
+      "type": "fails_for",
+      "weight": 0.74
+    },
+    {
+      "source": "A:0005",
+      "target": "C:0134",
+      "type": "fails_for",
+      "weight": 0.8
+    },
+    {
+      "source": "S:0032",
+      "target": "A:0005",
+      "type": "fixes",
+      "weight": 0.8
+    },
+    {
+      "source": "A:0006",
+      "target": "C:0079",
+      "type": "fails_for",
+      "weight": 0.83
+    },
+    {
+      "source": "S:0023",
+      "target": "A:0006",
+      "type": "fixes",
+      "weight": 0.8
+    },
+    {
+      "source": "A:0007",
+      "target": "C:0007",
+      "type": "fails_for",
+      "weight": 0.69
+    },
+    {
+      "source": "A:0008",
+      "target": "C:0079",
+      "type": "fails_for",
+      "weight": 0.77
+    },
+    {
+      "source": "S:0009",
+      "target": "A:0008",
+      "type": "fixes",
+      "weight": 0.8
+    },
+    {
+      "source": "A:0009",
+      "target": "C:0012",
+      "type": "fails_for",
+      "weight": 0.74
+    },
+    {
+      "source": "A:0010",
+      "target": "C:0092",
+      "type": "fails_for",
+      "weight": 0.67
+    },
+    {
+      "source": "A:0011",
+      "target": "C:0016",
+      "type": "fails_for",
+      "weight": 0.74
+    },
+    {
+      "source": "A:0012",
+      "target": "C:0015",
+      "type": "fails_for",
+      "weight": 0.85
+    },
+    {
+      "source": "A:0013",
+      "target": "C:0110",
+      "type": "fails_for",
+      "weight": 0.82
+    },
+    {
+      "source": "C:0004",
+      "target": "C:0005",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0049",
+      "target": "C:0050",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0001",
+      "target": "C:0003",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0032",
+      "target": "C:0033",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0030",
+      "target": "C:0031",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0014",
+      "target": "C:0015",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0052",
+      "target": "C:0053",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0040",
+      "target": "C:0072",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0017",
+      "target": "C:0018",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0023",
+      "target": "C:0024",
+      "type": "confused_with",
+      "weight": 0.7
+    },
+    {
+      "source": "C:0056",
+      "target": "C:0057",
+      "type": "confused_with",
+      "weight": 0.7
+    }
+  ]
+}

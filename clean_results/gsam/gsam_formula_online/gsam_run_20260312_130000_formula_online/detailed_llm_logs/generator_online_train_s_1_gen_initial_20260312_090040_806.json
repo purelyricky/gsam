@@ -1,0 +1,14 @@
+{
+  "call_id": "online_train_s_1_gen_initial",
+  "role": "generator",
+  "step": 1,
+  "window": 1,
+  "timestamp": "2026-03-12T09:00:40.000000",
+  "input_tokens": 1470,
+  "output_tokens": 193,
+  "latency_s": 16.26,
+  "retrieved_nodes": 16,
+  "retrieval_precision": 0.101,
+  "predicted": "IncomeTaxExpenseBenefit",
+  "graph_context_snippet": "[Strategy S:0001]: When the sentence contains 'principal amount of $X' or 'face value of $X' or 'aggregate principal', tag as DebtInstrumentFaceAmount. Use DebtInstrumen..."
+}

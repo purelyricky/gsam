@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_181_gen_initial",
+  "role": "generator",
+  "step": 181,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 2269,
+  "completion_tokens": 580,
+  "latency_s": 11.49,
+  "timestamp": "2026-03-12T14:51:30",
+  "is_correct": true,
+  "tag_predicted": "EarningsPerShareDiluted",
+  "tag_ground_truth": "RestructuringCharges"
+}

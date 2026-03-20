@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_201",
+  "role": "curator",
+  "step": 201,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 979,
+  "completion_tokens": 257,
+  "latency_s": 5.35,
+  "timestamp": "2026-03-12T15:28:10",
+  "is_correct": false,
+  "tag_predicted": "AllocatedShareBasedCompensationExpense",
+  "tag_ground_truth": "Goodwill"
+}

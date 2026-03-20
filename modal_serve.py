@@ -36,10 +36,10 @@ import time
 # ---------------------------------------------------------------------------
 # CONFIGURE YOUR MODEL HERE
 # ---------------------------------------------------------------------------
-MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
 # For final paper runs: DeepSeek-R1-Distill-Qwen-32B, N_GPUS=2, GPU_TYPE="H100"
-N_GPUS   = 1
-GPU_TYPE = "A100-40GB"   # H100 | A100-40GB | A100-80GB
+N_GPUS   = 4
+GPU_TYPE = "H100"   # H100 | A100-40GB | A100-80GB
 # ---------------------------------------------------------------------------
 
 VLLM_PORT            = 8000

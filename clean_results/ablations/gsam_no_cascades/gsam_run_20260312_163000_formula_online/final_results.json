@@ -1,0 +1,36 @@
+{
+  "online_test_results": {
+    "accuracy": 0.61,
+    "correct": 183,
+    "total": 300,
+    "skipped": 0
+  },
+  "window_accuracies": [
+    0.43,
+    0.447,
+    0.46,
+    0.47,
+    0.48,
+    0.487,
+    0.493,
+    0.5,
+    0.507,
+    0.513,
+    0.52,
+    0.527,
+    0.533,
+    0.54,
+    0.55,
+    0.56,
+    0.573,
+    0.583,
+    0.6,
+    0.61
+  ],
+  "initial_accuracy": 0.43,
+  "ablation": "gsam_no_cascades",
+  "ablation_description": "Cascade propagation of failure signals across formula dependencies disabled. Anti-patterns created but not linked via fails_for->depends_on.",
+  "task": "formula",
+  "mode": "online",
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+}

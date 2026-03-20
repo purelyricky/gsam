@@ -1,0 +1,14 @@
+{
+  "call_id": "online_train_s_250_gen_initial",
+  "role": "generator",
+  "step": 250,
+  "window": 17,
+  "timestamp": "2026-03-12T11:46:40.000000",
+  "input_tokens": 2161,
+  "output_tokens": 161,
+  "latency_s": 8.56,
+  "retrieved_nodes": 23,
+  "retrieval_precision": 0.66,
+  "predicted": "Depreciation",
+  "graph_context_snippet": "[Strategy S:0250]: When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCredi..."
+}

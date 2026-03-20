@@ -1,0 +1,14 @@
+{
+  "call_id": "online_train_s_200_gen_initial",
+  "role": "generator",
+  "step": 200,
+  "window": 14,
+  "timestamp": "2026-03-12T11:13:20.000000",
+  "input_tokens": 2153,
+  "output_tokens": 193,
+  "latency_s": 8.74,
+  "retrieved_nodes": 21,
+  "retrieval_precision": 0.542,
+  "predicted": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue",
+  "graph_context_snippet": "[Strategy S:0200]: When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCredi..."
+}

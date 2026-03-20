@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_141",
+  "role": "curator",
+  "step": 141,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 1468,
+  "completion_tokens": 396,
+  "latency_s": 11.78,
+  "timestamp": "2026-03-12T13:38:10",
+  "is_correct": true,
+  "tag_predicted": "LineOfCreditFacilityCurrentBorrowingCapacity",
+  "tag_ground_truth": "RetainedEarningsAccumulatedDeficit"
+}

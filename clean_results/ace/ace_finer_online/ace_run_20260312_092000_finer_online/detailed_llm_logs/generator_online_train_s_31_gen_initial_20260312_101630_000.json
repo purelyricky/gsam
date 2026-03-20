@@ -1,0 +1,13 @@
+{
+  "call_id": "online_train_s_31_gen_initial",
+  "role": "generator",
+  "step": 31,
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+  "prompt_tokens": 2338,
+  "completion_tokens": 327,
+  "latency_s": 8.0,
+  "timestamp": "2026-03-12T10:16:30",
+  "is_correct": false,
+  "tag_predicted": "RetainedEarningsAccumulatedDeficit",
+  "tag_ground_truth": "IncomeTaxExpenseBenefit"
+}

@@ -1,0 +1,40 @@
+{
+  "call_id": "online_train_s_200",
+  "role": "curator",
+  "step": 200,
+  "window": 14,
+  "timestamp": "2026-03-12T11:13:35.000000",
+  "input_tokens": 1586,
+  "output_tokens": 411,
+  "latency_s": 8.53,
+  "graph_operations": [
+    {
+      "op": "ADD_STRATEGY",
+      "content": "When a sentence mentions 'maximum borrowing capacity' or 'credit facility limit', prefer LineOfCreditFacilityMaximumBorrowingCapacity over LineOfCreditFacilityCurrentBorrowingCapacity. The former refers to the total credit limit established in the agreement, while the latter is the amount currently available to draw.",
+      "target_concept": "LineOfCreditFacilityMaximumBorrowingCapacity"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "S:0200",
+      "relation": "applies_to",
+      "target": "C:0014"
+    },
+    {
+      "op": "ADD_ANTIPATTERN",
+      "content": "Confusing NetIncomeLoss with ComprehensiveIncomeNetOfTax. Root cause: both appear near income statement references, but ComprehensiveIncome includes unrealized gains/losses on available-for-sale securities and foreign currency translation adjustments. Look for phrases like 'other comprehensive income' or 'AOCI' to distinguish.",
+      "target_concept": "NetIncomeLoss"
+    },
+    {
+      "op": "ADD_EDGE",
+      "source": "A:0200",
+      "relation": "fails_for",
+      "target": "C:0049"
+    },
+    {
+      "op": "UPDATE_ATTR",
+      "node": "C:0015",
+      "attr": "harmful_count",
+      "delta": 1
+    }
+  ]
+}

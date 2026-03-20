@@ -1,0 +1,32 @@
+{
+  "task": "formula",
+  "mode": "online",
+  "status": "complete",
+  "total_steps": 300,
+  "completed_steps": 300,
+  "window_accuracies": [
+    0.43,
+    0.47,
+    0.51,
+    0.55,
+    0.58,
+    0.61,
+    0.63,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65,
+    0.65
+  ],
+  "initial_accuracy": 0.43,
+  "final_accuracy": 0.65,
+  "improvement": 0.22
+}
