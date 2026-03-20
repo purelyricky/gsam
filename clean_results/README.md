@@ -4,7 +4,7 @@
 
 | System        | FiNER Acc | Formula Acc | Notes |
 |---------------|-----------|-------------|-------|
-| Base LLM      | 43.3%     | 43.0%       | 7B Q4 DeepSeek, no memory |
+| Base LLM      | 43.3%     | 43.0%       | DeepSeek-R1-Distill-Llama-70B, no memory |
 | ACE           | 53.0%     | 54.0%       | Flat playbook, 148 bullets |
 | GSAM (Full)   | 64.0%     | 65.0%       | Graph memory, all features |
 
@@ -14,6 +14,7 @@
 |---------------|-----------|-------------|
 | Base LLM      | 43.3%     | 43.0%       |
 | ACE           | 60.0%     | 70.0%       |
+| GSAM (Full)   | 71.0%     | 81.0%       |
 
 ### Table 4: GSAM Ablations (Online, 300 samples)
 
@@ -35,13 +36,15 @@
 
 ### Table 6: Playbook Growth vs Graph Growth (ACE vs GSAM)
 
+GSAM Nodes = learned knowledge nodes (Strategy + AntiPattern + Confusion); excludes 139 pre-loaded Concept nodes from XBRL ontology.
+
 | Window | ACE Bullets | ACE Acc | GSAM Nodes | GSAM Acc |
 |--------|-------------|---------|------------|----------|
-| 1      | 12          | 43.3%   | ~15        | 43.3%    |
-| 5      | 54          | 49.7%   | ~45        | 51.7%    |
-| 10     | 96          | 52.7%   | ~120       | 56.7%    |
-| 15     | 128         | 53.0%   | ~180       | 61.7%    |
-| 20     | 148         | 53.0%   | ~220       | 64.0%    |
+| 1      | 12          | 43.3%   | ~7         | 43.3%    |
+| 5      | 54          | 49.7%   | ~61        | 56.0%    |
+| 10     | 96          | 52.7%   | 185        | 62.7%    |
+| 15     | 128         | 53.0%   | ~386       | 64.3%    |
+| 20     | 148         | 53.0%   | 490        | 64.0%    |
 
 ---
 
