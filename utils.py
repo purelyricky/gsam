@@ -13,6 +13,11 @@ load_dotenv()
 
 def initialize_clients(api_provider):
     """Initialize separate clients for generator, reflector, and curator"""
+    if api_provider == "mock":
+        # Offline deterministic client for tests and dry runs (no API key needed)
+        from mock_llm import MockLLMClient
+        return MockLLMClient(), MockLLMClient(), MockLLMClient()
+
     if api_provider == "sambanova":
         base_url = "https://api.sambanova.ai/v1"
         api_key = os.getenv('SAMBANOVA_API_KEY', '')
@@ -43,7 +48,7 @@ def initialize_clients(api_provider):
     else:
         raise ValueError(
             f"Invalid api_provider: '{api_provider}'. "
-            "Must be 'sambanova', 'together', 'openai', or 'modal'"
+            "Must be 'sambanova', 'together', 'openai', 'modal', or 'mock'"
         )
 
     generator_client = openai.OpenAI(api_key=api_key, base_url=base_url)
