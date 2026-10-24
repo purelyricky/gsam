@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from ace.ace import ACE  # noqa: E402
 from ace.training_modes import OfflineTrainingMixin  # noqa: E402
 from ace.online_training import OnlineTrainingMixin  # noqa: E402
+from ace.sample_training import SampleTrainingMixin  # noqa: E402
 from gsam import gsam as gsam_module  # noqa: E402
 from gsam.core import agents  # noqa: E402
 
@@ -17,7 +18,8 @@ class TestModuleStructure(unittest.TestCase):
     def test_ace_composes_training_mixins(self):
         self.assertTrue(issubclass(ACE, OfflineTrainingMixin))
         self.assertTrue(issubclass(ACE, OnlineTrainingMixin))
-        for name in ("_offline_train", "_online_train_and_test", "run", "test"):
+        self.assertTrue(issubclass(ACE, SampleTrainingMixin))
+        for name in ("_offline_train", "_online_train_and_test", "_train_single_sample", "run", "test"):
             self.assertTrue(callable(getattr(ACE, name)), name)
 
     def test_gsam_reexports_agents(self):
