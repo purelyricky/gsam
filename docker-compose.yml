@@ -1,0 +1,14 @@
+# One-command startup:  docker compose up --build
+# Runs the unit-test suite by default; use the `experiment` service for runs.
+services:
+  tests:
+    build: .
+    command: python -m unittest discover -s tests -v
+
+  experiment:
+    build: .
+    profiles: ["experiment"]
+    env_file: .env
+    volumes:
+      - ./results:/app/results
+    command: python -m experiments.run_experiment --help

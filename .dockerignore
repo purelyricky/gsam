@@ -1,0 +1,8 @@
+.git
+.venv
+.idea
+results
+clean_results
+mini_results_wrong
+__pycache__
+.env
