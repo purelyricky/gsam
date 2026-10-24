@@ -18,12 +18,16 @@ from enum import Enum
 from typing import Dict, List, Optional, Set, Tuple, Any
 from collections import defaultdict
 
+from log_config import get_logger
+
+logger = get_logger("graph_memory")
+
 try:
     from sentence_transformers import SentenceTransformer
     EMBEDDINGS_AVAILABLE = True
 except ImportError:
     EMBEDDINGS_AVAILABLE = False
-    print("Warning: sentence-transformers not available. "
+    logger.warning("Warning: sentence-transformers not available. "
           "Install with: pip install sentence-transformers")
 
 

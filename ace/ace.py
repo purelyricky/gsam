@@ -19,6 +19,10 @@ from playbook_utils import *
 from logger import *
 from utils import *
 
+from log_config import get_logger
+
+logger = get_logger("ace")
+
 
 class ACE:
     """
@@ -73,7 +77,7 @@ class ACE:
                 curator_model, 
                 max_tokens
             )
-            print(f"BulletpointAnalyzer initialized (threshold={bulletpoint_analyzer_threshold})")
+            logger.info(f"BulletpointAnalyzer initialized (threshold={bulletpoint_analyzer_threshold})")
         else:
             self.bulletpoint_analyzer = None
         
@@ -141,13 +145,13 @@ class ACE:
             with open(latest_pb) as f:
                 self.playbook = f.read()
             self.best_playbook = self.playbook
-            print(f"Loaded playbook checkpoint: {latest_pb}")
+            logger.info(f"Loaded playbook checkpoint: {latest_pb}")
 
         progress_file = os.path.join(resume_path, "progress.json")
         if os.path.exists(progress_file):
             with open(progress_file) as f:
                 progress = json.load(f)
-            print(f"Resuming from progress: {progress}")
+            logger.info(f"Resuming from progress: {progress}")
             if progress.get("mode") == "offline":
                 state["start_epoch"] = progress.get("epoch", 1)
                 state["start_step"] = progress.get("step", 0)
@@ -280,7 +284,7 @@ class ACE:
         prior_online_results = None
 
         if resume_cfg and os.path.isdir(resume_cfg):
-            print(f"\nRESUMING ACE run from: {resume_cfg}")
+            logger.info(f"\nRESUMING ACE run from: {resume_cfg}")
             # Temporarily set save paths from resume dir, then load state
             save_path = resume_cfg
             log_dir = os.path.join(save_path, "detailed_llm_logs")
@@ -321,20 +325,20 @@ class ACE:
             }, f, indent=2)
         
         # Print initial banner
-        print(f"\n{'='*60}")
-        print(f"ACE SYSTEM - {mode.upper().replace('_', ' ')} MODE")
-        print(f"{'='*60}")
-        print(f"Task: {task_name}")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"ACE SYSTEM - {mode.upper().replace('_', ' ')} MODE")
+        logger.info(f"{'='*60}")
+        logger.info(f"Task: {task_name}")
         if mode == 'offline':
-            print(f"Train samples: {len(train_samples)}")
-            print(f"Validation samples: {len(val_samples)}")
+            logger.info(f"Train samples: {len(train_samples)}")
+            logger.info(f"Validation samples: {len(val_samples)}")
             if test_samples:
-                print(f"Test samples: {len(test_samples)}")
+                logger.info(f"Test samples: {len(test_samples)}")
         elif mode == 'online':
-            print(f"Test samples (used for training and testing): {len(test_samples)}")
+            logger.info(f"Test samples (used for training and testing): {len(test_samples)}")
         else:  # eval_only
-            print(f"Test samples: {len(test_samples)}")
-        print(f"{'='*60}\n")
+            logger.info(f"Test samples: {len(test_samples)}")
+        logger.info(f"{'='*60}\n")
         
         # Execute based on mode
         results = {}
@@ -343,9 +347,9 @@ class ACE:
             # OFFLINE MODE WORKFLOW
             # 1. Run initial test if test_samples provided
             if test_samples:
-                print(f"\n{'='*60}")
-                print(f"INITIAL TEST (before training)")
-                print(f"{'='*60}\n")
+                logger.info(f"\n{'='*60}")
+                logger.info(f"INITIAL TEST (before training)")
+                logger.info(f"{'='*60}\n")
                 initial_test_results = self._run_test(
                     test_samples=test_samples,
                     data_processor=data_processor,
@@ -356,12 +360,12 @@ class ACE:
                     prefix="initial"
                 )
                 results['initial_test_results'] = initial_test_results
-                print(f"Initial Test Accuracy: {initial_test_results['accuracy']:.3f}\n")
+                logger.info(f"Initial Test Accuracy: {initial_test_results['accuracy']:.3f}\n")
 
             # 2. Run offline training
-            print(f"\n{'='*60}")
-            print(f"STARTING OFFLINE TRAINING")
-            print(f"{'='*60}\n")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"STARTING OFFLINE TRAINING")
+            logger.info(f"{'='*60}\n")
             training_results = self._offline_train(
                 train_samples=train_samples,
                 val_samples=val_samples,
@@ -380,9 +384,9 @@ class ACE:
 
             # 3. Run final test if test_samples provided
             if test_samples:
-                print(f"\n{'='*60}")
-                print(f"FINAL TEST (with best playbook)")
-                print(f"{'='*60}\n")
+                logger.info(f"\n{'='*60}")
+                logger.info(f"FINAL TEST (with best playbook)")
+                logger.info(f"{'='*60}\n")
                 final_test_results = self._run_test(
                     test_samples=test_samples,
                     data_processor=data_processor,
@@ -393,14 +397,14 @@ class ACE:
                     prefix="final"
                 )
                 results['final_test_results'] = final_test_results
-                print(f"Final Test Accuracy: {final_test_results['accuracy']:.3f}\n")
+                logger.info(f"Final Test Accuracy: {final_test_results['accuracy']:.3f}\n")
 
         elif mode == 'online':
             # ONLINE MODE WORKFLOW
             # 1. Run initial test
-            print(f"\n{'='*60}")
-            print(f"INITIAL TEST (before training)")
-            print(f"{'='*60}\n")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"INITIAL TEST (before training)")
+            logger.info(f"{'='*60}\n")
             initial_test_results = self._run_test(
                 test_samples=test_samples,
                 data_processor=data_processor,
@@ -411,12 +415,12 @@ class ACE:
                 prefix="initial"
             )
             results['initial_test_results'] = initial_test_results
-            print(f"Initial Test Accuracy: {initial_test_results['accuracy']:.3f}\n")
+            logger.info(f"Initial Test Accuracy: {initial_test_results['accuracy']:.3f}\n")
 
             # 2. Run online training and testing
-            print(f"\n{'='*60}")
-            print(f"STARTING ONLINE TRAIN AND TEST")
-            print(f"{'='*60}\n")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"STARTING ONLINE TRAIN AND TEST")
+            logger.info(f"{'='*60}\n")
             online_results = self._online_train_and_test(
                 test_samples=test_samples,
                 data_processor=data_processor,
@@ -435,9 +439,9 @@ class ACE:
         
         else:  # eval_only
             # EVAL ONLY MODE WORKFLOW
-            print(f"\n{'='*60}")
-            print(f"RUNNING TEST")
-            print(f"{'='*60}\n")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"RUNNING TEST")
+            logger.info(f"{'='*60}\n")
             test_results = self._run_test(
                 test_samples=test_samples,
                 data_processor=data_processor,
@@ -455,22 +459,22 @@ class ACE:
             json.dump(results, f, indent=2)
         
         # Print final summary
-        print(f"\n{'='*60}")
-        print(f"RUN COMPLETE")
-        print(f"{'='*60}")
-        print(f"Mode: {mode.upper().replace('_', ' ')}")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"RUN COMPLETE")
+        logger.info(f"{'='*60}")
+        logger.info(f"Mode: {mode.upper().replace('_', ' ')}")
         if mode == 'offline':
-            print(f"Best Validation Accuracy: {results['training_results']['best_validation_accuracy']:.3f}")
+            logger.info(f"Best Validation Accuracy: {results['training_results']['best_validation_accuracy']:.3f}")
             if test_samples:
-                print(f"Initial Test Accuracy: {results['initial_test_results']['accuracy']:.3f}")
-                print(f"Final Test Accuracy: {results['final_test_results']['accuracy']:.3f}")
+                logger.info(f"Initial Test Accuracy: {results['initial_test_results']['accuracy']:.3f}")
+                logger.info(f"Final Test Accuracy: {results['final_test_results']['accuracy']:.3f}")
         elif mode == 'online':
-            print(f"Initial Test Accuracy: {results['initial_test_results']['accuracy']:.3f}")
-            print(f"Final Test Accuracy: {results['online_test_results']['accuracy']:.3f}")
+            logger.info(f"Initial Test Accuracy: {results['initial_test_results']['accuracy']:.3f}")
+            logger.info(f"Final Test Accuracy: {results['online_test_results']['accuracy']:.3f}")
         else:  # eval_only
-            print(f"Test Accuracy: {results['test_results']['accuracy']:.3f}")
-        print(f"Results saved to: {save_path}")
-        print(f"{'='*60}\n")
+            logger.info(f"Test Accuracy: {results['test_results']['accuracy']:.3f}")
+        logger.info(f"Results saved to: {save_path}")
+        logger.info(f"{'='*60}\n")
         
         return results
     
@@ -572,7 +576,7 @@ class ACE:
         _playbook_update_time = 0.0
 
         # STEP 1: Initial generation (pre-train)
-        print("Generating initial answer...")
+        logger.info("Generating initial answer...")
         _t0 = time.time()
         gen_response, bullet_ids, call_info = self.generator.generate(
             question=question,
@@ -590,7 +594,7 @@ class ACE:
         is_correct = data_processor.answer_is_correct(final_answer, target)
         pre_train_answer = final_answer
         
-        print(f"Correct: {is_correct}")
+        logger.info(f"Correct: {is_correct}")
         
         # Log bullet usage
         log_bullet_usage(usage_log_path, epoch, step, task_dict, bullet_ids,
@@ -612,7 +616,7 @@ class ACE:
         if not is_correct:
             # For incorrect answers - iterate reflection rounds
             for round_num in range(max_num_rounds):
-                print(f"Reflection round {round_num + 1}/{max_num_rounds}")
+                logger.info(f"Reflection round {round_num + 1}/{max_num_rounds}")
 
                 # Get bullets for reflector
                 playbook_bullets = extract_playbook_bullets(
@@ -659,7 +663,7 @@ class ACE:
                 final_answer = extract_answer(gen_response)
 
                 if data_processor.answer_is_correct(final_answer, target):
-                    print(f"Corrected after reflection round {round_num + 1}!")
+                    logger.info(f"Corrected after reflection round {round_num + 1}!")
                     is_correct = True
                     break
 
@@ -700,7 +704,7 @@ class ACE:
 
         # STEP 3: Curator - Periodically update playbook
         if step % curator_frequency == 0:
-            print(f"\n--- Running Curator at step {step} ---")
+            logger.info(f"\n--- Running Curator at step {step} ---")
 
             stats = get_playbook_stats(self.playbook)
 
@@ -723,7 +727,7 @@ class ACE:
 
             # Run bulletpoint analyzer if enabled
             if self.use_bulletpoint_analyzer and self.bulletpoint_analyzer:
-                print(f"  Running BulletpointAnalyzer (threshold={self.bulletpoint_analyzer_threshold})...")
+                logger.info(f"  Running BulletpointAnalyzer (threshold={self.bulletpoint_analyzer_threshold})...")
                 _t0 = time.time()
                 self.playbook = self.bulletpoint_analyzer.analyze(
                     playbook=self.playbook,
@@ -812,22 +816,22 @@ class ACE:
         self.best_playbook = self.playbook
         all_latencies = []
 
-        print(f"Total epochs: {num_epochs}")
-        print(f"Train samples per epoch: {len(train_samples)}")
-        print(f"Val samples: {len(val_samples)}")
-        print(f"Curator frequency: every {curator_frequency} steps")
-        print(f"Evaluation frequency: every {eval_steps} steps\n")
+        logger.info(f"Total epochs: {num_epochs}")
+        logger.info(f"Train samples per epoch: {len(train_samples)}")
+        logger.info(f"Val samples: {len(val_samples)}")
+        logger.info(f"Curator frequency: every {curator_frequency} steps")
+        logger.info(f"Evaluation frequency: every {eval_steps} steps\n")
         
         # Training loop
         for epoch in range(1, num_epochs + 1):
             # --- RESUME: skip epochs already completed ---
             if epoch < start_epoch:
-                print(f"Skipping epoch {epoch} (resuming from epoch {start_epoch}, step {start_step})")
+                logger.info(f"Skipping epoch {epoch} (resuming from epoch {start_epoch}, step {start_step})")
                 continue
 
-            print(f"\n{'='*60}")
-            print(f"EPOCH {epoch}/{num_epochs}")
-            print(f"{'='*60}")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"EPOCH {epoch}/{num_epochs}")
+            logger.info(f"{'='*60}")
 
             epoch_answers_pre_train = []
             epoch_targets_pre_train = []
@@ -841,7 +845,7 @@ class ACE:
                 if epoch == start_epoch and step <= start_step:
                     continue
 
-                print(f"\n--- Step {step}/{len(train_samples)} ---")
+                logger.info(f"\n--- Step {step}/{len(train_samples)} ---")
                 
                 target = task_dict.get("target", "")
 
@@ -859,7 +863,7 @@ class ACE:
                         total_samples=len(train_samples)
                     )
                 except Exception as e:
-                    print(f"[WARN] Skipping training sample (epoch={epoch}, step={step}): {type(e).__name__}: {e}")
+                    logger.info(f"[WARN] Skipping training sample (epoch={epoch}, step={step}): {type(e).__name__}: {e}")
                     self._save_progress(save_path, mode="offline", epoch=epoch, step=step)
                     continue
 
@@ -892,9 +896,9 @@ class ACE:
                 
                 # Periodic evaluation
                 if step % eval_steps == 0:
-                    print(f"\n{'='*40}")
-                    print(f"EVALUATION AT EPOCH {epoch}, STEP {step}")
-                    print(f"{'='*40}")
+                    logger.info(f"\n{'='*40}")
+                    logger.info(f"EVALUATION AT EPOCH {epoch}, STEP {step}")
+                    logger.info(f"{'='*40}")
                     
                     # Compute training accuracies
                     pre_train_accuracy = data_processor.evaluate_accuracy(
@@ -939,7 +943,7 @@ class ACE:
                         if acc > best_accuracy:
                             best_accuracy = acc
                             self.best_playbook = self.playbook
-                            print(f"New best accuracy: {best_accuracy:.3f}")
+                            logger.info(f"New best accuracy: {best_accuracy:.3f}")
                     
                     # Save results
                     results_path = os.path.join(save_path, "train_results.json")
@@ -997,11 +1001,11 @@ class ACE:
         with open(best_playbook_path, "w") as f:
             f.write(self.best_playbook)
 
-        print(f"\n{'='*60}")
-        print(f"OFFLINE TRAINING COMPLETE")
-        print(f"{'='*60}")
-        print(f"Best Validation Accuracy: {best_accuracy:.3f}")
-        print(f"{'='*60}\n")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"OFFLINE TRAINING COMPLETE")
+        logger.info(f"{'='*60}")
+        logger.info(f"Best Validation Accuracy: {best_accuracy:.3f}")
+        logger.info(f"{'='*60}\n")
 
         return {"best_validation_accuracy": best_accuracy, "latency_stats": latency_stats}
 
@@ -1104,7 +1108,7 @@ class ACE:
             total_count = prior_online_results.get('total_count', 0)
             skipped_count = prior_online_results.get('skipped_count', 0)
             window_test_results = prior_online_results.get('window_test_results', [])
-            print(f"Resumed online: {len(window_test_results)} windows done, "
+            logger.info(f"Resumed online: {len(window_test_results)} windows done, "
                   f"global_step={start_global_step}")
         else:
             correct_count_sample_based = 0
@@ -1112,10 +1116,10 @@ class ACE:
             total_count = 0
             skipped_count = 0
             window_test_results = []
-        print(f"Total samples: {len(test_samples)}")
-        print(f"Window size: {online_eval_frequency}")
-        print(f"Number of windows: {(len(test_samples) + online_eval_frequency - 1) // online_eval_frequency}")
-        print(f"Curator frequency: every {curator_frequency} steps")
+        logger.info(f"Total samples: {len(test_samples)}")
+        logger.info(f"Window size: {online_eval_frequency}")
+        logger.info(f"Number of windows: {(len(test_samples) + online_eval_frequency - 1) // online_eval_frequency}")
+        logger.info(f"Curator frequency: every {curator_frequency} steps")
         
         # Split samples into windows
         num_windows = (len(test_samples) + online_eval_frequency - 1) // online_eval_frequency
@@ -1132,15 +1136,15 @@ class ACE:
             end_idx = min((window_idx + 1) * online_eval_frequency, len(test_samples))
             window_samples = test_samples[start_idx:end_idx]
             
-            print(f"\n{'='*60}")
-            print(f"WINDOW {window_idx + 1}/{num_windows}")
-            print(f"Samples {start_idx} to {end_idx - 1}")
-            print(f"{'='*60}")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"WINDOW {window_idx + 1}/{num_windows}")
+            logger.info(f"Samples {start_idx} to {end_idx - 1}")
+            logger.info(f"{'='*60}")
             
             # =================================================================
             # STEP 1: TEST on window with current playbook (before training)
             # =================================================================
-            print(f"\n--- Testing window {window_idx + 1} with current playbook ---")
+            logger.info(f"\n--- Testing window {window_idx + 1} with current playbook ---")
             
             # Use evaluate_test_set for parallel evaluation
             window_test_results_dict, window_test_error_log = evaluate_test_set(
@@ -1185,14 +1189,14 @@ class ACE:
             # Calculate cumulative test accuracy so far
             cumulative_test_accuracy = correct_count / total_count
             
-            print(f"Window {window_idx + 1} test accuracy: {window_accuracy:.3f}")
-            print(f"Cumulative test accuracy so far: {cumulative_test_accuracy:.3f} "
+            logger.info(f"Window {window_idx + 1} test accuracy: {window_accuracy:.3f}")
+            logger.info(f"Cumulative test accuracy so far: {cumulative_test_accuracy:.3f} "
                   f"({total_count} samples)")
             
             # =================================================================
             # STEP 2: TRAIN on window (same as offline_train)
             # =================================================================
-            print(f"\n--- Training on window {window_idx + 1} ---")
+            logger.info(f"\n--- Training on window {window_idx + 1} ---")
             
             epoch_answers_pre_train = []
             epoch_targets_pre_train = []
@@ -1203,7 +1207,7 @@ class ACE:
                 global_step += 1
                 local_step += 1
                 
-                print(f"\n--- Window {window_idx + 1}, Step {local_step}/{len(window_samples)} "
+                logger.info(f"\n--- Window {window_idx + 1}, Step {local_step}/{len(window_samples)} "
                       f"(Global step {global_step}) ---")
                 
                 target = task_dict.get("target", "")
@@ -1222,7 +1226,7 @@ class ACE:
                         total_samples=len(test_samples)
                     )
                 except Exception as e:
-                    print(f"[WARN] Skipping online training step {global_step}: {type(e).__name__}: {e}")
+                    logger.info(f"[WARN] Skipping online training step {global_step}: {type(e).__name__}: {e}")
                     continue
 
                 # Collect answers for accuracy calculation
@@ -1284,9 +1288,9 @@ class ACE:
             self._save_progress(save_path, mode="online",
                                 window=window_idx, global_step=global_step)
 
-            print(f"\nWindow {window_idx + 1} training complete:")
-            print(f"  Pre-train accuracy: {pre_train_accuracy:.3f}")
-            print(f"  Post-train accuracy: {post_train_accuracy:.3f}")
+            logger.info(f"\nWindow {window_idx + 1} training complete:")
+            logger.info(f"  Pre-train accuracy: {pre_train_accuracy:.3f}")
+            logger.info(f"  Post-train accuracy: {post_train_accuracy:.3f}")
             
             # Save window playbook
             window_playbook_path = os.path.join(
@@ -1296,15 +1300,15 @@ class ACE:
                 f.write(self.playbook)
         
         # All windows complete
-        print(f"\n{'='*60}")
-        print(f"ONLINE TRAIN AND TEST COMPLETE")
-        print(f"{'='*60}")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"ONLINE TRAIN AND TEST COMPLETE")
+        logger.info(f"{'='*60}")
 
         # Calculate final cumulative test accuracy
         # total_count may be < len(test_samples) when samples are skipped due
         # to LLM failures (empty/truncated responses); that is expected behavior.
         if skipped_count > 0:
-            print(f"Warning: {skipped_count} sample(s) skipped due to LLM failures and excluded from accuracy.")
+            logger.warning(f"Warning: {skipped_count} sample(s) skipped due to LLM failures and excluded from accuracy.")
         final_test_accuracy = correct_count / total_count if total_count > 0 else 0.0
 
         # Compute latency stats
@@ -1359,11 +1363,11 @@ class ACE:
         with open(final_playbook_path, "w") as f:
             f.write(self.playbook)
 
-        print(f"\n{'='*60}")
-        print(f"ONLINE TRAINING AND TESTING COMPLETE")
-        print(f"{'='*60}")
-        print(f"Final Test Accuracy: {final_test_accuracy:.3f}")
-        print(f"{'='*60}\n")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"ONLINE TRAINING AND TESTING COMPLETE")
+        logger.info(f"{'='*60}")
+        logger.info(f"Final Test Accuracy: {final_test_accuracy:.3f}")
+        logger.info(f"{'='*60}\n")
 
         return {
             "accuracy": final_test_accuracy,

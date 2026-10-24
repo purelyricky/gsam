@@ -17,6 +17,10 @@ from ..prompts.graph_constructor import GRAPH_CONSTRUCTOR_PROMPT
 from playbook_utils import extract_json_from_text
 from llm import timed_llm_call
 
+from log_config import get_logger
+
+logger = get_logger("graph_constructor")
+
 
 @dataclass
 class GraphOperation:
@@ -443,7 +447,7 @@ class GraphConstructor:
             return self._parse_extracted_graph(extracted)
 
         except Exception as e:
-            print(f"GraphConstructor extraction failed: {e}")
+            logger.info(f"GraphConstructor extraction failed: {e}")
             return []
 
     def _parse_extracted_graph(self, data: Dict) -> List[GraphOperation]:
@@ -598,7 +602,7 @@ class GraphConstructor:
                             else:
                                 node[k] = v
             except Exception as e:
-                print(f"  Warning: Failed to apply graph op {op.op_type}: {e}")
+                logger.warning(f"  Warning: Failed to apply graph op {op.op_type}: {e}")
 
     def update_node_tags(self, node_tags: List[Dict[str, str]]) -> None:
         """

@@ -11,6 +11,9 @@ import os
 from typing import Dict, List, Optional, Any
 
 from .graph_memory import KnowledgeGraph, NodeType, EdgeType
+from log_config import get_logger
+
+logger = get_logger("ontology")
 
 
 def initialize_ontology(
@@ -93,7 +96,7 @@ def initialize_ontology(
     if formula_data_path and os.path.exists(formula_data_path):
         _load_formula_nodes(graph, formula_data_path, entity_to_node_id)
 
-    print(
+    logger.info(
         f"Ontology initialized: {len(entity_to_node_id)} entity concepts, "
         f"{len(cat_node_ids)} categories"
     )
@@ -146,7 +149,7 @@ def _load_formula_nodes(
                         graph, fid, formula_expr, entity_to_node_id
                     )
 
-    print(f"  Loaded {len(seen_formulas)} formula nodes from training data")
+    logger.info(f"  Loaded {len(seen_formulas)} formula nodes from training data")
 
 
 def _extract_formula_name(context: str) -> Optional[str]:

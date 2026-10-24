@@ -26,6 +26,10 @@ from utils import initialize_clients, extract_answer, count_tokens, evaluate_tes
 from logger import log_llm_call
 from playbook_utils import extract_json_from_text
 
+from log_config import get_logger
+
+logger = get_logger("gsam")
+
 
 class GSAMGenerator:
     """Generator agent adapted for GSAM's graph-structured context."""
@@ -365,7 +369,7 @@ class GSAM:
                 formula_data_path,
             )
         else:
-            print("Ontology initialization skipped (no_ontology=True or no taxonomy_path)")
+            logger.info("Ontology initialization skipped (no_ontology=True or no taxonomy_path)")
 
         # Initialize Graph Constructor
         self.graph_constructor = GraphConstructor(
@@ -390,7 +394,7 @@ class GSAM:
         self.error_history: List[Dict] = []
         self.retrieval_logs: List[Dict] = []
 
-        print(f"GSAM initialized: {self.knowledge_graph}")
+        logger.info(f"GSAM initialized: {self.knowledge_graph}")
 
     # ------------------------------------------------------------------
     # Resume helpers
@@ -444,14 +448,14 @@ class GSAM:
             self.knowledge_graph._next_ids = loaded._next_ids
             self.knowledge_graph.tasks_processed = loaded.tasks_processed
             self.knowledge_graph.created_at = loaded.created_at
-            print(f"Loaded graph checkpoint: {latest_ckpt}")
-            print(f"  Resumed graph: {self.knowledge_graph}")
+            logger.info(f"Loaded graph checkpoint: {latest_ckpt}")
+            logger.info(f"  Resumed graph: {self.knowledge_graph}")
 
         progress_file = os.path.join(resume_path, "progress.json")
         if os.path.exists(progress_file):
             with open(progress_file) as f:
                 progress = json.load(f)
-            print(f"Resuming from progress: {progress}")
+            logger.info(f"Resuming from progress: {progress}")
             if progress.get("mode") == "offline":
                 state["start_epoch"] = progress.get("epoch", 1)
                 state["start_step"] = progress.get("step", 0)
@@ -494,7 +498,7 @@ class GSAM:
 
         if resume_cfg and os.path.isdir(resume_cfg):
             save_path = resume_cfg
-            print(f"\nRESUMING run from: {resume_cfg}")
+            logger.info(f"\nRESUMING run from: {resume_cfg}")
             state = self._load_resume_state(resume_cfg)
             start_epoch = state["start_epoch"]
             start_step = state["start_step"]
@@ -521,12 +525,12 @@ class GSAM:
             # Save initial graph only on a fresh run
             self.knowledge_graph.save(os.path.join(graph_dir, "graph_step_0.json"))
 
-        print(f"\n{'='*60}")
-        print(f"GSAM SYSTEM - {mode.upper()} MODE")
-        print(f"{'='*60}")
-        print(f"Task: {task_name}")
-        print(f"Graph: {self.knowledge_graph}")
-        print(f"{'='*60}\n")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"GSAM SYSTEM - {mode.upper()} MODE")
+        logger.info(f"{'='*60}")
+        logger.info(f"Task: {task_name}")
+        logger.info(f"Graph: {self.knowledge_graph}")
+        logger.info(f"{'='*60}\n")
 
         results = {}
 
@@ -534,7 +538,7 @@ class GSAM:
             if test_samples:
                 initial = self._run_test(test_samples, data_processor, config, log_dir, save_path, "initial")
                 results['initial_test_results'] = initial
-                print(f"Initial Test Accuracy: {initial['accuracy']:.3f}\n")
+                logger.info(f"Initial Test Accuracy: {initial['accuracy']:.3f}\n")
 
             training_results = self._offline_train(
                 train_samples, val_samples, data_processor, config,
@@ -548,12 +552,12 @@ class GSAM:
             if test_samples:
                 final = self._run_test(test_samples, data_processor, config, log_dir, save_path, "final")
                 results['final_test_results'] = final
-                print(f"Final Test Accuracy: {final['accuracy']:.3f}\n")
+                logger.info(f"Final Test Accuracy: {final['accuracy']:.3f}\n")
 
         elif mode == 'online':
             initial = self._run_test(test_samples, data_processor, config, log_dir, save_path, "initial")
             results['initial_test_results'] = initial
-            print(f"Initial Test Accuracy: {initial['accuracy']:.3f}\n")
+            logger.info(f"Initial Test Accuracy: {initial['accuracy']:.3f}\n")
 
             online_results = self._online_train_and_test(
                 test_samples, data_processor, config,
@@ -578,12 +582,12 @@ class GSAM:
             json.dump(results, f, indent=2)
 
         # Print summary
-        print(f"\n{'='*60}")
-        print(f"GSAM RUN COMPLETE")
-        print(f"{'='*60}")
-        print(f"Final Graph: {self.knowledge_graph}")
-        print(f"Results saved to: {save_path}")
-        print(f"{'='*60}\n")
+        logger.info(f"\n{'='*60}")
+        logger.info(f"GSAM RUN COMPLETE")
+        logger.info(f"{'='*60}")
+        logger.info(f"Final Graph: {self.knowledge_graph}")
+        logger.info(f"Results saved to: {save_path}")
+        logger.info(f"{'='*60}\n")
 
         return results
 
@@ -676,7 +680,7 @@ class GSAM:
             "retrieval_time_s": retrieval_time,
         })
 
-        print(f"Correct: {is_correct} | Retrieved: {len(retrieved_ids)} nodes | Precision: {retrieval_precision:.2f}")
+        logger.info(f"Correct: {is_correct} | Retrieved: {len(retrieved_ids)} nodes | Precision: {retrieval_precision:.2f}")
 
         tracking_dict = {
             "pre_train_result": {
@@ -694,7 +698,7 @@ class GSAM:
 
         if not is_correct:
             for round_num in range(max_num_rounds):
-                print(f"Reflection round {round_num + 1}/{max_num_rounds}")
+                logger.info(f"Reflection round {round_num + 1}/{max_num_rounds}")
 
                 _t0 = time.time()
                 reflection_content, node_tags, _ = self.reflector.reflect(
@@ -748,7 +752,7 @@ class GSAM:
 
                 final_answer = extract_answer(gen_response)
                 if data_processor.answer_is_correct(final_answer, target):
-                    print(f"Corrected after reflection round {round_num + 1}!")
+                    logger.info(f"Corrected after reflection round {round_num + 1}!")
                     is_correct = True
                     break
         else:
@@ -772,7 +776,7 @@ class GSAM:
 
         # STEP 4: Curator + Graph Constructor
         if step % curator_frequency == 0:
-            print(f"\n--- Running Curator + Graph Constructor at step {step} ---")
+            logger.info(f"\n--- Running Curator + Graph Constructor at step {step} ---")
 
             graph_stats_str = json.dumps(self.knowledge_graph.stats(), indent=2)
             graph_summary = self._get_graph_summary_for_curator()
@@ -804,13 +808,13 @@ class GSAM:
                     log_dir=log_dir,
                 )
                 _graph_update_time += time.time() - _t0
-                print(f"  Applied {len(ops)} graph operations")
+                logger.info(f"  Applied {len(ops)} graph operations")
 
         # STEP 5: Periodic pruning
         if step % self.prune_frequency == 0 and step > 0:
             pruned = self.knowledge_graph.prune()
             if pruned:
-                print(f"  Pruned {pruned} low-utility nodes")
+                logger.info(f"  Pruned {pruned} low-utility nodes")
 
         # Post-curator generation: only re-generate when the curator
         # actually ran and updated the graph, otherwise the context is
@@ -870,10 +874,10 @@ class GSAM:
         for epoch in range(1, num_epochs + 1):
             # --- RESUME: skip epochs already completed ---
             if epoch < start_epoch:
-                print(f"Skipping epoch {epoch} (resuming from epoch {start_epoch}, step {start_step})")
+                logger.info(f"Skipping epoch {epoch} (resuming from epoch {start_epoch}, step {start_step})")
                 continue
 
-            print(f"\n{'='*60}\nEPOCH {epoch}/{num_epochs}\n{'='*60}")
+            logger.info(f"\n{'='*60}\nEPOCH {epoch}/{num_epochs}\n{'='*60}")
 
             answers_pre, targets_pre = [], []
             answers_post, targets_post = [], []
@@ -885,7 +889,7 @@ class GSAM:
                 if epoch == start_epoch and step <= start_step:
                     continue
 
-                print(f"\n--- Step {step}/{len(train_samples)} ---")
+                logger.info(f"\n--- Step {step}/{len(train_samples)} ---")
 
                 target = task_dict.get("target", "")
                 try:
@@ -894,7 +898,7 @@ class GSAM:
                         step, log_dir, config_params, len(train_samples),
                     )
                 except Exception as e:
-                    print(f"[WARN] Skipping training sample (epoch={epoch}, step={step}): {type(e).__name__}: {e}")
+                    logger.info(f"[WARN] Skipping training sample (epoch={epoch}, step={step}): {type(e).__name__}: {e}")
                     self._save_progress(save_path, mode="offline", epoch=epoch, step=step)
                     continue
 
@@ -947,7 +951,7 @@ class GSAM:
             # weights, merge similar strategies with identical neighborhoods.
             if not config.get('no_multi_epoch_refinement', False):
                 consolidation_stats = self.knowledge_graph.consolidate_epoch()
-                print(f"Epoch {epoch} consolidation: {consolidation_stats}")
+                logger.info(f"Epoch {epoch} consolidation: {consolidation_stats}")
                 self.knowledge_graph.save(
                     os.path.join(graph_dir, f"graph_epoch_{epoch}_consolidated.json")
                 )
@@ -991,7 +995,7 @@ class GSAM:
             total_count = prior_online_results.get('total_count', 0)
             skipped_count = prior_online_results.get('skipped_count', 0)
             global_step = start_global_step
-            print(f"Resumed online: {len(window_results)} windows already done, "
+            logger.info(f"Resumed online: {len(window_results)} windows already done, "
                   f"global_step={global_step}")
         else:
             correct_count_sample = 0
@@ -1016,7 +1020,7 @@ class GSAM:
             end = min((window_idx + 1) * online_eval_frequency, len(test_samples))
             window_samples = test_samples[start:end]
 
-            print(f"\n{'='*60}\nWINDOW {window_idx+1}/{num_windows} (samples {start}-{end-1})\n{'='*60}")
+            logger.info(f"\n{'='*60}\nWINDOW {window_idx+1}/{num_windows} (samples {start}-{end-1})\n{'='*60}")
 
             # Test on window with per-query retrieval
             retrieval_gen = _RetrievalAwareGenerator(self.generator, self.graph_retriever)
@@ -1058,12 +1062,12 @@ class GSAM:
             })
 
             cum_acc = data_processor.evaluate_accuracy(all_answers, all_targets) if all_answers else 0
-            print(f"Window {window_idx+1} accuracy: {w_acc:.3f} | Cumulative: {cum_acc:.3f}")
+            logger.info(f"Window {window_idx+1} accuracy: {w_acc:.3f} | Cumulative: {cum_acc:.3f}")
 
             # Train on window
             for local_step, task_dict in enumerate(window_samples):
                 global_step += 1
-                print(f"\n--- Window {window_idx+1}, Step {local_step+1}/{len(window_samples)} (Global {global_step}) ---")
+                logger.info(f"\n--- Window {window_idx+1}, Step {local_step+1}/{len(window_samples)} (Global {global_step}) ---")
 
                 try:
                     _, _, _, latency = self._train_single_sample(
@@ -1072,7 +1076,7 @@ class GSAM:
                     )
                     all_latencies.append(latency)
                 except Exception as e:
-                    print(f"[WARN] Skipping online training step {global_step}: {type(e).__name__}: {e}")
+                    logger.info(f"[WARN] Skipping online training step {global_step}: {type(e).__name__}: {e}")
 
                 if global_step % save_steps == 0:
                     self.knowledge_graph.save(
@@ -1114,7 +1118,7 @@ class GSAM:
             ) / n
 
         if skipped_count > 0:
-            print(f"Warning: {skipped_count} sample(s) skipped due to LLM failures and excluded from accuracy.")
+            logger.warning(f"Warning: {skipped_count} sample(s) skipped due to LLM failures and excluded from accuracy.")
 
         # Save results
         with open(os.path.join(save_path, "test_results.json"), "w") as f:
@@ -1125,7 +1129,7 @@ class GSAM:
                 "errors": all_errors,
             }, f, indent=2)
 
-        print(f"\nFinal Online Test Accuracy: {final_acc:.3f} (skipped={skipped_count})")
+        logger.info(f"\nFinal Online Test Accuracy: {final_acc:.3f} (skipped={skipped_count})")
 
         return {
             "accuracy": final_acc,

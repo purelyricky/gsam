@@ -10,6 +10,10 @@ import json
 import re
 from utils import get_section_slug
 
+from log_config import get_logger
+
+logger = get_logger("playbook_utils")
+
 def parse_playbook_line(line):
     """Parse a single playbook line to extract components"""
     # Pattern: [id] helpful=X harmful=Y :: content
@@ -64,7 +68,7 @@ def update_bullet_counts(playbook_text, bullet_tags):
                     tag_map[bullet_id] = tag_value
     
     if not tag_map:
-        print("Warning: No valid bullet tags found to update counts")
+        logger.warning("Warning: No valid bullet tags found to update counts")
         return playbook_text
     
     for line in lines:
@@ -147,7 +151,7 @@ def apply_curator_operations(playbook_text, operations, next_id):
             
             # Check if section exists, if not use 'others'
             if section not in sections and section != 'general':
-                print(f"Warning: Section '{section_raw}' not found, adding to OTHERS")
+                logger.warning(f"Warning: Section '{section_raw}' not found, adding to OTHERS")
                 section = 'others'
             
             slug = get_section_slug(section)
@@ -158,7 +162,7 @@ def apply_curator_operations(playbook_text, operations, next_id):
             
             new_line = format_playbook_line(new_id, 0, 0, content)
             bullets_to_add.append((section, new_line))
-            print(f"  Added bullet {new_id} to section {section}")
+            logger.info(f"  Added bullet {new_id} to section {section}")
             
 
     
@@ -196,7 +200,7 @@ def apply_curator_operations(playbook_text, operations, next_id):
     
     # If there are still bullets to add (for sections that don't exist), add them to OTHERS
     if bullets_to_add:
-        print(f"Warning: {len(bullets_to_add)} bullets have no matching section, adding to OTHERS")
+        logger.warning(f"Warning: {len(bullets_to_add)} bullets have no matching section, adding to OTHERS")
         others_bullets = [b for s, b in bullets_to_add]
         # Find OTHERS section
         others_idx = -1
@@ -324,11 +328,11 @@ def extract_json_from_text(text, json_key=None):
                 continue
                 
     except Exception as e:
-        print(f"Failed to extract JSON: {e}")
+        logger.warning(f"Failed to extract JSON: {e}")
         if len(text) > 500:
-            print(f"Raw content preview:\n{text[:500]}...")
+            logger.info(f"Raw content preview:\n{text[:500]}...")
         else:
-            print(f"Raw content:\n{text}")
+            logger.info(f"Raw content:\n{text}")
         
     return None
 

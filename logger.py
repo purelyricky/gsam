@@ -11,6 +11,10 @@ import json
 from datetime import datetime
 from playbook_utils import parse_playbook_line
 
+from log_config import get_logger
+
+logger = get_logger("logger")
+
 
 def log_llm_call(log_dir, call_info):
     """Log detailed information about each LLM call"""
@@ -27,7 +31,7 @@ def log_llm_call(log_dir, call_info):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(call_info, f, indent=2, ensure_ascii=False)
 
-    print(f"[LOG] {call_info['role']} call logged to {filename}")
+    logger.info(f"[LOG] {call_info['role']} call logged to {filename}")
 
 def log_bullet_usage(usage_log_path, epoch, step, sample_data, bullet_ids_used, playbook=None, reflection_content=None, is_correct=None):
     """Log which bullets were used in each training sample for future curator reference
@@ -93,7 +97,7 @@ def log_curator_operation_diff(log_dir, operation, playbook_text, call_id):
             op_type = operation.get('type', 'UNKNOWN')
             reason = operation.get('reason', '')
         else:
-            print(f"Warning: Invalid operation format for logging: {type(operation)}")
+            logger.warning(f"Warning: Invalid operation format for logging: {type(operation)}")
             return
         
         operation_diff = {
@@ -102,7 +106,7 @@ def log_curator_operation_diff(log_dir, operation, playbook_text, call_id):
             "reason": reason,
         }
     except Exception as e:
-        print(f"Warning: Error setting up curator operation diff logging: {e}")
+        logger.warning(f"Warning: Error setting up curator operation diff logging: {e}")
         return
     
     if op_type == 'MERGE':
@@ -183,7 +187,7 @@ def log_curator_operation_diff(log_dir, operation, playbook_text, call_id):
         with open(curator_diff_log_path, 'a', encoding='utf-8') as f:
             f.write(json.dumps(operation_diff, ensure_ascii=False) + '\n')
     except Exception as e:
-        print(f"Warning: Failed to write curator operation diff log: {e}")
+        logger.warning(f"Warning: Failed to write curator operation diff log: {e}")
 
 
 def log_problematic_request(call_id, prompt, model, api_params, exception, log_dir, using_key_mixer, key_mixer):
@@ -256,7 +260,7 @@ def log_problematic_request(call_id, prompt, model, api_params, exception, log_d
     with open(filepath, 'w') as f:
         json.dump(problem_info, f, indent=2, ensure_ascii=False)
     
-    print(f"[PROBLEM LOG] Saved problematic request to: problematic_requests/{filename}")
+    logger.info(f"[PROBLEM LOG] Saved problematic request to: problematic_requests/{filename}")
     
     # Also create a summary log
     summary_file = os.path.join(problem_log_dir, "summary.jsonl")
@@ -306,6 +310,6 @@ Full Raw Curator Response:
     try:
         with open(curator_failure_log_path, 'a', encoding='utf-8') as f:
             f.write(log_entry)
-        print(f"Curator failure logged to: {curator_failure_log_path}")
+        logger.info(f"Curator failure logged to: {curator_failure_log_path}")
     except Exception as e:
-        print(f"WARNING: Failed to write curator failure log: {e}")
+        logger.info(f"WARNING: Failed to write curator failure log: {e}")
