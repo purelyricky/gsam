@@ -118,6 +118,19 @@ gsam/
 
 ---
 
+## Development, CI and Docker
+
+```bash
+pip install -r requirements-lock.txt -r requirements-dev.txt   # pinned, reproducible install
+ruff check gsam ace eval tests                                 # lint
+python -m unittest discover -s tests -v                        # unit tests (no API keys needed)
+docker compose up --build                                      # one-command: build image and run tests
+```
+
+CI (`.github/workflows/ci.yml`) runs lint and the test suite with coverage on every push and pull request.
+Logging is structured; set `GSAM_LOG_LEVEL` and `GSAM_LOG_FORMAT` (`kv` or `json`). See also
+[CONTRIBUTING.md](CONTRIBUTING.md), [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [CHANGELOG.md](CHANGELOG.md).
+
 ## Installation
 
 ### 1. Clone and install dependencies
