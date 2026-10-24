@@ -27,6 +27,7 @@ from logger import log_llm_call
 from playbook_utils import extract_json_from_text
 
 from log_config import get_logger
+from experiment_tracker import ExperimentTracker
 from resume_utils import find_latest_checkpoint, write_progress, default_resume_state, apply_progress_files
 
 logger = get_logger("gsam")
@@ -279,6 +280,11 @@ class GSAM:
 
         with open(os.path.join(save_path, "final_results.json"), "w") as f:
             json.dump(results, f, indent=2)
+
+        tracker = ExperimentTracker(save_path, os.path.basename(save_path))
+        tracker.log_params({"task_name": task_name, "mode": mode, **config})
+        tracker.log_metrics(results)
+        tracker.finish()
 
         # Print summary
         logger.info(f"\n{'='*60}")

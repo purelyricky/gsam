@@ -74,6 +74,7 @@ class TestGSAMEndToEnd(unittest.TestCase):
             run_dirs = [d for d in os.listdir(tmp) if d.startswith("gsam_run_")]
             self.assertEqual(len(run_dirs), 1)
             self.assertTrue(os.path.exists(os.path.join(tmp, run_dirs[0], "final_results.json")))
+            self.assertTrue(os.path.exists(os.path.join(tmp, run_dirs[0], "tracking.jsonl")))
 
     def test_invalid_mode_rejected(self):
         with self.assertRaises(ValueError):
