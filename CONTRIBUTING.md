@@ -10,5 +10,5 @@
 4. Keep each feature or fix in its own small commit together with the tests that pin its behaviour.
    Do not mix formatting, refactors and features in one commit.
 5. Use the `gsam` logger (`from log_config import get_logger`) instead of `print()`.
-6. New dependencies go in `requirements.txt`; regenerate `requirements-lock.txt` with
+6. New dependencies go in `requirements.txt` and `pyproject.toml`; refresh `uv.lock` with `uv lock` and regenerate `requirements-lock.txt` with
    `pip install -r requirements.txt && pip freeze > requirements-lock.txt`.
