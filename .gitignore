@@ -4,4 +4,6 @@ __pycache__/
 */__pycache__/
 results/
 .claude
-.idea
+.idea.coverage
+.mypy_cache/
+.ruff_cache/
