@@ -9,6 +9,7 @@ import json
 import logging
 import os
 import sys
+from typing import Optional
 
 ROOT_LOGGER_NAME = "gsam"
 
@@ -60,7 +61,7 @@ def configure_logging(level=None, fmt=None, stream=None) -> logging.Logger:
     return root
 
 
-def get_logger(name: str = None) -> logging.Logger:
+def get_logger(name: Optional[str] = None) -> logging.Logger:
     """Return a child of the ``gsam`` logger, configuring it on first use."""
     root = logging.getLogger(ROOT_LOGGER_NAME)
     if not root.handlers:

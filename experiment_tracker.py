@@ -8,7 +8,7 @@ both are optional dependencies and are imported lazily.
 import json
 import os
 from datetime import datetime
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from log_config import get_logger
 
@@ -29,7 +29,7 @@ def flatten_metrics(data: Any, prefix: str = "") -> Dict[str, float]:
 class ExperimentTracker:
     """Writes run params/metrics to JSONL and, optionally, to wandb or mlflow."""
 
-    def __init__(self, save_path: str, run_name: str, backend: str = None):
+    def __init__(self, save_path: str, run_name: str, backend: Optional[str] = None):
         self.save_path = save_path
         self.run_name = run_name
         self.backend = (backend or os.environ.get("GSAM_TRACKER", "")).lower()
@@ -64,7 +64,7 @@ class ExperimentTracker:
             else:
                 self._remote.log_params({k: str(v)[:250] for k, v in params.items()})
 
-    def log_metrics(self, metrics: Dict[str, Any], step: int = None) -> Dict[str, float]:
+    def log_metrics(self, metrics: Dict[str, Any], step: Optional[int] = None) -> Dict[str, float]:
         flat = flatten_metrics(metrics)
         self._write({"type": "metrics", "step": step, "metrics": flat})
         if self._remote is not None and flat:

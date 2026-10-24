@@ -17,6 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["ruff>=0.4.0", "coverage", "mypy"]
+tracking = ["wandb", "mlflow"]
 
 [tool.uv]
 package = false

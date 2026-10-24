@@ -20,6 +20,10 @@ jobs:
           pip install -r requirements-dev.txt coverage
       - name: Lint (ruff)
         run: ruff check gsam ace eval tests
+      - name: Type check (mypy)
+        run: mypy --ignore-missing-imports --follow-imports=silent log_config.py resume_utils.py config_schema.py experiment_tracker.py mock_llm.py
+      - name: Dependency consistency
+        run: pip check
       - name: Unit tests
         run: coverage run -m unittest discover -s tests -v
       - name: Coverage report
