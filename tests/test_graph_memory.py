@@ -5,7 +5,6 @@ Tests node/edge CRUD, similarity-based dedup, subgraph extraction,
 serialization/deserialization, taxonomy helpers, and pruning.
 """
 
-import json
 import os
 import sys
 import tempfile

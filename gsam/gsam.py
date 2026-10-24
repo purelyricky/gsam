@@ -8,23 +8,15 @@ architecture and adds GraphConstructor and GraphRetriever.
 
 import os
 import json
-import time
-import re
 from datetime import datetime
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Optional, Any
 
-from .graph_memory import KnowledgeGraph, NodeType, EdgeType
+from .graph_memory import KnowledgeGraph, NodeType
 from .core.graph_constructor import GraphConstructor
 from .core.graph_retriever import GraphRetriever
-from .ontology import initialize_ontology, get_entity_name_to_node_map
-from .prompts.generator import GSAM_GENERATOR_PROMPT
-from .prompts.reflector import GSAM_REFLECTOR_PROMPT, GSAM_REFLECTOR_PROMPT_NO_GT
-from .prompts.curator import GSAM_CURATOR_PROMPT, GSAM_CURATOR_PROMPT_NO_GT
+from .ontology import initialize_ontology
 
-from llm import timed_llm_call
-from utils import initialize_clients, extract_answer, count_tokens, evaluate_test_set
-from logger import log_llm_call
-from playbook_utils import extract_json_from_text
+from utils import initialize_clients, evaluate_test_set
 
 from log_config import get_logger
 from experiment_tracker import ExperimentTracker
@@ -290,7 +282,7 @@ class GSAM(TrainingLoopsMixin, SampleTrainingMixin):
 
         # Print summary
         logger.info(f"\n{'='*60}")
-        logger.info(f"GSAM RUN COMPLETE")
+        logger.info("GSAM RUN COMPLETE")
         logger.info(f"{'='*60}")
         logger.info(f"Final Graph: {self.knowledge_graph}")
         logger.info(f"Results saved to: {save_path}")

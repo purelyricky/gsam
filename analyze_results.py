@@ -15,7 +15,7 @@ import os
 import json
 import glob
 import argparse
-from typing import Dict, Any, Optional
+from typing import Dict, Optional
 
 
 # ---------------------------------------------------------------------------
@@ -224,7 +224,7 @@ def main():
             print(f"  Formula nodes:     {nc.get('Formula', 0)}")
             cov = gs.get("concept_coverage", None)
             print(f"  Concept coverage:  {fmt(cov, as_pct=True)}")
-            print(f"    (fraction of 139 XBRL entity types with >= 1 Strategy node)")
+            print("    (fraction of 139 XBRL entity types with >= 1 Strategy node)")
         else:
             print("  No graph_stats.json found in run directory.")
     else:

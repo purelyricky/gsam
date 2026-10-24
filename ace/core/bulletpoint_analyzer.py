@@ -8,7 +8,6 @@ intelligent deduplication and merging using embeddings and LLM.
 import re
 import numpy as np
 from typing import List, Dict, Tuple, Any, Optional
-from collections import defaultdict
 
 try:
     from sentence_transformers import SentenceTransformer
@@ -263,7 +262,7 @@ Do NOT include any explanation, just output the merged bulletpoint."""
                     'original_count': len(bullets_group)
                 }
             else:
-                print(f"WARNING: Failed to parse merged bullet, keeping first bullet from group")
+                print("WARNING: Failed to parse merged bullet, keeping first bullet from group")
                 return bullets_group[0]
                 
         except Exception as e:

@@ -6,7 +6,6 @@ and transfer metrics.
 """
 
 import os
-import sys
 import unittest
 import importlib
 

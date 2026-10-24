@@ -9,7 +9,6 @@ This file contains the LLM class for the project.
 import time
 import random
 import json
-from datetime import datetime
 import openai
 from logger import log_llm_call, log_problematic_request
 
@@ -158,7 +157,7 @@ def timed_llm_call(client, api_provider, model, prompt, role, call_id, max_token
                     if status_code and status_code >= 500:
                         is_server_error = True
                         print(f"[{role.upper()}] Server error detected: HTTP {status_code}")
-                except:
+                except Exception:
                     pass
             
             # Truncated output (finish_reason=length) is permanent — the prompt is too

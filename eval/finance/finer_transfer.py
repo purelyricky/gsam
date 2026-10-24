@@ -17,7 +17,7 @@ import os
 import json
 import random
 import argparse
-from typing import Dict, List, Tuple, Any, Optional
+from typing import Dict, List, Any
 from collections import defaultdict
 
 from .data_processor import DataProcessor

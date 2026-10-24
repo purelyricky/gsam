@@ -7,7 +7,7 @@ Implements the three-stage ontology-aware retrieval process:
 3. Taxonomic Expansion: Walk is_a edges to include sibling strategies
 """
 
-from typing import Dict, List, Optional, Set, Tuple, Any
+from typing import Dict, List, Set, Tuple, Any
 
 from ..graph_memory import KnowledgeGraph, NodeType, EdgeType
 

@@ -10,7 +10,6 @@ This module coordinates three agents:
 
 import os
 import json
-import time
 from datetime import datetime
 from typing import Dict, List, Tuple, Optional, Any
 
@@ -18,10 +17,7 @@ from .core import Generator, Reflector, Curator, BulletpointAnalyzer
 from .training_modes import OfflineTrainingMixin
 from .online_training import OnlineTrainingMixin
 from .sample_training import SampleTrainingMixin
-from playbook_utils import *
-from logger import *
-from utils import *
-
+from utils import evaluate_test_set, initialize_clients
 from log_config import get_logger
 from experiment_tracker import ExperimentTracker
 from resume_utils import find_latest_checkpoint, write_progress, default_resume_state, apply_progress_files
@@ -315,7 +311,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
             # 1. Run initial test if test_samples provided
             if test_samples:
                 logger.info(f"\n{'='*60}")
-                logger.info(f"INITIAL TEST (before training)")
+                logger.info("INITIAL TEST (before training)")
                 logger.info(f"{'='*60}\n")
                 initial_test_results = self._run_test(
                     test_samples=test_samples,
@@ -331,7 +327,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
 
             # 2. Run offline training
             logger.info(f"\n{'='*60}")
-            logger.info(f"STARTING OFFLINE TRAINING")
+            logger.info("STARTING OFFLINE TRAINING")
             logger.info(f"{'='*60}\n")
             training_results = self._offline_train(
                 train_samples=train_samples,
@@ -352,7 +348,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
             # 3. Run final test if test_samples provided
             if test_samples:
                 logger.info(f"\n{'='*60}")
-                logger.info(f"FINAL TEST (with best playbook)")
+                logger.info("FINAL TEST (with best playbook)")
                 logger.info(f"{'='*60}\n")
                 final_test_results = self._run_test(
                     test_samples=test_samples,
@@ -370,7 +366,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
             # ONLINE MODE WORKFLOW
             # 1. Run initial test
             logger.info(f"\n{'='*60}")
-            logger.info(f"INITIAL TEST (before training)")
+            logger.info("INITIAL TEST (before training)")
             logger.info(f"{'='*60}\n")
             initial_test_results = self._run_test(
                 test_samples=test_samples,
@@ -386,7 +382,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
 
             # 2. Run online training and testing
             logger.info(f"\n{'='*60}")
-            logger.info(f"STARTING ONLINE TRAIN AND TEST")
+            logger.info("STARTING ONLINE TRAIN AND TEST")
             logger.info(f"{'='*60}\n")
             online_results = self._online_train_and_test(
                 test_samples=test_samples,
@@ -407,7 +403,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
         else:  # eval_only
             # EVAL ONLY MODE WORKFLOW
             logger.info(f"\n{'='*60}")
-            logger.info(f"RUNNING TEST")
+            logger.info("RUNNING TEST")
             logger.info(f"{'='*60}\n")
             test_results = self._run_test(
                 test_samples=test_samples,
@@ -432,7 +428,7 @@ class ACE(SampleTrainingMixin, OfflineTrainingMixin, OnlineTrainingMixin):
         
         # Print final summary
         logger.info(f"\n{'='*60}")
-        logger.info(f"RUN COMPLETE")
+        logger.info("RUN COMPLETE")
         logger.info(f"{'='*60}")
         logger.info(f"Mode: {mode.upper().replace('_', ' ')}")
         if mode == 'offline':

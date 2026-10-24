@@ -8,7 +8,7 @@ Also extracts Formula nodes from the Formula training data.
 
 import json
 import os
-from typing import Dict, List, Optional, Any
+from typing import Dict, Optional
 
 from .graph_memory import KnowledgeGraph, NodeType, EdgeType
 from log_config import get_logger

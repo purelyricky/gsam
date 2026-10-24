@@ -5,13 +5,10 @@ Example usage script for the ACE system.
 """
 import os
 import json
-import openai
 import argparse
-from datetime import datetime
 from .data_processor import DataProcessor
 
 from ace import ACE
-from utils import initialize_clients
 
 def parse_args():
     """Parse command line arguments."""
@@ -190,7 +187,7 @@ def main():
         args.num_epochs = 1
 
     print(f"\n{'='*60}")
-    print(f"ACE SYSTEM")
+    print("ACE SYSTEM")
     print(f"{'='*60}")
     print(f"Task: {args.task_name}")
     print(f"Mode: {args.mode.upper().replace('_', ' ')}")
@@ -250,7 +247,7 @@ def main():
     }
     
     # Execute using the unified run method
-    results = ace_system.run(
+    ace_system.run(
         mode=args.mode,
         train_samples=train_samples,
         val_samples=val_samples,

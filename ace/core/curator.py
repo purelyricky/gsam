@@ -107,7 +107,7 @@ class Curator:
         
         # Check for empty response error
         if response.startswith("INCORRECT_DUE_TO_EMPTY_RESPONSE"):
-            print(f"Skipping curator operation due to empty response")
+            print("Skipping curator operation due to empty response")
             log_curator_failure(log_dir, current_step, "empty_response", 
                                     response[:200], 0)
             return current_playbook, next_global_id, [], call_info

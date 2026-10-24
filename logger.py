@@ -245,7 +245,7 @@ def log_problematic_request(call_id, prompt, model, api_params, exception, log_d
             if hasattr(exception.response, 'json'):
                 try:
                     response_details["json"] = exception.response.json()
-                except:
+                except Exception:
                     response_details["json"] = "Could not parse as JSON"
         except Exception as e:
             response_details["extraction_error"] = str(e)

@@ -10,8 +10,7 @@ Implements GSAM-specific evaluation metrics:
 """
 
 import json
-from typing import Dict, List, Any, Optional
-from collections import defaultdict
+from typing import Dict, List, Any
 
 
 def compute_repeated_failure_rate(error_history: List[Dict]) -> Dict[str, Any]:

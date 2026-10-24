@@ -1,13 +1,7 @@
 """Taxonomy (is_a) navigation helpers for KnowledgeGraph, split out as a mixin."""
 
-import json
-import time
-import numpy as np
-import networkx as nx
-from typing import Dict, List, Optional, Set, Tuple, Any
-from collections import defaultdict
+from typing import List
 
-from .graph_types import NodeType, EdgeType
 from log_config import get_logger
 
 logger = get_logger("graph_memory")

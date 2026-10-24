@@ -5,14 +5,10 @@ as a mixin so the orchestrator module stays focused on setup and the shared step
 
 import os
 import json
-import time
-from datetime import datetime
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Any
 
-from playbook_utils import *
-from logger import *
-from utils import *
-
+from playbook_utils import get_playbook_stats
+from utils import count_tokens, evaluate_test_set
 from log_config import get_logger
 
 logger = get_logger("ace")
@@ -52,7 +48,6 @@ class OfflineTrainingMixin:
         """
         # Extract configuration using helper
         config_params = self._extract_config_params(config)
-        task_name = config_params['task_name']
         num_epochs = config_params['num_epochs']
         eval_steps = config_params['eval_steps']
         save_steps = config_params['save_steps']
@@ -244,17 +239,17 @@ class OfflineTrainingMixin:
             json.dump(pre_train_post_train_results, f, indent=2)
 
         # Save final playbook
-        final_playbook_path = os.path.join(save_path, f"final_playbook.txt")
+        final_playbook_path = os.path.join(save_path, "final_playbook.txt")
         with open(final_playbook_path, "w") as f:
             f.write(self.playbook)
 
         # Save best playbook
-        best_playbook_path = os.path.join(save_path, f"best_playbook.txt")
+        best_playbook_path = os.path.join(save_path, "best_playbook.txt")
         with open(best_playbook_path, "w") as f:
             f.write(self.best_playbook)
 
         logger.info(f"\n{'='*60}")
-        logger.info(f"OFFLINE TRAINING COMPLETE")
+        logger.info("OFFLINE TRAINING COMPLETE")
         logger.info(f"{'='*60}")
         logger.info(f"Best Validation Accuracy: {best_accuracy:.3f}")
         logger.info(f"{'='*60}\n")

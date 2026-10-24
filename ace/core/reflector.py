@@ -119,7 +119,7 @@ class Reflector:
                 response_json = json.loads(response)
                 bullet_tags = response_json.get("bullet_tags", [])
             except (json.JSONDecodeError, KeyError):
-                print(f"Warning: Failed to parse bullet tags from JSON response")
+                print("Warning: Failed to parse bullet tags from JSON response")
         else:
             # Try to extract from non-JSON response
             # This is a fallback and may not always work

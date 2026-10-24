@@ -1,10 +1,8 @@
 """Pruning, statistics and epoch consolidation for KnowledgeGraph, split out as a mixin."""
 
-import json
-import time
 import numpy as np
 import networkx as nx
-from typing import Dict, List, Optional, Set, Tuple, Any
+from typing import Dict
 from collections import defaultdict
 
 from .graph_types import NodeType, EdgeType
@@ -43,7 +41,6 @@ class MaintenanceMixin:
             Number of nodes removed.
         """
         to_remove = []
-        now = time.time()
 
         for nid, data in self.graph.nodes(data=True):
             # Never prune Concept nodes (ontology backbone)

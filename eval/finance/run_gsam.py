@@ -8,7 +8,6 @@ Supports the same CLI arguments plus GSAM-specific options.
 import os
 import json
 import argparse
-from datetime import datetime
 from .data_processor import DataProcessor
 
 from gsam import GSAM
@@ -146,7 +145,7 @@ def main():
         args.num_epochs = 1
 
     print(f"\n{'='*60}")
-    print(f"GSAM SYSTEM")
+    print("GSAM SYSTEM")
     print(f"{'='*60}")
     print(f"Task: {args.task_name}")
     print(f"Mode: {args.mode.upper()}")
@@ -221,7 +220,7 @@ def main():
     }
 
     # Run
-    results = gsam_system.run(
+    gsam_system.run(
         mode=args.mode,
         train_samples=train_samples,
         val_samples=val_samples,

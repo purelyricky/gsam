@@ -1,10 +1,8 @@
 """LLM-based extraction of graph operations from reflections, plus structural edge handlers; split out of graph_constructor.py as a mixin."""
 
-import json
-import re
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional
 
-from ..graph_memory import KnowledgeGraph, NodeType, EdgeType
+from ..graph_memory import NodeType, EdgeType
 from .graph_operation import GraphOperation
 from ..prompts.graph_constructor import GRAPH_CONSTRUCTOR_PROMPT
 from playbook_utils import extract_json_from_text

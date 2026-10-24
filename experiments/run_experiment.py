@@ -18,7 +18,6 @@ import sys
 import json
 import argparse
 import subprocess
-from datetime import datetime
 from typing import List, Dict, Any, Optional
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))

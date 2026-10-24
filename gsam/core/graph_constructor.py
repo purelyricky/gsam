@@ -7,16 +7,12 @@ operations: node additions, edge additions, and attribute updates.
 Implements Algorithm 1 from the paper (Graph Construction Pipeline).
 """
 
-import json
-import re
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional
 
 from ..graph_memory import KnowledgeGraph, NodeType, EdgeType
 from .graph_operation import GraphOperation  # noqa: F401  (re-exported)
 from .reflection_extraction import ReflectionExtractionMixin
-from ..prompts.graph_constructor import GRAPH_CONSTRUCTOR_PROMPT
 from playbook_utils import extract_json_from_text
-from llm import timed_llm_call
 
 from log_config import get_logger
 

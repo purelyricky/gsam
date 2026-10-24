@@ -1,8 +1,6 @@
 import os
 import json
-from utils import extract_answer
-from typing import List, Dict, Any, Tuple
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import List, Dict, Any
 
 
 def load_data(data_path: str) -> List[Dict[str, Any]]:
@@ -55,7 +53,6 @@ def parse_context_and_question_formula(all_context):
     if "Question: " in all_context and ". Answer:" in all_context:
         # Split by "Question: " to separate instruction from question
         parts = all_context.split("Question: ", 1)
-        instruction_part = parts[0].strip()
         
         # Extract question text (between "Question: " and ". Answer:")
         question_part = parts[1]
@@ -142,7 +139,7 @@ class DataProcessor:
             try:
                 ground_truth = eval(ground_truth)
                 prediction = eval(prediction.replace(",", "").replace("$", ""))
-            except:
+            except Exception:
                 pass
             if prediction == ground_truth:
                 count += 1

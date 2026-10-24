@@ -5,7 +5,7 @@ import json
 import openai
 import tiktoken
 from dotenv import load_dotenv
-from typing import List, Dict, Any, Tuple
+from typing import Dict, Tuple
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Load environment variables from .env file
@@ -309,6 +309,6 @@ def evaluate_test_set(data_processor, generator, playbook, test_samples,
     else:
         final_results = {"accuracy": 0.0, "correct": 0, "total": 0, "skipped": results["skipped"]}
         error_logs = {}
-        print(f"\nNo valid results!")
+        print("\nNo valid results!")
 
     return final_results, error_logs

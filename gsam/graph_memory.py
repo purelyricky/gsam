@@ -11,11 +11,9 @@ Edge types: is_a, part_of, depends_on, applies_to, fails_for, fixes,
 
 import json
 import time
-import uuid
 import numpy as np
 import networkx as nx
-from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple, Any
+from typing import Dict, List, Optional, Set, Tuple
 from collections import defaultdict
 
 from log_config import get_logger

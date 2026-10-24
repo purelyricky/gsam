@@ -5,14 +5,10 @@ as a mixin so the orchestrator module stays focused on setup and the shared step
 
 import os
 import json
-import time
-from datetime import datetime
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Optional, Any
 
-from playbook_utils import *
-from logger import *
-from utils import *
-
+from playbook_utils import get_playbook_stats
+from utils import count_tokens, evaluate_test_set
 from log_config import get_logger
 
 logger = get_logger("ace")
@@ -59,7 +55,6 @@ class OnlineTrainingMixin:
         
         # Extract additional parameters
         curator_frequency = config_params['curator_frequency']
-        task_name = config_params['task_name']
         save_steps = config_params['save_steps']
         use_json_mode = config_params['use_json_mode']
         test_workers = config_params['test_workers']
@@ -271,7 +266,7 @@ class OnlineTrainingMixin:
         
         # All windows complete
         logger.info(f"\n{'='*60}")
-        logger.info(f"ONLINE TRAIN AND TEST COMPLETE")
+        logger.info("ONLINE TRAIN AND TEST COMPLETE")
         logger.info(f"{'='*60}")
 
         # Calculate final cumulative test accuracy
@@ -329,12 +324,12 @@ class OnlineTrainingMixin:
             json.dump(pre_train_post_train_results, f, indent=2)
 
         # Save final playbook
-        final_playbook_path = os.path.join(save_path, f"final_playbook.txt")
+        final_playbook_path = os.path.join(save_path, "final_playbook.txt")
         with open(final_playbook_path, "w") as f:
             f.write(self.playbook)
 
         logger.info(f"\n{'='*60}")
-        logger.info(f"ONLINE TRAINING AND TESTING COMPLETE")
+        logger.info("ONLINE TRAINING AND TESTING COMPLETE")
         logger.info(f"{'='*60}")
         logger.info(f"Final Test Accuracy: {final_test_accuracy:.3f}")
         logger.info(f"{'='*60}\n")
