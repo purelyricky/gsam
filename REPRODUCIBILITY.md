@@ -14,3 +14,9 @@
 - **Containers**: `docker compose up --build` runs the test suite in a clean image;
   `docker compose --profile experiment run experiment` runs experiments with your `.env`.
 - **Logging**: set `GSAM_LOG_FORMAT=json` for machine-readable logs that can be shipped to wandb/mlflow or any log store.
+- **No-API dry run**: set `api_provider` to `mock` (see `mock_llm.py`) to run the complete GSAM or ACE pipeline offline with a
+  deterministic client; `tests/test_e2e_mock.py` does exactly this for offline, online and eval-only modes.
+- **Experiment tracking**: every run writes `tracking.jsonl` (params and flattened numeric metrics) into its run folder.
+  Set `GSAM_TRACKER=wandb` or `GSAM_TRACKER=mlflow` (`pip install wandb mlflow`) to mirror to those services.
+- **Config validation**: `config_schema.validate_config` rejects malformed experiment configs (e.g. negative `num_epochs`)
+  before any run starts.

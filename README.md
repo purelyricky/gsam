@@ -127,7 +127,8 @@ python -m unittest discover -s tests -v                        # unit tests (no 
 docker compose up --build                                      # one-command: build image and run tests
 ```
 
-CI (`.github/workflows/ci.yml`) runs lint and the test suite with coverage on every push and pull request.
+CI (`.github/workflows/ci.yml`) runs ruff, mypy, `pip check` and the test suite with a 60% coverage gate on every push and pull request.
+A keyless dry run of the whole pipeline is available with `api_provider: "mock"` (see `tests/test_e2e_mock.py`).
 Logging is structured; set `GSAM_LOG_LEVEL` and `GSAM_LOG_FORMAT` (`kv` or `json`). See also
 [CONTRIBUTING.md](CONTRIBUTING.md), [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [CHANGELOG.md](CHANGELOG.md).
 
