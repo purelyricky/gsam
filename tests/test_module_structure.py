@@ -7,7 +7,8 @@ import unittest
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from ace.ace import ACE  # noqa: E402
-from ace.training_modes import OfflineTrainingMixin, OnlineTrainingMixin  # noqa: E402
+from ace.training_modes import OfflineTrainingMixin  # noqa: E402
+from ace.online_training import OnlineTrainingMixin  # noqa: E402
 from gsam import gsam as gsam_module  # noqa: E402
 from gsam.core import agents  # noqa: E402
 

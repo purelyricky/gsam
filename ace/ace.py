@@ -15,7 +15,8 @@ from datetime import datetime
 from typing import Dict, List, Tuple, Optional, Any
 
 from .core import Generator, Reflector, Curator, BulletpointAnalyzer
-from .training_modes import OfflineTrainingMixin, OnlineTrainingMixin
+from .training_modes import OfflineTrainingMixin
+from .online_training import OnlineTrainingMixin
 from playbook_utils import *
 from logger import *
 from utils import *
