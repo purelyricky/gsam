@@ -27,6 +27,21 @@ class TestModuleStructure(unittest.TestCase):
         self.assertTrue(issubclass(gsam_module.GSAM, GSAMSampleMixin))
         self.assertTrue(callable(gsam_module.GSAM._train_single_sample))
 
+    def test_knowledge_graph_composes_mixins(self):
+        from gsam.graph_memory import KnowledgeGraph
+        from gsam.graph_serialization import SerializationMixin
+        from gsam.graph_taxonomy import TaxonomyMixin
+        from gsam.graph_maintenance import MaintenanceMixin
+        for mixin in (SerializationMixin, TaxonomyMixin, MaintenanceMixin):
+            self.assertTrue(issubclass(KnowledgeGraph, mixin))
+        for name in ("serialize_subgraph", "get_siblings", "prune", "stats", "consolidate_epoch"):
+            self.assertTrue(callable(getattr(KnowledgeGraph, name)), name)
+
+    def test_enums_reexported_from_graph_memory(self):
+        from gsam import graph_memory, graph_types
+        self.assertIs(graph_memory.NodeType, graph_types.NodeType)
+        self.assertIs(graph_memory.EdgeType, graph_types.EdgeType)
+
     def test_gsam_reexports_agents(self):
         for name in ("GSAMGenerator", "GSAMReflector", "GSAMCurator"):
             self.assertIs(getattr(gsam_module, name), getattr(agents, name))
