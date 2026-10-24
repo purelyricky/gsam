@@ -10,9 +10,9 @@ Implements Algorithm 1 from the paper (Graph Construction Pipeline).
 import json
 import re
 from typing import Dict, List, Optional, Any, Tuple
-from dataclasses import dataclass, field
 
 from ..graph_memory import KnowledgeGraph, NodeType, EdgeType
+from .graph_operation import GraphOperation  # noqa: F401  (re-exported)
 from ..prompts.graph_constructor import GRAPH_CONSTRUCTOR_PROMPT
 from playbook_utils import extract_json_from_text
 from llm import timed_llm_call
@@ -20,19 +20,6 @@ from llm import timed_llm_call
 from log_config import get_logger
 
 logger = get_logger("graph_constructor")
-
-
-@dataclass
-class GraphOperation:
-    """A single graph operation to apply."""
-    op_type: str  # ADD_NODE, ADD_EDGE, UPDATE_ATTR
-    node_type: Optional[str] = None
-    content: Optional[str] = None
-    node_id: Optional[str] = None
-    source_id: Optional[str] = None
-    target_id: Optional[str] = None
-    edge_type: Optional[str] = None
-    attrs: Dict[str, Any] = field(default_factory=dict)
 
 
 class GraphConstructor:
