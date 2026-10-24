@@ -12,6 +12,7 @@ from ace.online_training import OnlineTrainingMixin  # noqa: E402
 from ace.sample_training import SampleTrainingMixin  # noqa: E402
 from gsam import gsam as gsam_module  # noqa: E402
 from gsam.core import agents  # noqa: E402
+from gsam.sample_training import SampleTrainingMixin as GSAMSampleMixin  # noqa: E402
 
 
 class TestModuleStructure(unittest.TestCase):
@@ -21,6 +22,10 @@ class TestModuleStructure(unittest.TestCase):
         self.assertTrue(issubclass(ACE, SampleTrainingMixin))
         for name in ("_offline_train", "_online_train_and_test", "_train_single_sample", "run", "test"):
             self.assertTrue(callable(getattr(ACE, name)), name)
+
+    def test_gsam_composes_sample_mixin(self):
+        self.assertTrue(issubclass(gsam_module.GSAM, GSAMSampleMixin))
+        self.assertTrue(callable(gsam_module.GSAM._train_single_sample))
 
     def test_gsam_reexports_agents(self):
         for name in ("GSAMGenerator", "GSAMReflector", "GSAMCurator"):
