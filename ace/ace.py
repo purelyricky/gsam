@@ -20,6 +20,7 @@ from logger import *
 from utils import *
 
 from log_config import get_logger
+from resume_utils import find_latest_checkpoint, write_progress, default_resume_state, apply_progress_files
 
 logger = get_logger("ace")
 
@@ -104,28 +105,11 @@ class ACE:
     @staticmethod
     def _find_latest_playbook(playbook_dir: str) -> Optional[str]:
         """Return path to the intermediate playbook with the highest step number."""
-        import re as _re
-        best_step = -1
-        best_file = None
-        try:
-            for fname in os.listdir(playbook_dir):
-                if not fname.endswith('.txt'):
-                    continue
-                nums = list(map(int, _re.findall(r'\d+', fname)))
-                if nums:
-                    step = nums[-1]
-                    if step > best_step:
-                        best_step = step
-                        best_file = os.path.join(playbook_dir, fname)
-        except (FileNotFoundError, OSError):
-            pass
-        return best_file
+        return find_latest_checkpoint(playbook_dir, '.txt')
 
     def _save_progress(self, save_path: str, **kwargs) -> None:
         """Write progress.json so runs can be resumed after interruption."""
-        progress = {"timestamp": datetime.now().strftime("%Y%m%d_%H%M%S"), **kwargs}
-        with open(os.path.join(save_path, "progress.json"), "w") as f:
-            json.dump(progress, f, indent=2)
+        write_progress(save_path, timestamp=datetime.now().strftime("%Y%m%d_%H%M%S"), **kwargs)
 
     def _load_resume_state(self, resume_path: str) -> Dict[str, Any]:
         """
@@ -134,11 +118,7 @@ class ACE:
         Returns a dict with start_epoch, start_step, start_window,
         start_global_step, prior_online_results.
         """
-        state: Dict[str, Any] = {
-            "start_epoch": 1, "start_step": 0,
-            "start_window": 0, "start_global_step": 0,
-            "prior_online_results": None,
-        }
+        state = default_resume_state()
         playbook_dir = os.path.join(resume_path, "intermediate_playbooks")
         latest_pb = self._find_latest_playbook(playbook_dir)
         if latest_pb:
@@ -147,24 +127,7 @@ class ACE:
             self.best_playbook = self.playbook
             logger.info(f"Loaded playbook checkpoint: {latest_pb}")
 
-        progress_file = os.path.join(resume_path, "progress.json")
-        if os.path.exists(progress_file):
-            with open(progress_file) as f:
-                progress = json.load(f)
-            logger.info(f"Resuming from progress: {progress}")
-            if progress.get("mode") == "offline":
-                state["start_epoch"] = progress.get("epoch", 1)
-                state["start_step"] = progress.get("step", 0)
-            elif progress.get("mode") == "online":
-                state["start_window"] = progress.get("window", 0) + 1
-                state["start_global_step"] = progress.get("global_step", 0)
-
-        partial_file = os.path.join(resume_path, "partial_online_results.json")
-        if os.path.exists(partial_file):
-            with open(partial_file) as f:
-                state["prior_online_results"] = json.load(f)
-
-        return state
+        return apply_progress_files(resume_path, state, logger)
 
     def _initialize_empty_playbook(self) -> str:
         """Initialize an empty playbook with standard sections."""
