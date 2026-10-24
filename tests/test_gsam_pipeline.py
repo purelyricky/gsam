@@ -6,6 +6,7 @@ from unittest import mock
 
 from tests.helpers import make_graph, NodeType, EdgeType
 from gsam import gsam as gsam_module
+from gsam.core import agents as agents_module
 from gsam.core.graph_retriever import GraphRetriever
 
 
@@ -21,7 +22,7 @@ class TestGSAMPipeline(unittest.TestCase):
         self.assertIn(self.strategy, retrieved)
 
         reply = json.dumps({"final_answer": "42", "node_ids": [self.strategy]})
-        with mock.patch.object(gsam_module, "timed_llm_call", return_value=(reply, {"role": "generator"})) as llm:
+        with mock.patch.object(agents_module, "timed_llm_call", return_value=(reply, {"role": "generator"})) as llm:
             gen = gsam_module.GSAMGenerator(api_client=None, api_provider="test", model="stub")
             response, node_ids, call_info = gen.generate(
                 question="What is Revenue?", graph_context=graph_context, context="10-K excerpt",
@@ -39,7 +40,7 @@ class TestGSAMPipeline(unittest.TestCase):
         self.assertEqual(gen._extract_node_ids("used [S:0001] and [A:0002]", False), ["S:0001", "A:0002"])
 
     def test_playbook_used_when_no_graph_context(self):
-        with mock.patch.object(gsam_module, "timed_llm_call", return_value=("{}", {})) as llm:
+        with mock.patch.object(agents_module, "timed_llm_call", return_value=("{}", {})) as llm:
             gsam_module.GSAMGenerator(None, "test", "stub").generate(question="q", playbook="PLAYBOOK-TEXT")
         self.assertIn("PLAYBOOK-TEXT", llm.call_args[0][3])
 
