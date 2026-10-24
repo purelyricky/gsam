@@ -21,11 +21,18 @@ import subprocess
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+from config_schema import ConfigError, validate_config  # noqa: E402
+
 
 def load_config(config_path: str) -> Dict[str, Any]:
-    """Load experiment config from JSON file."""
+    """Load experiment config from JSON file and validate it."""
     with open(config_path) as f:
-        return json.load(f)
+        config = json.load(f)
+    try:
+        return validate_config(config)
+    except ConfigError as e:
+        raise ValueError(f"{config_path}: {e}") from e
 
 
 def build_command(config: Dict[str, Any], save_path: str) -> List[str]:
