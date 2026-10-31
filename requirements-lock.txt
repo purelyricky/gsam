@@ -40,7 +40,7 @@ multidict==7.1.0
 narwhals==2.27.1
 networkx==3.6.1
 numpy==2.4.6
-openai==3.37.0
+openai==3.40.0
 packaging==26.3
 propcache==0.5.4
 protobuf==7.36.2

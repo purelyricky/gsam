@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Graph-Structured Adaptive Memory extending the ACE agentic-context framework"
 requires-python = ">=3.10"
 dependencies = [
-    "openai>=1.0.0",
+    "openai>=3.40.0",
     "python-dotenv>=1.0.0",
     "tiktoken",
     "sentence-transformers>=2.2.0",
